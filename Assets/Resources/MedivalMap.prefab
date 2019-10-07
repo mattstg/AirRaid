@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 5407642135568697053}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 5407642135578552657}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01 (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 5407642135695412137}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower (3)
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 5407642135815596243}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_06 (2)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -880,7 +880,7 @@ GameObject:
   - component: {fileID: 5407642135877077502}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (13)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -988,7 +988,7 @@ GameObject:
   - component: {fileID: 5407642135897180625}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -1178,7 +1178,7 @@ GameObject:
   - component: {fileID: 5407642135973924189}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (12)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 5407642136020717137}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (8)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -1481,7 +1481,7 @@ GameObject:
   - component: {fileID: 5407642136033433552}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_02 (2)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 5407642136051006064}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 5407642136124166413}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 5407642136134965577}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower (2)
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2016,7 +2016,7 @@ GameObject:
   - component: {fileID: 5407642136298760982}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04 (2)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2124,7 +2124,7 @@ GameObject:
   - component: {fileID: 5407642136349065174}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (15)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 5407642136349351883}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2340,7 +2340,7 @@ GameObject:
   - component: {fileID: 5407642136354842219}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_02 (3)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2448,7 +2448,7 @@ GameObject:
   - component: {fileID: 5407642136425970236}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (19)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2556,7 +2556,7 @@ GameObject:
   - component: {fileID: 5407642136504140752}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_03 (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2761,7 +2761,7 @@ GameObject:
   - component: {fileID: 5407642136561092943}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_06 (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -2869,7 +2869,7 @@ GameObject:
   - component: {fileID: 5407642136616850938}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower (1)
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -3033,7 +3033,7 @@ GameObject:
   - component: {fileID: 5407642136727721193}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (17)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -3141,7 +3141,7 @@ GameObject:
   - component: {fileID: 5407642136819162695}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01 (3)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -3249,7 +3249,7 @@ GameObject:
   - component: {fileID: 5407642136820444909}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_02 (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -3357,7 +3357,7 @@ GameObject:
   - component: {fileID: 5407642136824680577}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01 (2)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -3465,7 +3465,7 @@ GameObject:
   - component: {fileID: 5407642136855045202}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_05 (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -3573,7 +3573,7 @@ GameObject:
   - component: {fileID: 5407642136923265732}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04 (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -3815,7 +3815,7 @@ GameObject:
   - component: {fileID: 5407642137031501120}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -4060,7 +4060,7 @@ GameObject:
   - component: {fileID: 5407642137067871258}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (18)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -4168,7 +4168,7 @@ GameObject:
   - component: {fileID: 5407642137110534177}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (11)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -4276,7 +4276,7 @@ GameObject:
   - component: {fileID: 5407642137126729094}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (16)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -4384,7 +4384,7 @@ GameObject:
   - component: {fileID: 5407642137151515324}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (10)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -4492,7 +4492,7 @@ GameObject:
   - component: {fileID: 5407642137153444270}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (14)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -4600,7 +4600,7 @@ GameObject:
   - component: {fileID: 5407642137183155735}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04 (3)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -5518,7 +5518,7 @@ GameObject:
   - component: {fileID: 5407642137226432745}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -5780,7 +5780,7 @@ GameObject:
   - component: {fileID: 5407642137226432765}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -5888,7 +5888,7 @@ GameObject:
   - component: {fileID: 5407642137226432761}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -5996,7 +5996,7 @@ GameObject:
   - component: {fileID: 5407642137226432757}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -6104,7 +6104,7 @@ GameObject:
   - component: {fileID: 5407642137226432753}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -7444,7 +7444,7 @@ GameObject:
   - component: {fileID: 5407642137226432557}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_02
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -7552,7 +7552,7 @@ GameObject:
   - component: {fileID: 5407642137226432553}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_02
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -7660,7 +7660,7 @@ GameObject:
   - component: {fileID: 5407642137226432549}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_02
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -7768,7 +7768,7 @@ GameObject:
   - component: {fileID: 5407642137226432545}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_02
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -7876,7 +7876,7 @@ GameObject:
   - component: {fileID: 5407642137226432573}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -7984,7 +7984,7 @@ GameObject:
   - component: {fileID: 5407642137226432569}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8092,7 +8092,7 @@ GameObject:
   - component: {fileID: 5407642137226432565}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_03
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8200,7 +8200,7 @@ GameObject:
   - component: {fileID: 5407642137226432561}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8308,7 +8308,7 @@ GameObject:
   - component: {fileID: 5407642137226432589}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8416,7 +8416,7 @@ GameObject:
   - component: {fileID: 5407642137226432585}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8524,7 +8524,7 @@ GameObject:
   - component: {fileID: 5407642137226432581}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8632,7 +8632,7 @@ GameObject:
   - component: {fileID: 5407642137226432577}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_04
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8740,7 +8740,7 @@ GameObject:
   - component: {fileID: 5407642137226432601}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_05
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8848,7 +8848,7 @@ GameObject:
   - component: {fileID: 5407642137226432603}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_05
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -8956,7 +8956,7 @@ GameObject:
   - component: {fileID: 5407642137226432597}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_05
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9064,7 +9064,7 @@ GameObject:
   - component: {fileID: 5407642137226432593}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_05
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9172,7 +9172,7 @@ GameObject:
   - component: {fileID: 5407642137226432525}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9280,7 +9280,7 @@ GameObject:
   - component: {fileID: 5407642137226432521}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9388,7 +9388,7 @@ GameObject:
   - component: {fileID: 5407642137226432517}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9496,7 +9496,7 @@ GameObject:
   - component: {fileID: 5407642137226432513}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9604,7 +9604,7 @@ GameObject:
   - component: {fileID: 5407642137226432541}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9712,7 +9712,7 @@ GameObject:
   - component: {fileID: 5407642137226432537}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9820,7 +9820,7 @@ GameObject:
   - component: {fileID: 5407642137226432533}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -9928,7 +9928,7 @@ GameObject:
   - component: {fileID: 5407642137226432529}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10036,7 +10036,7 @@ GameObject:
   - component: {fileID: 5407642137226432621}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10144,7 +10144,7 @@ GameObject:
   - component: {fileID: 5407642137226432617}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10252,7 +10252,7 @@ GameObject:
   - component: {fileID: 5407642137226432613}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10360,7 +10360,7 @@ GameObject:
   - component: {fileID: 5407642137226432609}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10468,7 +10468,7 @@ GameObject:
   - component: {fileID: 5407642137226432633}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10576,7 +10576,7 @@ GameObject:
   - component: {fileID: 5407642137226432635}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10684,7 +10684,7 @@ GameObject:
   - component: {fileID: 5407642137226432629}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -10792,7 +10792,7 @@ GameObject:
   - component: {fileID: 5407642137226432625}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -12132,7 +12132,7 @@ GameObject:
   - component: {fileID: 5407642137226432665}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_06
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -12240,7 +12240,7 @@ GameObject:
   - component: {fileID: 5407642137226432677}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_06
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -12348,7 +12348,7 @@ GameObject:
   - component: {fileID: 5407642137226432657}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_05
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -12456,7 +12456,7 @@ GameObject:
   - component: {fileID: 5407642137226432669}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_06
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -12718,7 +12718,7 @@ GameObject:
   - component: {fileID: 5407642137226432685}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_07
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -12826,7 +12826,7 @@ GameObject:
   - component: {fileID: 5407642137226432687}
   m_Layer: 8
   m_Name: SPW_Medieval_Bldg_07
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -20605,7 +20605,7 @@ GameObject:
   - component: {fileID: 5407642137228626910}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -20682,7 +20682,7 @@ GameObject:
   - component: {fileID: 5407642137228626904}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22145,7 +22145,7 @@ GameObject:
   - component: {fileID: 5407642137228626438}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22222,7 +22222,7 @@ GameObject:
   - component: {fileID: 5407642137228626432}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22299,7 +22299,7 @@ GameObject:
   - component: {fileID: 5407642137228626490}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22376,7 +22376,7 @@ GameObject:
   - component: {fileID: 5407642137228626436}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22453,7 +22453,7 @@ GameObject:
   - component: {fileID: 5407642137228626446}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22530,7 +22530,7 @@ GameObject:
   - component: {fileID: 5407642137228626440}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22607,7 +22607,7 @@ GameObject:
   - component: {fileID: 5407642137228626434}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22684,7 +22684,7 @@ GameObject:
   - component: {fileID: 5407642137228626444}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22761,7 +22761,7 @@ GameObject:
   - component: {fileID: 5407642137228626454}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22838,7 +22838,7 @@ GameObject:
   - component: {fileID: 5407642137228626448}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22915,7 +22915,7 @@ GameObject:
   - component: {fileID: 5407642137228626442}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -22992,7 +22992,7 @@ GameObject:
   - component: {fileID: 5407642137228626452}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23069,7 +23069,7 @@ GameObject:
   - component: {fileID: 5407642137228626462}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23146,7 +23146,7 @@ GameObject:
   - component: {fileID: 5407642137228626456}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23223,7 +23223,7 @@ GameObject:
   - component: {fileID: 5407642137228626450}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_In_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23300,7 +23300,7 @@ GameObject:
   - component: {fileID: 5407642137228626460}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23377,7 +23377,7 @@ GameObject:
   - component: {fileID: 5407642137228626470}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23454,7 +23454,7 @@ GameObject:
   - component: {fileID: 5407642137228626464}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23531,7 +23531,7 @@ GameObject:
   - component: {fileID: 5407642137228626906}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23608,7 +23608,7 @@ GameObject:
   - component: {fileID: 5407642137228626468}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23685,7 +23685,7 @@ GameObject:
   - component: {fileID: 5407642137228626478}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23762,7 +23762,7 @@ GameObject:
   - component: {fileID: 5407642137228626472}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23839,7 +23839,7 @@ GameObject:
   - component: {fileID: 5407642137228626466}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23916,7 +23916,7 @@ GameObject:
   - component: {fileID: 5407642137228626476}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -23993,7 +23993,7 @@ GameObject:
   - component: {fileID: 5407642137228626486}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24070,7 +24070,7 @@ GameObject:
   - component: {fileID: 5407642137228626480}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24147,7 +24147,7 @@ GameObject:
   - component: {fileID: 5407642137228626474}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24224,7 +24224,7 @@ GameObject:
   - component: {fileID: 5407642137228626484}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24301,7 +24301,7 @@ GameObject:
   - component: {fileID: 5407642137228626494}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24378,7 +24378,7 @@ GameObject:
   - component: {fileID: 5407642137228626488}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24455,7 +24455,7 @@ GameObject:
   - component: {fileID: 5407642137228626482}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24532,7 +24532,7 @@ GameObject:
   - component: {fileID: 5407642137228626492}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Flat
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24763,7 +24763,7 @@ GameObject:
   - component: {fileID: 5407642137228626554}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -24840,7 +24840,7 @@ GameObject:
   - component: {fileID: 5407642137228626500}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -25841,7 +25841,7 @@ GameObject:
   - component: {fileID: 5407642137228626534}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -25918,7 +25918,7 @@ GameObject:
   - component: {fileID: 5407642137228626528}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -25995,7 +25995,7 @@ GameObject:
   - component: {fileID: 5407642137228626458}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26072,7 +26072,7 @@ GameObject:
   - component: {fileID: 5407642137228626532}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_Corner
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26149,7 +26149,7 @@ GameObject:
   - component: {fileID: 5407642137228626542}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26226,7 +26226,7 @@ GameObject:
   - component: {fileID: 5407642137228626536}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26303,7 +26303,7 @@ GameObject:
   - component: {fileID: 5407642137228626530}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26380,7 +26380,7 @@ GameObject:
   - component: {fileID: 5407642137228626540}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26457,7 +26457,7 @@ GameObject:
   - component: {fileID: 5407642137228626550}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26534,7 +26534,7 @@ GameObject:
   - component: {fileID: 5407642137228626544}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26612,7 +26612,7 @@ GameObject:
   - component: {fileID: 5407642137228626538}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26689,7 +26689,7 @@ GameObject:
   - component: {fileID: 5407642137228626548}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26766,7 +26766,7 @@ GameObject:
   - component: {fileID: 5407642137228626558}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26843,7 +26843,7 @@ GameObject:
   - component: {fileID: 5407642137228626552}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26920,7 +26920,7 @@ GameObject:
   - component: {fileID: 5407642137228626546}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -26997,7 +26997,7 @@ GameObject:
   - component: {fileID: 5407642137228626556}
   m_Layer: 10
   m_Name: SPW_Terrain_Grass_Plan B_Out_mid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 95
@@ -27088,8 +27088,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5407642137226435808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -7, z: 105.17999}
-  m_LocalScale: {x: 22.94853, y: 1, z: 31.35}
+  m_LocalPosition: {x: 0.12, y: -7, z: 60.3}
+  m_LocalScale: {x: 22.94853, y: 1, z: 28.215}
   m_Children: []
   m_Father: {fileID: 5407642136012814201}
   m_RootOrder: 16
@@ -27971,7 +27971,7 @@ GameObject:
   - component: {fileID: 5407642137226435853}
   m_Layer: 8
   m_Name: SPW_Medieval_Windmill
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -37971,7 +37971,7 @@ GameObject:
   - component: {fileID: 5407642137226436101}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -38079,7 +38079,7 @@ GameObject:
   - component: {fileID: 5407642137226436103}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39111,7 +39111,7 @@ GameObject:
   - component: {fileID: 5407642137226436097}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39219,7 +39219,7 @@ GameObject:
   - component: {fileID: 5407642137226436109}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39327,7 +39327,7 @@ GameObject:
   - component: {fileID: 5407642137226436337}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39435,7 +39435,7 @@ GameObject:
   - component: {fileID: 5407642137226436349}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39543,7 +39543,7 @@ GameObject:
   - component: {fileID: 5407642137226436113}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39651,7 +39651,7 @@ GameObject:
   - component: {fileID: 5407642137226436125}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39759,7 +39759,7 @@ GameObject:
   - component: {fileID: 5407642137226436105}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39867,7 +39867,7 @@ GameObject:
   - component: {fileID: 5407642137226436117}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -39975,7 +39975,7 @@ GameObject:
   - component: {fileID: 5407642137226436129}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -40083,7 +40083,7 @@ GameObject:
   - component: {fileID: 5407642137226436141}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -40191,7 +40191,7 @@ GameObject:
   - component: {fileID: 5407642137226436121}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -40299,7 +40299,7 @@ GameObject:
   - component: {fileID: 5407642137226436133}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -40407,7 +40407,7 @@ GameObject:
   - component: {fileID: 5407642137226436145}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -40515,7 +40515,7 @@ GameObject:
   - component: {fileID: 5407642137226436157}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -40623,7 +40623,7 @@ GameObject:
   - component: {fileID: 5407642137226436137}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -40731,7 +40731,7 @@ GameObject:
   - component: {fileID: 5407642137226436149}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -51449,7 +51449,7 @@ GameObject:
   - component: {fileID: 5407642137226436377}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -51557,7 +51557,7 @@ GameObject:
   - component: {fileID: 5407642137226436379}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -51742,7 +51742,7 @@ GameObject:
   - component: {fileID: 5407642137226436369}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53082,7 +53082,7 @@ GameObject:
   - component: {fileID: 5407642137226436409}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53190,7 +53190,7 @@ GameObject:
   - component: {fileID: 5407642137226436421}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53298,7 +53298,7 @@ GameObject:
   - component: {fileID: 5407642137226436401}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53406,7 +53406,7 @@ GameObject:
   - component: {fileID: 5407642137226436413}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53514,7 +53514,7 @@ GameObject:
   - component: {fileID: 5407642137226436425}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53622,7 +53622,7 @@ GameObject:
   - component: {fileID: 5407642137226435905}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53730,7 +53730,7 @@ GameObject:
   - component: {fileID: 5407642137226436429}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53838,7 +53838,7 @@ GameObject:
   - component: {fileID: 5407642137226436431}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -53946,7 +53946,7 @@ GameObject:
   - component: {fileID: 5407642137226436357}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54054,7 +54054,7 @@ GameObject:
   - component: {fileID: 5407642137226436353}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54162,7 +54162,7 @@ GameObject:
   - component: {fileID: 5407642137226435917}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54270,7 +54270,7 @@ GameObject:
   - component: {fileID: 5407642137226435913}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54378,7 +54378,7 @@ GameObject:
   - component: {fileID: 5407642137226436373}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54486,7 +54486,7 @@ GameObject:
   - component: {fileID: 5407642137226436389}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54594,7 +54594,7 @@ GameObject:
   - component: {fileID: 5407642137226436365}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54702,7 +54702,7 @@ GameObject:
   - component: {fileID: 5407642137226436361}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54810,7 +54810,7 @@ GameObject:
   - component: {fileID: 5407642137226436393}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -54918,7 +54918,7 @@ GameObject:
   - component: {fileID: 5407642137226436405}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55026,7 +55026,7 @@ GameObject:
   - component: {fileID: 5407642137226436385}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55134,7 +55134,7 @@ GameObject:
   - component: {fileID: 5407642137226436397}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55242,7 +55242,7 @@ GameObject:
   - component: {fileID: 5407642137226436445}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55350,7 +55350,7 @@ GameObject:
   - component: {fileID: 5407642137226436441}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55458,7 +55458,7 @@ GameObject:
   - component: {fileID: 5407642137226436437}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55566,7 +55566,7 @@ GameObject:
   - component: {fileID: 5407642137226436433}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55674,7 +55674,7 @@ GameObject:
   - component: {fileID: 5407642137226436461}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55782,7 +55782,7 @@ GameObject:
   - component: {fileID: 5407642137226436457}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55890,7 +55890,7 @@ GameObject:
   - component: {fileID: 5407642137226436453}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -55998,7 +55998,7 @@ GameObject:
   - component: {fileID: 5407642137226436449}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56106,7 +56106,7 @@ GameObject:
   - component: {fileID: 5407642137226436473}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56214,7 +56214,7 @@ GameObject:
   - component: {fileID: 5407642137226436475}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56322,7 +56322,7 @@ GameObject:
   - component: {fileID: 5407642137226436469}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56430,7 +56430,7 @@ GameObject:
   - component: {fileID: 5407642137226436465}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56538,7 +56538,7 @@ GameObject:
   - component: {fileID: 5407642137226436313}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56646,7 +56646,7 @@ GameObject:
   - component: {fileID: 5407642137226436325}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56754,7 +56754,7 @@ GameObject:
   - component: {fileID: 5407642137226436305}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56862,7 +56862,7 @@ GameObject:
   - component: {fileID: 5407642137226436317}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -56970,7 +56970,7 @@ GameObject:
   - component: {fileID: 5407642137226436329}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57078,7 +57078,7 @@ GameObject:
   - component: {fileID: 5407642137226436341}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57186,7 +57186,7 @@ GameObject:
   - component: {fileID: 5407642137226436321}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57294,7 +57294,7 @@ GameObject:
   - component: {fileID: 5407642137226436333}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57402,7 +57402,7 @@ GameObject:
   - component: {fileID: 5407642137226436205}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57510,7 +57510,7 @@ GameObject:
   - component: {fileID: 5407642137226436201}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57618,7 +57618,7 @@ GameObject:
   - component: {fileID: 5407642137226436197}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57726,7 +57726,7 @@ GameObject:
   - component: {fileID: 5407642137226436193}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57834,7 +57834,7 @@ GameObject:
   - component: {fileID: 5407642137226436221}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -57942,7 +57942,7 @@ GameObject:
   - component: {fileID: 5407642137226436217}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58050,7 +58050,7 @@ GameObject:
   - component: {fileID: 5407642137226436213}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58158,7 +58158,7 @@ GameObject:
   - component: {fileID: 5407642137226436209}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58266,7 +58266,7 @@ GameObject:
   - component: {fileID: 5407642137226435933}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58374,7 +58374,7 @@ GameObject:
   - component: {fileID: 5407642137226435929}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58482,7 +58482,7 @@ GameObject:
   - component: {fileID: 5407642137226435925}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58590,7 +58590,7 @@ GameObject:
   - component: {fileID: 5407642137226435921}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58698,7 +58698,7 @@ GameObject:
   - component: {fileID: 5407642137226435949}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58806,7 +58806,7 @@ GameObject:
   - component: {fileID: 5407642137226435945}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -58914,7 +58914,7 @@ GameObject:
   - component: {fileID: 5407642137226435941}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59022,7 +59022,7 @@ GameObject:
   - component: {fileID: 5407642137226435937}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59130,7 +59130,7 @@ GameObject:
   - component: {fileID: 5407642137226435965}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59238,7 +59238,7 @@ GameObject:
   - component: {fileID: 5407642137226436293}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59346,7 +59346,7 @@ GameObject:
   - component: {fileID: 5407642137226435957}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59454,7 +59454,7 @@ GameObject:
   - component: {fileID: 5407642137226435953}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59562,7 +59562,7 @@ GameObject:
   - component: {fileID: 5407642137226436297}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59670,7 +59670,7 @@ GameObject:
   - component: {fileID: 5407642137226436309}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59778,7 +59778,7 @@ GameObject:
   - component: {fileID: 5407642137226436289}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59886,7 +59886,7 @@ GameObject:
   - component: {fileID: 5407642137226436301}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -59994,7 +59994,7 @@ GameObject:
   - component: {fileID: 5407642137226436525}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60102,7 +60102,7 @@ GameObject:
   - component: {fileID: 5407642137226436521}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60210,7 +60210,7 @@ GameObject:
   - component: {fileID: 5407642137226436517}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60318,7 +60318,7 @@ GameObject:
   - component: {fileID: 5407642137226436513}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60426,7 +60426,7 @@ GameObject:
   - component: {fileID: 5407642137226436541}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60534,7 +60534,7 @@ GameObject:
   - component: {fileID: 5407642137226436537}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60642,7 +60642,7 @@ GameObject:
   - component: {fileID: 5407642137226436533}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60750,7 +60750,7 @@ GameObject:
   - component: {fileID: 5407642137226436529}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60858,7 +60858,7 @@ GameObject:
   - component: {fileID: 5407642137226436557}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -60966,7 +60966,7 @@ GameObject:
   - component: {fileID: 5407642137226436553}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61074,7 +61074,7 @@ GameObject:
   - component: {fileID: 5407642137226436549}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61182,7 +61182,7 @@ GameObject:
   - component: {fileID: 5407642137226436545}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61290,7 +61290,7 @@ GameObject:
   - component: {fileID: 5407642137226436569}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61398,7 +61398,7 @@ GameObject:
   - component: {fileID: 5407642137226436571}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61506,7 +61506,7 @@ GameObject:
   - component: {fileID: 5407642137226436565}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61614,7 +61614,7 @@ GameObject:
   - component: {fileID: 5407642137226436561}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61722,7 +61722,7 @@ GameObject:
   - component: {fileID: 5407642137226436493}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61830,7 +61830,7 @@ GameObject:
   - component: {fileID: 5407642137226436489}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -61938,7 +61938,7 @@ GameObject:
   - component: {fileID: 5407642137226436485}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62046,7 +62046,7 @@ GameObject:
   - component: {fileID: 5407642137226436481}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62154,7 +62154,7 @@ GameObject:
   - component: {fileID: 5407642137226436509}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62262,7 +62262,7 @@ GameObject:
   - component: {fileID: 5407642137226436505}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62370,7 +62370,7 @@ GameObject:
   - component: {fileID: 5407642137226436501}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62478,7 +62478,7 @@ GameObject:
   - component: {fileID: 5407642137226436497}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62586,7 +62586,7 @@ GameObject:
   - component: {fileID: 5407642137226436589}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62694,7 +62694,7 @@ GameObject:
   - component: {fileID: 5407642137226436585}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62802,7 +62802,7 @@ GameObject:
   - component: {fileID: 5407642137226436581}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -62910,7 +62910,7 @@ GameObject:
   - component: {fileID: 5407642137226436577}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -63018,7 +63018,7 @@ GameObject:
   - component: {fileID: 5407642137226436601}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -63126,7 +63126,7 @@ GameObject:
   - component: {fileID: 5407642137226436603}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -63234,7 +63234,7 @@ GameObject:
   - component: {fileID: 5407642137226436597}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -63342,7 +63342,7 @@ GameObject:
   - component: {fileID: 5407642137226436593}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -63450,7 +63450,7 @@ GameObject:
   - component: {fileID: 5407642137260518643}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (6)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
@@ -63558,7 +63558,7 @@ GameObject:
   - component: {fileID: 5407642137272248961}
   m_Layer: 9
   m_Name: SPW_Medieval_Castle_Wall_02 (9)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 87
