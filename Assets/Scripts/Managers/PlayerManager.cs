@@ -9,12 +9,13 @@ public class PlayerManager : IManagable
     private PlayerManager() { }
     public static PlayerManager Instance { get { return instance ?? (instance = new PlayerManager()); } }
     #endregion
-    PlayerController player;
+    public PlayerController player;
     public void Initialize()
     {
-        GameObject newPlayer = GameObject.Instantiate(Resources.Load<GameObject>(PrefabFileDir.PLAYER_RESOURCE_PATH));
+        GameObject newPlayer = GameObject.Instantiate(Resources.Load<GameObject>(PrefabFileDir.PLAYER_RESOURCE_PATH), GameLinks.gl.playerSpawn);
         player = newPlayer.GetComponent<PlayerController>();
         player.transform.position = GameLinks.gl.playerSpawn.position;
+        //player.transform.localEulerAngles = 
         player.Initialize();
     }
 
@@ -32,4 +33,6 @@ public class PlayerManager : IManagable
     {
         player.PostInitialize();
     }
+
+   
 }

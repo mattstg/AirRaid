@@ -8,6 +8,7 @@ public class UILinks : MonoBehaviour
     //editor links
     public Image energyBar;
     public Image healthBar;
+    public Transform abilityGridParent;
 
 
 

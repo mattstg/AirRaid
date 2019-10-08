@@ -13,12 +13,12 @@ public class InputManager : IManagable
     public InputPkg refreshInputPkg = new InputPkg();
     public InputPkg physicsRefreshInputPkg = new InputPkg();
 
-    readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager
+    
 
     public void Initialize()
     {
-        refreshInputPkg.abilityUsed = new bool[ABILITY_COUNT_MAX];
-        physicsRefreshInputPkg.abilityUsed = new bool[ABILITY_COUNT_MAX];
+        refreshInputPkg.abilityUsed = new bool[PlayerController.ABILITY_COUNT_MAX];
+        physicsRefreshInputPkg.abilityUsed = new bool[PlayerController.ABILITY_COUNT_MAX];
     }
 
     public void PhysicsRefresh()
@@ -30,7 +30,7 @@ public class InputManager : IManagable
     {
         ip.throttleAmount = Input.GetAxis("Throttle");
         ip.dirPressed = new Vector2(Input.GetAxis("Horizontal") * (invertedYAxis?-1:1), Input.GetAxis("Vertical"));
-        for(int i = 0; i < ABILITY_COUNT_MAX;i++)
+        for(int i = 0; i < PlayerController.ABILITY_COUNT_MAX;i++)
         {
             ip.abilityUsed[i] = Input.GetButton("Ability" + i);
         }
