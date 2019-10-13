@@ -11,16 +11,13 @@ public class PlayerManager : IManagable
     #endregion
     public PlayerController player;
 
-    private bool playerIsAlive;
-
     public void Initialize()
     {
         GameObject newPlayer = GameObject.Instantiate(Resources.Load<GameObject>(PrefabFileDir.PLAYER_RESOURCE_PATH), GameLinks.gl.playerSpawn);
         player = newPlayer.GetComponent<PlayerController>();
         player.transform.position = GameLinks.gl.playerSpawn.position;
         //player.transform.localEulerAngles = 
-        player.Initialize();
-        playerIsAlive = true;
+        player.Initialize();  //isAlive = true
     }
 
     public void PostInitialize()
@@ -30,13 +27,13 @@ public class PlayerManager : IManagable
 
     public void PhysicsRefresh()
     {
-        if(playerIsAlive)
+        if(player.isAlive)
             player.PhysicsRefresh(InputManager.Instance.physicsRefreshInputPkg);
     }
 
     public void Refresh()
     {
-        if (playerIsAlive)
+        if (player.isAlive)
             player.Refresh(InputManager.Instance.refreshInputPkg);
     }
     
@@ -44,9 +41,10 @@ public class PlayerManager : IManagable
     public void PlayerDied()
     {
         Debug.Log("Player has lost the game");
+        player.stats.hp = 0; //in case player died from crashing
         player.playerCam.gameObject.SetActive(false);
         GameLinks.gl.postDeathCam.gameObject.SetActive(true);
         player.gameObject.SetActive(false);
-        playerIsAlive = false;
+        player.isAlive = false;
     }
 }

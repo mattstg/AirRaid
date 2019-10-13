@@ -7,20 +7,19 @@ public class UILinks : MonoBehaviour
 {
     //editor links
     public Image energyBar;
+    public Text energyText;
     public Image healthBar;
+    public Text healthText;
     public Transform abilityGridParent;
+    public Text speedText;
+    public Slider speedEnergyCostThreshold;
 
-
-
-
-    public static UILinks instance; //The first instance to be created will set this static variable to point at it, so we can access it from everywhere
-
-    
-    //This is called by gameflow so it can setup it's static link, this UILink will be attached to an object (mainScripts)
-    public void Initialize()
+    public static UILinks Instance; //The first instance to be created will set this static variable to point at it, so we can access it from everywhere
+    public static UILinks instance  //Pseudo singleton for mono behaviour
     {
-        if (instance != null)
-            Debug.LogError("UILinks was initialized twice, there should only be ever one UILinks or is being called twice");
-        instance = this;
+        get {
+            return Instance ?? (Instance = GameObject.FindObjectOfType<UILinks>());
+            }
     }
+
 }

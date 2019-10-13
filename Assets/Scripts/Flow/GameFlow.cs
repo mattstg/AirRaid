@@ -48,7 +48,7 @@ public class GameFlow : IManagable
         InputManager.Instance .Refresh();
         PlayerManager.Instance.Refresh();
         EnemyManager.Instance .Refresh();
-        UIManager.Instance.Refresh();
+        UIManager.Instance.Refresh(PlayerManager.Instance.player.stats);
     }
 
     public void PostInitialize()

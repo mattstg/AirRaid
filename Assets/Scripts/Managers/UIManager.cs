@@ -11,11 +11,12 @@ public class UIManager
     #endregion
 
     PlayerController player;
+    UILinks ui;  //still the same ui links. just a shortcut for less typing
 
 
     public void Initialize(PlayerController _player)
     {
-        Debug.Log("UIManager initialize called");
+        ui = UILinks.instance;
         player = _player;
         for(int i = 0; i < player.stats.abilities.Count; i++)
         {
@@ -31,10 +32,28 @@ public class UIManager
 
     public void PhysicsRefresh(){}
 
-    public void Refresh()
+    public void Refresh(PlayerController.PlayerStats statsToUse)
     {
-        PlayerController.PlayerStats statsToUse = player.stats; //Get stats from player to use in UI
-    }
+        //PlayerController.PlayerStats statsToUse = player.stats; //Get stats from player to use in UI
+        if (statsToUse.player.isAlive)
+        {
+            ui.energyBar.fillAmount = Mathf.Clamp01(statsToUse.currentEnegy / statsToUse.maxEnergy);
+            ui.energyText.text = $"{statsToUse.currentEnegy.ToString("00.0")}/{statsToUse.maxEnergy.ToString("00.0")}";
+            ui.healthBar.fillAmount = Mathf.Clamp01(statsToUse.hp / statsToUse.maxEnergy);
+            ui.healthText.text = $"{statsToUse.hp.ToString("00.0")}/{statsToUse.maxHp.ToString("00.0")}";
+            //ui.abilityGridParent;
+            ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
+            ui.speedEnergyCostThreshold.value = statsToUse.speedPerctangeThresholdToCostEnergy;
+        }
+        else
+        {
+            ui.energyBar.fillAmount = 0;
+            ui.healthBar.fillAmount = 0;
+            //ui.abilityGridParent;
+            ui.speedText.text = "0";
+            ui.speedEnergyCostThreshold.value = 0;
+        }
+}
 
     
     

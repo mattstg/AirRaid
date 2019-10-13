@@ -7,7 +7,7 @@ public enum Abilities { Turrets, Rocket }
 public class PlayerController : MonoBehaviour
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
-    
+    [HideInInspector] public bool isAlive;
 
     [HideInInspector] public PlayerStats stats;
     [HideInInspector] public Rigidbody rb;
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = transform.forward * stats.maxSpeed * .7f;
 
         playerCam = GetComponentInChildren<Camera>();
+        isAlive = true;
     }
 
     public void PostInitialize()
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public void Refresh(InputManager.InputPkg inputPkg)
     {
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime,0,stats.maxEnergy);
-        Debug.Log("Energy: " + stats.currentEnegy);
+        //Debug.Log("Energy: " + stats.currentEnegy);
     }
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
@@ -88,6 +89,7 @@ public class PlayerController : MonoBehaviour
     private void ShipDestroyed()
     {
         PlayerManager.Instance.PlayerDied();
+        isAlive = false;
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game
@@ -101,15 +103,18 @@ public class PlayerController : MonoBehaviour
         public float maxEnergy = 100;
         public float currentEnegy = 100;
         public float energyRegenPerSec = 10;
-        [Header("Player Controls")]
+        [Header("Player Movement")]
         public float maxSpeed = 55;
         public float acceleration = 30;
         public float pitchSpeed = .6f;
         public float rollSpeed = 3;
-        
+        [Header("Stats")]
+        public float hp;
+        public float maxHp = 100;
+
         public Vector3 relativeLocalVelo { get { return player.transform.InverseTransformDirection(player.rb.velocity); ; } }  //returns velo in local co-rd, since rb.velo is world
         public List<Abilities> abilities = new List<Abilities>();
 
-        public PlayerStats(PlayerController pc) { player = pc; currentEnegy = maxEnergy; }
+        public PlayerStats(PlayerController pc) { player = pc; currentEnegy = maxEnergy; hp = maxHp; }
     }
 }

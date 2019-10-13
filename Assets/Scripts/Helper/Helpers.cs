@@ -8,6 +8,8 @@ using System.Reflection;
 public static class Helpers
 {
 
+    //maybe use inline annoymus classes? :D
+
     //Almsot there, but need to get the second
     //Better way using reflection, but still have to pass MethodBase :/
     /*
