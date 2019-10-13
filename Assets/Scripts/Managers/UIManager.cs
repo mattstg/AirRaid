@@ -33,8 +33,7 @@ public class UIManager
 
     public void Refresh()
     {
-        PlayerController.Stats statsToUse = player.stats; //Get stats from player to use in UI
-        Debug.Log("We would refresh the players UI here");
+        PlayerController.PlayerStats statsToUse = player.stats; //Get stats from player to use in UI
     }
 
     

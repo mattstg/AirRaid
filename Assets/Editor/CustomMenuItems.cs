@@ -18,8 +18,7 @@ public class CustomMenuItems : MonoBehaviour
             Debug.LogError("error, nothing selected");
             return; //quit function
         }
-
-
-
     }
+
+
 }

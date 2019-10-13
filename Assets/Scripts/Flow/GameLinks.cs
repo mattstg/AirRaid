@@ -7,4 +7,5 @@ public class GameLinks : MonoBehaviour
     public static GameLinks gl;
 
     public Transform playerSpawn;
+    public Camera postDeathCam;
 }

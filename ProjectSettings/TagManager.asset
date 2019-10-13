@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Tower
   - Ground
+  - Water
   layers:
   - Default
   - TransparentFX
