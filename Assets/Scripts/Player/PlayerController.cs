@@ -38,15 +38,15 @@ public class PlayerController : MonoBehaviour
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
         Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
-        rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, 1 - (stats.currentSpeed/stats.maxSpeed))); //add the force of custom gravity, relative to our speed (faster speed, less gravity due to "air-lift")
-        
+        rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01( 1 - ((stats.currentSpeed*2)/stats.maxSpeed)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
+        rb.angularVelocity = transform.TransformDirection( new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, 0, stats.rollSpeed * inputPkg.dirPressed.x));
+
     }
 
     private void Throttle(float deltaThrottle)  //-1 to 1
     {
 
-        rb.AddRelativeForce(Vector3.forward * deltaThrottle * stats.acceleration);
-        
+        rb.AddRelativeForce(Vector3.forward * deltaThrottle * stats.acceleration);        
         //stats.currentSpeed = Mathf.Clamp(.currentSpeed, 0, stats.maxSpeed);
         
     }
@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
         public float acceleration = 10;
         public float currentSpeed { get { return player.rb.velocity.magnitude; } }
         public List<Abilities> abilities = new List<Abilities>();
+        public float pitchSpeed = 4;
+        public float rollSpeed = 4;
 
         public Stats(PlayerController pc) { player = pc; }
     }
