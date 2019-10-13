@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InputManager : IManagable
 {
     #region Singleton
@@ -9,16 +10,18 @@ public class InputManager : IManagable
     private InputManager() { }
     public static InputManager Instance { get { return instance ?? (instance = new InputManager()); } }
     #endregion
+    public enum InputPressType { None, FirstPress, Held, Release }
+
     public static bool invertedYAxis = true;
     public InputPkg refreshInputPkg = new InputPkg();
     public InputPkg physicsRefreshInputPkg = new InputPkg();
 
-    
+
 
     public void Initialize()
     {
-        refreshInputPkg.abilityUsed = new bool[PlayerController.ABILITY_COUNT_MAX];
-        physicsRefreshInputPkg.abilityUsed = new bool[PlayerController.ABILITY_COUNT_MAX];
+        refreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];
+        physicsRefreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];
     }
 
     public void PhysicsRefresh()
@@ -29,10 +32,10 @@ public class InputManager : IManagable
     private void SetInputPkg(InputPkg ip)
     {
         ip.throttleAmount = Input.GetAxis("Throttle");
-        ip.dirPressed = new Vector2(Input.GetAxis("Horizontal") * (invertedYAxis?-1:1), Input.GetAxis("Vertical"));
-        for(int i = 0; i < PlayerController.ABILITY_COUNT_MAX;i++)
+        ip.dirPressed = new Vector2(Input.GetAxis("Horizontal") * (invertedYAxis ? -1 : 1), Input.GetAxis("Vertical"));
+        for (int i = 0; i < PlayerController.ABILITY_COUNT_MAX; i++)
         {
-            ip.abilityUsed[i] = Input.GetButton("Ability" + i);
+            ip.abilityKeyPress[i] = GetInputPressType("Ability" + i);
         }
     }
 
@@ -43,7 +46,20 @@ public class InputManager : IManagable
 
     public void PostInitialize()
     {
-        
+
+    }
+
+    //Get the current state of a requested key
+    public InputPressType GetInputPressType(string axisName)
+    {
+        if (Input.GetButtonDown(axisName))
+            return InputPressType.FirstPress;
+        if (Input.GetButton(axisName))
+            return InputPressType.Held;
+        if (Input.GetButtonUp(axisName))
+            return InputPressType.Release;
+
+        return InputPressType.None;
     }
 
 
@@ -52,11 +68,14 @@ public class InputManager : IManagable
     {
         public Vector2 dirPressed;
         public float throttleAmount;
-        public bool[] abilityUsed;
+        public InputPressType[] abilityKeyPress;
 
         public override string ToString()
         {
-            return $"DirPressed: {dirPressed}, throttleAmount: {throttleAmount}, dirPressed {dirPressed}, " + abilityUsed.CollectionToStringArray();
+            return $"DirPressed: {dirPressed}, throttleAmount: {throttleAmount}, dirPressed {dirPressed}, " + abilityKeyPress.CollectionToStringArray();
         }
     }
+
+    
 }
+ 

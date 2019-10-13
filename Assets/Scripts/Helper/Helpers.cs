@@ -5,6 +5,9 @@ using System.Linq.Expressions;
 using UnityEngine;
 using System.Reflection;
 
+
+public enum UpdateType { Update, FixedUpdate};
+
 public static class Helpers
 {
 

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerStats stats;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public Camera playerCam;
+    [HideInInspector]
+    public AbilityManager abilityManager;
 
     public Transform[] rocketSpots;     //Linked in editor
     public Transform[] gunTurretSpots;  //Linked in editor
@@ -19,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public void Initialize()
     {
         //Create stats, add two starter abilities
+        abilityManager = new AbilityManager(this);
+        abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
+        //but it's important that I test now that my ability system is all in place.
+
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);
@@ -38,12 +44,14 @@ public class PlayerController : MonoBehaviour
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
+        abilityManager.Refresh(inputPkg);
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime,0,stats.maxEnergy);
         //Debug.Log("Energy: " + stats.currentEnegy);
     }
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
+        abilityManager.PhysicsRefresh(inputPkg);
         Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
         rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01( 1 - ((stats.relativeLocalVelo .z* 2)/stats.maxSpeed)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
         //This could be done way better, using dot product to determine the speed relative to my facing direction/perpendicular to the ground
