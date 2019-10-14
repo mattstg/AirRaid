@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum Abilities { Turrets, Rocket }
-public class PlayerController : MonoBehaviour
+public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
+public class PlayerController : MonoBehaviour, IHittable
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
     [HideInInspector] public bool isAlive;
@@ -15,8 +17,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public AbilityManager abilityManager;
 
-    public Transform[] rocketSpots;     //Linked in editor
-    public Transform[] gunTurretSpots;  //Linked in editor
+    public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
 
     public void Initialize()
     {
@@ -34,6 +35,26 @@ public class PlayerController : MonoBehaviour
         rb.velocity = transform.forward * stats.maxSpeed * .7f;
 
         playerCam = GetComponentInChildren<Camera>();
+
+        //Link all body parts
+        bodyParts = new Dictionary<BodyPart, List<Vector3>>();
+
+        Transform[] allChildren = transform.GetComponentsInChildren<Transform>();
+        HashSet<string> bodyPartEnums = new HashSet<string>(System.Enum.GetNames(typeof(BodyPart))); //The code to get a hashset of enums represented as strings
+        for(int i = allChildren.Length - 1; i >= 0; i--)  //since i will be deleting elements from this array, need to backwards for loop
+        { //grab each object who has the correct body part tag
+            if(bodyPartEnums.Contains(allChildren[i].tag))  //if the child tag matches one of the bodypart tags
+            {
+                BodyPart bodyPart = (BodyPart)System.Enum.Parse(typeof(BodyPart), allChildren[i].tag);  //Syntax to change the body part from a string to an enum
+                //So we found a body part, add it to the dictionary
+                if(!bodyParts.ContainsKey(bodyPart))
+                {  //very first entry, need to add it to the dictionary and create the list
+                    bodyParts.Add(bodyPart, new List<Vector3>());
+                }
+                bodyParts[bodyPart].Add(allChildren[i].transform.localPosition);
+                GameObject.Destroy(allChildren[i].gameObject); //Dont need the transform anymore, just wanted it's local position
+            }
+        }
         isAlive = true;
     }
 
@@ -46,6 +67,8 @@ public class PlayerController : MonoBehaviour
     {
         abilityManager.Refresh(inputPkg);
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime,0,stats.maxEnergy);
+        if (stats.hp <= 0)
+            ShipDestroyed();
         //Debug.Log("Energy: " + stats.currentEnegy);
     }
 
@@ -79,13 +102,18 @@ public class PlayerController : MonoBehaviour
         {
             float speedAboveThreshold = relativeLocalVelocity.z - stats.energySpeedCostThreshold;
             float energyDeduct = (speedAboveThreshold) * stats.energyPerUnitSpeedAboveThreshold * Time.fixedDeltaTime;
-            
-            stats.currentEnegy = Mathf.Clamp(stats.currentEnegy - energyDeduct, 0, stats.maxEnergy);
+            ModEnergy(-energyDeduct);
 
             //Debug.Log("stats.currentEnegy: " + stats.currentEnegy + ", speedAboveThreshold: " + speedAboveThreshold + " energyDeduct: " + energyDeduct);
             //CurrentEnergy = CurrentEnergy - (Amount of speed above threshold)*(energy cost per speed above threshold)  clamped between 0 and maxEnergy.
         }
         
+    }
+
+    public void ModEnergy(float modBy)
+    {
+        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, 0, stats.maxEnergy);
+        //Eventaully this would be the spot to cause the engine stall
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -98,6 +126,12 @@ public class PlayerController : MonoBehaviour
     {
         PlayerManager.Instance.PlayerDied();
         isAlive = false;
+    }
+
+    public void HitByProjectile(float damage)
+    {
+        stats.hp -= damage;
+        Debug.Log("took dmg: " + damage);
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game

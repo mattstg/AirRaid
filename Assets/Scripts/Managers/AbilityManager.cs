@@ -18,7 +18,7 @@ public class AbilityManager
     public void Refresh(InputManager.InputPkg playerInputPkg)
     {
         for (int i = 0; i < abilities.Length; i++)
-            if (abilities[i] != null && abilities[i].updateType == UpdateType.Update)
+            if (abilities[i] != null && abilities[i].stats.updateType == UpdateType.Update)
             {
                 UpdateAbility(abilities[i], playerInputPkg.abilityKeyPress[i]);               
             }
@@ -28,7 +28,7 @@ public class AbilityManager
     public void PhysicsRefresh(InputManager.InputPkg playerInputPkg)
     {
         for (int i = 0; i < abilities.Length; i++)
-            if (abilities[i] != null && abilities[i].updateType == UpdateType.FixedUpdate)
+            if (abilities[i] != null && abilities[i].stats.updateType == UpdateType.FixedUpdate)
             {
                 UpdateAbility(abilities[i], playerInputPkg.abilityKeyPress[i]);
             }

@@ -13,20 +13,31 @@ public class BulletManager
     public static BulletManager Instance { get { return instance ?? (instance = new BulletManager()); } }
     #endregion
 
-    public HashSet<Projectile> projectiles = new HashSet<Projectile>();
+    public Dictionary<ProjectileType, GameObject> prefabDict;  //dictionary containing all prefabs
+    public List<Projectile> projectiles = new List<Projectile>();  //Would be more efficent as a hashset, but can you figure out how to implement it?
+    Transform bulletParent;
 
     public void Initialize()
     {
+        bulletParent = new GameObject("BulletParent").transform;
+        prefabDict = new Dictionary<ProjectileType, GameObject>();
+        prefabDict.Add(ProjectileType.BasicBullet, Resources.Load<GameObject>("Prefabs/Bullet"));
+        prefabDict.Add(ProjectileType.Rocket, Resources.Load<GameObject>("Prefabs/Rocket"));
     }
 
     public void PostInitialize()
     {
+
     }
 
     public void PhysicsRefresh()
     {
-        foreach (Projectile p in projectiles)
-            p.UpdateProjectile();
+        //Cannot use the above since we cannot modify a collection as we loop through it, 
+        //foreach (Projectile p in projectiles)
+        //    p.UpdateProjectile();
+
+        for (int i = projectiles.Count - 1; i >= 0; i--)
+            projectiles[i].UpdateProjectile();
     }
 
     
@@ -35,24 +46,21 @@ public class BulletManager
     {
     }
 
+    //Can be called by UpdateProjectile
     public void ProjectileDied(Projectile pDied)
     {
-
+        projectiles.Remove(pDied);
     }
 
-    public void CreateProjectile(ProjectileType pType)
+    //Function to create projectile, returns it incase the caller wants it
+    public Projectile CreateProjectile(ProjectileType pType, Vector3 pos, Vector3 firingDir, Vector3 launchersVelocity)
     {
-        
-        switch (pType)
-        {
-            case ProjectileType.BasicBullet:
-                break;
-            case ProjectileType.Rocket:
-                break;
-            default:
-                Debug.LogError("Unhandled switch: " + pType);
-                break;
-        }
+        Projectile p = GameObject.Instantiate(prefabDict[pType]).GetComponent<Projectile>();
+        p.gameObject.transform.position = pos;
+        p.gameObject.transform.SetParent(bulletParent);
+        p.Initialize(firingDir, launchersVelocity);
+        projectiles.Add(p);
+        return p;
     }
 
 }

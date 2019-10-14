@@ -13,9 +13,10 @@ public class PlayerManager : IManagable
 
     public void Initialize()
     {
-        GameObject newPlayer = GameObject.Instantiate(Resources.Load<GameObject>(PrefabFileDir.PLAYER_RESOURCE_PATH), GameLinks.gl.playerSpawn);
+        GameObject newPlayer = GameObject.Instantiate(Resources.Load<GameObject>(PrefabFileDir.PLAYER_RESOURCE_PATH));
         player = newPlayer.GetComponent<PlayerController>();
         player.transform.position = GameLinks.gl.playerSpawn.position;
+        player.transform.localEulerAngles = GameLinks.gl.playerSpawn.localEulerAngles;
         //player.transform.localEulerAngles = 
         player.Initialize();  //isAlive = true
     }

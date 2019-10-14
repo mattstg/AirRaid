@@ -7,31 +7,38 @@ public class Ab_MachineGun : Ability
 {
     public Ab_MachineGun(PlayerController _pc) : base(_pc)
     {
-        updateType = UpdateType.Update;
-        abilityType = Abilities.Turrets;
+        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .2f, 5f);
 
     }
     public override void AbilityPressed()
     {
-        Debug.Log("Here comes the...");
         base.AbilityPressed();
     }
 
     public override void AbilityHeld()
     {
-        Debug.Log("brrrrrrrrrrrrttttttttttttttttttttttttttttttttttttttttttt");
+        UseAbility();
         base.AbilityHeld();
+    }
+
+    public override bool UseAbility()
+    {
+        if (base.UseAbility())  
+        {
+            foreach (Vector3 gunTurretLocation in pc.bodyParts[BodyPart.BodyPart_Turret])
+                BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, gunTurretLocation + pc.transform.position, pc.transform.forward, pc.rb.velocity);
+            return true;
+        }
+        return false;
     }
 
     public override void AbilityRelease()
     {
-        Debug.Log("Ability Released");
         base.AbilityRelease();
     }
 
     public override void AbilityUpdate()
     {
-        Debug.Log("Ability Updated");
         base.AbilityUpdate();
     }
 

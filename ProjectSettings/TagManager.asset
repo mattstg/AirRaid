@@ -10,6 +10,10 @@ TagManager:
   - Tower
   - Ground
   - Water
+  - BodyPart_Turret
+  - BodyPart_WingSlots
+  - BodyPart_BombBay
+  - BodyPart_FrontCannon
   layers:
   - Default
   - TransparentFX
@@ -24,7 +28,7 @@ TagManager:
   - Floor
   - Player
   - Rocket
-  - 
+  - Enemy
   - 
   - 
   - 
