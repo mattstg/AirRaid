@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         abilityManager.PhysicsRefresh(inputPkg);
         Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
-        rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01( 1 - ((stats.relativeLocalVelo .z* 2)/stats.maxSpeed)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
+        rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01( 1 - ((stats.relativeLocalVelo .z)/stats.forwardSpeedAtWhichGravityIsCanceled)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
         //This could be done way better, using dot product to determine the speed relative to my facing direction/perpendicular to the ground
         
         rb.angularVelocity = transform.TransformDirection( new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, 0, stats.rollSpeed * inputPkg.dirPressed.x));
@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour, IHittable
         public float acceleration = 30;
         public float pitchSpeed = .6f;
         public float rollSpeed = 3;
+        public readonly float forwardSpeedAtWhichGravityIsCanceled = 10;
         [Header("Stats")]
         public float hp;
         public float maxHp = 100;
