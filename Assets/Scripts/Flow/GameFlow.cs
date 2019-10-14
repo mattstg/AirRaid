@@ -33,6 +33,15 @@ public class GameFlow : IManagable
         PlayerManager.Instance.Initialize();
         EnemyManager.Instance.Initialize();
         UIManager.Instance.Initialize(PlayerManager.Instance.player);
+        BulletManager.Instance.Initialize();
+    }
+
+    public void PostInitialize()
+    {
+        InputManager.Instance.PostInitialize();
+        PlayerManager.Instance.PostInitialize();
+        EnemyManager.Instance.PostInitialize();
+        BulletManager.Instance.PostInitialize();
     }
 
     public void PhysicsRefresh()
@@ -40,7 +49,7 @@ public class GameFlow : IManagable
         InputManager .Instance.PhysicsRefresh();
         PlayerManager.Instance.PhysicsRefresh();
         EnemyManager .Instance.PhysicsRefresh();
-        
+        BulletManager.Instance.PhysicsRefresh();
     }
 
     public void Refresh()
@@ -49,12 +58,8 @@ public class GameFlow : IManagable
         PlayerManager.Instance.Refresh();
         EnemyManager.Instance .Refresh();
         UIManager.Instance.Refresh(PlayerManager.Instance.player.stats);
+        BulletManager.Instance.Refresh();
     }
 
-    public void PostInitialize()
-    {
-        InputManager .Instance.PostInitialize();
-        PlayerManager.Instance.PostInitialize();
-        EnemyManager .Instance.PostInitialize();
-    }
+    
 }
