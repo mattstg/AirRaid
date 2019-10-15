@@ -2,68 +2,64 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Egg : Enemy
+public class Egg : RootedEnemy
 {
-    readonly float EGGSPAWN_ENERGY = 10; //Energy per egg spawn
-    readonly Vector2 EGGSPAWN_VELOCITY_RANGE = new Vector2(10, 50);
-    readonly float EGGSPAWN_SPAWN_TIME_MAX = 90f;
-    readonly float EGGSPAWN_ENERGY_GAIN_PER_ROOT = .3f;
+    static readonly float EGGHATCH_ENERGY_MIN = 10; //Energy per egg spawn
+    static readonly float EGGSPAWN_SPAWN_TIME_MAX = 90f;
+    
 
     public AnimationCurve hatchTimeAnimCurve; //balanced in inspector
-    RootSystem rootNodeSystem;
-    float hatchInterval;
-    float timeOfNextHatch;
-    float eggEnergy;
-    bool isRooted;
+    float timeOfHatch;
 
 
-    public override void Initialize()
+    public override void Initialize(float startingEnergy)
     {
-        hatchInterval = EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value); //another way of using anim curve
-        timeOfNextHatch = Time.time + hatchInterval;
-        
-        base.Initialize();
-
+        base.Initialize(startingEnergy);
+        timeOfHatch = Time.time +  EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value); //another way of using anim curve
     }
 
     public override void Refresh()
     {
         base.Refresh();
-        if (isRooted)
-        {
-            eggEnergy += rootNodeSystem.numberOfRoots * Time.deltaTime * EGGSPAWN_ENERGY_GAIN_PER_ROOT; //More energy relative to number of roots
-            rootNodeSystem.Refresh();
-        }
-        if(isRooted && Time.time >= timeOfNextHatch)
-        {
+       
+        if(isRooted && Time.time >= timeOfHatch)
             HatchEgg();
-            timeOfNextHatch = Time.time + hatchInterval;
-        }
     }
 
     protected void HatchEgg()
     {
-        if (eggEnergy > EGGSPAWN_ENERGY)
+        if (energy > EGGHATCH_ENERGY_MIN)
         {
-            int numberOfEggs = Random.Range(1, (int)eggEnergy / (int)EGGSPAWN_ENERGY);
-            for (int i = 0; i < numberOfEggs; i++)
+            //Special rule, in first minute of the game, they all become egg spitters
+            if (Time.time < 60)
             {
-                //Can you think of a better equation for making the egg always launch in a good range? for example always higher than 30 degrees and less than 80 for the x and z axis?
-                Vector3 launchDir = Random.onUnitSphere;
-                launchDir.y = Mathf.Abs(launchDir.y); //We want the launch direction y to always be postive
-                EnemyManager.Instance.CreateEnemyEgg(transform.position + launchDir*1.5f, launchDir, Random.Range(EGGSPAWN_VELOCITY_RANGE.x, EGGSPAWN_VELOCITY_RANGE.y));
-                eggEnergy -= EGGSPAWN_ENERGY;
+                //Hatch an egg spitter
+                Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
+                ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
             }
+            else
+            {
+                float eggHatchChoice = Random.value;
+                if (eggHatchChoice >= .3f && eggHatchChoice <= 1f)  //70% chance
+                {
+                    //Hatch a crawler
+                }
+                else if (eggHatchChoice >= .05 && eggHatchChoice <= .3f) //25% chance
+                {
+                    //Hatch a AA Turret
+                }
+                else  //5% chance
+                {
+                    //Hatch an egg spitter
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
+                    ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
+                }
+            }
+            Die();   //Destroy this egg since it hatched, cannot just gameObject destroy since manager has the link, so killed it properly
         }
+        else
+            timeOfHatch = Time.time + EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(!isRooted && !collision.transform.CompareTag("Player"))
-        {
-            Destroy(GetComponent<Rigidbody>()); //To root it in place, we remove it from the dynamic physics system, since it shouldnt move anymore once rooted
-            isRooted = true;
-            rootNodeSystem = new RootSystem(transform.position);
-        }
-    }
+    
 }
