@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ProjectileType { BasicBullet, Rocket }
+public enum ProjectileType { BasicBullet, Rocket, EnemyFlak }
 public class BulletManager
 {
 
@@ -23,6 +23,7 @@ public class BulletManager
         prefabDict = new Dictionary<ProjectileType, GameObject>();
         prefabDict.Add(ProjectileType.BasicBullet, Resources.Load<GameObject>("Prefabs/Bullet"));
         prefabDict.Add(ProjectileType.Rocket, Resources.Load<GameObject>("Prefabs/Rocket"));
+        prefabDict.Add(ProjectileType.EnemyFlak, Resources.Load<GameObject>("Prefabs/EnemyFlak"));
     }
 
     public void PostInitialize()
@@ -53,12 +54,12 @@ public class BulletManager
     }
 
     //Function to create projectile, returns it incase the caller wants it
-    public Projectile CreateProjectile(ProjectileType pType, Vector3 pos, Vector3 firingDir, Vector3 launchersVelocity)
+    public Projectile CreateProjectile(ProjectileType pType, Vector3 pos, Vector3 firingDir, Vector3 launchersVelocity, float lifespan, float speed)
     {
         Projectile p = GameObject.Instantiate(prefabDict[pType]).GetComponent<Projectile>();
         p.gameObject.transform.position = pos;
         p.gameObject.transform.SetParent(bulletParent);
-        p.Initialize(firingDir, launchersVelocity);
+        p.Initialize(firingDir, launchersVelocity, lifespan, speed);
         projectiles.Add(p);
         return p;
     }

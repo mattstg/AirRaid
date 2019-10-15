@@ -42,11 +42,14 @@ public class Egg : RootedEnemy
                 float eggHatchChoice = Random.value;
                 if (eggHatchChoice >= .3f && eggHatchChoice <= 1f)  //70% chance
                 {
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Crawler, transform.position, energy); //Spawn an egg spitter on this egg's location
                     //Hatch a crawler
                 }
                 else if (eggHatchChoice >= .05 && eggHatchChoice <= .3f) //25% chance
                 {
                     //Hatch a AA Turret
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.AATurret, transform.position, energy); //Spawn an egg spitter on this egg's location
+                    ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
                 }
                 else  //5% chance
                 {
