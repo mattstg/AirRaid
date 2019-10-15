@@ -5,8 +5,22 @@ using UnityEngine;
 
 public class Building : MonoBehaviour, IHittable
 {
+    public float hp;
+
+    public void Initialize(float _hp)
+    {
+        hp = _hp;
+    }
+
     public void HitByProjectile(float damage)
     {
-        Debug.Log("Building was hit: " + damage);
+        hp -= damage;
+        if (hp <= 0)
+            BuildingDied();
+    }
+
+    public virtual void BuildingDied()
+    {
+        BuildingManager.Instance.BuildingDied(this);
     }
 }

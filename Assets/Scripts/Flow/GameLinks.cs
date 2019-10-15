@@ -10,4 +10,11 @@ public class GameLinks : MonoBehaviour
     public Transform spawnLocationParent;
     public Transform playerSpawn;
     public Camera postDeathCam;
+
+    [Header("Building parent")]
+    public Transform tentParent;
+    public Transform buildingParent;
+    public Transform wallParent;
+    public Transform towerParent;
+    public Transform castle;
 }

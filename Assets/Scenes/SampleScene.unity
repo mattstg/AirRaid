@@ -280,6 +280,11 @@ MonoBehaviour:
   spawnLocationParent: {fileID: 709165715}
   playerSpawn: {fileID: 1321343607}
   postDeathCam: {fileID: 361602241}
+  tentParent: {fileID: 2071107959}
+  buildingParent: {fileID: 871797111}
+  wallParent: {fileID: 1454255253}
+  towerParent: {fileID: 1305946288}
+  castle: {fileID: 1470919200}
 --- !u!114 &164768668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,6 +842,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &871797111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5407642135612769051, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5407642137104413560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &888377888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1508,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298853096}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1305946288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5407642136267869168, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5407642137104413560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1321343606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1623,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367811090}
   m_CullTransparentMesh: 0
+--- !u!4 &1454255253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5407642135693788226, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5407642137104413560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1470919200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5407642137226857254, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5407642137104413560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1591481181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,6 +2049,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006241153}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2071107959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5407642136538299827, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5407642137104413560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117671124
 GameObject:
   m_ObjectHideFlags: 0
