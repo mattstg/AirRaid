@@ -15,11 +15,13 @@ public class EnemyManager
     GameObject enemyEggPrefab;
     public HashSet<Enemy> enemies;
     public Stack<Enemy> toRemove;
+    public Stack<Enemy> toAdd;
     readonly float initialEggSpawnHeight = 50;
 
     public void Initialize()
     {
         toRemove = new Stack<Enemy>();
+        toAdd = new Stack<Enemy>();
         enemies = new HashSet<Enemy>();
         enemyEggPrefab = Resources.Load<GameObject>("Prefabs/Egg");
         enemyParent = new GameObject("EnemyParent").transform;
@@ -51,6 +53,9 @@ public class EnemyManager
             enemies.Remove(e);
             GameObject.Destroy(e.gameObject);
         }
+
+        while (toAdd.Count > 0) //Add new ones
+            enemies.Add(toAdd.Pop());
     }
 
    
@@ -81,5 +86,6 @@ public class EnemyManager
         newEgg.GetComponent<Rigidbody>().velocity = spawnDir.normalized * speed;
         Enemy e = newEgg.GetComponent<Enemy>();
         e.Initialize();
+        toAdd.Push(e);
     }
 }
