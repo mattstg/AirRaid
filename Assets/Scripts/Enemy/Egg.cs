@@ -6,9 +6,11 @@ public class Egg : Enemy
 {
     readonly float EGGSPAWN_ENERGY = 10; //Energy per egg spawn
     readonly Vector2 EGGSPAWN_VELOCITY_RANGE = new Vector2(10, 50);
-    readonly Vector2 EGGSPAWN_SPAWN_RANGE = new Vector2(5, 20);
+    readonly float EGGSPAWN_SPAWN_TIME_MAX = 90f;
+    readonly float EGGSPAWN_ENERGY_GAIN_PER_ROOT = .3f;
 
     public AnimationCurve hatchTimeAnimCurve; //balanced in inspector
+    RootSystem rootNodeSystem;
     float hatchInterval;
     float timeOfNextHatch;
     float eggEnergy;
@@ -17,8 +19,9 @@ public class Egg : Enemy
 
     public override void Initialize()
     {
-        hatchInterval = Mathf.Lerp(EGGSPAWN_SPAWN_RANGE.x, EGGSPAWN_SPAWN_RANGE.y, hatchTimeAnimCurve.Evaluate(Random.value));
+        hatchInterval = EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value); //another way of using anim curve
         timeOfNextHatch = Time.time + hatchInterval;
+        
         base.Initialize();
 
     }
@@ -26,7 +29,11 @@ public class Egg : Enemy
     public override void Refresh()
     {
         base.Refresh();
-        eggEnergy += Time.deltaTime; //Atm, just for testing, have eggs grow in energy 1 per second.
+        if (isRooted)
+        {
+            eggEnergy += rootNodeSystem.numberOfRoots * Time.deltaTime * EGGSPAWN_ENERGY_GAIN_PER_ROOT; //More energy relative to number of roots
+            rootNodeSystem.Refresh();
+        }
         if(isRooted && Time.time >= timeOfNextHatch)
         {
             HatchEgg();
@@ -56,6 +63,7 @@ public class Egg : Enemy
         {
             Destroy(GetComponent<Rigidbody>()); //To root it in place, we remove it from the dynamic physics system, since it shouldnt move anymore once rooted
             isRooted = true;
+            rootNodeSystem = new RootSystem(transform.position);
         }
     }
 }

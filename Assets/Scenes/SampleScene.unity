@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e206fa1065f20244962d80a64f64536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldFloor: {fileID: 5407642137104413561}
   spawnLocationParent: {fileID: 709165715}
   playerSpawn: {fileID: 1321343607}
   postDeathCam: {fileID: 361602241}
@@ -2281,6 +2282,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d218a94a1037144a96174ab3e9cd0aa, type: 3}
+--- !u!4 &5407642137104413561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2610376581025183292, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5407642137104413560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8098075998771642886 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8098075998771642886, guid: 457f489d52c39f24297d8de41a339270,

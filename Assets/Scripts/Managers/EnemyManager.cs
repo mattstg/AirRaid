@@ -12,11 +12,14 @@ public class EnemyManager
     #endregion
 
     Transform enemyParent;
+    public Transform rootNodeParent;    
     GameObject enemyEggPrefab;
     public HashSet<Enemy> enemies;
     public Stack<Enemy> toRemove;
     public Stack<Enemy> toAdd;
     readonly float initialEggSpawnHeight = 50;
+    public static GameObject rootPrefab;
+    
 
     public void Initialize()
     {
@@ -24,7 +27,9 @@ public class EnemyManager
         toAdd = new Stack<Enemy>();
         enemies = new HashSet<Enemy>();
         enemyEggPrefab = Resources.Load<GameObject>("Prefabs/Egg");
+        rootPrefab = Resources.Load<GameObject>("Prefabs/RootNode");
         enemyParent = new GameObject("EnemyParent").transform;
+        rootNodeParent = new GameObject("RootNodeParent").transform;
         SpawnInitialSkyEggs();
     }
 
