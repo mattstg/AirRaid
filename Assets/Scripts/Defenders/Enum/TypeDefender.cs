@@ -6,6 +6,5 @@ public enum TypeDefender
 {
     MELEE,
     RANGE,
-    SUPPORT,
-    AUTRE
+    SUPPORT
 }
