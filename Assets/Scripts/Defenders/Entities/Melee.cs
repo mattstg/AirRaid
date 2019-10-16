@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Melee : Defender
 {
+    private DefenderPck defenderInfos;
+
+    public override void Initialise() {
+        throw new NotImplementedException();
+    }
 
     public override void Refresh() {
         throw new NotImplementedException();
@@ -13,11 +18,19 @@ public class Melee : Defender
         throw new NotImplementedException();
     }
 
-    public override void FindTarget() {
+    protected override void Move() {
         throw new NotImplementedException();
     }
 
-    public override void DoAbility() {
+    protected override void Rotate() {
+        throw new NotImplementedException();
+    }
+
+    protected override void FindTarget() {
+        throw new NotImplementedException();
+    }
+
+    protected override void DoAbility() {
         throw new NotImplementedException();
     }
 
