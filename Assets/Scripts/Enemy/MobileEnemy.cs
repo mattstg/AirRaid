@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MobileEnemy : Enemy
 {
-    NavMeshAgent navmeshAgent;
+    protected NavMeshAgent navmeshAgent;
     
 
     public override void Initialize(float startingEnergy)

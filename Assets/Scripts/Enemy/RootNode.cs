@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RootNode  : MonoBehaviour
 {
-    public static readonly Vector2 timeToMakeNewNode = new Vector2(20f,45f);    
+    public static readonly Vector2 timeToMakeNewNode = new Vector2(15f,35f);    
     public static readonly float rootDistance = 6.5f;
 
     RootSystem rootSystemParent;
@@ -23,7 +23,7 @@ public class RootNode  : MonoBehaviour
 
     public void RefreshRootNode()
     {
-        if (Time.time >= timeOfNextNode)
+        if (numOfNodes < 4 && Time.time >= timeOfNextNode)
         {
             neighborNodes[numOfNodes] = SpawnNewRootNode(this);
             numOfNodes++;
@@ -38,6 +38,8 @@ public class RootNode  : MonoBehaviour
    
     public RootNode SpawnNewRootNode(RootNode parentNode)
     {
+
+
         Vector2 dir = Random.insideUnitCircle.normalized*rootDistance;
         GameObject newRootNodeObj = GameObject.Instantiate(EnemyManager.rootPrefab);
         newRootNodeObj.transform.position = new Vector3(dir.x + parentNode.transform.position.x, 1, dir.y + parentNode.transform.position.z);

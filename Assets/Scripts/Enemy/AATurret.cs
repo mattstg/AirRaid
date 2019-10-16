@@ -28,7 +28,7 @@ public class AATurret : RootedEnemy
                 float energySpend = energy*Random.Range(.1f, .8f); //Shoot between 10% and 80% energy
                 ShootAtPlayer(energySpend);
                 timeNextShotReady = Time.time + Random.Range(AATURRET_FIRE_RATE.x, AATURRET_FIRE_RATE.y);
-                energy -= energySpend;
+                ModEnergy(-energySpend);
             } 
 
     }

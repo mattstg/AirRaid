@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHittable
 {
-    readonly float ENEMY_SIZE_MULT = 1;
+    readonly float ENEMY_SIZE_MULT = .75f;
 
     [HideInInspector] public bool isAlive;
     protected float hp;
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour, IHittable
     public virtual void Initialize(float startingEnergy)
     {
         isAlive = true;
-        energy = startingEnergy;
+        ModEnergy(startingEnergy);
         Resize();
     }
 
@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour, IHittable
         hp -= damage;
         if (hp <= 0)
             Die();
+    }
+
+    public virtual void ModEnergy(float energyMod)
+    {
+        hp += energyMod;
+        energy += energyMod;
     }
 
     public virtual void Refresh()

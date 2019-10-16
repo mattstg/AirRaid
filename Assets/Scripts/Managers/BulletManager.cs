@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ProjectileType { BasicBullet, Rocket, EnemyFlak }
+public enum ProjectileType { BasicBullet, Rocket, EnemyFlak, EnemySpit }
 public class BulletManager
 {
 
@@ -24,6 +24,8 @@ public class BulletManager
         prefabDict.Add(ProjectileType.BasicBullet, Resources.Load<GameObject>("Prefabs/Bullet"));
         prefabDict.Add(ProjectileType.Rocket, Resources.Load<GameObject>("Prefabs/Rocket"));
         prefabDict.Add(ProjectileType.EnemyFlak, Resources.Load<GameObject>("Prefabs/EnemyFlak"));
+        prefabDict.Add(ProjectileType.EnemySpit, Resources.Load<GameObject>("Prefabs/EnemySpit"));
+        //See, wouldnt this be better with an auto filling dictionary?
     }
 
     public void PostInitialize()

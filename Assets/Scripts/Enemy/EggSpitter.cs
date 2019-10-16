@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EggSpitter : RootedEnemy
 {
-    readonly int SPAWN_EGG_MAX = 4;
+    readonly int SPAWN_EGG_MAX = 10;
     readonly int EGGSPAWN_ENERGY = 10;                          //amount of energy to spawn an egg, half of that energy is given to the new egg
-    readonly Vector2 EGGSPAWN_VELOCITY_RANGE = new Vector2(10, 20); //How fast to yeet an egg when created, random range
+    readonly Vector2 EGGSPAWN_VELOCITY_RANGE = new Vector2(20, 35); //How fast to yeet an egg when created, random range
     readonly Vector2 EGGSPAWN_COOLDOWN = new Vector2(20, 90); //How long between egg creations, random range
 
     float timeToNextEggSpit;
@@ -39,7 +39,7 @@ public class EggSpitter : RootedEnemy
                 Vector3 launchDir = Random.onUnitSphere;
                 launchDir.y = Mathf.Abs(launchDir.y); //We want the launch direction y to always be postive
                 EnemyManager.Instance.CreateEnemyEgg(transform.position + launchDir * 1.5f, launchDir, Random.Range(EGGSPAWN_VELOCITY_RANGE.x, EGGSPAWN_VELOCITY_RANGE.y), EGGSPAWN_ENERGY/2f);
-                energy -= EGGSPAWN_ENERGY;
+                ModEnergy(-EGGSPAWN_ENERGY);
             }
             Resize();
         }

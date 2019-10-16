@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RootedEnemy : Enemy
 {
-    static readonly float ENERGY_GAIN_PER_ROOT = .3f;
+    static readonly float ENERGY_GAIN_PER_ROOT = .15f;
 
 
     //Rooted enemy stats
@@ -16,7 +16,7 @@ public class RootedEnemy : Enemy
         base.Refresh();
         if (isRooted)
         {
-            energy += rootNodeSystem.numberOfRoots * Time.deltaTime * ENERGY_GAIN_PER_ROOT; //More energy relative to number of roots
+            ModEnergy(rootNodeSystem.numberOfRoots * Time.deltaTime * ENERGY_GAIN_PER_ROOT); //gain energy and hp
             rootNodeSystem.Refresh();
         }        
     }
