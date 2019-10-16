@@ -38,13 +38,13 @@ public class DefenderPck
     private void GetPrefab() {
         switch (this.type) {
             case TypeDefender.MELEE:
-                this.prefab = Resources.Load<GameObject>("");
+                this.prefab = Resources.Load<GameObject>("Prefabs/Defenders/Melee");
                 break;
             case TypeDefender.RANGE:
-                this.prefab = Resources.Load<GameObject>("");
+                this.prefab = Resources.Load<GameObject>("Prefabs/Defenders/Range");
                 break;
             case TypeDefender.SUPPORT:
-                this.prefab = Resources.Load<GameObject>("");
+                this.prefab = Resources.Load<GameObject>("Prefabs/Defenders/Support");
                 break;
             default:
                 Debug.LogError("Missing prefab for this TypeDefender");
