@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defender : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class Defender : MonoBehaviour{
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public DefenderPck defenderInfos;
+
+    public virtual void Initialise(DefenderPck defenderPck) { }
+    public virtual void Refresh() { }
+    public virtual void PhysicRefresh() { }
+    public virtual void FindTarget() { }
+    public virtual void DoAbility() { }
+    public virtual void Die() { }
 }
