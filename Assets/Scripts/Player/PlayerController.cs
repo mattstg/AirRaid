@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum Abilities { Turrets, Rocket }
+public enum Abilities { Turrets, Rocket,WriteStuff }
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
@@ -23,12 +23,14 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
-        abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
+        abilityManager.AddAbilities(new Ab_MachineGun(this), 0);
+        abilityManager.AddAbilities(new Ab_DebugLog(this),1);//Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
         //but it's important that I test now that my ability system is all in place.
 
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);
+        stats.abilities.Add(Abilities.WriteStuff);
 
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; //using custom gravity
