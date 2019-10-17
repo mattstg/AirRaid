@@ -2,39 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : Defender
+public class Melee : Defender, IHittable
 {
-    private DefenderPck defenderInfos;
-
-    public override void Initialise() {
-        throw new NotImplementedException();
+    public void Initialise() {
+        base.Initialise(TypeDefender.MELEE, DefenderState.ON_IDLE, new MeleeAttack());
     }
 
     public override void Refresh() {
-        throw new NotImplementedException();
+        if (base.DoIHaveTarget()) {
+            //I have a target -> check if in combat range
+            if (base.IsTargetInMyAttackRange()) {
+                //Target in attack range -> attack
+                DoAbility();
+            }
+            else {
+                //Target not in attack range -> move toward target
+            }
+        }
+        else {
+            //I don't have a target -> find a target
+        }
     }
 
     public override void PhysicRefresh() {
-        throw new NotImplementedException();
+        Move();
+        Rotate();
     }
 
     protected override void Move() {
-        throw new NotImplementedException();
     }
 
     protected override void Rotate() {
-        throw new NotImplementedException();
     }
 
     protected override void FindTarget() {
-        throw new NotImplementedException();
     }
 
     protected override void DoAbility() {
-        throw new NotImplementedException();
+        ((MeleeAttack)this.myAbility).UseAbility(this.defenderInfos);
     }
 
+
     public override void Die() {
-        throw new NotImplementedException();
+        //remove from managers
+        GameObject.Destroy(gameObject);
+    }
+
+    public void HitByProjectile(float damage) {
+        this.defenderInfos.hp -= damage;
+        if (this.defenderInfos.hp <= 0)
+            Die();
     }
 }
