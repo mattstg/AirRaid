@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public enum Abilities { Turrets, Rocket }
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
@@ -19,8 +16,20 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
 
+    private Vector3 savedPos;
+    private Vector3 savedVelo;
+    private Quaternion savedRot;
+    private float abilityTimer = 0f;
+    private float coordSavingTimer = 6f;
+    private RewindPositions[] positionList;
+    public int refreshCounter = 0;
+
+
     public void Initialize()
     {
+
+        positionList = new RewindPositions[360];
+
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
@@ -41,13 +50,13 @@ public class PlayerController : MonoBehaviour, IHittable
 
         Transform[] allChildren = transform.GetComponentsInChildren<Transform>();
         HashSet<string> bodyPartEnums = new HashSet<string>(System.Enum.GetNames(typeof(BodyPart))); //The code to get a hashset of enums represented as strings
-        for(int i = allChildren.Length - 1; i >= 0; i--)  //since i will be deleting elements from this array, need to backwards for loop
+        for (int i = allChildren.Length - 1; i >= 0; i--)  //since i will be deleting elements from this array, need to backwards for loop
         { //grab each object who has the correct body part tag
-            if(bodyPartEnums.Contains(allChildren[i].tag))  //if the child tag matches one of the bodypart tags
+            if (bodyPartEnums.Contains(allChildren[i].tag))  //if the child tag matches one of the bodypart tags
             {
                 BodyPart bodyPart = (BodyPart)System.Enum.Parse(typeof(BodyPart), allChildren[i].tag);  //Syntax to change the body part from a string to an enum
                 //So we found a body part, add it to the dictionary
-                if(!bodyParts.ContainsKey(bodyPart))
+                if (!bodyParts.ContainsKey(bodyPart))
                 {  //very first entry, need to add it to the dictionary and create the list
                     bodyParts.Add(bodyPart, new List<Vector3>());
                 }
@@ -60,15 +69,77 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void PostInitialize()
     {
-        
+
     }
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
+
+
+        //If we have saved 6seconds of coords, Enter here
+        if (refreshCounter > 359)
+        {
+            //Reset Counter to 3seconds
+            refreshCounter = 179;
+            //Loop that erases first 3 seconds of Coords
+            for (int i = 0; i < 179; i++)
+            {
+                positionList[i] = null;
+            }
+            //Loop that sets remaining Coords to begining of List
+            for (int i = 0; i < 179; i++)
+            {
+                positionList[i] = positionList[i + 179];
+                positionList[i + 179] = null;
+            }
+        }
+        else  //Else save the current Coord to the List
+        {
+            positionList[refreshCounter] = new RewindPositions(transform.position, rb.velocity, rb.rotation);
+        }
+
+
+        refreshCounter++;
+        abilityTimer -= Time.deltaTime;
+
         abilityManager.Refresh(inputPkg);
-        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime,0,stats.maxEnergy);
+        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime, 0, stats.maxEnergy);
         if (stats.hp <= 0)
+        {
             ShipDestroyed();
+        }
+
+        //teleport ship to saved coord
+        if (abilityTimer < 0)
+        {
+            Debug.Log("Rewind Ready!!!");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (refreshCounter < 179)
+                {
+                    transform.position = positionList[0].savedPos;
+                    rb.velocity = positionList[0].savedVelo;
+                    rb.rotation = positionList[0].savedRot;
+                }
+                else
+                {
+                    transform.position = positionList[refreshCounter - 179].savedPos;
+                    rb.velocity = positionList[refreshCounter - 179].savedVelo;
+                    rb.rotation = positionList[refreshCounter - 179].savedRot;
+                }
+
+                abilityTimer = 7f;
+            }
+        }
+
+
+
+            //Timer to activate Rewind Ability
+        if (abilityTimer > 0)
+        {
+            Debug.Log("Ability timer : " + abilityTimer);
+
+        }
         //Debug.Log("Energy: " + stats.currentEnegy);
     }
 
@@ -76,10 +147,10 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         abilityManager.PhysicsRefresh(inputPkg);
         Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
-        rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01( 1 - ((stats.relativeLocalVelo .z)/stats.forwardSpeedAtWhichGravityIsCanceled)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
-        //This could be done way better, using dot product to determine the speed relative to my facing direction/perpendicular to the ground
-        
-        rb.angularVelocity = transform.TransformDirection( new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, 0, stats.rollSpeed * inputPkg.dirPressed.x));
+        rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01(1 - ((stats.relativeLocalVelo.z) / stats.forwardSpeedAtWhichGravityIsCanceled)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
+                                                                                                                                                        //This could be done way better, using dot product to determine the speed relative to my facing direction/perpendicular to the ground
+
+        rb.angularVelocity = transform.TransformDirection(new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, 0, stats.rollSpeed * inputPkg.dirPressed.x));
     }
 
     private void Throttle(float deltaThrottle)  //-1 to 1
@@ -90,13 +161,13 @@ public class PlayerController : MonoBehaviour, IHittable
         //https://answers.unity.com/questions/193398/velocity-relative-to-local.html
         Vector3 relativeLocalVelocity = stats.relativeLocalVelo;
         //Debug.Log("foward velo: " + relativeLocalVelocity);
-        if(relativeLocalVelocity.z > stats.maxSpeed)  //if our foward is greater than max speed
+        if (relativeLocalVelocity.z > stats.maxSpeed)  //if our forward is greater than max speed
         {
             relativeLocalVelocity.z = stats.maxSpeed;
             rb.velocity = transform.TransformDirection(relativeLocalVelocity);
         }
         //consume energy based on speed
-       // Debug.Log("RelativeLocalVeloZ: " + relativeLocalVelocity.z + ", stats.MaxSpeed: " + stats.maxSpeed + " stats.energySpeedCostThreshold: " + stats.energySpeedCostThreshold);
+        // Debug.Log("RelativeLocalVeloZ: " + relativeLocalVelocity.z + ", stats.MaxSpeed: " + stats.maxSpeed + " stats.energySpeedCostThreshold: " + stats.energySpeedCostThreshold);
 
         if (relativeLocalVelocity.z > stats.energySpeedCostThreshold)
         {
@@ -107,13 +178,13 @@ public class PlayerController : MonoBehaviour, IHittable
             //Debug.Log("stats.currentEnegy: " + stats.currentEnegy + ", speedAboveThreshold: " + speedAboveThreshold + " energyDeduct: " + energyDeduct);
             //CurrentEnergy = CurrentEnergy - (Amount of speed above threshold)*(energy cost per speed above threshold)  clamped between 0 and maxEnergy.
         }
-        
+
     }
 
     public void ModEnergy(float modBy)
     {
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, 0, stats.maxEnergy);
-        //Eventaully this would be the spot to cause the engine stall
+        //Eventually this would be the spot to cause the engine stall
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -132,6 +203,11 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         stats.hp -= damage;
         Debug.Log("took dmg: " + damage);
+    }
+
+    public void Rewind()
+    {
+
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game
@@ -160,4 +236,24 @@ public class PlayerController : MonoBehaviour, IHittable
 
         public PlayerStats(PlayerController pc) { player = pc; currentEnegy = maxEnergy; hp = maxHp; }
     }
+
+
+
+    public class RewindPositions
+    {
+        public Vector3 savedPos;
+        public Quaternion savedRot;
+        public Vector3 savedVelo;
+
+
+        public RewindPositions(Vector3 pos, Vector3 velo, Quaternion rotation)
+        {
+            this.savedPos = pos;
+            this.savedVelo = velo;
+            this.savedRot = rotation;
+        }
+    }
+
+
+
 }

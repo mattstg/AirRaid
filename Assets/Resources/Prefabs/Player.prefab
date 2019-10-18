@@ -202,6 +202,7 @@ MonoBehaviour:
   isAlive: 0
   rb: {fileID: 0}
   playerCam: {fileID: 0}
+  refreshCounter: 0
 --- !u!33 &5552085018173789860
 MeshFilter:
   m_ObjectHideFlags: 0
