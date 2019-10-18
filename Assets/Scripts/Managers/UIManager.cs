@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIManager 
 {
-    #region Singleton
     private static UIManager instance;
+     #region Singleton
     private UIManager() { }
     public static UIManager Instance { get { return instance ?? (instance = new UIManager()); } }
     #endregion
