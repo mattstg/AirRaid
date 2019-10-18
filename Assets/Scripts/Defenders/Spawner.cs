@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour {
     public void Refresh() {
         if (Time.time - this.lastTimeUnitSpawned >= GlobalDefendersVariables.Instance.DELAY_SPAWN_DEFENDER) {
             if (this.amountToSpawnToFinishGroup > 0)
-                SpawnDefenser();
+                SpawnDefender();
             else {
                 this.groupdLeader.GoFight();
                 ResetGroup();
@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour {
         }
     }
 
-    private void SpawnDefenser() {
+    private void SpawnDefender() {
         this.amountToSpawnToFinishGroup--;
         Defender defender = GameObject.Instantiate<GameObject>(DefenderManager.Instance.defenderPrefabs[GetTypeToSpawn()], this.spawnPoint, new Quaternion(), this.parent).GetComponent<Defender>();
         defender.Initialize();
