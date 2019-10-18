@@ -12,6 +12,7 @@ public class UIManager
 
     PlayerController player;
     UILinks ui;  //still the same ui links. just a shortcut for less typing
+    public bool storeActive;
 
 
     public void Initialize(PlayerController _player)

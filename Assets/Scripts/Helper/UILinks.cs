@@ -14,6 +14,15 @@ public class UILinks : MonoBehaviour
     public Text speedText;
     public Slider speedEnergyCostThreshold;
 
+    //store links
+    public GameObject storePanel;
+    public GameObject sellGrid;
+    public GameObject descriptionPanel;
+    public GameObject switchInventoryType;
+    public GameObject bodyPartPanel;
+    public Text goTo;
+    public Text title;
+
     public static UILinks Instance; //The first instance to be created will set this static variable to point at it, so we can access it from everywhere
     public static UILinks instance  //Pseudo singleton for mono behaviour
     {
