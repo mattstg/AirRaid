@@ -17,6 +17,7 @@ public class DefenderPck
     public float visionRange;
     public float delayForAbility;
     public float abilityEnergyCost;
+    public Leader myLeader;
     public Transform target;
 
     public DefenderPck(TypeDefender _type, DefenderState currentState) {

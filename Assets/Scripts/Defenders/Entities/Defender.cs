@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Defender : MonoBehaviour, IHittable {
-    protected DefenderPck defenderInfos;
+    public DefenderPck defenderInfos;
     protected AbilityAI myAbility;
     protected Animator myAnimator;
 
@@ -11,7 +11,6 @@ public abstract class Defender : MonoBehaviour, IHittable {
     protected virtual void PostInitialize(TypeDefender type, DefenderState currentState, AbilityAI ability) {
         this.defenderInfos = new DefenderPck(type, currentState);
         this.myAbility = ability;
-        this.defenderInfos.target = GameObject.FindGameObjectWithTag("Enemy_Egg").GetComponent<Transform>();
         this.myAnimator = transform.GetComponent<Animator>();
     }
 
@@ -37,6 +36,9 @@ public abstract class Defender : MonoBehaviour, IHittable {
         }
         return result;
     }
+    public void SetTarget(Transform _target) {
+        this.defenderInfos.target = _target;
+    }
 
     private void GiveInfoToAnimator() {
         this.myAnimator.SetFloat("speedVelocity", this.defenderInfos.speed);
@@ -50,7 +52,6 @@ public abstract class Defender : MonoBehaviour, IHittable {
     }
     protected virtual void Move() { }
     protected virtual void Rotate() { }
-    protected virtual void FindTarget() { }
     protected virtual void DoAbility() {
         this.myAnimator.SetTrigger("ON_ATTACK");
     }
@@ -59,8 +60,10 @@ public abstract class Defender : MonoBehaviour, IHittable {
     }
 
     private void OnDrawGizmos() {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(this.defenderInfos.target.transform.position, this.defenderInfos.attackRange);
+        if (this.defenderInfos.target != null) {
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(this.defenderInfos.target.transform.position, 0.5f);
+        }
     }
     public void HitByProjectile(float damage) {
         this.defenderInfos.hp -= damage;

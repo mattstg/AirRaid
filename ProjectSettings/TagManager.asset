@@ -16,6 +16,7 @@ TagManager:
   - BodyPart_FrontCannon
   - Defender_Spawner
   - Enemy_Egg
+  - Leader
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Player
   - Rocket
   - Enemy
-  - 
+  - Leader
   - 
   - 
   - 

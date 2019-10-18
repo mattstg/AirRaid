@@ -4,22 +4,38 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
+    private Transform parent;
+    private Vector3 spawnPoint;
     private float lastTimeUnitSpawned;
+    private short amountToSpawnToFinishGroup;
+    private Leader groupdLeader;
 
     public void Initialize() {
+        this.parent = GameObject.Find("Defenders").transform;
+        //Find SpawnPoint depending on building size
+        Vector3 size = transform.GetComponent<BoxCollider>().bounds.extents;
+        this.spawnPoint = new Vector3(transform.position.x + size.x + 1, 0, transform.position.z + size.z + 1);
+
+        ResetGroup();
     }
 
     public void Refresh() {
         if (Time.time - this.lastTimeUnitSpawned >= GlobalDefendersVariables.Instance.DELAY_SPAWN_DEFENDER) {
-            SpawnDefenser();
+            if (this.amountToSpawnToFinishGroup > 0)
+                SpawnDefenser();
+            else {
+                this.groupdLeader.GoFight();
+                ResetGroup();
+            }
             this.lastTimeUnitSpawned = Time.time;
         }
     }
 
     private void SpawnDefenser() {
-        Defender defender = GameObject.Instantiate<GameObject>(DefenderManager.Instance.defenderPrefabs[GetTypeToSpawn()], new Vector3(0, 5, 0), new Quaternion()).GetComponent<Defender>();
+        this.amountToSpawnToFinishGroup--;
+        Defender defender = GameObject.Instantiate<GameObject>(DefenderManager.Instance.defenderPrefabs[GetTypeToSpawn()], this.spawnPoint, new Quaternion(), this.parent).GetComponent<Defender>();
         defender.Initialize();
-        DefenderManager.Instance.AddDefenderToList(defender);
+        this.groupdLeader.AddDefenderToMyGroup(defender);
     }
 
     private TypeDefender GetTypeToSpawn() {
@@ -49,5 +65,16 @@ public class Spawner : MonoBehaviour {
 
     private bool CheckIfSpotIsTaken() {
         return false;
+    }
+
+    private void ResetGroup() {
+        this.groupdLeader = GameObject.Instantiate<GameObject>(DefenderManager.Instance.defenderPrefabs[TypeDefender.LEADER], this.spawnPoint, new Quaternion(), this.parent).GetComponent<Leader>();
+        DefenderManager.Instance.AddLeaderToList(this.groupdLeader);
+        this.amountToSpawnToFinishGroup = GlobalDefendersVariables.Instance.GROUP_SIZE;
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(this.spawnPoint, 1);
     }
 }

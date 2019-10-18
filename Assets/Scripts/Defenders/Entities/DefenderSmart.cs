@@ -39,7 +39,7 @@ public abstract class DefenderSmart : Defender {
     public override void Die() {
         base.Die();
         this.defenderInfos.state = DefenderState.ON_DYING;
-        DefenderManager.Instance.RemoveDefenderToList(this);
+        this.defenderInfos.myLeader.RemoveDefenderFromMyGroup(this);
         GameObject.Destroy(gameObject);
     }
 }

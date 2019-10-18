@@ -10,6 +10,10 @@ public class GlobalDefendersVariables {
     public static GlobalDefendersVariables Instance { get { return instance ?? (instance = new GlobalDefendersVariables()); } }
     #endregion
 
+
+    //Leader
+
+
     //Melee
     public readonly float ML_HP = 200f;
     public readonly float ML_MAX_HP = 200f;
@@ -50,4 +54,5 @@ public class GlobalDefendersVariables {
     public readonly int MAX_AMOUNT_DEFENDERS = 200;
     public int amountDefenderOnMap = 0;
     public readonly float DELAY_SPAWN_DEFENDER = 5f;
+    public readonly short GROUP_SIZE = 5;
 }

@@ -6,6 +6,7 @@
 }
 
 public enum TypeDefender {
+    LEADER,
     MELEE,
     RANGE,
     SUPPORT
