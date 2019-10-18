@@ -42,6 +42,7 @@ public class ItemDrag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHan
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (spriteChange/*transform.parent == startParent*/)
         {
+            transform.GetChild(0).GetComponent<Text>().text = transform.parent.GetComponent<Item>().Part.ToString();
             transform.GetChild(0).gameObject.SetActive(true);
         }
         transform.position = initialPos;
