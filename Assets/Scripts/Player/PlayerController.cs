@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum Abilities { Turrets, Rocket }
+public enum Abilities { Turrets, Rocket, EnergyBoost, NitroBoost }
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour, IHittable
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);
+        stats.abilities.Add(Abilities.EnergyBoost);
+        stats.abilities.Add(Abilities.NitroBoost);
 
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; //using custom gravity
