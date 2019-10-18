@@ -1,7 +1,7 @@
 ﻿public enum DefenderState {
     ON_IDLE,
-    ON_TARGET,
-    ON_WAIT,
+    ON_FLOCK,
+    ON_ATTACK,
     ON_DYING
 }
 

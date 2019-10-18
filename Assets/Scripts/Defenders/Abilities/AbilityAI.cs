@@ -12,9 +12,11 @@ public class AbilityAI {
         this.energyCost = _energyCost;
     }
 
-    public virtual void UseAbility(DefenderPck defenderPck) {
+    public virtual bool UseAbility(DefenderPck defenderPck, Transform target) {
+        target.GetComponent<IHittable>().HitByProjectile(defenderPck.damage);
         defenderPck.energy -= this.energyCost;
         this.lastTimeAbilityUsed = Time.time;
+        return true;
     }
 
     public bool AbilityAvailable(DefenderPck defenderPck) {

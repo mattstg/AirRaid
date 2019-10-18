@@ -2,29 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Defender : MonoBehaviour {
-
+public abstract class Defender : MonoBehaviour, IHittable {
     protected DefenderPck defenderInfos;
     protected AbilityAI myAbility;
+    protected Animator myAnimator;
 
-    public void Initialise(TypeDefender type, DefenderState currentState, AbilityAI ability) {
+
+    protected virtual void PostInitialize(TypeDefender type, DefenderState currentState, AbilityAI ability) {
         this.defenderInfos = new DefenderPck(type, currentState);
         this.myAbility = ability;
+        this.defenderInfos.target = GameObject.FindGameObjectWithTag("Enemy_Egg").GetComponent<Transform>();
+        this.myAnimator = transform.GetComponent<Animator>();
     }
 
-    public bool DoIHaveTarget() {
+    private void RegenEnergy() {
+        this.defenderInfos.energy += this.defenderInfos.energyRegen;
+        this.defenderInfos.energy = Mathf.Clamp(this.defenderInfos.energy, 0, this.defenderInfos.energyMax);
+    }
+
+    protected bool DoIHaveTarget() {
         return this.defenderInfos.target != null;
     }
 
-    public bool IsTargetInMyAttackRange() {
-        return true;
-        //Do a raycast with range
+    protected bool IsTargetInMyAttackRange() {
+        bool result = false;
+        if (this.defenderInfos.target != null) {
+            Collider[] hits = Physics.OverlapSphere(transform.position, this.defenderInfos.attackRange);
+            if (hits.Length > 0) {
+                foreach (Collider hit in hits) {
+                    if (hit.transform == this.defenderInfos.target.transform)
+                        result = true;
+                }
+            }
+        }
+        return result;
     }
+
+    private void GiveInfoToAnimator() {
+        this.myAnimator.SetFloat("speedVelocity", this.defenderInfos.speed);
+    }
+
+    public virtual void Initialize() { }
     public virtual void Refresh() { }
-    public virtual void PhysicRefresh() { }
+    public virtual void PhysicRefresh() {
+        RegenEnergy();
+        GiveInfoToAnimator();
+    }
     protected virtual void Move() { }
     protected virtual void Rotate() { }
     protected virtual void FindTarget() { }
-    protected virtual void DoAbility() { }
-    public virtual void Die() { }
+    protected virtual void DoAbility() {
+        this.myAnimator.SetTrigger("ON_ATTACK");
+    }
+    public virtual void Die() {
+        this.myAnimator.SetTrigger("ON_DYING");
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(this.defenderInfos.target.transform.position, this.defenderInfos.attackRange);
+    }
+    public void HitByProjectile(float damage) {
+        this.defenderInfos.hp -= damage;
+        this.defenderInfos.hp = Mathf.Clamp(this.defenderInfos.hp, 0, this.defenderInfos.maxHp);
+        if (this.defenderInfos.hp <= 0)
+            Die();
+    }
 }

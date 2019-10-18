@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Range : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
+public class Range : DefenderSmart {
+
+    public override void Initialize() {
+        base.PostInitialize(TypeDefender.RANGE, DefenderState.ON_IDLE, new RangeAttack());
+    }
+
+    public override void PhysicRefresh() {
+        base.PhysicRefresh();
+        Move();
+        Rotate();
+    }
+
+    protected override void Move() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    protected override void Rotate() {
         
     }
 }
+
+
+
