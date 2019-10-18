@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType { Egg, EggSpitter, AATurret, Crawler}
+public enum EnemyType { Egg, EggSpitter, AATurret, Crawler} //Add Ghoul and Troll
 public class EnemyManager
 {
     #region Singleton
@@ -20,7 +20,7 @@ public class EnemyManager
     public static GameObject rootPrefab;
 
     Dictionary<EnemyType, GameObject> enemyPrefabDict = new Dictionary<EnemyType, GameObject>(); //all enemy prefabs
-
+    
 
     public void Initialize()
     {
