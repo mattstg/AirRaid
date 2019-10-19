@@ -11,21 +11,29 @@ public class Ghoul : AnimatedEnemy
 
     public EnemyAbilityManager enemyAbilityManager;
 
+    Building targetBuilding;
+    
     public override void Initialize(float startingEnergy)
     {
         base.Initialize(startingEnergy);
         hp = MAX_HP;
         enemyAbilityManager = new EnemyAbilityManager(this);
+        targetBuilding = BuildingManager.Instance.GetRandomBuilding();
+        navmeshAgent.SetDestination(targetBuilding.transform.position);
     }
-
     public override void Refresh()
     {
         base.Refresh();
+        SetAnimeVelocity(navmeshAgent.velocity.magnitude / navmeshAgent.speed);
+        Collider[] bob = Physics.OverlapSphere(transform.position, 1, LayerMask.GetMask("Wall", "Building"));
+        foreach(Collider bob1 in bob)
+        {
+            Debug.Log(bob1.transform.name);
+        }
+        
     }
-
-    public override void PhysicRefresh()
+    public void FixedRefresh()
     {
-        base.PhysicRefresh();
-    }
 
+    }
 }

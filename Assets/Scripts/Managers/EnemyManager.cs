@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType { Egg, EggSpitter, AATurret, Crawler} //Add Ghoul and Troll
+public enum EnemyType { Egg, EggSpitter, AATurret, Crawler, Ghoul}
 public class EnemyManager
 {
     #region Singleton
