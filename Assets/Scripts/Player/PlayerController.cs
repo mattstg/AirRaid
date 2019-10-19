@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour, IHittable
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
         abilityManager.PhysicsRefresh(inputPkg);
-        Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
+        Throttle(inputPkg.throttleAmount);//increase or decrease speed based on holding down the throttle amount (-1 to 1)
         rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01( 1 - ((stats.relativeLocalVelo .z)/stats.forwardSpeedAtWhichGravityIsCanceled)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
         //This could be done way better, using dot product to determine the speed relative to my facing direction/perpendicular to the ground
         
@@ -112,9 +112,13 @@ public class PlayerController : MonoBehaviour, IHittable
         
     }
 
-    private activeStorePanel(InputPressType ipt)
+    public bool ActiveStorePanel(InputManager.InputPressType ipt)
     {
-
+        if(ipt== InputManager.InputPressType.FirstPress)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void ModEnergy(float modBy)
