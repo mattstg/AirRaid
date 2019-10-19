@@ -16,11 +16,7 @@ public class Ghoul : AnimatedEnemy
     {
         base.Refresh();
         SetAnimeVelocity(navmeshAgent.velocity.magnitude / navmeshAgent.speed);
-        Collider[] bob = Physics.OverlapSphere(transform.position, 1, LayerMask.GetMask("Wall", "Building"));
-        foreach(Collider bob1 in bob)
-        {
-            Debug.Log(bob1.transform.name);
-        }
+        DetectEnemyNearby();
         
     }
     public void FixedRefresh()
