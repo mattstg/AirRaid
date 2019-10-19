@@ -19,12 +19,11 @@ public class StoreController : MonoBehaviour {
     public void OpenDetail() {
         if (UIManager.Instance.storeActive) {
             UILinks.instance.descriptionPanel.SetActive(true);
-
+            //UILinks.instance.itemTitle = 
         }
     }
 
     private void OpenShop() {
-
         UILinks.instance.title.text = "Store";
         UILinks.instance.goTo.text = "Go To Inventory";
         UIManager.Instance.storeActive = true;

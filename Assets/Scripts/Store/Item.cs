@@ -2,30 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
-{
-    public string Name { get; set; }
 
-    public string Description { get; set; }
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/MakeScriptableItem", order = 1)]
+public class Item : ScriptableObject {
+    public string Name;
 
-    public float Cost { get; set; }
+    public string Description;
 
-    public int Level { get; set; }
+    public float Cost;
 
-    public string ImgSrc { get; set; }
+    public int Level;
+
+    public Sprite imgSprite;
 
     public BodyPart Part;
 
-    public bool Purchased { get; set; } = false;
-
-    Item(string name, string description, float cost, int level, string imgSrc, BodyPart part)
-    {
-        Name = name;
-        Description = description;
-        Cost = cost;
-        Level = level;
-        ImgSrc = imgSrc;
-        Part = part;
-    }
-
+    public bool Purchased = false;
 }
