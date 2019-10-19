@@ -15,7 +15,7 @@ public class EnemyAbilityManager
         //abilities = new List<EnemyAbility>(); 
     }
 
-    public void AddAbility(EnemyAbility ability)
+    public void AddAbility(EnemyAbility ability) // Might be useless now
     {
         abilities.Add(ability);
     }

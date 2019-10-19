@@ -6,7 +6,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IHittable
 {
     readonly float ENEMY_SIZE_MULT = .75f;
-
     [HideInInspector] public bool isAlive;
     protected float hp;
     protected float energy;
