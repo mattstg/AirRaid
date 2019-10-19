@@ -8,37 +8,22 @@ public class ItemDrop : MonoBehaviour, IDropHandler//,IPointerEnterHandler,IPoin
 {
     public void OnDrop(PointerEventData eventData)
     {
-        RectTransform rect = transform as RectTransform;
-        if (!RectTransformUtility.RectangleContainsScreenPoint(rect, Input.mousePosition))
-        {
-            Debug.Log("drop item");
-        }
-        
         ItemDrag itemDrag = eventData.pointerDrag.GetComponent<ItemDrag>();
-        Item item= eventData.pointerDrag.transform.parent.GetComponent<Item>();
-        if (itemDrag != null && item.Part.ToString()==transform.parent.name)
+        //Item item= eventData.pointerDrag.transform.parent.GetComponent<Item>();
+        Item item=StoreManager.Instance.itemList[eventData.pointerDrag.transform.parent.name];
+        if (itemDrag != null && item.Part.ToString()==transform.parent.name && !eventData.pointerDrag.transform.GetChild(0).gameObject.activeSelf)
         {
 
             //ItemDrag.itemStart.transform.SetParent(transform);
             GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
             itemDrag.spriteChange = true;
+            InventoryManager.AddItem(eventData.pointerDrag.transform.parent.name, item);
             //itemDrag.transform.position = transform.position;
 
             //item.GetComponent<RectTransform>().sizeDelta = new Vector2( rect.sizeDelta.x,rect.sizeDelta.y);
         }
     }
-
-    public GameObject GetItem
-    {
-        get
-        {
-            if (transform.childCount > 0)
-            {
-                return transform.GetChild(1).gameObject;
-            }
-            return null;
-        }
-    }
+    
     /*public void OnPointerEnter(PointerEventData eventData)
     {
         throw new System.NotImplementedException();

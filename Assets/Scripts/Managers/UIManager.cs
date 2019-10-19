@@ -45,6 +45,17 @@ public class UIManager
             //ui.abilityGridParent;
             ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
             ui.speedEnergyCostThreshold.value = statsToUse.speedPerctangeThresholdToCostEnergy;
+            if (storeActive)
+            {
+                ui.storePanel.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else 
+            {
+                ui.storePanel.SetActive(false);
+                Time.timeScale = 1;
+            }
+            if()
         }
         else
         {

@@ -37,6 +37,7 @@ public class InputManager : IManagable
         {
             ip.abilityKeyPress[i] = GetInputPressType("Ability" + i);
         }
+        
     }
 
     public void Refresh()
@@ -69,6 +70,7 @@ public class InputManager : IManagable
         public Vector2 dirPressed;
         public float throttleAmount;
         public InputPressType[] abilityKeyPress;
+        
 
         public override string ToString()
         {

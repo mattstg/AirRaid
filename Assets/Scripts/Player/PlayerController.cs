@@ -112,6 +112,11 @@ public class PlayerController : MonoBehaviour, IHittable
         
     }
 
+    private activeStorePanel(InputPressType ipt)
+    {
+
+    }
+
     public void ModEnergy(float modBy)
     {
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, 0, stats.maxEnergy);
