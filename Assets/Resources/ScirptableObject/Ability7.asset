@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90bd19010f5d516458f7bf01d29c0b65, type: 3}
-  m_Name: Rocket
+  m_Name: Ability7
   m_EditorClassIdentifier: 
-  Name: Rocket
-  Description: This is the rocket
-  Cost: 25
-  Level: 1
+  Name: Ability7
+  Description: This is the seventh ability!
+  Cost: 0
+  Level: 0
   imgSprite: {fileID: 0}
   Part: 0
   Purchased: 0

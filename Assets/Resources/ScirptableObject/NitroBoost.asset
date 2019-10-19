@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bd19010f5d516458f7bf01d29c0b65, type: 3}
   m_Name: NitroBoost
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Cost: 0
-  Level: 0
-  ImgSrc: 
+  Name: Nitro Boost
+  Description: This is the nitro boost ability !
+  Cost: 25
+  Level: 10
   imgSprite: {fileID: 0}
   Part: 0
   Purchased: 0
