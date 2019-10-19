@@ -12,7 +12,9 @@ public class UIManager
 
     PlayerController player;
     UILinks ui;  //still the same ui links. just a shortcut for less typing
-    public bool storeActive=false;
+    public bool storeActive;
+    bool openStore = false;
+
 
 
     public void Initialize(PlayerController _player)
@@ -45,7 +47,7 @@ public class UIManager
             //ui.abilityGridParent;
             ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
             ui.speedEnergyCostThreshold.value = statsToUse.speedPerctangeThresholdToCostEnergy;
-            if (storeActive)
+            if (openStore)
             {
                 ui.storePanel.SetActive(true);
                 Time.timeScale = 0;
@@ -58,7 +60,7 @@ public class UIManager
             InputManager.InputPkg ip=new InputManager.InputPkg();
             if (/*statsToUse.player.ActiveStorePanel(ip.abilityKeyPress[0])*/Input.GetKeyDown(KeyCode.A))
             {
-                storeActive = !storeActive;
+                openStore = !openStore;
             }
         }
         else
