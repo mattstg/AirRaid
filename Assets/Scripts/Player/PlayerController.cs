@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
 
+
+    //Rewind Variables
     private Vector3 savedPos;
     private Vector3 savedVelo;
     private Quaternion savedRot;
@@ -24,7 +26,9 @@ public class PlayerController : MonoBehaviour, IHittable
     private RewindPositions[] positionList;
     public int refreshCounter = 0;
 
-
+    //Turret Variables
+    private TurretSpawn turretScript;
+    private float turretTimer = 0f;
     public void Initialize()
     {
 
@@ -44,6 +48,11 @@ public class PlayerController : MonoBehaviour, IHittable
         rb.velocity = transform.forward * stats.maxSpeed * .7f;
 
         playerCam = GetComponentInChildren<Camera>();
+
+        //Load Turret
+        turretScript = GetComponentInChildren<TurretSpawn>();
+        
+
 
         //Link all body parts
         bodyParts = new Dictionary<BodyPart, List<Vector3>>();
@@ -76,6 +85,27 @@ public class PlayerController : MonoBehaviour, IHittable
     {
 
 
+        
+
+
+        
+
+        abilityManager.Refresh(inputPkg);
+        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime, 0, stats.maxEnergy);
+        if (stats.hp <= 0)
+        {
+            ShipDestroyed();
+        }
+
+        
+        //Debug.Log("Energy: " + stats.currentEnegy);
+    }
+
+    public void PhysicsRefresh(InputManager.InputPkg inputPkg)
+    {
+        refreshCounter++;
+        abilityTimer -= Time.deltaTime;
+        turretTimer -= Time.deltaTime;
         //If we have saved 6seconds of coords, Enter here
         if (refreshCounter > 359)
         {
@@ -98,53 +128,35 @@ public class PlayerController : MonoBehaviour, IHittable
             positionList[refreshCounter] = new RewindPositions(transform.position, rb.velocity, rb.rotation);
         }
 
-
-        refreshCounter++;
-        abilityTimer -= Time.deltaTime;
-
-        abilityManager.Refresh(inputPkg);
-        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime, 0, stats.maxEnergy);
-        if (stats.hp <= 0)
-        {
-            ShipDestroyed();
-        }
-
         //teleport ship to saved coord
         if (abilityTimer < 0)
         {
             Debug.Log("Rewind Ready!!!");
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Rewind();
+            }
+        }
+
+        if (turretTimer < 0)
+        {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (refreshCounter < 179)
-                {
-                    transform.position = positionList[0].savedPos;
-                    rb.velocity = positionList[0].savedVelo;
-                    rb.rotation = positionList[0].savedRot;
-                }
-                else
-                {
-                    transform.position = positionList[refreshCounter - 179].savedPos;
-                    rb.velocity = positionList[refreshCounter - 179].savedVelo;
-                    rb.rotation = positionList[refreshCounter - 179].savedRot;
-                }
 
-                abilityTimer = 7f;
+                turretScript.SpawnTurret();
+                turretTimer = 10f;
             }
         }
 
 
 
-            //Timer to activate Rewind Ability
+        //Timer to activate Rewind Ability
         if (abilityTimer > 0)
         {
             Debug.Log("Ability timer : " + abilityTimer);
 
         }
-        //Debug.Log("Energy: " + stats.currentEnegy);
-    }
 
-    public void PhysicsRefresh(InputManager.InputPkg inputPkg)
-    {
         abilityManager.PhysicsRefresh(inputPkg);
         Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
         rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01(1 - ((stats.relativeLocalVelo.z) / stats.forwardSpeedAtWhichGravityIsCanceled)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
@@ -207,7 +219,20 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Rewind()
     {
+        if (refreshCounter < 179)
+        {
+            transform.position = positionList[0].savedPos;
+            rb.velocity = positionList[0].savedVelo;
+            rb.rotation = positionList[0].savedRot;
+        }
+        else
+        {
+            transform.position = positionList[refreshCounter - 179].savedPos;
+            rb.velocity = positionList[refreshCounter - 179].savedVelo;
+            rb.rotation = positionList[refreshCounter - 179].savedRot;
+        }
 
+        abilityTimer = 7f;
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game

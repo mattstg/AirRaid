@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5806949360319724682}
   - component: {fileID: 5418414144882964779}
   - component: {fileID: 876964383936432854}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 6586925730999210268}
   - component: {fileID: 511381567894278640}
   - component: {fileID: 814172430766467975}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,8 +119,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412247106440588930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.273, y: 0.207, z: 0.23022461}
-  m_LocalScale: {x: 0.2, y: 0.41, z: -0.01}
+  m_LocalPosition: {x: 0.273, y: 0.61, z: 0.23022461}
+  m_LocalScale: {x: 0.2, y: 0.787241, z: -0.01}
   m_Children:
   - {fileID: 2229566731196082349}
   m_Father: {fileID: 2848237435732157589}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 1097006782325191084}
   - component: {fileID: 7351727826276162137}
   - component: {fileID: 520715868189775752}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 5843595673741043195}
   - component: {fileID: 7496340586804537299}
   - component: {fileID: 5342651879621556945}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735905406802405724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: -0.46, z: 1}
   m_Children:
   - {fileID: 4714152176389446218}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 1598386910886148012}
   - component: {fileID: 8826467893102382183}
   - component: {fileID: 6912218687647794112}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 1658609829531844377}
   - component: {fileID: 3258815865280391316}
   - component: {fileID: 4990028795522729158}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,8 +493,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5213672101733521236}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.273, y: 0.20699708, z: 0.2302246}
-  m_LocalScale: {x: 0.2, y: 0.41, z: -0.01}
+  m_LocalPosition: {x: -0.273, y: 0.61, z: 0.2302246}
+  m_LocalScale: {x: 0.2, y: 0.787241, z: -0.01}
   m_Children:
   - {fileID: 2009894957462782578}
   m_Father: {fileID: 2848237435732157589}
@@ -571,7 +571,7 @@ GameObject:
   - component: {fileID: 5291793561939578024}
   - component: {fileID: 1896688443302294032}
   - component: {fileID: 6374286328062327502}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,8 +586,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5449462413503168930}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.273, y: 0.20699708, z: -0.23022461}
-  m_LocalScale: {x: 0.2, y: 0.41, z: -0.01}
+  m_LocalPosition: {x: 0.273, y: 0.61, z: -0.23022461}
+  m_LocalScale: {x: 0.2, y: 0.787241, z: -0.01}
   m_Children:
   - {fileID: 5283554334074255922}
   m_Father: {fileID: 2848237435732157589}
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 2972106931639608706}
   - component: {fileID: 7077168983318200427}
   - component: {fileID: 8298573540147161528}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,8 +679,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6728238313769138549}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.273, y: 0.20699708, z: -0.2302246}
-  m_LocalScale: {x: 0.2, y: 0.41, z: -0.01}
+  m_LocalPosition: {x: -0.273, y: 0.61, z: -0.2302246}
+  m_LocalScale: {x: 0.2, y: 0.787241, z: -0.01}
   m_Children:
   - {fileID: 7788243715770602026}
   m_Father: {fileID: 2848237435732157589}
@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 1493656211755348313}
   - component: {fileID: 4090772271078714817}
   - component: {fileID: 3067805932421497935}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 3062950201921453658}
   - component: {fileID: 2853160408799547938}
   - component: {fileID: 5284483189414193640}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TurretNeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,9 @@ GameObject:
   - component: {fileID: 5363165938445148853}
   - component: {fileID: 2731824076144842953}
   - component: {fileID: 5026035399475055348}
-  m_Layer: 0
+  - component: {fileID: 7029441890607944734}
+  - component: {fileID: 8169830873134981484}
+  m_Layer: 14
   m_Name: TurretHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -988,7 +990,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 160ac7f68acc61c4f8615beada77c284, type: 2}
+  - {fileID: 2100000, guid: 6b5128def8256c14abaa584dcc5ebb52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1022,6 +1024,82 @@ CapsuleCollider:
   m_Height: 3.5347643
   m_Direction: 1
   m_Center: {x: -0.017652512, y: 0.8417619, z: 0.043239594}
+--- !u!54 &7029441890607944734
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935290115438626937}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!108 &8169830873134981484
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935290115438626937}
+  m_Enabled: 1
+  serializedVersion: 9
+  m_Type: 2
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Intensity: 10
+  m_Range: 2.14
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 12.28
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &9178200623080679695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1112,7 @@ GameObject:
   - component: {fileID: 4996346989902194921}
   - component: {fileID: 6077346788414236566}
   - component: {fileID: 420304250372155662}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Leg (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
