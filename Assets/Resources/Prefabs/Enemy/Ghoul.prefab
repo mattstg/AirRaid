@@ -1235,10 +1235,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000170320436026457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8445aec41326d04fa2b5b467050519d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dcf662503fc4f54eafe6106b07774c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
+  enemyAbilityManager:
+    abilities: []
+    abilityInUse: 0
 --- !u!195 &-619350218393753076
 NavMeshAgent:
   m_ObjectHideFlags: 0

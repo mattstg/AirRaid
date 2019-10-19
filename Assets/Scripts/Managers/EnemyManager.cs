@@ -20,7 +20,7 @@ public class EnemyManager
     public static GameObject rootPrefab;
 
     Dictionary<EnemyType, GameObject> enemyPrefabDict = new Dictionary<EnemyType, GameObject>(); //all enemy prefabs
-
+    
 
     public void Initialize()
     {
