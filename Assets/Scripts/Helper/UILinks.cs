@@ -18,6 +18,9 @@ public class UILinks : MonoBehaviour
     public GameObject storePanel;
     public GameObject sellGrid;
     public GameObject descriptionPanel;
+    public Text itemTitle;
+    public Text description;
+    public Text cost;
     public GameObject switchInventoryType;
     public GameObject bodyPartPanel;
     public Text goTo;

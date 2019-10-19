@@ -17,8 +17,9 @@ public class StoreManager : IManagable {
 
     public void PostInitialize() {
         Item[] sObject = Resources.LoadAll<Item>("ScirptableObject/");
-        for (int i = 1; i <= 9; i++) {
-            itemList.Add("Slot_" + i, sObject[i-1]);
+
+        for (int i = 0; i < 9; i++) {
+            itemList.Add("Slot_" + (i + 1), sObject[i]);
         }
     }
 

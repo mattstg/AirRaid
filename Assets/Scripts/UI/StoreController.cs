@@ -16,15 +16,17 @@ public class StoreController : MonoBehaviour {
         }
     }
 
-    public void OpenDetail() {
+    public void OpenDetail(string slot) {
         if (UIManager.Instance.storeActive) {
             UILinks.instance.descriptionPanel.SetActive(true);
-
+            Item item = StoreManager.Instance.itemList[slot];
+            UILinks.instance.itemTitle.text = item.name;
+            UILinks.instance.description.text = item.Description;
+            UILinks.instance.cost.text = "Cost: " + item.Cost;
         }
     }
 
     private void OpenShop() {
-
         UILinks.instance.title.text = "Store";
         UILinks.instance.goTo.text = "Go To Inventory";
         UIManager.Instance.storeActive = true;
