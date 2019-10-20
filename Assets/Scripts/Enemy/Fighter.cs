@@ -5,9 +5,7 @@ using UnityEngine;
 public class Fighter : Enemy
 {
 
-    Vector3 dir;
     GameObject player;
-    float timer;
     public float speed;
     [SerializeField] Rigidbody rb;
     // [SerializeField] GameObject player;
