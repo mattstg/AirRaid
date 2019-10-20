@@ -6,7 +6,9 @@ public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, Bo
 public class PlayerController : MonoBehaviour, IHittable
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
+
     [HideInInspector] public bool isAlive;
+    //public bool stalled = false;
 
     [HideInInspector] public PlayerStats stats;
     [HideInInspector] public Rigidbody rb;
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
+<<<<<<< HEAD
 
 
         
@@ -92,6 +95,14 @@ public class PlayerController : MonoBehaviour, IHittable
 
         abilityManager.Refresh(inputPkg);
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime, 0, stats.maxEnergy);
+=======
+        if (!stats.engineStalled)
+        {
+            abilityManager.Refresh(inputPkg);
+        }
+        ModEnergy(stats.energyRegenPerSec * Time.deltaTime);
+        //stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime,0,stats.maxEnergy);
+>>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
         if (stats.hp <= 0)
         {
             ShipDestroyed();
@@ -103,6 +114,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
+<<<<<<< HEAD
         refreshCounter++;
         abilityTimer -= Time.deltaTime;
         turretTimer -= Time.deltaTime;
@@ -163,24 +175,53 @@ public class PlayerController : MonoBehaviour, IHittable
                                                                                                                                                         //This could be done way better, using dot product to determine the speed relative to my facing direction/perpendicular to the ground
 
         rb.angularVelocity = transform.TransformDirection(new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, 0, stats.rollSpeed * inputPkg.dirPressed.x));
+=======
+        if (!stats.engineStalled)
+        {
+            abilityManager.PhysicsRefresh(inputPkg);
+            Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
+
+            rb.angularVelocity = transform.TransformDirection(new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, stats.yawSpeed * inputPkg.yawPressed, stats.rollSpeed * inputPkg.dirPressed.x));
+
+            //Rotate velocity towards aim?
+            //Vector3 relativeVelocity = rb.velocity;
+            rb.velocity = Vector3.RotateTowards(rb.velocity, transform.forward, 5, 0);
+            // rb.velocity = transform.TransformDirection(relativeLocalVelocity);
+        }
+        else
+        {
+            transform.localEulerAngles = Vector3.RotateTowards(transform.localEulerAngles, new Vector3(90,0, transform.localEulerAngles.z), .4f *Time.fixedDeltaTime, 0);
+            rb.angularVelocity += transform.TransformDirection(new Vector3(0, 0, .2f) * Time.fixedDeltaTime);
+            rb.velocity = Vector3.RotateTowards(rb.velocity, transform.forward, 5, 0);
+        }
+>>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
     }
 
     private void Throttle(float deltaThrottle)  //-1 to 1
     {
-
-        rb.AddRelativeForce(Vector3.forward * deltaThrottle * stats.acceleration);
+        if (deltaThrottle > .1f)
+        {
+            rb.AddRelativeForce(Vector3.forward * deltaThrottle * stats.acceleration);
+            ModEnergy(-stats.energyPerThrustSecond * Time.fixedDeltaTime);
+        }
 
         //https://answers.unity.com/questions/193398/velocity-relative-to-local.html
         Vector3 relativeLocalVelocity = stats.relativeLocalVelo;
+
         //Debug.Log("foward velo: " + relativeLocalVelocity);
+<<<<<<< HEAD
         if (relativeLocalVelocity.z > stats.maxSpeed)  //if our forward is greater than max speed
+=======
+        if(relativeLocalVelocity.z > stats.maxSpeed || relativeLocalVelocity.z < stats.minSpeed)  //if our foward is greater than max speed
+>>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
         {
-            relativeLocalVelocity.z = stats.maxSpeed;
+            relativeLocalVelocity.z = Mathf.Clamp(relativeLocalVelocity.z, stats.minSpeed, stats.maxSpeed);
             rb.velocity = transform.TransformDirection(relativeLocalVelocity);
         }
         //consume energy based on speed
         // Debug.Log("RelativeLocalVeloZ: " + relativeLocalVelocity.z + ", stats.MaxSpeed: " + stats.maxSpeed + " stats.energySpeedCostThreshold: " + stats.energySpeedCostThreshold);
 
+<<<<<<< HEAD
         if (relativeLocalVelocity.z > stats.energySpeedCostThreshold)
         {
             float speedAboveThreshold = relativeLocalVelocity.z - stats.energySpeedCostThreshold;
@@ -191,12 +232,26 @@ public class PlayerController : MonoBehaviour, IHittable
             //CurrentEnergy = CurrentEnergy - (Amount of speed above threshold)*(energy cost per speed above threshold)  clamped between 0 and maxEnergy.
         }
 
+=======
+        
+>>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
     }
 
     public void ModEnergy(float modBy)
     {
+<<<<<<< HEAD
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, 0, stats.maxEnergy);
         //Eventually this would be the spot to cause the engine stall
+=======
+        bool engineWasStalled = stats.engineStalled;
+
+        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, -Mathf.Infinity, stats.maxEnergy);
+
+        //If the change in energy causes use to lose control, we want a min of -20 (2 seconds) of stalling
+        if (!engineWasStalled && stats.engineStalled)
+            stats.currentEnegy = Mathf.Clamp(stats.currentEnegy, stats.currentEnegy, -20);
+        //Eventaully this would be the spot to cause the engine stall
+>>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -240,21 +295,22 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         public PlayerController player;
         [Header("Energy")]
-        public float speedPerctangeThresholdToCostEnergy = .8f;  //above 85% max speed, energy begins to be consumed
-        public float energyPerUnitSpeedAboveThreshold = 1.5f; //X energy per unit speed above threshold costs
-        public float energySpeedCostThreshold { get { return maxSpeed * speedPerctangeThresholdToCostEnergy; } } //threshold where it starts costing energy for velocity
         public float maxEnergy = 100;
         public float currentEnegy = 100;
         public float energyRegenPerSec = 10;
+        public float energyPerThrustSecond = 15;
         [Header("Player Movement")]
-        public float maxSpeed = 15;
-        public float acceleration = 10;
+        public float maxSpeed = 40;
+        public float minSpeed = 9;
+        public float acceleration = 30;
         public float pitchSpeed = .6f;
+        public float yawSpeed = .6f;
         public float rollSpeed = 3;
         public readonly float forwardSpeedAtWhichGravityIsCanceled = 10;
         [Header("Stats")]
         public float hp;
         public float maxHp = 100;
+        public bool engineStalled { get { return currentEnegy <= 0; } }
 
         public Vector3 relativeLocalVelo { get { return player.transform.InverseTransformDirection(player.rb.velocity); ; } }  //returns velo in local co-rd, since rb.velo is world
         public List<Abilities> abilities = new List<Abilities>();
