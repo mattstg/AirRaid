@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemDrop : MonoBehaviour, IDropHandler//,IPointerEnterHandler,IPointerExitHandler
+public class ItemDrop : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
@@ -20,17 +20,7 @@ public class ItemDrop : MonoBehaviour, IDropHandler//,IPointerEnterHandler,IPoin
             InventoryManager.AddItem(eventData.pointerDrag.transform.parent.name, item);
             //itemDrag.transform.position = transform.position;
 
-            //item.GetComponent<RectTransform>().sizeDelta = new Vector2( rect.sizeDelta.x,rect.sizeDelta.y);
         }
     }
     
-    /*public void OnPointerEnter(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }*/
 }
