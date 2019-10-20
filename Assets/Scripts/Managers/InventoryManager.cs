@@ -25,7 +25,5 @@ public class InventoryManager : IManagable {
     }
 
     //get slot from next available dictionairy item
-    public void AddItem(string slot, Item item) {
-        itemList.Add(slot, item);
     }
 }
