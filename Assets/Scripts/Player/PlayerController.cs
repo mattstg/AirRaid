@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IHittable
     private float abilityTimer = 0f;
     private float coordSavingTimer = 6f;
     private RewindPositions[] positionList;
-    public int refreshCounter = 0;
+    private int refreshCounter = 0;
 
     //Turret Variables
     private TurretSpawn turretScript;
@@ -85,24 +85,14 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
-<<<<<<< HEAD
 
-
-        
-
-
-        
-
-        abilityManager.Refresh(inputPkg);
-        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime, 0, stats.maxEnergy);
-=======
         if (!stats.engineStalled)
         {
             abilityManager.Refresh(inputPkg);
         }
         ModEnergy(stats.energyRegenPerSec * Time.deltaTime);
         //stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + stats.energyRegenPerSec * Time.deltaTime,0,stats.maxEnergy);
->>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
+
         if (stats.hp <= 0)
         {
             ShipDestroyed();
@@ -114,7 +104,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
-<<<<<<< HEAD
+
         refreshCounter++;
         abilityTimer -= Time.deltaTime;
         turretTimer -= Time.deltaTime;
@@ -137,7 +127,7 @@ public class PlayerController : MonoBehaviour, IHittable
         }
         else  //Else save the current Coord to the List
         {
-            positionList[refreshCounter] = new RewindPositions(transform.position, rb.velocity, rb.rotation);
+            positionList[refreshCounter] = new RewindPositions(transform.position, rb.velocity, rb.rotation,stats.currentEnegy);
         }
 
         //teleport ship to saved coord
@@ -169,13 +159,6 @@ public class PlayerController : MonoBehaviour, IHittable
 
         }
 
-        abilityManager.PhysicsRefresh(inputPkg);
-        Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
-        rb.AddForce(-Vector3.up * Mathf.Lerp(0, 9.81f, Mathf.Clamp01(1 - ((stats.relativeLocalVelo.z) / stats.forwardSpeedAtWhichGravityIsCanceled)))); //add the force of custom gravity, relative to our speed (faster speed @ 50%, less gravity due to "air-lift")
-                                                                                                                                                        //This could be done way better, using dot product to determine the speed relative to my facing direction/perpendicular to the ground
-
-        rb.angularVelocity = transform.TransformDirection(new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, 0, stats.rollSpeed * inputPkg.dirPressed.x));
-=======
         if (!stats.engineStalled)
         {
             abilityManager.PhysicsRefresh(inputPkg);
@@ -194,7 +177,7 @@ public class PlayerController : MonoBehaviour, IHittable
             rb.angularVelocity += transform.TransformDirection(new Vector3(0, 0, .2f) * Time.fixedDeltaTime);
             rb.velocity = Vector3.RotateTowards(rb.velocity, transform.forward, 5, 0);
         }
->>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
+
     }
 
     private void Throttle(float deltaThrottle)  //-1 to 1
@@ -209,11 +192,9 @@ public class PlayerController : MonoBehaviour, IHittable
         Vector3 relativeLocalVelocity = stats.relativeLocalVelo;
 
         //Debug.Log("foward velo: " + relativeLocalVelocity);
-<<<<<<< HEAD
-        if (relativeLocalVelocity.z > stats.maxSpeed)  //if our forward is greater than max speed
-=======
+
         if(relativeLocalVelocity.z > stats.maxSpeed || relativeLocalVelocity.z < stats.minSpeed)  //if our foward is greater than max speed
->>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
+
         {
             relativeLocalVelocity.z = Mathf.Clamp(relativeLocalVelocity.z, stats.minSpeed, stats.maxSpeed);
             rb.velocity = transform.TransformDirection(relativeLocalVelocity);
@@ -221,28 +202,12 @@ public class PlayerController : MonoBehaviour, IHittable
         //consume energy based on speed
         // Debug.Log("RelativeLocalVeloZ: " + relativeLocalVelocity.z + ", stats.MaxSpeed: " + stats.maxSpeed + " stats.energySpeedCostThreshold: " + stats.energySpeedCostThreshold);
 
-<<<<<<< HEAD
-        if (relativeLocalVelocity.z > stats.energySpeedCostThreshold)
-        {
-            float speedAboveThreshold = relativeLocalVelocity.z - stats.energySpeedCostThreshold;
-            float energyDeduct = (speedAboveThreshold) * stats.energyPerUnitSpeedAboveThreshold * Time.fixedDeltaTime;
-            ModEnergy(-energyDeduct);
 
-            //Debug.Log("stats.currentEnegy: " + stats.currentEnegy + ", speedAboveThreshold: " + speedAboveThreshold + " energyDeduct: " + energyDeduct);
-            //CurrentEnergy = CurrentEnergy - (Amount of speed above threshold)*(energy cost per speed above threshold)  clamped between 0 and maxEnergy.
-        }
-
-=======
-        
->>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
     }
 
     public void ModEnergy(float modBy)
     {
-<<<<<<< HEAD
-        stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, 0, stats.maxEnergy);
-        //Eventually this would be the spot to cause the engine stall
-=======
+
         bool engineWasStalled = stats.engineStalled;
 
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, -Mathf.Infinity, stats.maxEnergy);
@@ -250,8 +215,8 @@ public class PlayerController : MonoBehaviour, IHittable
         //If the change in energy causes use to lose control, we want a min of -20 (2 seconds) of stalling
         if (!engineWasStalled && stats.engineStalled)
             stats.currentEnegy = Mathf.Clamp(stats.currentEnegy, stats.currentEnegy, -20);
-        //Eventaully this would be the spot to cause the engine stall
->>>>>>> 5d91f914f4ddae963573fbb7a2190955fbe5ed1f
+        //Eventually this would be the spot to cause the engine stall
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -279,12 +244,14 @@ public class PlayerController : MonoBehaviour, IHittable
             transform.position = positionList[0].savedPos;
             rb.velocity = positionList[0].savedVelo;
             rb.rotation = positionList[0].savedRot;
+            stats.currentEnegy = positionList[0].savedEnergy;  //Check if old energy smaller than new one? if yes cancel? 
         }
         else
         {
             transform.position = positionList[refreshCounter - 179].savedPos;
             rb.velocity = positionList[refreshCounter - 179].savedVelo;
             rb.rotation = positionList[refreshCounter - 179].savedRot;
+            stats.currentEnegy = positionList[refreshCounter-179].savedEnergy;
         }
 
         abilityTimer = 7f;
@@ -325,13 +292,15 @@ public class PlayerController : MonoBehaviour, IHittable
         public Vector3 savedPos;
         public Quaternion savedRot;
         public Vector3 savedVelo;
+        public float savedEnergy;
 
 
-        public RewindPositions(Vector3 pos, Vector3 velo, Quaternion rotation)
+        public RewindPositions(Vector3 pos, Vector3 velo, Quaternion rotation,float savedEnergy)
         {
             this.savedPos = pos;
             this.savedVelo = velo;
             this.savedRot = rotation;
+            this.savedEnergy = savedEnergy;
         }
     }
 
