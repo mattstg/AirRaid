@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 44004829}
   - component: {fileID: 44004828}
   m_Layer: 5
-  m_Name: BodyPart_lFrontCanon
+  m_Name: BodyPart_FrontCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 51515619}
   - component: {fileID: 51515618}
   m_Layer: 5
-  m_Name: BodyPart_lBombBay
+  m_Name: BodyPart_BombBay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4734,7 +4734,7 @@ GameObject:
   - component: {fileID: 1019048095}
   - component: {fileID: 1019048094}
   m_Layer: 5
-  m_Name: PanelWingSlot
+  m_Name: BodyPart_WingSlots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7659,7 +7659,7 @@ GameObject:
   - component: {fileID: 1692374390}
   - component: {fileID: 1692374392}
   m_Layer: 5
-  m_Name: BodyPart
+  m_Name: BodyPartPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
