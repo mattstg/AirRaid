@@ -9,7 +9,7 @@ public class InventoryManager : IManagable {
     public static InventoryManager Instance { get { return instance ?? (instance = new InventoryManager()); } }
     #endregion
 
-    public Dictionary<string, Item> itemList;
+    public static Dictionary<string, Item> itemList;
 
     public void Initialize() {
         itemList = new Dictionary<string, Item>();
