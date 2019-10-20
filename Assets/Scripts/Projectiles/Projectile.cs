@@ -29,8 +29,10 @@ public class Projectile : MonoBehaviour
         if (Physics.Raycast(transform.position, currentMovementVector, out rayHit, projectileSpeed * Time.fixedDeltaTime, LayerMask.GetMask("Enemy", "Building", "Floor", "Wall")))
         {
             IHittable ihittable = rayHit.transform.GetComponent<IHittable>();  //If the thing we hit has implemented "IHittable"
-            if(ihittable != null)
-                HitTarget(ihittable);
+            if (ihittable != null)
+                HitTarget(ihittable, LayerMask.LayerToName(rayHit.transform.gameObject.layer));
+            else
+                HitNonTarget(rayHit.point, LayerMask.LayerToName(rayHit.transform.gameObject.layer));
             DestroyProjectile();
         }
         else
@@ -44,7 +46,14 @@ public class Projectile : MonoBehaviour
         DestroyProjectile();
     }
 
-    protected virtual void HitTarget(IHittable targetHit)
+    
+    protected virtual void HitTarget(IHittable targetHit, string layerName)
+    {
+        //implement in child
+    }
+
+    //Things without IHittable, for example, floor
+    protected virtual void HitNonTarget(Vector3 pos, string layerName)
     {
         //implement in child
     }
