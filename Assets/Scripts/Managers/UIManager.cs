@@ -31,6 +31,7 @@ public class UIManager
     {
     }
 
+    public void PhysicsRefresh() {}
 
     public void Refresh(PlayerController.PlayerStats statsToUse)
     {
