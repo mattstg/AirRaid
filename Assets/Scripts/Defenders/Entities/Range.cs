@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Range : DefenderSmart {
+public class Range : Defender {
 
     public override void Initialize() {
         base.PostInitialize(TypeDefender.RANGE, DefenderState.ON_IDLE, new RangeAttack());

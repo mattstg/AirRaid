@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : DefenderSmart {
+public class Melee : Defender {
 
     public override void Initialize() {
         base.PostInitialize(TypeDefender.MELEE, DefenderState.ON_IDLE, new MeleeAttack());

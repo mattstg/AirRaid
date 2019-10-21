@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour {
         Vector3 size = transform.GetComponent<BoxCollider>().bounds.extents;
         this.spawnPoint = new Vector3(transform.position.x + size.x + 1, 0, transform.position.z + size.z + 1);
 
-        ResetGroup();
+        CreateNewGroup();
     }
 
     public void Refresh() {
@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour {
                 SpawnDefender();
             else {
                 this.groupdLeader.GoFight();
-                ResetGroup();
+                CreateNewGroup();
             }
             this.lastTimeUnitSpawned = Time.time;
         }
@@ -67,7 +67,7 @@ public class Spawner : MonoBehaviour {
         return false;
     }
 
-    private void ResetGroup() {
+    private void CreateNewGroup() {
         this.groupdLeader = GameObject.Instantiate<GameObject>(DefenderManager.Instance.defenderPrefabs[TypeDefender.LEADER], this.spawnPoint, new Quaternion(), this.parent).GetComponent<Leader>();
         DefenderManager.Instance.AddLeaderToList(this.groupdLeader);
         this.amountToSpawnToFinishGroup = GlobalDefendersVariables.Instance.GROUP_SIZE;

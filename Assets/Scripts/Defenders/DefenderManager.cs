@@ -48,7 +48,7 @@ public class DefenderManager {
     public void AddLeaderToList(Leader leader) {
         this.leadersList.Add(leader);
     }
-    public void RemoveLeaderToList(Leader leader) {
+    public void RemoveLeaderFromList(Leader leader) {
         this.leadersList.Remove(leader);
     }
 }
