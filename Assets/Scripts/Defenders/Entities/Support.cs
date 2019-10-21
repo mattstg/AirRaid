@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Support : Defender {
 
-    public override void Initialize() {
-        base.PostInitialize(TypeDefender.SUPPORT, DefenderState.ON_IDLE, new HealAttack());
+    public override void Initialize(Leader leader) {
+        base.PostInitialize(TypeDefender.SUPPORT, DefenderState.ON_IDLE, new HealAttack(), leader);
     }
 
     //Special for support because dont always attack : ex: if all units are full hp
@@ -18,13 +18,20 @@ public class Support : Defender {
                 this.defenderInfos.state = DefenderState.ON_ATTACK;
                 DoAbility();
             }
-            else {
+            else if (DoTargetNeedHealing() && !base.IsTargetInMyAttackRange()) {
                 //Target not in attack range -> move toward target
+                this.agent.SetDestination(this.defenderInfos.target.position);
+            }
+            else {
+                //Target doesnt need healing -> move toward leader
+                this.agent.SetDestination(this.myLeader.transform.position);
             }
         }
         else {
             //I don't have a target -> move toward leader
+            this.agent.SetDestination(this.myLeader.transform.position);
         }
+        this.defenderInfos.speed = this.agent.speed;
     }
 
     public override void PhysicRefresh() {

@@ -15,19 +15,19 @@ public class GlobalDefendersVariables {
 
 
     //Melee
-    public readonly float ML_HP = 150f;
+    public readonly float ML_HP = 200f;
     public readonly float ML_MAX_HP = 200f;
     public readonly float ML_DAMAGE = 1f;
     public readonly float ML_ENERGY_START = 150f;
     public readonly float ML_ENERGY_MAX = 150f;
     public readonly float ML_ENERGY_REGEN = 0.2f;
-    public readonly float ML_ATTACK_RANGE = 5f;
+    public readonly float ML_ATTACK_RANGE = 3f;
     public readonly float ML_VISION_RANGE = 10f;
     public readonly float ML_DELAY_ABILITY = 2f;
     public readonly float ML_ABILITY_COST = 20f;
 
     //Range
-    public readonly float RA_HP = 10f;
+    public readonly float RA_HP = 100f;
     public readonly float RA_MAX_HP = 100f;
     public readonly float RA_DAMAGE = 1.2f;
     public readonly float RA_ENERGY_START = 120f;

@@ -107,7 +107,7 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 31.1
+    agentSlope: 60
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
@@ -212,6 +212,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58937813}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &134756330
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6921213964289198276, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Leader
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221246482146179799, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844737454451945016, guid: e4a2a0f5fcb9e1549810db39a75639e5,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4a2a0f5fcb9e1549810db39a75639e5, type: 3}
 --- !u!1 &164768664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,6 +2387,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435892, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Defender_Spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 5407642137226857894, guid: 8d218a94a1037144a96174ab3e9cd0aa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2373,10 +2452,60 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 42.10022
       objectReference: {fileID: 0}
-    - target: {fileID: 5407642137226435892, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+    - target: {fileID: 5407642137226435748, guid: 8d218a94a1037144a96174ab3e9cd0aa,
         type: 3}
-      propertyPath: m_TagString
-      value: Defender_Spawner
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435750, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435760, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435762, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435768, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435770, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435772, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435774, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435672, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435674, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407642137226435718, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d218a94a1037144a96174ab3e9cd0aa, type: 3}

@@ -1,14 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Leader : MonoBehaviour {
 
+    private NavMeshAgent agent;
+    private Animator animator;
+    private AudioSource speaker;
     private List<Defender> myGroup = new List<Defender>();
     private Transform target;
     private bool readyToFight;
     private float delayToCheckTarget = 5f, lastTimeTargetCheked;
     private float delayToGiveTargetToHealer = 3f, lastTimeHealerTarget;
+
+    public void Initialize() {
+        this.agent = transform.GetComponent<NavMeshAgent>();
+        this.animator = transform.GetComponent<Animator>();
+        this.speaker = transform.GetComponent<AudioSource>();
+    }
 
     public void Refresh() {
         //Every 5 sec, check if enemy closer than actual target
@@ -34,7 +44,10 @@ public class Leader : MonoBehaviour {
 
     public void PhysicRefresh() {
         if (this.readyToFight) {
-            //Move toward target
+            if (this.target != null) {
+                this.agent.SetDestination(new Vector3(this.target.transform.position.x, 0, this.target.transform.position.z));
+                this.animator.SetFloat("speedVelocity", this.agent.speed);
+            }
         }
         for (int i = this.myGroup.Count - 1; i >= 0; i--) {
             this.myGroup[i].PhysicRefresh();
@@ -46,7 +59,6 @@ public class Leader : MonoBehaviour {
         float smallestDistance = float.MaxValue, distance;
         foreach (Enemy enemy in EnemyManager.Instance.enemies) {
             distance = Vector3.Distance(transform.position, enemy.transform.position);
-            Debug.Log(distance.ToString());
             if (distance < smallestDistance) {
                 smallestDistance = distance;
                 this.target = enemy.transform;
@@ -96,6 +108,10 @@ public class Leader : MonoBehaviour {
 
     public void RemoveDefenderFromMyGroup(Defender defender) {
         this.myGroup.Remove(defender);
+    }
+
+    public void PlaySound(AudioClip clip) {
+        this.speaker.PlayOneShot(clip);
     }
 
 

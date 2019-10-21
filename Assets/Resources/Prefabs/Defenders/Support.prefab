@@ -2250,6 +2250,7 @@ GameObject:
   - component: {fileID: 6531126011897562600}
   - component: {fileID: 3143171423506193211}
   - component: {fileID: 4517473153553085754}
+  - component: {fileID: 4179703181177575005}
   m_Layer: 0
   m_Name: Support
   m_TagString: Untagged
@@ -2318,6 +2319,28 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!195 &4179703181177575005
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309022397331965010}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8839450724094136469
 GameObject:
   m_ObjectHideFlags: 0
