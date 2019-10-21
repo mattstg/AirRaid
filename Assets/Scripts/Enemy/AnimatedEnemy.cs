@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimatedEnemy : MobileEnemy
 {
 
-    protected Vector3 targetBuilding;
+    public GameObject target;
     public AnimationClip walk;
     public AnimationClip idle;
     public AnimationClip run;
@@ -24,6 +24,7 @@ public class AnimatedEnemy : MobileEnemy
         OverrideAnimatorController();
         enemyAbilityManager = new EnemyAbilityManager(this);
         base.Initialize(startingEnergy);
+        
     }
 
     private void OverrideAnimatorController()
@@ -51,36 +52,6 @@ public class AnimatedEnemy : MobileEnemy
         anim.SetFloat("Velocity",velocity);
     }
 
-    public void DetectEnemyNearby() //Unsafe Function
-    {
-
-        float buildingDistance = 0;
-        float defenderDistance = 0;
-        float distance;
-        Vector3 positionBuilding = Vector3.zero;
-
-        int radius = 1; // Use the detectionRadius variable instead
-        
-        Collider[] collid = Physics.OverlapSphere(transform.position, 10, LayerMask.GetMask("Wall", "Building"));
-        if(collid.Length != 0)
-        {
-            buildingDistance = Vector3.Distance(transform.position, collid[0].transform.position);
-            foreach(Collider entity in collid)
-            {
-                distance = Vector3.Distance(transform.position, entity.transform.position);
-                if(buildingDistance > distance)
-                {
-                    buildingDistance = distance;
-                    positionBuilding = entity.transform.position;
-
-                }
-            }
-            if (positionBuilding != targetBuilding)
-            {
-                targetBuilding = positionBuilding;
-                navmeshAgent.SetDestination(targetBuilding);
-            }
-        }
-    }
+    
 }
 

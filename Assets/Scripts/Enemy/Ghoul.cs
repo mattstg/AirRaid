@@ -13,7 +13,7 @@ public class Ghoul : AnimatedEnemy
     {
         base.Initialize(startingEnergy);
         hp = MAX_HP;
-        targetBuilding = BuildingManager.Instance.GetRandomBuilding().transform.position;
+        //target = BuildingManager.Instance.GetRandomBuilding().transform.position;
         //navmeshAgent.SetDestination(targetBuilding);
     }
     public override void Refresh()
