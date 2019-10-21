@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretTimer: 0
+  radiusRangeDetection: 90
 --- !u!1 &5584371700101690962
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +217,6 @@ MonoBehaviour:
   isAlive: 0
   rb: {fileID: 0}
   playerCam: {fileID: 0}
-  refreshCounter: 0
 --- !u!33 &5552085018173789860
 MeshFilter:
   m_ObjectHideFlags: 0
