@@ -15,6 +15,7 @@ public class AnimatedEnemy : MobileEnemy
     protected float globalCoolDown; 
     protected float decisionTime; //Time it takes for the enemy to change decision CONSTANT - Makes the AI less reactive
     protected float timeSinceLastDecision;
+    public bool CanMakeDecision { get { return decisionTime + timeSinceLastDecision <= Time.time  ; } }
     protected float detectionRadius;
     protected Vector2 attackRadius; // Could be set in Initialize, by cycling through the abilities to get the min and max range overall
     public EnemyAbilityManager enemyAbilityManager;

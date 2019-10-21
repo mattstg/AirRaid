@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyAbilityManager
 {
-    AnimatedEnemy enemy; 
+    AnimatedEnemy enemy;
     public List<EnemyAbility> abilities;
     //public bool abilityInUse;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //public enum AbilityType { Melee, AOE }
-public class EnemyAbility : ScriptableObject
+public abstract class EnemyAbility : ScriptableObject
 {
     protected Enemy enemy;
     public AnimationClip animation;
@@ -17,12 +17,7 @@ public class EnemyAbility : ScriptableObject
 
     public bool canUseAbility { get { return Time.time - timeLastUsed >= cooldown; } }
 
-    public virtual void Initialize(Enemy _enemy)
-    {
-
-    }
-    public virtual void UseAbility()
-    {
-    }
+    public abstract void Initialize(Enemy _enemy);
+    public abstract void UseAbility();
 
 }

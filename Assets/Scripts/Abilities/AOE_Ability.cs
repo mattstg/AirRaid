@@ -14,7 +14,7 @@ public class AOE_Ability : EnemyAbility
 
     public override void Initialize(Enemy _enemy)
     {
-        base.Initialize(_enemy);
+        enemy = _enemy;
     }
     public override void UseAbility()
     {
@@ -24,18 +24,17 @@ public class AOE_Ability : EnemyAbility
         }
         else
         {
-            HitAll();
+            Main();
         }
     }
 
     IEnumerator MustWaitBeforeHit(float time)
     {
         yield return new WaitForSeconds(time);
-        HitAll();
+        Main();
     }
 
-    void HitAll() // Jsais pas comment la nommer, should refactor
+    void Main() // Jsais pas comment la nommer, should refactor
     {
-
     }
 }
