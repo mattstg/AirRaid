@@ -51,6 +51,10 @@ public class AnimatedEnemy : MobileEnemy
     {
         anim.SetFloat("Velocity",velocity);
     }
+    public void SetAgent(Vector3 pos)
+    {
+        navmeshAgent.SetDestination(pos);
+    }
 
     
 }

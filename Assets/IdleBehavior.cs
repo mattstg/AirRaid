@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class IdleBehavior : StateMachineBehaviour
 {
-
+    AnimatedEnemy ae;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log(animator.GetComponent<AnimatedEnemy>().target);
-        if (animator.GetComponent<AnimatedEnemy>().target != null)
+        if(ae == null)
+            ae = animator.GetComponent<AnimatedEnemy>();
+        if (ae.target != null)
             animator.SetBool("isTarget", true);
         else
             animator.SetBool("isTarget", false);
@@ -19,7 +20,41 @@ public class IdleBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        Debug.Log("bob");
+        float targetDistance = 0;
+        GameObject _target = null;
+        float distance;
+
+        int compteur = 1; // Use the detectionRadius variable instead
+        do
+        {
+            Collider[] collid = Physics.OverlapSphere(ae.transform.position, 30 * compteur, LayerMask.GetMask("Wall", "Building"));
+            if (collid.Length != 0)
+            {
+                targetDistance = Vector3.Distance(ae.transform.position, collid[0].transform.position);
+                foreach (Collider entity in collid)
+                {
+                    distance = Vector3.Distance(ae.transform.position, entity.transform.position);
+                    if (targetDistance > distance)
+                    {
+                        _target = entity.gameObject;
+                        if (ae.target != _target)
+                        {
+                            targetDistance = distance;
+                        }
+                        else
+                            _target = null;
+                    }
+                }
+                if (_target != null)
+                {
+                    ae.target = _target;
+                    ae.SetAgent(ae.target.transform.position);
+                    animator.SetBool("isTarget", true);
+                }
+            }
+            compteur++;
+        } while (_target == null);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
