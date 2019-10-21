@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour, IHittable
     {
 
         rewindQueue = new LinkedList<RewindPositions>();
-        rewindHappening = true;
+        rewindHappening = false;
 
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
@@ -121,8 +121,8 @@ public class PlayerController : MonoBehaviour, IHittable
             {
                 //Check if list is empty ***** 
 
-                    rewindQueue.RemoveFirst();
-                
+                rewindQueue.RemoveFirst();
+
                 rewindQueue.AddLast(new RewindPositions(transform.position, rb.velocity, rb.rotation, stats.currentEnegy, stats.hp));
             }
             else
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour, IHittable
         //Timer to activate Rewind Ability
         if (abilityTimer > 0)
         {
-             Debug.Log("Ability timer : " + abilityTimer);
+            //Debug.Log("Ability timer : " + abilityTimer);
 
         }
 
@@ -246,12 +246,11 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         //set rewind to happening / reset Timers
         rewindHappening = true;
-        abilityTimer = 15f;
-        refreshCounter = 3f;
+        abilityTimer = 150f;
 
         //Stop player mid flight
         rb.velocity = new Vector3(0, 0, 0);
-        
+
 
 
         StartCoroutine(RewindAction());
@@ -261,6 +260,8 @@ public class PlayerController : MonoBehaviour, IHittable
     public void killRoutine()
     {
         StopCoroutine(RewindAction());
+        abilityTimer = 15f;
+        refreshCounter = 3f;
     }
 
     IEnumerator RewindAction()
