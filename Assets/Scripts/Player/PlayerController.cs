@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum Abilities { Turrets, Rocket }
@@ -20,13 +21,11 @@ public class PlayerController : MonoBehaviour, IHittable
 
 
     //Rewind Variables
-    private Vector3 savedPos;
-    private Vector3 savedVelo;
-    private Quaternion savedRot;
-    private float abilityTimer = 0f;
-    private float coordSavingTimer = 6f;
-    private RewindPositions[] positionList;
-    private int refreshCounter = 0;
+
+    private float abilityTimer = 7f;
+    private LinkedList<RewindPositions> rewindQueue;
+    private float refreshCounter = 3f;
+    private bool rewindHappening;
 
     //Turret Variables
     private TurretSpawn turretScript;
@@ -34,12 +33,13 @@ public class PlayerController : MonoBehaviour, IHittable
     public void Initialize()
     {
 
-        positionList = new RewindPositions[360];
+        rewindQueue = new LinkedList<RewindPositions>();
+        rewindHappening = true;
 
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
-        //but it's important that I test now that my ability system is all in place.
+                                                                 //but it's important that I test now that my ability system is all in place.
 
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
         //Load Turret
         turretScript = GetComponentInChildren<TurretSpawn>();
-        
+
 
 
         //Link all body parts
@@ -98,37 +98,40 @@ public class PlayerController : MonoBehaviour, IHittable
             ShipDestroyed();
         }
 
-        
+
         //Debug.Log("Energy: " + stats.currentEnegy);
     }
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
 
-        refreshCounter++;
+        //Ability Timers
+
+        refreshCounter -= Time.deltaTime;
         abilityTimer -= Time.deltaTime;
-        turretTimer -= Time.deltaTime;
-        //If we have saved 6seconds of coords, Enter here
-        if (refreshCounter > 359)
+
+
+        //turretTimer -= Time.deltaTime;
+
+        //Add data to Queue /OR/ Remove old Data then Add new
+        if (!rewindHappening)
         {
-            //Reset Counter to 3seconds
-            refreshCounter = 179;
-            //Loop that erases first 3 seconds of Coords
-            for (int i = 0; i < 179; i++)
+
+            if (refreshCounter < 0)
             {
-                positionList[i] = null;
+                //Check if list is empty ***** 
+
+                    rewindQueue.RemoveFirst();
+                
+                rewindQueue.AddLast(new RewindPositions(transform.position, rb.velocity, rb.rotation, stats.currentEnegy, stats.hp));
             }
-            //Loop that sets remaining Coords to begining of List
-            for (int i = 0; i < 179; i++)
+            else
             {
-                positionList[i] = positionList[i + 179];
-                positionList[i + 179] = null;
+                rewindQueue.AddLast(new RewindPositions(transform.position, rb.velocity, rb.rotation, stats.currentEnegy, stats.hp));
             }
         }
-        else  //Else save the current Coord to the List
-        {
-            positionList[refreshCounter] = new RewindPositions(transform.position, rb.velocity, rb.rotation,stats.currentEnegy);
-        }
+
+
 
         //teleport ship to saved coord
         if (abilityTimer < 0)
@@ -136,6 +139,8 @@ public class PlayerController : MonoBehaviour, IHittable
             Debug.Log("Rewind Ready!!!");
             if (Input.GetKeyDown(KeyCode.R))
             {
+                //activate Rewind and reset Queue and Timers;
+                Debug.Log("Size of List = " + rewindQueue.Count);
                 Rewind();
             }
         }
@@ -155,7 +160,7 @@ public class PlayerController : MonoBehaviour, IHittable
         //Timer to activate Rewind Ability
         if (abilityTimer > 0)
         {
-            Debug.Log("Ability timer : " + abilityTimer);
+             Debug.Log("Ability timer : " + abilityTimer);
 
         }
 
@@ -173,7 +178,7 @@ public class PlayerController : MonoBehaviour, IHittable
         }
         else
         {
-            transform.localEulerAngles = Vector3.RotateTowards(transform.localEulerAngles, new Vector3(90,0, transform.localEulerAngles.z), .4f *Time.fixedDeltaTime, 0);
+            transform.localEulerAngles = Vector3.RotateTowards(transform.localEulerAngles, new Vector3(90, 0, transform.localEulerAngles.z), .4f * Time.fixedDeltaTime, 0);
             rb.angularVelocity += transform.TransformDirection(new Vector3(0, 0, .2f) * Time.fixedDeltaTime);
             rb.velocity = Vector3.RotateTowards(rb.velocity, transform.forward, 5, 0);
         }
@@ -193,7 +198,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
         //Debug.Log("foward velo: " + relativeLocalVelocity);
 
-        if(relativeLocalVelocity.z > stats.maxSpeed || relativeLocalVelocity.z < stats.minSpeed)  //if our foward is greater than max speed
+        if (relativeLocalVelocity.z > stats.maxSpeed || relativeLocalVelocity.z < stats.minSpeed)  //if our foward is greater than max speed
 
         {
             relativeLocalVelocity.z = Mathf.Clamp(relativeLocalVelocity.z, stats.minSpeed, stats.maxSpeed);
@@ -239,23 +244,61 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Rewind()
     {
-        if (refreshCounter < 179)
+        //set rewind to happening / reset Timers
+        rewindHappening = true;
+        abilityTimer = 15f;
+        refreshCounter = 3f;
+
+        //Stop player mid flight
+        rb.velocity = new Vector3(0, 0, 0);
+        
+
+
+        StartCoroutine(RewindAction());
+
+    }
+
+    public void killRoutine()
+    {
+        StopCoroutine(RewindAction());
+    }
+
+    IEnumerator RewindAction()
+    {
+
+        while (rewindHappening)
         {
-            transform.position = positionList[0].savedPos;
-            rb.velocity = positionList[0].savedVelo;
-            rb.rotation = positionList[0].savedRot;
-            stats.currentEnegy = positionList[0].savedEnergy;  //Check if old energy smaller than new one? if yes cancel? 
-        }
-        else
-        {
-            transform.position = positionList[refreshCounter - 179].savedPos;
-            rb.velocity = positionList[refreshCounter - 179].savedVelo;
-            rb.rotation = positionList[refreshCounter - 179].savedRot;
-            stats.currentEnegy = positionList[refreshCounter-179].savedEnergy;
+            Debug.Log("Size of queue in routine = " + rewindQueue.Count);
+
+            /*
+             * Add check to see if List is Empty,   if yes kill the Coroutine
+             * */
+
+            if (rewindQueue.Count >= 2)
+            {
+
+                rewindQueue.RemoveLast();
+
+
+                transform.position = rewindQueue.Last.Value.savedPos;
+                rb.velocity = rewindQueue.Last.Value.savedVelo;
+                rb.rotation = rewindQueue.Last.Value.savedRot;
+                stats.currentEnegy = rewindQueue.Last.Value.savedEnergy;
+
+                yield return null;
+            }
+            else
+            {
+                rewindQueue.Clear();
+                rewindHappening = false;
+                killRoutine();
+            }
         }
 
-        abilityTimer = 7f;
+        Debug.Log("Coroutine DONE");
     }
+
+
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game
     public class PlayerStats
@@ -292,14 +335,16 @@ public class PlayerController : MonoBehaviour, IHittable
         public Vector3 savedPos;
         public Quaternion savedRot;
         public Vector3 savedVelo;
+        public float savedHp;
         public float savedEnergy;
 
 
-        public RewindPositions(Vector3 pos, Vector3 velo, Quaternion rotation,float savedEnergy)
+        public RewindPositions(Vector3 pos, Vector3 velo, Quaternion rotation, float savedEnergy, float savedHp)
         {
             this.savedPos = pos;
             this.savedVelo = velo;
             this.savedRot = rotation;
+            this.savedHp = savedHp;
             this.savedEnergy = savedEnergy;
         }
     }
