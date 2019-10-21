@@ -16,8 +16,6 @@ public class InputManager : IManagable
     public InputPkg refreshInputPkg = new InputPkg();
     public InputPkg physicsRefreshInputPkg = new InputPkg();
 
-
-
     public void Initialize()
     {
         refreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];

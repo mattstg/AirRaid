@@ -17,7 +17,9 @@ public class ItemDrop : MonoBehaviour, IDropHandler
             //ItemDrag.itemStart.transform.SetParent(transform);
             GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
             itemDrag.spriteChange = true;
+
             //InventoryManager.AddItem(eventData.pointerDrag.transform.parent.name, item);
+
             //itemDrag.transform.position = transform.position;
 
         }
