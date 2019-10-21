@@ -1,26 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ChaseBehavior : StateMachineBehaviour
 {
+    AnimatedEnemy ae;
+    Time timeBetweenLastDecision;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
+        if (ae == null)
+            ae = animator.GetComponent<AnimatedEnemy>();
+        ae.navmeshAgent.isStopped = false;
+
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (ae.CheckTargetDestroy())
+        {
+            animator.SetBool("isTarget", false);
+            return;
+        }
+        if (ae.navmeshAgent.remainingDistance <= 1)
+        {
+
+            if (ae.CanMakeDecision)
+            {
+                ae.navmeshAgent.isStopped = true;
+                ae.timeSinceLastDecision = Time.time;
+                animator.SetTrigger("attack");
+            }
+        }
+
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        ae.transform.LookAt(ae.target.transform.position);
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

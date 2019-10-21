@@ -10,10 +10,10 @@ public class IdleBehavior : StateMachineBehaviour
     {
         if(ae == null)
             ae = animator.GetComponent<AnimatedEnemy>();
-        if (ae.target != null)
-            animator.SetBool("isTarget", true);
-        else
-            animator.SetBool("isTarget", false);
+        //if (ae.target != null)
+        //    animator.SetBool("isTarget", true);
+       // else
+        //    animator.SetBool("isTarget", false);
         
     }
 
@@ -24,37 +24,41 @@ public class IdleBehavior : StateMachineBehaviour
         float targetDistance = 0;
         GameObject _target = null;
         float distance;
-
+        GameObject temp = null;
         int compteur = 1; // Use the detectionRadius variable instead
-        do
+        if (!animator.GetBool("isTarget"))
         {
-            Collider[] collid = Physics.OverlapSphere(ae.transform.position, 30 * compteur, LayerMask.GetMask("Wall", "Building"));
-            if (collid.Length != 0)
+            do
             {
-                targetDistance = Vector3.Distance(ae.transform.position, collid[0].transform.position);
-                foreach (Collider entity in collid)
+                Collider[] collid = Physics.OverlapSphere(ae.transform.position, 30 * compteur, LayerMask.GetMask("Wall", "Building"));
+                if (collid.Length != 0)
                 {
-                    distance = Vector3.Distance(ae.transform.position, entity.transform.position);
-                    if (targetDistance > distance)
+                    targetDistance = Vector3.Distance(ae.transform.position, collid[0].transform.position);
+                    foreach (Collider entity in collid)
                     {
-                        _target = entity.gameObject;
-                        if (ae.target != _target)
+                        distance = Vector3.Distance(ae.transform.position, entity.transform.position);
+                        if (targetDistance > distance)
                         {
-                            targetDistance = distance;
+                            _target = entity.gameObject;
+                            if (ae.target != _target)
+                            {
+                                temp = _target;
+                                targetDistance = distance;
+                            }
+                            else
+                                _target = temp;
                         }
-                        else
-                            _target = null;
+                    }
+                    if (_target != null)
+                    {
+                        ae.target = _target;
+                        ae.SetAgent(ae.target.transform.position);
+                        animator.SetBool("isTarget", true);
                     }
                 }
-                if (_target != null)
-                {
-                    ae.target = _target;
-                    ae.SetAgent(ae.target.transform.position);
-                    animator.SetBool("isTarget", true);
-                }
-            }
-            compteur++;
-        } while (_target == null);
+                compteur++;
+            } while (_target == null);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

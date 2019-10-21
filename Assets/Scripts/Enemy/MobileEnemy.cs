@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MobileEnemy : Enemy
 {
-    protected NavMeshAgent navmeshAgent;
+    public NavMeshAgent navmeshAgent;
     
 
     public override void Initialize(float startingEnergy)

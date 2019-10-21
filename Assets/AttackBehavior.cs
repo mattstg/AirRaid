@@ -10,16 +10,19 @@ public class AttackBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
-        if (enemy == null)
+       if (enemy == null)
             enemy = animator.GetComponent<AnimatedEnemy>();
         EnemyAbility temp;
-        for (int i = 0; i < enemy.enemyAbilityManager.abilities.Count; i++)
+        if (enemy.enemyAbilityManager.abilities != null)
         {
-            temp = enemy.enemyAbilityManager.abilities[i];
-            if (temp.canUseAbility)
+            for (int i = 0; i < enemy.enemyAbilityManager.abilities.Count; i++)
             {
-                ability = temp;
-                break;
+                temp = enemy.enemyAbilityManager.abilities[i];
+                if (temp.canUseAbility)
+                {
+                    ability = temp;
+                    break;
+                }
             }
         }
         if(ability == null)

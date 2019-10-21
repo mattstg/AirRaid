@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimatedEnemy : MobileEnemy
 {
-
     public GameObject target;
     public AnimationClip walk;
     public AnimationClip idle;
@@ -13,8 +12,8 @@ public class AnimatedEnemy : MobileEnemy
     public AnimationClip death;
     protected Animator anim;
     protected float globalCoolDown; 
-    protected float decisionTime; //Time it takes for the enemy to change decision CONSTANT - Makes the AI less reactive
-    protected float timeSinceLastDecision;
+    protected float decisionTime = 2; //Time it takes for the enemy to change decision CONSTANT - Makes the AI less reactive
+    public float timeSinceLastDecision;
     public bool CanMakeDecision { get { return decisionTime + timeSinceLastDecision <= Time.time  ; } }
     protected float detectionRadius;
     protected Vector2 attackRadius; // Could be set in Initialize, by cycling through the abilities to get the min and max range overall
@@ -56,7 +55,16 @@ public class AnimatedEnemy : MobileEnemy
     {
         navmeshAgent.SetDestination(pos);
     }
-
+    public void ClearAgentDestination()
+    {
+        navmeshAgent.ResetPath();
+    }
+    public bool CheckTargetDestroy()
+    {
+        if (!target)
+            return true;
+        return false;
+    }
     
 }
 

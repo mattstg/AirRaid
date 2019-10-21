@@ -12,11 +12,14 @@ public class EnemyAbilityManager
     public EnemyAbilityManager(AnimatedEnemy _enemy)
     {
         enemy = _enemy;
-        //abilities = new List<EnemyAbility>(); 
+        abilities = new List<EnemyAbility>();
+        AddAbility(Resources.Load<EnemyAbility>("EnemyAbility/Smash"));
+
     }
 
     public void AddAbility(EnemyAbility ability) // Might be useless now
     {
+        ability.Initialize(enemy);
         abilities.Add(ability);
     }
     public void Refresh()
