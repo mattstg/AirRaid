@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour {
     private void SpawnDefender() {
         this.amountToSpawnToFinishGroup--;
         Defender defender = GameObject.Instantiate<GameObject>(DefenderManager.Instance.defenderPrefabs[GetTypeToSpawn()], this.spawnPoint, new Quaternion(), this.parent).GetComponent<Defender>();
-        defender.Initialize();
+        defender.Initialize(this.groupdLeader);
         this.groupdLeader.AddDefenderToMyGroup(defender);
     }
 
@@ -69,6 +69,7 @@ public class Spawner : MonoBehaviour {
 
     private void CreateNewGroup() {
         this.groupdLeader = GameObject.Instantiate<GameObject>(DefenderManager.Instance.defenderPrefabs[TypeDefender.LEADER], this.spawnPoint, new Quaternion(), this.parent).GetComponent<Leader>();
+        this.groupdLeader.Initialize();
         DefenderManager.Instance.AddLeaderToList(this.groupdLeader);
         this.amountToSpawnToFinishGroup = GlobalDefendersVariables.Instance.GROUP_SIZE;
     }

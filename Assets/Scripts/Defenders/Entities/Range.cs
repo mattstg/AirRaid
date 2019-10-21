@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Range : Defender {
 
-    public override void Initialize() {
-        base.PostInitialize(TypeDefender.RANGE, DefenderState.ON_IDLE, new RangeAttack());
+    public override void Initialize(Leader leader) {
+        base.PostInitialize(TypeDefender.RANGE, DefenderState.ON_IDLE, new RangeAttack(), leader);
     }
 
     public override void PhysicRefresh() {
