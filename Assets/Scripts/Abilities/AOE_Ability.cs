@@ -33,6 +33,7 @@ public class AOE_Ability : EnemyAbility
         yield return new WaitForSeconds(time);
         HitAll();
     }
+
     void HitAll() // Jsais pas comment la nommer, should refactor
     {
 

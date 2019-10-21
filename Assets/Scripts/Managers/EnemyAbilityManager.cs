@@ -5,11 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyAbilityManager
 {
-    Enemy enemy; 
+    AnimatedEnemy enemy; 
     public List<EnemyAbility> abilities;
-    public bool abilityInUse;
+    //public bool abilityInUse;
 
-    public EnemyAbilityManager(Enemy _enemy)
+    public EnemyAbilityManager(AnimatedEnemy _enemy)
     {
         enemy = _enemy;
         //abilities = new List<EnemyAbility>(); 

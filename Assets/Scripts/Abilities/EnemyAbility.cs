@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AbilityType { Melee, AOE }
+//public enum AbilityType { Melee, AOE }
 public class EnemyAbility : ScriptableObject
 {
     protected Enemy enemy;
@@ -23,7 +23,6 @@ public class EnemyAbility : ScriptableObject
     }
     public virtual void UseAbility()
     {
-
     }
 
 }

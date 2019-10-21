@@ -1217,7 +1217,7 @@ Animator:
   m_GameObject: {fileID: 1000170320436026457}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a4e58f45bdd9d984d83f6b298c01b2c2, type: 3}
-  m_Controller: {fileID: 9100000, guid: bf0bb28b7be76b14ab13b5ab0615c68e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 28266a6022d34a84eb86d04d54245361, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1239,9 +1239,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
+  walk: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
+  idle: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
+  run: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
+  death: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
   enemyAbilityManager:
-    abilities: []
-    abilityInUse: 0
+    abilities:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  animatorOverrideController: {fileID: 22100000, guid: 6b3354e58b2b0be4c93641f31f410767,
+    type: 2}
 --- !u!195 &-619350218393753076
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -9,23 +9,18 @@ public class Ghoul : AnimatedEnemy
     //readonly float MAX_ENERGY_BEFORE_EVOLVE = 15f; //Should die and spawn a new Troll
     readonly float MAX_HP = 100f;
 
-    public EnemyAbilityManager enemyAbilityManager;
-
-    Building targetBuilding;
-    
     public override void Initialize(float startingEnergy)
     {
         base.Initialize(startingEnergy);
         hp = MAX_HP;
-        enemyAbilityManager = new EnemyAbilityManager(this);
-        targetBuilding = BuildingManager.Instance.GetRandomBuilding();
-        navmeshAgent.SetDestination(targetBuilding.transform.position);
+        targetBuilding = BuildingManager.Instance.GetRandomBuilding().transform.position;
+        //navmeshAgent.SetDestination(targetBuilding);
     }
     public override void Refresh()
     {
         base.Refresh();
-        SetAnimeVelocity(navmeshAgent.velocity.magnitude / navmeshAgent.speed);
-        DetectEnemyNearby();
+        //SetAnimeVelocity(navmeshAgent.velocity.magnitude / navmeshAgent.speed);
+        //DetectEnemyNearby();
         
     }
     public void FixedRefresh()
