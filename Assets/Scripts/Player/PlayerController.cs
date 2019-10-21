@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour, IHittable
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
         //but it's important that I test now that my ability system is all in place.
 
+        abilityManager.AddAbilities(new Ab_EnergyRegen(this), 2);
+        abilityManager.AddAbilities(new Ab_NitroBoost(this), 3);
+        abilityManager.AddAbilities(new Ab_Rocket(this), 1);
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);

@@ -17,5 +17,5 @@ MonoBehaviour:
   Cost: 25
   Level: 1
   imgSprite: {fileID: 0}
-  Part: 0
+  Part: 3
   Purchased: 0
