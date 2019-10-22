@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Leader : MonoBehaviour {
 
+    public Flock flock;
+
     private NavMeshAgent agent;
     private Animator animator;
     private AudioSource speaker;
@@ -21,6 +23,9 @@ public class Leader : MonoBehaviour {
         this.speaker = transform.GetComponent<AudioSource>();
         this.walkingSounds.Add(Resources.Load<AudioClip>("Characters/Sounds/StepOnGrassSound1"));
         this.walkingSounds.Add(Resources.Load<AudioClip>("Characters/Sounds/StepOnGrassSound2"));
+
+        this.flock = GetComponent<Flock>();
+        flock.Initialize();
     }
 
     public void Refresh() {
@@ -106,10 +111,12 @@ public class Leader : MonoBehaviour {
         this.readyToFight = true;
     }
     public void AddDefenderToMyGroup(Defender defender) {
+        this.flock.agents.Add(defender.flockAgent);
         this.myGroup.Add(defender);
     }
 
     public void RemoveDefenderFromMyGroup(Defender defender) {
+        this.flock.agents.Remove(defender.flockAgent);
         this.myGroup.Remove(defender);
     }
 

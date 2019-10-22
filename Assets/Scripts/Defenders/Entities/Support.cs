@@ -6,6 +6,7 @@ public class Support : Defender {
 
     public override void Initialize(Leader leader) {
         base.PostInitialize(TypeDefender.SUPPORT, DefenderState.ON_IDLE, new HealAttack(), leader);
+        
     }
 
     //Special for support because dont always attack : ex: if all units are full hp
