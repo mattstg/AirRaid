@@ -30,6 +30,7 @@ public class Ghoul : AnimatedEnemy
             Destroy(rb);
         }
         
+        
     }
     public void FixedRefresh()
     {
