@@ -15,8 +15,8 @@ public class GlobalDefendersVariables {
 
 
     //Melee
-    public readonly float ML_HP = 200f;
-    public readonly float ML_MAX_HP = 200f;
+    public readonly float ML_HP = 15f;
+    public readonly float ML_MAX_HP = 15f;
     public readonly float ML_DAMAGE = 1f;
     public readonly float ML_ENERGY_START = 150f;
     public readonly float ML_ENERGY_MAX = 150f;
@@ -27,8 +27,8 @@ public class GlobalDefendersVariables {
     public readonly float ML_ABILITY_COST = 20f;
 
     //Range
-    public readonly float RA_HP = 100f;
-    public readonly float RA_MAX_HP = 100f;
+    public readonly float RA_HP = 10f;
+    public readonly float RA_MAX_HP = 10f;
     public readonly float RA_DAMAGE = 1.2f;
     public readonly float RA_ENERGY_START = 120f;
     public readonly float RA_ENERGY_MAX = 120f;
@@ -39,11 +39,11 @@ public class GlobalDefendersVariables {
     public readonly float RA_ABILITY_COST = 15f;
 
     //Support
-    public readonly float SP_HP = 80f;
-    public readonly float SP_MAX_HP = 80f;
+    public readonly float SP_HP = 9f;
+    public readonly float SP_MAX_HP = 9f;
     public readonly float SP_DAMAGE = -50f;
-    public readonly float SP_ENERGY_START = 250f;
-    public readonly float SP_ENERGY_MAX = 250f;
+    public readonly float SP_ENERGY_START = 100f;
+    public readonly float SP_ENERGY_MAX = 100f;
     public readonly float SP_ENERGY_REGEN = 0.2f;
     public readonly float SP_ATTACK_RANGE = 10f;
     public readonly float SP_VISION_RANGE = 20f;

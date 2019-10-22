@@ -17,6 +17,7 @@ TagManager:
   - Defender_Spawner
   - Enemy_Egg
   - Leader
+  - DebugDefender
   layers:
   - Default
   - TransparentFX
