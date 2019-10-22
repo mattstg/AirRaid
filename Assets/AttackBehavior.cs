@@ -10,7 +10,9 @@ public class AttackBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (enemy == null)
+        {
             enemy = animator.GetComponent<AnimatedEnemy>();
+        }
         EnemyAbility temp;
         if (enemy.target != null)
        { 

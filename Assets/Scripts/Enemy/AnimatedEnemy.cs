@@ -5,12 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimatedEnemy : MobileEnemy
 {
+    public static int id;
+    public int Id;
     public GameObject target;
+    public Vector3 lastTargetPosition;
     public AnimationClip walk;
     public AnimationClip idle;
     public AnimationClip run;
     public AnimationClip death;
-    public List<EnemyAbility> abilities;
+    public List<EnemyAbility> prefab_abilities;
     protected Animator anim;
     protected float globalCoolDown; 
     protected float decisionTime = 2; //Time it takes for the enemy to change decision CONSTANT - Makes the AI less reactive
@@ -22,9 +25,24 @@ public class AnimatedEnemy : MobileEnemy
     [HideInInspector] public AnimatorOverrideController animatorOverrideController;
     public override void Initialize(float startingEnergy)
     {
-        OverrideAnimatorController();
-        enemyAbilityManager = new EnemyAbilityManager(this, abilities);
+        Id = id;
+        id++;
         base.Initialize(startingEnergy);
+        
+
+
+        enemyAbilityManager = new EnemyAbilityManager(this, CopiedAbilities());
+        OverrideAnimatorController();
+    }
+
+    private List<EnemyAbility> CopiedAbilities()
+    {
+        List<EnemyAbility> abilities = new List<EnemyAbility>();
+        foreach (EnemyAbility ability in prefab_abilities)
+        {
+            abilities.Add(Instantiate(ability));
+        }
+        return abilities;
     }
 
     private void OverrideAnimatorController()

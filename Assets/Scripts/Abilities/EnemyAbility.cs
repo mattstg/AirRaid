@@ -14,7 +14,6 @@ public abstract class EnemyAbility : ScriptableObject
     [HideInInspector] public float timeLastUsed;
     public float timeBeforeHit;
     public string triggerParam;
-    protected Vector3 lastTargetPosition;
 
     public bool canUseAbility { get { return Time.time - timeLastUsed >= cooldown; } }
 

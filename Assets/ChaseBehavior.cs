@@ -25,8 +25,8 @@ public class ChaseBehavior : StateMachineBehaviour
             animator.SetBool("isTarget", false);
             return;
         }
-
-        if (ae.navmeshAgent.remainingDistance <= 1)
+        ae.lastTargetPosition = ae.target.transform.position;
+        if (ae.navmeshAgent.remainingDistance <= 1) // May create bugs
         {
 
             if (ae.CanMakeDecision)
@@ -42,7 +42,7 @@ public class ChaseBehavior : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //ae.transform.LookAt(ae.target.transform.position);
+        ae.transform.LookAt(ae.lastTargetPosition);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
