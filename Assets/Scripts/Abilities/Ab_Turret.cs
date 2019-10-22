@@ -8,6 +8,7 @@ public class Ab_Turret : Ability
 
     private GameObject turretPrefab;
     private Transform turretParent;
+    private float turretAbTimer;
 
     public Ab_Turret(PlayerController _pc) : base(_pc)
     {
@@ -15,14 +16,18 @@ public class Ab_Turret : Ability
         pc = _pc;
         turretPrefab = Resources.Load<GameObject>("Prefabs/Turret");
         turretParent = (new GameObject("TurretParent")).transform;
+        turretAbTimer = 5f;
     }
 
 
 
     public override void AbilityPressed()
     {
-        UseAbility();
-        base.AbilityPressed();
+        if (turretAbTimer < 0)
+        {
+            UseAbility();
+            base.AbilityPressed();
+        }
 
     }
     public override void AbilityHeld()
@@ -43,6 +48,8 @@ public class Ab_Turret : Ability
             Debug.Log("spawning turret");
             Vector3 bombBay = pc.bodyParts[BodyPart.BodyPart_BombBay][0];
             GameObject.Instantiate(turretPrefab, (bombBay + pc.transform.position), Quaternion.identity, turretParent.transform);
+            turretAbTimer = 5f;
+            return true;
         }
         return false;
     }
@@ -50,6 +57,7 @@ public class Ab_Turret : Ability
     //Update every frame, regardless of pressed or not
     public override void AbilityUpdate()
     {
+        turretAbTimer -= Time.deltaTime;
         base.AbilityUpdate();
     }
 

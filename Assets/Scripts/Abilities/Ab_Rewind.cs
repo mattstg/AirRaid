@@ -49,6 +49,7 @@ public class Ab_Rewind : Ability
             rewindHappening = true;
             rb.velocity = new Vector3(0, 0, 0);
             rd.material = teleportFade;
+            return true;
         }
         return false;
     }
