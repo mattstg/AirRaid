@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour, IHittable
     private LinkedList<RewindPositions> rewindQueue;
     private float refreshCounter = 3f;
     private bool rewindHappening;
+    public Material basicSkin;
+    public Material teleportFade;
+    private Renderer rd;
 
     //Turret Variables
     private TurretSpawn turretScript;
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
         rewindQueue = new LinkedList<RewindPositions>();
         rewindHappening = false;
+        rd = GetComponent<Renderer>();
 
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
@@ -251,6 +255,7 @@ public class PlayerController : MonoBehaviour, IHittable
         //Stop player mid flight
         rb.velocity = new Vector3(0, 0, 0);
 
+        rd.material = teleportFade;
 
 
         StartCoroutine(RewindAction());
@@ -260,6 +265,7 @@ public class PlayerController : MonoBehaviour, IHittable
     public void killRoutine()
     {
         StopCoroutine(RewindAction());
+        rd.material = basicSkin;
         abilityTimer = 15f;
         refreshCounter = 3f;
     }

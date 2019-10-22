@@ -217,6 +217,8 @@ MonoBehaviour:
   isAlive: 0
   rb: {fileID: 0}
   playerCam: {fileID: 0}
+  basicSkin: {fileID: 2100000, guid: 0744265a517936d448b1d6da413ebe58, type: 2}
+  teleportFade: {fileID: 2100000, guid: 6e1b78f8851ce894c81fec56290f501b, type: 2}
 --- !u!33 &5552085018173789860
 MeshFilter:
   m_ObjectHideFlags: 0
