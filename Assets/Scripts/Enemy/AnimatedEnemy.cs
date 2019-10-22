@@ -10,6 +10,7 @@ public class AnimatedEnemy : MobileEnemy
     public AnimationClip idle;
     public AnimationClip run;
     public AnimationClip death;
+    public List<EnemyAbility> abilities;
     protected Animator anim;
     protected float globalCoolDown; 
     protected float decisionTime = 2; //Time it takes for the enemy to change decision CONSTANT - Makes the AI less reactive
@@ -22,7 +23,7 @@ public class AnimatedEnemy : MobileEnemy
     public override void Initialize(float startingEnergy)
     {
         OverrideAnimatorController();
-        enemyAbilityManager = new EnemyAbilityManager(this);
+        enemyAbilityManager = new EnemyAbilityManager(this, abilities);
         base.Initialize(startingEnergy);
         
     }
