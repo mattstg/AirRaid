@@ -55,6 +55,7 @@ public abstract class Defender : MonoBehaviour, IHittable {
                     move = move.normalized * myLeader.flock.maxSpeed;
                 }
                 flockAgent.Move(move);
+
             }
         }
         else {

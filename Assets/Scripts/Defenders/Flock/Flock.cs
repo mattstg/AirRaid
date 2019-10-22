@@ -43,33 +43,8 @@ public class Flock : MonoBehaviour
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
 
-        /*for (int i = 0; i < startingCount; i++)
-        {
-            FlockAgent newAgent = Instantiate(agentPrefab,
-                new Vector3(Random.insideUnitSphere.x, 0, Random.insideUnitSphere.z) * startingCount * AGENT_DENSITY,
-                Quaternion.Euler(Vector3.up * Random.Range(0f,360f)),
-                transform);
-            newAgent.name = "agent" + i;
-            newAgent.Initialize(this);
-            agents.Add(newAgent);
-        }*/
+
     }
-
-   /* public void Refresh()
-    {
-        foreach(FlockAgent agent in agents){
-            List<Transform> context = GetNearbyObjects(agent);
-
-            //All behaviors have different CalculateMove()
-            Vector3 move = behavior.CalculateMove(agent, context, this);
-            move *= driveFactor;
-            if(move.sqrMagnitude > squareMaxSpeed)
-            {
-                move = move.normalized * maxSpeed;
-            }
-            agent.Move(move);
-        }
-    }*/
 
     public void GetCalculatedMove()
     {
