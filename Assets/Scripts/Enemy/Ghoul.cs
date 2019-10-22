@@ -40,4 +40,10 @@ public class Ghoul : AnimatedEnemy
     {
         DieProcess(EnemyType.Troll);
     }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+        Gizmos.DrawWireCube(transform.position, new Vector3(5, 1, 5));
+    }
 }

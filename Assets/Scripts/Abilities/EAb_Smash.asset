@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707d12fffdb219d44894fbb0f37756b9, type: 3}
   m_Name: EAb_Smash
   m_EditorClassIdentifier: 
+  animation: {fileID: 7400000, guid: af84d9698cdb86449a1d16ea9e082ddf, type: 3}
   hittableLayer:
     serializedVersion: 2
-    m_Bits: 512
-  Range: {x: 0, y: 0}
+    m_Bits: 768
+  range: {x: 0, y: 0}
   damage: 5
   cooldown: 3
   timeLastUsed: 0
@@ -23,5 +24,5 @@ MonoBehaviour:
   triggerParam: Attack
   radius: 0
   angle: {x: 0, y: 0}
-  boxSize: {x: 0, y: 0}
+  boxSize: {x: 5, y: 5}
   shape: 0
