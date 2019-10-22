@@ -24,6 +24,8 @@ public abstract class Defender : MonoBehaviour, IHittable {
     }
 
     public virtual void Refresh() {
+        if (transform.CompareTag("DebugDefender"))
+            Debug.Log("CMON PLSSSS");
         HitByProjectile(0);
         this.defenderInfos.state = DefenderState.ON_FLOCK;
         if (DoIHaveTarget()) {
@@ -76,23 +78,17 @@ public abstract class Defender : MonoBehaviour, IHittable {
     }
 
     protected bool IsTargetInMyAttackRange() {
-        bool result = false;
-        if (this.defenderInfos.target != null) {
-            Collider[] hits = Physics.OverlapSphere(transform.position, this.defenderInfos.attackRange);
-            if (hits.Length > 0) {
-                foreach (Collider hit in hits) {
-                    if (hit.transform == this.defenderInfos.target.transform)
-                        result = true;
-                }
-            }
-        }
-        return result;
+        return IsTargetInRayCast(this.defenderInfos.attackRange);
     }
 
     protected bool IsTargetInMyVisionRange() {
+        return IsTargetInRayCast(this.defenderInfos.visionRange);
+    }
+
+    private bool IsTargetInRayCast(float radius) {
         bool result = false;
         if (this.defenderInfos.target != null) {
-            Collider[] hits = Physics.OverlapSphere(transform.position, this.defenderInfos.visionRange);
+            Collider[] hits = Physics.OverlapSphere(transform.position, radius);
             if (hits.Length > 0) {
                 foreach (Collider hit in hits) {
                     if (hit.transform == this.defenderInfos.target.transform)
@@ -126,11 +122,5 @@ public abstract class Defender : MonoBehaviour, IHittable {
         this.defenderInfos.hp = Mathf.Clamp(this.defenderInfos.hp, 0, this.defenderInfos.maxHp);
         if (this.defenderInfos.hp <= 0)
             Die();
-    }
-    private void OnDrawGizmos() {
-        if (this.defenderInfos.target != null) {
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(transform.position, this.defenderInfos.attackRange);
-        }
     }
 }

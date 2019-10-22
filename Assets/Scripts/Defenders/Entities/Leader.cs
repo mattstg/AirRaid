@@ -99,7 +99,7 @@ public class Leader : MonoBehaviour {
     }
     private void SelfDestroy() {
         DefenderManager.Instance.RemoveLeaderFromList(this);
-        GameObject.Destroy(gameObject);
+        this.animator.SetTrigger("ON_DYING");
     }
 
     public void GoFight() {
@@ -123,10 +123,5 @@ public class Leader : MonoBehaviour {
     }
     private AudioClip GetRandomWalkingSound() {
         return this.walkingSounds[Random.Range(0, this.walkingSounds.Count - 1)];
-    }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawSphere(new Vector3(transform.position.x, 5, transform.position.z), 0.5f);
     }
 }
