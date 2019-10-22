@@ -115,15 +115,6 @@ public class PlayerController : MonoBehaviour, IHittable
         
     }
 
-    public bool ActiveStorePanel(InputManager.InputPressType ipt)
-    {
-        if(ipt== InputManager.InputPressType.FirstPress)
-        {
-            return true;
-        }
-        return false;
-    }
-
     public void ModEnergy(float modBy)
     {
         stats.currentEnegy = Mathf.Clamp(stats.currentEnegy + modBy, 0, stats.maxEnergy);
