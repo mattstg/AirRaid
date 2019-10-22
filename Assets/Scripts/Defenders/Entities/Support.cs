@@ -24,12 +24,38 @@ public class Support : Defender {
             }
             else {
                 //Target doesnt need healing -> move toward leader
-                this.agent.SetDestination(this.myLeader.transform.position);
+                //this.agent.SetDestination(this.myLeader.transform.position);
+
+                //Flock
+                List<Transform> context = GetNearbyObjects(flockAgent);
+
+                //All behaviors have different CalculateMove()
+                Vector3 move = myLeader.flock.behavior.CalculateMove(flockAgent, context, myLeader.flock);
+                move *= myLeader.flock.driveFactor;
+                if (move.sqrMagnitude > myLeader.flock.squareMaxSpeed)
+                {
+                    move = move.normalized * myLeader.flock.maxSpeed;
+                }
+                flockAgent.Move(move);
+
             }
         }
         else {
             //I don't have a target -> move toward leader
-            this.agent.SetDestination(this.myLeader.transform.position);
+            //this.agent.SetDestination(this.myLeader.transform.position);
+
+            //Flock 
+            List<Transform> context = GetNearbyObjects(flockAgent);
+
+            //All behaviors have different CalculateMove()
+            Vector3 move = myLeader.flock.behavior.CalculateMove(flockAgent, context, myLeader.flock);
+            move *= myLeader.flock.driveFactor;
+            if (move.sqrMagnitude > myLeader.flock.squareMaxSpeed)
+            {
+                move = move.normalized * myLeader.flock.maxSpeed;
+            }
+            flockAgent.Move(move);
+
         }
         this.defenderInfos.speed = this.agent.speed;
     }

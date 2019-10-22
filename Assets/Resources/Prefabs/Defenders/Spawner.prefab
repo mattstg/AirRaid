@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3965628092578623109}
   - component: {fileID: 3965628092578623106}
   m_Layer: 8
-  m_Name: SPW_Medieval_Tent_03_Color01
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

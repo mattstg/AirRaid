@@ -17,7 +17,7 @@ public class FlockAgent : MonoBehaviour
     public bool useRigidBody = false;
     public bool useTransformForwardRotation = false;
 
-    private void Start()
+    public void Initialize()
     {
         agentCollider = GetComponent<Collider>();
         if (useRigidBody)
@@ -26,7 +26,7 @@ public class FlockAgent : MonoBehaviour
         }
     }
 
-    public void Initialize(Flock flock)
+    public void PostInitialize(Flock flock)
     {
         agentFlock = flock;
     }

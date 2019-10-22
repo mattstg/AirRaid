@@ -11,6 +11,8 @@ public class StayInRadiusBehavior : FlockBehavior
 
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
+
+        
         Vector3 centerOffSet = center - agent.transform.position;
         //Less optimal sqrMagnitude... maybe change this at some point
         float t = centerOffSet.magnitude / radius;

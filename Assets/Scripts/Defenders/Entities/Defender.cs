@@ -10,6 +10,7 @@ public abstract class Defender : MonoBehaviour, IHittable {
     protected Leader myLeader;
 
     protected NavMeshAgent agent;
+    public FlockAgent flockAgent;
 
     public virtual void Initialize(Leader leader) { }
     protected virtual void Move() { }
@@ -22,6 +23,9 @@ public abstract class Defender : MonoBehaviour, IHittable {
         this.myLeader = leader;
 
         this.agent = transform.GetComponent<NavMeshAgent>();
+        this.flockAgent = GetComponent<FlockAgent>();
+        this.flockAgent.Initialize();
+        this.flockAgent.PostInitialize(myLeader.flock);
     }
 
     public virtual void Refresh() {
@@ -39,12 +43,34 @@ public abstract class Defender : MonoBehaviour, IHittable {
             }
             else {
                 //Target not in vision range yet -> move toward leader
-                this.agent.SetDestination(this.myLeader.transform.position);
+                //this.agent.SetDestination(this.myLeader.transform.position);
+              
+                List<Transform> context = GetNearbyObjects(flockAgent);
+
+                //All behaviors have different CalculateMove()
+                Vector3 move = myLeader.flock.behavior.CalculateMove(flockAgent, context, myLeader.flock);
+                move *= myLeader.flock.driveFactor;
+                if (move.sqrMagnitude > myLeader.flock.squareMaxSpeed)
+                {
+                    move = move.normalized * myLeader.flock.maxSpeed;
+                }
+                flockAgent.Move(move);
             }
         }
         else {
             //Target not in vision range -> move toward leader
-            this.agent.SetDestination(this.myLeader.transform.position);
+            //this.agent.SetDestination(this.myLeader.transform.position);
+          
+            List<Transform> context = GetNearbyObjects(flockAgent);
+
+            //All behaviors have different CalculateMove()
+            Vector3 move = myLeader.flock.behavior.CalculateMove(flockAgent, context, myLeader.flock);
+            move *= myLeader.flock.driveFactor;
+            if (move.sqrMagnitude > myLeader.flock.squareMaxSpeed)
+            {
+                move = move.normalized * myLeader.flock.maxSpeed;
+            }
+            flockAgent.Move(move);
         }
         this.defenderInfos.speed = this.agent.speed;
     }
@@ -52,6 +78,24 @@ public abstract class Defender : MonoBehaviour, IHittable {
         RegenEnergy();
         GiveInfoToAnimator();
     }
+
+    public virtual List<Transform> GetNearbyObjects(FlockAgent agent)
+    {
+        List<Transform> context = new List<Transform>();
+
+        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, myLeader.flock.neighborRadius);
+
+        foreach (Collider c in contextColliders)
+        {
+            if (c != agent.AgentCollider)
+            {
+                context.Add(c.transform);
+            }
+        }
+
+        return context;
+    }
+
     protected virtual void DoAbility() {
         if (this.myAbility.UseAbility(this.defenderInfos, this.defenderInfos.target))
             this.myAnimator.SetTrigger("ON_ATTACK");

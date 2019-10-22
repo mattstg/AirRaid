@@ -5,15 +5,15 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
 
-    public FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    //public FlockAgent agentPrefab;
+    public List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehavior behavior;
 
-    [Range(1, 100)]
-    public int startingCount = 100;
+//     [Range(1, 100)]
+//     public int startingCount = 100;
 
     //How large Agent is. For random spawning.
-    const float AGENT_DENSITY = 1f;
+    /*const float AGENT_DENSITY = 1f;*/
 
     //Multiply with the move Vector3 before agent Move(move) is called
     [Range(1.0f,  100.0f)]
@@ -31,19 +31,19 @@ public class Flock : MonoBehaviour
     [Range(0f, 1f)]
     public float avoidanceRadiusMultiplier = 0.5f;
 
-    float squareMaxSpeed;
-    float squareNeighborRadius;
+    public float squareMaxSpeed;
+    public float squareNeighborRadius;
     float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
 
-    public void Start()
+    public void Initialize()
     {
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
 
-        for (int i = 0; i < startingCount; i++)
+        /*for (int i = 0; i < startingCount; i++)
         {
             FlockAgent newAgent = Instantiate(agentPrefab,
                 new Vector3(Random.insideUnitSphere.x, 0, Random.insideUnitSphere.z) * startingCount * AGENT_DENSITY,
@@ -52,17 +52,13 @@ public class Flock : MonoBehaviour
             newAgent.name = "agent" + i;
             newAgent.Initialize(this);
             agents.Add(newAgent);
-        }
+        }*/
     }
 
-    public void Update()
+   /* public void Refresh()
     {
         foreach(FlockAgent agent in agents){
             List<Transform> context = GetNearbyObjects(agent);
-
-            //Testing only :
-            //agent.GetComponentInChildren<MeshRenderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
-            //End Testing
 
             //All behaviors have different CalculateMove()
             Vector3 move = behavior.CalculateMove(agent, context, this);
@@ -70,10 +66,14 @@ public class Flock : MonoBehaviour
             if(move.sqrMagnitude > squareMaxSpeed)
             {
                 move = move.normalized * maxSpeed;
-               
             }
             agent.Move(move);
         }
+    }*/
+
+    public void GetCalculatedMove()
+    {
+
     }
 
     List<Transform> GetNearbyObjects(FlockAgent agent)

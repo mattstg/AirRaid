@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46737012b41d6247923fb553f9146a8, type: 3}
+  m_Name: StayInRadiusOfLeaderBehavior
+  m_EditorClassIdentifier: 
+  filter: {fileID: 11400000, guid: ccdcba7cb8c059643abf4726f3b475d7, type: 2}
+  center: {x: 76.24165, y: 0.012561094, z: 223.8853}
+  radius: 5

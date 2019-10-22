@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Leader : MonoBehaviour {
 
+    public Flock flock;
+
     private NavMeshAgent agent;
     private Animator animator;
     private AudioSource speaker;
@@ -18,6 +20,7 @@ public class Leader : MonoBehaviour {
         this.agent = transform.GetComponent<NavMeshAgent>();
         this.animator = transform.GetComponent<Animator>();
         this.speaker = transform.GetComponent<AudioSource>();
+        flock = GetComponent<Flock>();
     }
 
     public void Refresh() {
@@ -103,10 +106,14 @@ public class Leader : MonoBehaviour {
         this.readyToFight = true;
     }
     public void AddDefenderToMyGroup(Defender defender) {
+        //Add to my Flock
+        this.flock.agents.Add(defender.flockAgent);
         this.myGroup.Add(defender);
     }
 
     public void RemoveDefenderFromMyGroup(Defender defender) {
+        //Delete From My Flock
+        this.flock.agents.Remove(defender.flockAgent);
         this.myGroup.Remove(defender);
     }
 
