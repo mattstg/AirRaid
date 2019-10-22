@@ -1033,6 +1033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6221246482146179799}
   - component: {fileID: 8329521125157340436}
+  - component: {fileID: -2844961954273971110}
   - component: {fileID: 4097234936282224557}
   - component: {fileID: 2560209705490941073}
   - component: {fileID: 8844737454451945016}
@@ -1072,6 +1073,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f3cb495749308419e6c9874fd41717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flock: {fileID: 0}
+--- !u!114 &-2844961954273971110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6921213964289198276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934106f1ceb44d646890c7af937d56b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agents: []
+  behavior: {fileID: 11400000, guid: b8fb3681176e3c246981a73c1296254b, type: 2}
+  startingCount: 100
+  driveFactor: 10
+  maxSpeed: 12
+  neighborRadius: 15
+  avoidanceRadiusMultiplier: 0.18
+  squareMaxSpeed: 0
+  squareNeighborRadius: 0
 --- !u!95 &4097234936282224557
 Animator:
   serializedVersion: 3

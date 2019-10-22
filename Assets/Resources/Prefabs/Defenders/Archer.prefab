@@ -1249,6 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef03f5f704f1964e9f07d7f5b1acd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockAgent: {fileID: 0}
 --- !u!114 &7616919260352680357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useRigidBody: 0
-  useTransformForwardRotation: 0
+  useTransformForwardRotation: 1
 --- !u!95 &8432318037359566951
 Animator:
   serializedVersion: 3

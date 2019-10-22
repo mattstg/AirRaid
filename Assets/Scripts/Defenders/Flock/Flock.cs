@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Flock : MonoBehaviour {
 
-    public FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    /*public FlockAgent agentPrefab;*/
+    public List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehavior behavior;
 
     [Range(1, 100)]
@@ -30,46 +30,16 @@ public class Flock : MonoBehaviour {
     [Range(0f, 1f)]
     public float avoidanceRadiusMultiplier = 0.5f;
 
-    float squareMaxSpeed;
-    float squareNeighborRadius;
+    public float squareMaxSpeed;
+    public float squareNeighborRadius;
     float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
 
-    public void Start() {
+    public void Initialize() {
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
-
-        //         for (int i = 0; i < startingCount; i++)
-        //         {
-        //             FlockAgent newAgent = Instantiate(agentPrefab,
-        //                 new Vector3(Random.insideUnitSphere.x, 0, Random.insideUnitSphere.z) * startingCount * AGENT_DENSITY,
-        //                 Quaternion.Euler(Vector3.up * Random.Range(0f,360f)),
-        //                 transform);
-        //             newAgent.name = "agent" + i;
-        //             newAgent.Initialize(this);
-        //             agents.Add(newAgent);
-        //         }
-    }
-
-    public void Update() {
-        foreach (FlockAgent agent in agents) {
-            List<Transform> context = GetNearbyObjects(agent);
-
-            //Testing only :
-            //agent.GetComponentInChildren<MeshRenderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
-            //End Testing
-
-            //All behaviors have different CalculateMove()
-            Vector3 move = behavior.CalculateMove(agent, context, this);
-            move *= driveFactor;
-            if (move.sqrMagnitude > squareMaxSpeed) {
-                move = move.normalized * maxSpeed;
-
-            }
-            agent.Move(move);
-        }
     }
 
     List<Transform> GetNearbyObjects(FlockAgent agent) {
