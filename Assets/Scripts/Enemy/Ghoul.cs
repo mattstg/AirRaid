@@ -37,6 +37,6 @@ public class Ghoul : AnimatedEnemy
     }
     public override void Die()
     {
-        DieProcess(ghouleEvolution);
+        DieProcess(EnemyType.Troll);
     }
 }

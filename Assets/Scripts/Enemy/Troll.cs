@@ -25,8 +25,12 @@ public class Troll : AnimatedEnemy
     {
 
     }
-    public override void Die()
+    public override IEnumerator SpawnEvolution(EnemyType type, float time)
     {
-        DieProcess(null);
+        yield return new WaitForSeconds(time);
+        //GameObject troll = GameObject.Instantiate<GameObject>(ghouleEvolution, transform.parent);
+        base.Die();
+
     }
+
 }

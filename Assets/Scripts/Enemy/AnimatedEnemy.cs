@@ -18,14 +18,13 @@ public class AnimatedEnemy : MobileEnemy
     public bool CanMakeDecision { get { return decisionTime + timeSinceLastDecision <= Time.time  ; } }
     protected float detectionRadius;
     protected Vector2 attackRadius; // Could be set in Initialize, by cycling through the abilities to get the min and max range overall
-    public EnemyAbilityManager enemyAbilityManager;
+    [HideInInspector] public EnemyAbilityManager enemyAbilityManager;
     [HideInInspector] public AnimatorOverrideController animatorOverrideController;
     public override void Initialize(float startingEnergy)
     {
         OverrideAnimatorController();
         enemyAbilityManager = new EnemyAbilityManager(this, abilities);
         base.Initialize(startingEnergy);
-        
     }
 
     private void OverrideAnimatorController()
@@ -41,41 +40,45 @@ public class AnimatedEnemy : MobileEnemy
 
     public override void ModEnergy(float energyMod)
     {
-        hp += energyMod;
-        energy = 1;
+        energy += energyMod;
     }
     public void SetTriggerAttack()
     {
         anim.SetTrigger("Attack");
     }
+
     public void SetAnimeVelocity(float velocity)
     {
         anim.SetFloat("Velocity",velocity);
     }
+
     public void SetAgent(Vector3 pos)
     {
         navmeshAgent.SetDestination(pos);
     }
+
     public void ClearAgentDestination()
     {
         navmeshAgent.ResetPath();
     }
+
     public bool CheckTargetDestroy()
     {
         if (!target)
             return true;
         return false;
     }
-    public void DieProcess(GameObject ghouleEvolution)
+
+    public virtual void DieProcess(EnemyType type)
     {
-        StartCoroutine(SpawnEvolution(ghouleEvolution));
+        StartCoroutine(SpawnEvolution(type, death.length));
         anim.SetTrigger("isDead");
     }
-    public IEnumerator SpawnEvolution(GameObject ghouleEvolution)
+    public virtual IEnumerator SpawnEvolution(EnemyType type, float time)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(time);
         //GameObject troll = GameObject.Instantiate<GameObject>(ghouleEvolution, transform.parent);
-        EnemyManager.Instance.SpawnEnemy(EnemyType.Troll, transform.position, 100);
+        EnemyManager.Instance.SpawnEnemy(type, transform.position, 100);
         base.Die();
         
         //troll.transform.position = transform.position;

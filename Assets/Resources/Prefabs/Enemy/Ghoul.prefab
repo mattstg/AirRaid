@@ -1241,9 +1241,9 @@ MonoBehaviour:
   isAlive: 0
   navmeshAgent: {fileID: 0}
   target: {fileID: 0}
-  walk: {fileID: 7400000, guid: c9b4d175e82478443966b1e0e0a37ebe, type: 3}
+  walk: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
   idle: {fileID: 7400000, guid: d370a8b163bf70246a304719e9c0b81d, type: 3}
-  run: {fileID: 7400000, guid: 35973fb0bd581dc4a8e11b9221966924, type: 3}
+  run: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
   death: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
   abilities:
   - {fileID: 11400000, guid: 1835b0126b3864843975386ce632776c, type: 2}

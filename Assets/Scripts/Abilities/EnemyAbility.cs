@@ -5,7 +5,7 @@ using UnityEngine;
 //public enum AbilityType { Melee, AOE }
 public abstract class EnemyAbility : ScriptableObject
 {
-    protected Enemy enemy;
+    protected AnimatedEnemy enemy;
     public AnimationClip animation;
     public LayerMask hittableLayer;
     public Vector2 Range;
@@ -17,7 +17,7 @@ public abstract class EnemyAbility : ScriptableObject
 
     public bool canUseAbility { get { return Time.time - timeLastUsed >= cooldown; } }
 
-    public abstract void Initialize(Enemy _enemy);
+    public abstract void Initialize(AnimatedEnemy _enemy);
     public abstract void UseAbility();
 
 }

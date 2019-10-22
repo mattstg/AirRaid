@@ -18,7 +18,7 @@ public class AttackBehavior : StateMachineBehaviour
             for (int i = 0; i < enemy.enemyAbilityManager.abilities.Count; i++)
             {
                 temp = enemy.enemyAbilityManager.abilities[i];
-                if (temp.canUseAbility)
+                if (temp.canUseAbility && temp.Range.x < enemy.target.transform.position.x && temp.Range.y >= enemy.target.transform.position.z)
                 {
                     ability = temp;
                     break;
@@ -31,6 +31,7 @@ public class AttackBehavior : StateMachineBehaviour
         }
         else
         {
+            enemy.animatorOverrideController["attack"] = ability.animation;
             ability.UseAbility();
         }
     }
