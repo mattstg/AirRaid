@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurrerBehavior : MonoBehaviour
+public class TurretBehavior : MonoBehaviour
 {
     //Turret Variables
     public float turretTimer = 0f;
