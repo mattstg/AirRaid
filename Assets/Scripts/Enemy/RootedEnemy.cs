@@ -39,4 +39,10 @@ public class RootedEnemy : Enemy
         Destroy(GetComponent<Rigidbody>()); //If it exists, destroy it, otherwise itll just destroy null
         isRooted = true;
     }
+
+    public override void Die()
+    {
+        rootNodeSystem.RootSystemDied();
+        base.Die();
+    }
 }

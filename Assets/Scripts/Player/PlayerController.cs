@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum Abilities { Turrets, Rocket }
+public enum Abilities { Turrets, Rocket, Bomb }
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
