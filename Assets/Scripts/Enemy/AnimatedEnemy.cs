@@ -87,19 +87,6 @@ public class AnimatedEnemy : MobileEnemy
         return false;
     }
 
-    public virtual void DieProcess(EnemyType type)
-    {
-        StartCoroutine(SpawnEvolution(type, death.length));
-        anim.SetTrigger("isDead");
-    }
-    public virtual IEnumerator SpawnEvolution(EnemyType type, float time)
-    {
-        yield return new WaitForSeconds(time);
-        //GameObject troll = GameObject.Instantiate<GameObject>(ghouleEvolution, transform.parent);
-        EnemyManager.Instance.SpawnEnemy(type, transform.position, 100);
-        base.Die();
-        
-        //troll.transform.position = transform.position;
-    }
+    
 }
 
