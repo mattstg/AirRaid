@@ -51,7 +51,7 @@ public class AOE_Ability : EnemyAbility
     }
     void BoxRay()
     {
-        Collider[] colliders = Physics.OverlapBox(enemy.target.transform.position, new Vector3(boxSize.x / 2, 0, boxSize.y / 2), Quaternion.identity, hittableLayer);
+        Collider[] colliders = Physics.OverlapBox(lastTargetPosition, new Vector3(boxSize.x / 2, 0, boxSize.y / 2), Quaternion.identity, hittableLayer);
         if (colliders.Length != 0)
         {
             foreach (Collider collider in colliders)
@@ -66,4 +66,33 @@ public class AOE_Ability : EnemyAbility
     {
 
     }
+    public override bool WillHitTarget()
+    {
+        if(shape == AbilityShape.Box)
+        {
+            float distance = Vector3.Distance(enemy.target.transform.position, enemy.transform.position);
+
+            //test if the target fits in the range of the ability
+            if (!(distance >= range.x - boxSize.y / 2 && distance <= range.y + boxSize.y / 2))
+                return false;
+            //if it does, is it too far
+            if (distance > range.y)
+                lastTargetPosition = (enemy.target.transform.position - enemy.transform.position).normalized * range.y;
+            //or too close
+            else if (distance < range.x)
+                lastTargetPosition = (enemy.target.transform.position - enemy.transform.position).normalized * range.x;
+            //or in range
+            else
+                lastTargetPosition = enemy.target.transform.position;
+            return true;
+        }
+        else if (shape == AbilityShape.Sphere)
+        {
+
+        }
+        return false;
+    }
+
+
+
 }

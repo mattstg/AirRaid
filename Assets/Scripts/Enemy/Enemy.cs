@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour, IHittable
 
     public virtual void HitByProjectile(float damage)
     {
+        if (!isAlive)
+            return;
+
         hp -= damage;
         if (hp <= 0)
             Die();

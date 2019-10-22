@@ -9,31 +9,32 @@ public class AttackBehavior : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
-       if (enemy == null)
+        if (enemy == null)
             enemy = animator.GetComponent<AnimatedEnemy>();
         EnemyAbility temp;
-        if (enemy.enemyAbilityManager.abilities != null)
-        {
+        if (enemy.target != null)
+       { 
+            //Cycle every ability, check of can use it and if it will hit the target
             for (int i = 0; i < enemy.enemyAbilityManager.abilities.Count; i++)
             {
+                //Create a shorthand
                 temp = enemy.enemyAbilityManager.abilities[i];
-                if (temp.canUseAbility && temp.Range.x < enemy.target.transform.position.x && temp.Range.y >= enemy.target.transform.position.z)
+                if (temp.canUseAbility && temp.WillHitTarget())
                 {
                     ability = temp;
                     break;
                 }
             }
-        }
-        if(ability == null)
-        {
-            animator.SetTrigger("cantAttack");
-        }
-        else
-        {
-            enemy.animatorOverrideController["attack"] = ability.animation;
-            ability.UseAbility();
-        }
+            if(ability == null)
+            {
+                animator.SetTrigger("cantAttack");
+            }
+            else
+            {
+                enemy.animatorOverrideController["attack"] = ability.animation;
+                ability.UseAbility();
+            }
+       }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
