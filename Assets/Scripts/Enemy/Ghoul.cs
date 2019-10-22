@@ -40,10 +40,18 @@ public class Ghoul : AnimatedEnemy
     {
         DieProcess(EnemyType.Troll);
     }
-    private void OnDrawGizmosSelected()
+    public virtual void DieProcess(EnemyType type)
     {
-        Gizmos.color = Color.red;
-     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
-        Gizmos.DrawWireCube(transform.position, new Vector3(5, 1, 5));
+        StartCoroutine(SpawnEvolution(type, death.length));
+        anim.SetTrigger("isDead");
+    }
+    public virtual IEnumerator SpawnEvolution(EnemyType type, float time)
+    {
+        yield return new WaitForSeconds(time);
+        //GameObject troll = GameObject.Instantiate<GameObject>(ghouleEvolution, transform.parent);
+        EnemyManager.Instance.SpawnEnemy(type, transform.position, 100);
+        base.Die();
+
+        //troll.transform.position = transform.position;
     }
 }
