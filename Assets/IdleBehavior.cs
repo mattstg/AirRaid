@@ -23,6 +23,7 @@ public class IdleBehavior : StateMachineBehaviour
         float targetDistance = 0;
         GameObject _target = null;
         float distance;
+        Collider targetColider = null;
         int compteur = 1; // Use the detectionRadius variable instead
         if (!animator.GetBool("isTarget"))
         {
@@ -37,6 +38,7 @@ public class IdleBehavior : StateMachineBehaviour
                         distance = Vector3.Distance(ae.transform.position, entity.transform.position);
                         if (targetDistance > distance)
                         {
+                            targetColider = entity;
                             _target = entity.gameObject;
                             targetDistance = distance;
                         }
@@ -44,7 +46,7 @@ public class IdleBehavior : StateMachineBehaviour
                     if (_target != null)
                     {
                         ae.target = _target;
-                        ae.SetAgent(ae.target.transform.position);
+                        ae.SetAgent(ae.target.transform.position, targetColider.bounds);
                         animator.SetBool("isTarget", true);
                     }
                 }

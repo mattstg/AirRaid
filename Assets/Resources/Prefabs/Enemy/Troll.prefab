@@ -1264,12 +1264,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 0
   navmeshAgent: {fileID: 0}
+  Id: 0
   target: {fileID: 0}
+  lastTargetPosition: {x: 0, y: 0, z: 0}
   walk: {fileID: 7400000, guid: 762dc6b4a5477604a9cbc7bf4c0ea4a1, type: 3}
   idle: {fileID: 7400000, guid: 05d9c50c768275e4f9437cb9da19e768, type: 3}
   run: {fileID: 7400000, guid: 9f65467c0f539204eafbca708517c8f1, type: 3}
   death: {fileID: 7400000, guid: aa6bb6dae756c034f8701999f532a813, type: 3}
-  abilities:
+  prefab_abilities:
   - {fileID: 11400000, guid: d94362d478d7a3a47937ae11fe79b601, type: 2}
   timeSinceLastDecision: 0
   enemyAbilityManager:

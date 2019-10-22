@@ -70,9 +70,10 @@ public class AnimatedEnemy : MobileEnemy
         anim.SetFloat("Velocity",velocity);
     }
 
-    public void SetAgent(Vector3 pos)
+    public void SetAgent(Vector3 pos, Bounds enemyBounds)
     {
-        navmeshAgent.SetDestination(pos);
+        Vector3 randomPos = new Vector3(Random.Range(-(enemyBounds.size.x) / 2, (enemyBounds.size.x) / 2), 0, Random.Range(-(enemyBounds.size.z) / 2, (enemyBounds.size.z) / 2)) + pos;
+        navmeshAgent.SetDestination(randomPos);
     }
 
     public void ClearAgentDestination()
