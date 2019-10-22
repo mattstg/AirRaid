@@ -36,5 +36,6 @@ public class AOE_Ability : EnemyAbility
 
     void Main() // Jsais pas comment la nommer, should refactor
     {
+        Debug.Log("AOE Ability");
     }
 }

@@ -9,11 +9,15 @@ public class EnemyAbilityManager
     public List<EnemyAbility> abilities;
     //public bool abilityInUse;
 
-    public EnemyAbilityManager(AnimatedEnemy _enemy)
+    public EnemyAbilityManager(AnimatedEnemy _enemy, List<EnemyAbility> _abilities)
     {
         enemy = _enemy;
         abilities = new List<EnemyAbility>();
-        AddAbility(Resources.Load<EnemyAbility>("EnemyAbility/Smash"));
+        foreach (EnemyAbility ability in _abilities)
+        {
+            AddAbility(ability);
+        }
+        //AddAbility(Resources.Load<EnemyAbility>("EnemyAbility/Smash"));
 
     }
 

@@ -20,7 +20,6 @@ public class IdleBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("bob");
         float targetDistance = 0;
         GameObject _target = null;
         float distance;
