@@ -1269,10 +1269,12 @@ MonoBehaviour:
   idle: {fileID: 7400000, guid: 05d9c50c768275e4f9437cb9da19e768, type: 3}
   run: {fileID: 7400000, guid: 9f65467c0f539204eafbca708517c8f1, type: 3}
   death: {fileID: 7400000, guid: aa6bb6dae756c034f8701999f532a813, type: 3}
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: d94362d478d7a3a47937ae11fe79b601, type: 2}
   timeSinceLastDecision: 0
   enemyAbilityManager:
-    abilities: []
+    abilities:
+    - {fileID: 11400000, guid: d94362d478d7a3a47937ae11fe79b601, type: 2}
   animatorOverrideController: {fileID: 0}
   die: 0
 --- !u!54 &522509512081120588
