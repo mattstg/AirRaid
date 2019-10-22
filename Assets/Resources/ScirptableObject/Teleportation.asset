@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90bd19010f5d516458f7bf01d29c0b65, type: 3}
-  m_Name: Ability7
+  m_Name: Teleportation
   m_EditorClassIdentifier: 
-  Name: Ability7
-  Description: This is the seventh ability!
-  Cost: 0
-  Level: 0
-  imgSprite: {fileID: 0}
+  Name: Teleportation
+  Description: This is ability will allow you to teleport
+  Cost: 25
+  Level: 1
+  imgSprite: {fileID: -7817502287492602488, guid: 485f470bcd8efd5439bd4662d43b5d5b,
+    type: 3}
   Part: 1
   Purchased: 0

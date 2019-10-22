@@ -1,34 +1,34 @@
 fileFormatVersion: 2
-guid: 3c5cfab981db55e4b9418f7d478cd09c
+guid: f3d43a3d5902ad949a8bed57de1dfce4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1100689897457689289
-    second: sprite diamont_0
+      213: 7504893899880790221
+    second: sprite_diamont_0
   - first:
-      213: 8974987689221452769
-    second: sprite diamont_1
+      213: -868667154532417598
+    second: sprite_diamont_1
   - first:
-      213: -73769817322705941
-    second: sprite diamont_2
+      213: 480925533131052332
+    second: sprite_diamont_2
   - first:
-      213: -7574781342793187901
-    second: sprite diamont_3
+      213: 6953038702240591890
+    second: sprite_diamont_3
   - first:
-      213: -3893071395514962312
-    second: sprite diamont_4
+      213: 7910696780908043699
+    second: sprite_diamont_4
   - first:
-      213: 8682876530253659040
-    second: sprite diamont_5
+      213: 7958910929357401277
+    second: sprite_diamont_5
   - first:
-      213: 4171732142812524952
-    second: sprite diamont_6
+      213: -1094198408783669490
+    second: sprite_diamont_6
   - first:
-      213: 1175559218241761746
-    second: sprite diamont_7
+      213: 4825998982981119352
+    second: sprite_diamont_7
   - first:
-      213: 8909471908024698411
-    second: sprite diamont_8
+      213: 6423184205136082316
+    second: sprite_diamont_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -107,83 +107,17 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Lumin
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite diamont_0
+      name: sprite_diamont_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 236
-        width: 129
-        height: 118
+        x: 20
+        y: 254
+        width: 109
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c2d13271c4466a449c2c271b513988b
-      internalID: 1100689897457689289
+      spriteID: 7d1dcafd34e59e346bbe1b379eee2ac9
+      internalID: 7504893899880790221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_1
+      name: sprite_diamont_1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 236
-        width: 129
-        height: 118
+        x: 156
+        y: 256
+        width: 91
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66347b5dd7d558a45a5c6587c8706128
-      internalID: 8974987689221452769
+      spriteID: eba3e4a593499d44183c0b78f43b4d85
+      internalID: -868667154532417598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_2
+      name: sprite_diamont_2
       rect:
         serializedVersion: 2
-        x: 258
-        y: 236
-        width: 129
-        height: 118
+        x: 282
+        y: 241
+        width: 103
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ee376b720b2db1458dad6fc44aeafc7
-      internalID: -73769817322705941
+      spriteID: a2ca86e7f33e5b3489ba8bea850a4f9d
+      internalID: 480925533131052332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_3
+      name: sprite_diamont_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 118
-        width: 129
-        height: 118
+        x: 27
+        y: 134
+        width: 95
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,20 +188,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d43a696d10c01564dba12e5a1f065ec2
-      internalID: -7574781342793187901
+      spriteID: 3f4ee09927dec02468ef583a56053d1d
+      internalID: 6953038702240591890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_4
+      name: sprite_diamont_4
       rect:
         serializedVersion: 2
-        x: 129
-        y: 118
-        width: 129
-        height: 118
+        x: 138
+        y: 132
+        width: 100
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e13d1ff30fb1ec47b61af4a11cfc342
-      internalID: -3893071395514962312
+      spriteID: f3a0bc7f4a5608349b0777359cf703e9
+      internalID: 7910696780908043699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_5
+      name: sprite_diamont_5
       rect:
         serializedVersion: 2
-        x: 258
-        y: 118
-        width: 129
-        height: 118
+        x: 284
+        y: 136
+        width: 83
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db065fe9ccf70c545934071b6286a43d
-      internalID: 8682876530253659040
+      spriteID: 54c975b2fef1ad7438bc427f70e3f34b
+      internalID: 7958910929357401277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_6
+      name: sprite_diamont_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 129
-        height: 118
+        x: 44
+        y: 8
+        width: 35
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,20 +251,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abe0a060b080b214baa91f72650a3e7d
-      internalID: 4171732142812524952
+      spriteID: d8324aba7732d3d44816952e72b2446a
+      internalID: -1094198408783669490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_7
+      name: sprite_diamont_7
       rect:
         serializedVersion: 2
-        x: 129
-        y: 0
-        width: 129
-        height: 118
+        x: 142
+        y: 23
+        width: 90
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -338,20 +272,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be45034c463a15d47b6251987fbba55e
-      internalID: 1175559218241761746
+      spriteID: 9cb0c41731626454789b3f7747c5ef36
+      internalID: 4825998982981119352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite diamont_8
+      name: sprite_diamont_8
       rect:
         serializedVersion: 2
-        x: 258
-        y: 0
-        width: 129
-        height: 118
+        x: 264
+        y: 21
+        width: 98
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -359,8 +293,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d1ff7c3d268ebb4c8757eb385480f67
-      internalID: 8909471908024698411
+      spriteID: 45fe89d9245965f40805a0e03297c7eb
+      internalID: 6423184205136082316
       vertices: []
       indices: 
       edges: []
@@ -368,7 +302,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f88c0a8e8a1e0b041926b27545f6d6fd
+    spriteID: f6db31004842f784d932eaf83b77879d
     internalID: 0
     vertices: []
     indices: 
