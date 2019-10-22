@@ -35,13 +35,14 @@ public class ChaseBehavior : StateMachineBehaviour
                 ae.timeSinceLastDecision = Time.time;
                 animator.SetTrigger("attack");
             }
+        
         }
         animator.SetFloat("Velocity", ae.navmeshAgent.velocity.magnitude / ae.navmeshAgent.speed);
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ae.transform.LookAt(ae.target.transform.position);
+        //ae.transform.LookAt(ae.target.transform.position);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -23,7 +23,6 @@ public class IdleBehavior : StateMachineBehaviour
         float targetDistance = 0;
         GameObject _target = null;
         float distance;
-        GameObject temp = null;
         int compteur = 1; // Use the detectionRadius variable instead
         if (!animator.GetBool("isTarget"))
         {
@@ -39,13 +38,7 @@ public class IdleBehavior : StateMachineBehaviour
                         if (targetDistance > distance)
                         {
                             _target = entity.gameObject;
-                            if (ae.target != _target)
-                            {
-                                temp = _target;
-                                targetDistance = distance;
-                            }
-                            else
-                                _target = temp;
+                            targetDistance = distance;
                         }
                     }
                     if (_target != null)
