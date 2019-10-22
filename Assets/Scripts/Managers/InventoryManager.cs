@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum InventoryType { SELLGRID, BODYPART };
 public class InventoryManager : IManagable {
     #region Singleton
     private static InventoryManager instance;
@@ -10,9 +11,16 @@ public class InventoryManager : IManagable {
     #endregion
 
     public Dictionary<string, Item> itemList;
+    public Dictionary<BodyPart, Item> bodyPartList;
+    public Dictionary<string, Item> sellList;
+    [HideInInspector] public InventoryType inventoryType;
+
+    [HideInInspector] public float energySellAmount;
 
     public void Initialize() {
         itemList = new Dictionary<string, Item>();
+        sellList = new Dictionary<string, Item>();
+        bodyPartList = new Dictionary<BodyPart, Item>();
     }
 
     public void PostInitialize() { }
@@ -27,5 +35,13 @@ public class InventoryManager : IManagable {
 
     public void AddItem(string slot, Item item) {
         itemList.Add(slot, item);
+    }
+
+    public void AddItemToBodyPart(BodyPart part, Item item) {
+        bodyPartList.Add(part, item);
+    }
+
+    public void AddItemToSellGrid(int slot, Item item) {
+        sellList.Add("Slot_" + slot, item);
     }
 }

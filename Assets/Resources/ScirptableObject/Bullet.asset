@@ -16,6 +16,7 @@ MonoBehaviour:
   Description: Shoot the bullet
   Cost: 25
   Level: 1
-  imgSprite: {fileID: 0}
+  imgSprite: {fileID: -1396807120763237948, guid: 485f470bcd8efd5439bd4662d43b5d5b,
+    type: 3}
   Part: 0
   Purchased: 0

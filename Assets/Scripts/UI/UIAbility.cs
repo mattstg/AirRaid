@@ -20,7 +20,6 @@ public class UIAbility : MonoBehaviour
 
     }
 
-
     //A pseudo factory pattern, uses a static function to create a new one and do all the setup needed, and return reference
     static GameObject uiAbilityPrefab;
     public static UIAbility CreateAbilityUI(Sprite abilitySprite, char key)

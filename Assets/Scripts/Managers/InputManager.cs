@@ -35,12 +35,19 @@ public class InputManager : IManagable
         {
             ip.abilityKeyPress[i] = GetInputPressType("Ability" + i);
         }
-        
     }
 
     public void Refresh()
     {
         SetInputPkg(refreshInputPkg);
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            StoreManager.Instance.openStore = !StoreManager.Instance.openStore;
+            if (StoreManager.Instance.openStore) {
+                StoreManager.Instance.storeActive = true;
+            } else {
+                StoreManager.Instance.storeActive = false;
+            }
+        }
     }
 
     public void PostInitialize()
@@ -68,7 +75,6 @@ public class InputManager : IManagable
         public Vector2 dirPressed;
         public float throttleAmount;
         public InputPressType[] abilityKeyPress;
-        
 
         public override string ToString()
         {

@@ -26,7 +26,8 @@ public class Ab_EnergyRegen : Ability
     {
         if (base.UseAbility())  
         {
-            Debug.Log("Energy Regeneration: " + PlayerManager.Instance.player.stats.currentEnegy + REGENERATION_AMOUNT);
+            PlayerManager.Instance.player.stats.maxEnergy += REGENERATION_AMOUNT;
+            Debug.Log("new max energy: " + PlayerManager.Instance.player.stats.maxEnergy + REGENERATION_AMOUNT);
             return true;
         }
         return false;
