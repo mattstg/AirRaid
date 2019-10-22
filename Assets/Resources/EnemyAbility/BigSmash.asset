@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 707d12fffdb219d44894fbb0f37756b9, type: 3}
-  m_Name: Smash
+  m_Name: BigSmash
   m_EditorClassIdentifier: 
-  animation: {fileID: 7400000, guid: af84d9698cdb86449a1d16ea9e082ddf, type: 3}
+  animation: {fileID: 7400000, guid: aa7b7b2eb22129c468e635108d0e95c7, type: 3}
   hittableLayer:
     serializedVersion: 2
     m_Bits: 17152
   range: {x: 0, y: 0}
-  damage: 3
-  cooldown: 2
+  damage: 7
+  cooldown: 5
   timeLastUsed: 0
-  timeBeforeHit: 2
-  triggerParam: Attack
+  timeBeforeHit: 5
+  triggerParam: 
   radius: 0
   angle: {x: 0, y: 0}
-  boxSize: {x: 2, y: 2}
+  boxSize: {x: 7, y: 7}
   shape: 0

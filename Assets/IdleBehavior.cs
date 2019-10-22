@@ -20,46 +20,35 @@ public class IdleBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float targetDistance = 0;
-        GameObject _target = null;
-        float distance;
         Collider targetColider = null;
         int compteur = 1; // Use the detectionRadius variable instead
+        if (ae.CheckTargetDestroy())
+        {
+            animator.SetBool("isTarget", false);
+        }
         if (!animator.GetBool("isTarget"))
         {
             do
             {
-                Collider[] collid = Physics.OverlapSphere(ae.transform.position, 30 * compteur, LayerMask.GetMask("Wall", "Building"));
+                Collider[] collid = Physics.OverlapSphere(ae.transform.position, 10 * compteur, LayerMask.GetMask("Wall", "Building", "Defender"));
                 if (collid.Length != 0)
                 {
-                    targetDistance = Vector3.Distance(ae.transform.position, collid[0].transform.position);
-                    foreach (Collider entity in collid)
-                    {
-                        distance = Vector3.Distance(ae.transform.position, entity.transform.position);
-                        if (targetDistance > distance)
-                        {
-                            targetColider = entity;
-                            _target = entity.gameObject;
-                            targetDistance = distance;
-                        }
-                    }
-                    if (_target != null)
-                    {
-                        ae.target = _target;
-                        ae.SetAgent(ae.target.transform.position, targetColider.bounds);
-                        animator.SetBool("isTarget", true);
-                    }
+                    targetColider = collid[Random.Range(0, collid.Length)];
+                    ae.target = targetColider.gameObject;
+                    ae.SetAgent(ae.target.transform.position, targetColider.bounds);
+                    animator.SetBool("isTarget", true);
                 }
-                compteur++;
-            } while (_target == null);
+                else
+                    compteur++;
+            } while (targetColider == null);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
         
-    }
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

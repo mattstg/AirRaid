@@ -1,47 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class ChaseBehavior : StateMachineBehaviour
+public class DeathBehavior : StateMachineBehaviour
 {
-    AnimatedEnemy ae;
-    Time timeBetweenLastDecision;
+    AnimatedEnemy enemy;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (ae == null)
-            ae = animator.GetComponent<AnimatedEnemy>();
-        ae.navmeshAgent.isStopped = false;
+        if (enemy == null)
+        {
+            enemy = animator.GetComponent<AnimatedEnemy>();
+        }
+        enemy.navmeshAgent.isStopped = true;   
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (ae.CheckTargetDestroy())
-        {
-            animator.SetBool("isTarget", false);
-            return;
-        }
-        ae.lastTargetPosition = ae.target.transform.position;
-        if (ae.navmeshAgent.remainingDistance <= 1) // May create bugs
-        {
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
-            if (ae.CanMakeDecision)
-            {
-                ae.navmeshAgent.isStopped = true;
-                ae.timeSinceLastDecision = Time.time;
-                //ae.transform.LookAt(ae.lastTargetPosition);
-                animator.SetTrigger("attack");
-            }
-        
-        }
-        animator.SetFloat("Velocity", ae.navmeshAgent.velocity.magnitude / ae.navmeshAgent.speed);
-    }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ae.transform.LookAt(ae.lastTargetPosition);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
