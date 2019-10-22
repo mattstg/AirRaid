@@ -38,6 +38,7 @@ public class IdleBehavior : StateMachineBehaviour
                         if (targetDistance > distance)
                         {
                             _target = entity.gameObject;
+                            targetDistance = distance;
                         }
                     }
                     if (_target != null)

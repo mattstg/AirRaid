@@ -35,6 +35,7 @@ public class ChaseBehavior : StateMachineBehaviour
                 ae.timeSinceLastDecision = Time.time;
                 animator.SetTrigger("attack");
             }
+        
         }
         animator.SetFloat("Velocity", ae.navmeshAgent.velocity.magnitude / ae.navmeshAgent.speed);
     }
