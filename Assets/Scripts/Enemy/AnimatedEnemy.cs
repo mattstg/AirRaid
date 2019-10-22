@@ -66,6 +66,19 @@ public class AnimatedEnemy : MobileEnemy
             return true;
         return false;
     }
-    
+    public void DieProcess(GameObject ghouleEvolution)
+    {
+        StartCoroutine(SpawnEvolution(ghouleEvolution));
+        anim.SetTrigger("isDead");
+    }
+    public IEnumerator SpawnEvolution(GameObject ghouleEvolution)
+    {
+        yield return new WaitForSeconds(2);
+        //GameObject troll = GameObject.Instantiate<GameObject>(ghouleEvolution, transform.parent);
+        EnemyManager.Instance.SpawnEnemy(EnemyType.Troll, transform.position, 100);
+        base.Die();
+        
+        //troll.transform.position = transform.position;
+    }
 }
 

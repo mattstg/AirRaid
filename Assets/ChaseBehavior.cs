@@ -25,6 +25,7 @@ public class ChaseBehavior : StateMachineBehaviour
             animator.SetBool("isTarget", false);
             return;
         }
+        
         if (ae.navmeshAgent.remainingDistance <= 1)
         {
 
@@ -35,7 +36,7 @@ public class ChaseBehavior : StateMachineBehaviour
                 animator.SetTrigger("attack");
             }
         }
-
+        animator.SetFloat("Velocity", ae.GetComponent<Rigidbody>().velocity.magnitude);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
