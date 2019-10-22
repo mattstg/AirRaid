@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Abilities { Turrets, Rocket }
+public enum Abilities { Turrets, Rocket,Rewind,TurretDrop}
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
@@ -20,30 +20,14 @@ public class PlayerController : MonoBehaviour, IHittable
     public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
 
 
-    //Rewind Variables
-
-    private float abilityTimer = 7f;
-    private LinkedList<RewindPositions> rewindQueue;
-    private float refreshCounter = 3f;
-    private bool rewindHappening;
-    public Material basicSkin;
-    public Material teleportFade;
-    private Renderer rd;
-
-    //Turret Variables
-    private TurretSpawn turretScript;
-    private float turretTimer = 0f;
     public void Initialize()
     {
-
-        rewindQueue = new LinkedList<RewindPositions>();
-        rewindHappening = false;
-        rd = GetComponent<Renderer>();
 
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
-                                                                 //but it's important that I test now that my ability system is all in place.
+        abilityManager.AddAbilities(new Ab_Rewind(this), 1);     //but it's important that I test now that my ability system is all in place.
+        abilityManager.AddAbilities(new Ab_Turret(this), 2);
 
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
@@ -55,8 +39,6 @@ public class PlayerController : MonoBehaviour, IHittable
 
         playerCam = GetComponentInChildren<Camera>();
 
-        //Load Turret
-        turretScript = GetComponentInChildren<TurretSpawn>();
 
 
 
@@ -108,66 +90,6 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
-
-        //Ability Timers
-
-        refreshCounter -= Time.deltaTime;
-        abilityTimer -= Time.deltaTime;
-
-
-        //turretTimer -= Time.deltaTime;
-
-        //Add data to Queue /OR/ Remove old Data then Add new
-        if (!rewindHappening)
-        {
-
-            if (refreshCounter < 0)
-            {
-                //Check if list is empty ***** 
-
-                rewindQueue.RemoveFirst();
-
-                rewindQueue.AddLast(new RewindPositions(transform.position, rb.velocity, rb.rotation, stats.currentEnegy, stats.hp));
-            }
-            else
-            {
-                rewindQueue.AddLast(new RewindPositions(transform.position, rb.velocity, rb.rotation, stats.currentEnegy, stats.hp));
-            }
-        }
-
-
-
-        //teleport ship to saved coord
-        if (abilityTimer < 0)
-        {
-            Debug.Log("Rewind Ready!!!");
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                //activate Rewind and reset Queue and Timers;
-                Debug.Log("Size of List = " + rewindQueue.Count);
-                Rewind();
-            }
-        }
-
-        if (turretTimer < 0)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-
-                turretScript.SpawnTurret();
-                turretTimer = 10f;
-            }
-        }
-
-
-
-        //Timer to activate Rewind Ability
-        if (abilityTimer > 0)
-        {
-            //Debug.Log("Ability timer : " + abilityTimer);
-
-        }
-
         if (!stats.engineStalled)
         {
             abilityManager.PhysicsRefresh(inputPkg);
@@ -246,65 +168,6 @@ public class PlayerController : MonoBehaviour, IHittable
         Debug.Log("took dmg: " + damage);
     }
 
-    public void Rewind()
-    {
-        //set rewind to happening / reset Timers
-        rewindHappening = true;
-        abilityTimer = 150f;
-
-        //Stop player mid flight
-        rb.velocity = new Vector3(0, 0, 0);
-
-        rd.material = teleportFade;
-
-
-        StartCoroutine(RewindAction());
-
-    }
-
-    public void killRoutine()
-    {
-        StopCoroutine(RewindAction());
-        rd.material = basicSkin;
-        abilityTimer = 15f;
-        refreshCounter = 3f;
-    }
-
-    IEnumerator RewindAction()
-    {
-
-        while (rewindHappening)
-        {
-            Debug.Log("Size of queue in routine = " + rewindQueue.Count);
-
-            /*
-             * Add check to see if List is Empty,   if yes kill the Coroutine
-             * */
-
-            if (rewindQueue.Count >= 2)
-            {
-
-                rewindQueue.RemoveLast();
-
-
-                transform.position = rewindQueue.Last.Value.savedPos;
-                rb.velocity = rewindQueue.Last.Value.savedVelo;
-                rb.rotation = rewindQueue.Last.Value.savedRot;
-                stats.currentEnegy = rewindQueue.Last.Value.savedEnergy;
-
-                yield return null;
-            }
-            else
-            {
-                rewindQueue.Clear();
-                rewindHappening = false;
-                killRoutine();
-            }
-        }
-
-        Debug.Log("Coroutine DONE");
-    }
-
 
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game
@@ -334,28 +197,4 @@ public class PlayerController : MonoBehaviour, IHittable
 
         public PlayerStats(PlayerController pc) { player = pc; currentEnegy = maxEnergy; hp = maxHp; }
     }
-
-
-
-    public class RewindPositions
-    {
-        public Vector3 savedPos;
-        public Quaternion savedRot;
-        public Vector3 savedVelo;
-        public float savedHp;
-        public float savedEnergy;
-
-
-        public RewindPositions(Vector3 pos, Vector3 velo, Quaternion rotation, float savedEnergy, float savedHp)
-        {
-            this.savedPos = pos;
-            this.savedVelo = velo;
-            this.savedRot = rotation;
-            this.savedHp = savedHp;
-            this.savedEnergy = savedEnergy;
-        }
-    }
-
-
-
 }

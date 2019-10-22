@@ -288,8 +288,8 @@ GameObject:
   - component: {fileID: 2848237435732157589}
   - component: {fileID: 5843595673741043195}
   - component: {fileID: 7496340586804537299}
+  - component: {fileID: 370896548189236362}
   - component: {fileID: 5342651879621556945}
-  - component: {fileID: 8155647574442328409}
   m_Layer: 14
   m_Name: Turret
   m_TagString: Untagged
@@ -362,6 +362,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!54 &370896548189236362
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735905406802405724}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!135 &5342651879621556945
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -375,20 +391,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8155647574442328409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735905406802405724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1617cc296dc72f41b21c5ac94d82d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretTimer: 0
-  radiusRangeDetection: 90
 --- !u!1 &2559550039040705728
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +958,6 @@ GameObject:
   - component: {fileID: 5363165938445148853}
   - component: {fileID: 2731824076144842953}
   - component: {fileID: 5026035399475055348}
-  - component: {fileID: 7029441890607944734}
   - component: {fileID: 8169830873134981484}
   m_Layer: 14
   m_Name: TurretHead
@@ -1039,22 +1040,6 @@ CapsuleCollider:
   m_Height: 3.5347643
   m_Direction: 1
   m_Center: {x: -0.017652512, y: 0.8417619, z: 0.043239594}
---- !u!54 &7029441890607944734
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935290115438626937}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!108 &8169830873134981484
 Light:
   m_ObjectHideFlags: 0
