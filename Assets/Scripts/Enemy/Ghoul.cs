@@ -13,14 +13,10 @@ public class Ghoul : AnimatedEnemy
     {
         base.Initialize(startingEnergy);
         hp = MAX_HP;
-        //target = BuildingManager.Instance.GetRandomBuilding().transform.position;
-        //navmeshAgent.SetDestination(targetBuilding);
     }
     public override void Refresh()
     {
         base.Refresh();
-        //SetAnimeVelocity(navmeshAgent.velocity.magnitude / navmeshAgent.speed);
-        //DetectEnemyNearby();
         
     }
     public void FixedRefresh()

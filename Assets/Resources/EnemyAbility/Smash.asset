@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707d12fffdb219d44894fbb0f37756b9, type: 3}
   m_Name: Smash
   m_EditorClassIdentifier: 
-  animation: {fileID: 0}
+  animation: {fileID: 7400000, guid: af84d9698cdb86449a1d16ea9e082ddf, type: 3}
   hittableLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
-  Range: {x: 0, y: 0}
-  damage: 2
+    m_Bits: 768
+  Range: {x: 2, y: 2}
+  damage: 10
   cooldown: 2
   timeLastUsed: 0
   timeBeforeHit: 1
   triggerParam: Attack
   radius: 0
   angle: {x: 0, y: 0}
-  boxSize: {x: 0, y: 0}
+  boxSize: {x: 2, y: 2}
   shape: 0
