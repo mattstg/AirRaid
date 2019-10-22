@@ -7,7 +7,6 @@ public abstract class Defender : MonoBehaviour, IHittable {
     public DefenderPck defenderInfos;
     protected AbilityAI myAbility;
     protected Animator myAnimator;
-    protected Leader myLeader;
 
     protected NavMeshAgent agent;
 
@@ -19,12 +18,13 @@ public abstract class Defender : MonoBehaviour, IHittable {
         this.defenderInfos = new DefenderPck(type, currentState);
         this.myAbility = ability;
         this.myAnimator = transform.GetComponent<Animator>();
-        this.myLeader = leader;
+        this.defenderInfos.myLeader = leader;
 
         this.agent = transform.GetComponent<NavMeshAgent>();
     }
 
     public virtual void Refresh() {
+        HitByProjectile(0);
         this.defenderInfos.state = DefenderState.ON_FLOCK;
         if (DoIHaveTarget()) {
             //I have a target -> check if in combat range
@@ -39,12 +39,12 @@ public abstract class Defender : MonoBehaviour, IHittable {
             }
             else {
                 //Target not in vision range yet -> move toward leader
-                this.agent.SetDestination(this.myLeader.transform.position);
+                this.agent.SetDestination(this.defenderInfos.myLeader.transform.position);
             }
         }
         else {
             //Target not in vision range -> move toward leader
-            this.agent.SetDestination(this.myLeader.transform.position);
+            this.agent.SetDestination(this.defenderInfos.myLeader.transform.position);
         }
         this.defenderInfos.speed = this.agent.speed;
     }
@@ -53,15 +53,17 @@ public abstract class Defender : MonoBehaviour, IHittable {
         GiveInfoToAnimator();
     }
     protected virtual void DoAbility() {
-        if (this.myAbility.UseAbility(this.defenderInfos, this.defenderInfos.target))
+        if (this.myAbility.UseAbility(this.defenderInfos, this.defenderInfos.target)) {
             this.myAnimator.SetTrigger("ON_ATTACK");
+            this.defenderInfos.myLeader.PlaySound(this.defenderInfos.sounds[DefenderState.ON_ATTACK]);
+        }
     }
 
     public virtual void Die() {
         this.myAnimator.SetTrigger("ON_DYING");
         this.defenderInfos.state = DefenderState.ON_DYING;
+        this.defenderInfos.myLeader.PlaySound(this.defenderInfos.sounds[DefenderState.ON_DYING]);
         this.defenderInfos.myLeader.RemoveDefenderFromMyGroup(this);
-        GameObject.Destroy(gameObject);
     }
 
     private void RegenEnergy() {
@@ -107,6 +109,16 @@ public abstract class Defender : MonoBehaviour, IHittable {
 
     private void GiveInfoToAnimator() {
         this.myAnimator.SetFloat("speedVelocity", this.defenderInfos.speed);
+    }
+
+    //Turn off because too loud
+    private void Step() {
+        //Called by event on the animation
+        this.defenderInfos.myLeader.PlaySound(GetRandomWalkingSound());
+    }
+
+    private AudioClip GetRandomWalkingSound() {
+        return this.defenderInfos.walkingSounds[Random.Range(0, this.defenderInfos.walkingSounds.Count - 1)];
     }
 
     public void HitByProjectile(float damage) {

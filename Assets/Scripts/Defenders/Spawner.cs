@@ -21,11 +21,15 @@ public class Spawner : MonoBehaviour {
 
     public void Refresh() {
         if (Time.time - this.lastTimeUnitSpawned >= GlobalDefendersVariables.Instance.DELAY_SPAWN_DEFENDER) {
-            if (this.amountToSpawnToFinishGroup > 0)
+            if (this.amountToSpawnToFinishGroup > 0) {
                 SpawnDefender();
+            }
+            else if (this.groupdLeader == null) {
+                CreateNewGroup();
+            }
             else {
                 this.groupdLeader.GoFight();
-                CreateNewGroup();
+                this.groupdLeader = null;
             }
             this.lastTimeUnitSpawned = Time.time;
         }

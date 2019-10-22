@@ -8,6 +8,7 @@ public class Leader : MonoBehaviour {
     private NavMeshAgent agent;
     private Animator animator;
     private AudioSource speaker;
+    private List<AudioClip> walkingSounds = new List<AudioClip>();
     private List<Defender> myGroup = new List<Defender>();
     private Transform target;
     private bool readyToFight;
@@ -18,6 +19,8 @@ public class Leader : MonoBehaviour {
         this.agent = transform.GetComponent<NavMeshAgent>();
         this.animator = transform.GetComponent<Animator>();
         this.speaker = transform.GetComponent<AudioSource>();
+        this.walkingSounds.Add(Resources.Load<AudioClip>("Characters/Sounds/StepOnGrassSound1"));
+        this.walkingSounds.Add(Resources.Load<AudioClip>("Characters/Sounds/StepOnGrassSound2"));
     }
 
     public void Refresh() {
@@ -114,6 +117,13 @@ public class Leader : MonoBehaviour {
         this.speaker.PlayOneShot(clip);
     }
 
+    private void Step() {
+        //Called by event on the animation
+        PlaySound(GetRandomWalkingSound());
+    }
+    private AudioClip GetRandomWalkingSound() {
+        return this.walkingSounds[Random.Range(0, this.walkingSounds.Count - 1)];
+    }
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.cyan;

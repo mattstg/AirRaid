@@ -24,12 +24,12 @@ public class Support : Defender {
             }
             else {
                 //Target doesnt need healing -> move toward leader
-                this.agent.SetDestination(this.myLeader.transform.position);
+                this.agent.SetDestination(this.defenderInfos.myLeader.transform.position);
             }
         }
         else {
             //I don't have a target -> move toward leader
-            this.agent.SetDestination(this.myLeader.transform.position);
+            this.agent.SetDestination(this.defenderInfos.myLeader.transform.position);
         }
         this.defenderInfos.speed = this.agent.speed;
     }

@@ -33,7 +33,7 @@ public class GlobalDefendersVariables {
     public readonly float RA_ENERGY_START = 120f;
     public readonly float RA_ENERGY_MAX = 120f;
     public readonly float RA_ENERGY_REGEN = 0.2f;
-    public readonly float RA_ATTACK_RANGE = 7f;
+    public readonly float RA_ATTACK_RANGE = 12f;
     public readonly float RA_VISION_RANGE = 17f;
     public readonly float RA_DELAY_ABILITY = 3f;
     public readonly float RA_ABILITY_COST = 15f;

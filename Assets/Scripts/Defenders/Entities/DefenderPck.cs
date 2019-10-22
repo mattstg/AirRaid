@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenderPck
-{
+public class DefenderPck {
     public TypeDefender type;
     public DefenderState state;
     public float speed;
@@ -19,6 +18,8 @@ public class DefenderPck
     public float abilityEnergyCost;
     public Leader myLeader;
     public Transform target;
+    public Dictionary<DefenderState, AudioClip> sounds = new Dictionary<DefenderState, AudioClip>();
+    public List<AudioClip> walkingSounds = new List<AudioClip>();
 
     public DefenderPck(TypeDefender _type, DefenderState currentState) {
         this.type = _type;
@@ -30,17 +31,23 @@ public class DefenderPck
         switch (type) {
             case TypeDefender.MELEE:
                 GetInfoMelee();
+                this.sounds.Add(DefenderState.ON_ATTACK, Resources.Load<AudioClip>("Characters/Sounds/SwordSounds"));
                 break;
             case TypeDefender.RANGE:
                 GetInfoRange();
+                this.sounds.Add(DefenderState.ON_ATTACK, Resources.Load<AudioClip>("Characters/Sounds/ShootArrowSound"));
                 break;
             case TypeDefender.SUPPORT:
                 GetInfoSupport();
+                this.sounds.Add(DefenderState.ON_ATTACK, Resources.Load<AudioClip>("Characters/Sounds/WooshSound"));
                 break;
             default:
                 Debug.LogError("Missing info for this TypeDefender");
                 break;
         }
+        this.sounds.Add(DefenderState.ON_DYING, Resources.Load<AudioClip>("Characters/Sounds/DyingSound"));
+        this.walkingSounds.Add(Resources.Load<AudioClip>("Characters/Sounds/StepOnGrassSound1"));
+        this.walkingSounds.Add(Resources.Load<AudioClip>("Characters/Sounds/StepOnGrassSound2"));
     }
 
     //Make 1 function and just change the beginning of the variable using 2 string
