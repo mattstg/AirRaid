@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         if (Physics.Raycast(transform.position, currentMovementVector, out rayHit, projectileSpeed * Time.fixedDeltaTime, LayerMask.GetMask("Enemy", "Building", "Floor", "Wall")))
         {
             IHittable ihittable = rayHit.transform.GetComponent<IHittable>();  //If the thing we hit has implemented "IHittable"
-            if(ihittable != null)
+            if (ihittable != null)
                 HitTarget(ihittable);
             DestroyProjectile();
         }

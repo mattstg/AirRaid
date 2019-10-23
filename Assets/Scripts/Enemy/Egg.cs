@@ -40,7 +40,7 @@ public class Egg : RootedEnemy
             else
             {
                 float eggHatchChoice = Random.value;
-                if (eggHatchChoice >= .5f && eggHatchChoice <= 1f)  //50% chance
+                if (eggHatchChoice >= .6f && eggHatchChoice <= 1f)  //50% chance
                 {
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Crawler, transform.position, energy); //Spawn an egg spitter on this egg's location
                     //Hatch a crawler
