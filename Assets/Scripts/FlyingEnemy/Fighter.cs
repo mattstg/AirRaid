@@ -9,6 +9,7 @@ public class Fighter : Enemy
     public float speed;
     [SerializeField] Rigidbody rb;
     float angleToPlayer;
+    [SerializeField] GameObject bullets;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -25,7 +26,6 @@ public class Fighter : Enemy
         if (angleToPlayer >= -60 && angleToPlayer <= 60 && Physics.Raycast(transform.position, transform.TransformDirection(targetDir), out hit, Mathf.Infinity) && hit.transform.CompareTag("Player"))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(targetDir) * hit.distance, Color.yellow);
-            
         }
         else
         {
