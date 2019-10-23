@@ -25,7 +25,8 @@ public class ChaseBehavior : StateMachineBehaviour
         }
         ae.lastTargetPosition = ae.target.transform.position;
         Debug.Log(ae.navmeshAgent.remainingDistance);
-        if (ae.navmeshAgent.remainingDistance == 0) // May create bugs
+        Physics.OverlapSphere(ae.transform.position, 1);
+        if (CheckIfInRange()) // May create bugs
         {
 
             if (ae.CanMakeDecision)
@@ -56,4 +57,16 @@ public class ChaseBehavior : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    public bool CheckIfInRange()
+    {
+        Collider[] collider = Physics.OverlapSphere(ae.transform.position, 2);
+        foreach(Collider colid in collider)
+        {
+            if(colid.gameObject == ae.target)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
