@@ -27,7 +27,6 @@ public class Troll : AnimatedEnemy
     }
     public override void Die()
     {
-        base.Die();
         anim.SetTrigger("isDead");
         base.Die();
     }
