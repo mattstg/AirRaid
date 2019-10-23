@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Abilities { Turrets, Rocket,Rewind,TurretDrop}
+public enum Abilities { Turrets, Rocket,Rewind,TurretDrop,Bomb}
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour, IHittable
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
         abilityManager.AddAbilities(new Ab_Rewind(this), 1);     //but it's important that I test now that my ability system is all in place.
         abilityManager.AddAbilities(new Ab_Turret(this), 2);
+        abilityManager.AddAbilities(new Ab_BombDrop(this), 3);
+        //but it's important that I test now that my ability system is all in place.
 
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);

@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     protected Vector3 currentMovementVector;
     protected float projectileSpeed;
     protected Vector3 playerVelocityOnLaunch;  //to be added to the speed
-    float timeOfExpire;
+    protected float timeOfExpire;
 
     public virtual void Initialize(Vector3 _firingDir, Vector3 _playerVelocityOnLaunch, float _lifespan, float _speed)
     {

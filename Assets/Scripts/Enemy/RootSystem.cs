@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RootSystem
 {
+
     public int numberOfRoots = 0;
     RootNode masterRootNode;
 
@@ -15,6 +16,11 @@ public class RootSystem
         masterRootNode = newRootNodeObj.GetComponent<RootNode>();
         masterRootNode.Initialize(null, this);
         GameObject.Destroy(masterRootNode.GetComponent<LineRenderer>()); //first one is at center, does not need line renderer
+    }
+
+    public void RootSystemDied()
+    {
+        masterRootNode.DestroyRootSystem();
     }
 
     public void Refresh()
