@@ -10,15 +10,22 @@ public class Fighter : Enemy
     [SerializeField] Rigidbody rb;
     float angleToPlayer;
     [SerializeField] GameObject bullets;
-    private void Start()
+    public override void Initialize(float startingEnergy)
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        base.Initialize(startingEnergy);
     }
-    private void FixedUpdate()
+    public override void PhysicRefresh()
     {
-        transform.LookAt(player.transform);
-
-        rb.AddForce(transform.forward * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
+        if (player.transform != null)
+        {
+            transform.LookAt(player.transform);
+            rb.AddForce(transform.forward * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
+        }
+        else
+        {
+            rb.AddForce(transform.forward * speed * Time.fixedDeltaTime);
+        }
 
         RaycastHit hit = new RaycastHit();
         targetDir = player.transform.position - transform.position;
@@ -31,7 +38,7 @@ public class Fighter : Enemy
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.white);
         }
-
+        base.PhysicRefresh();
     }
 
 
