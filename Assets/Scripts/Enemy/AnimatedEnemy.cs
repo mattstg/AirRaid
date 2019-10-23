@@ -87,12 +87,7 @@ public class AnimatedEnemy : MobileEnemy
             return true;
         return false;
     }
-    public bool CheckIfPathValid()
-    {
-        if (navmeshAgent.pathStatus == NavMeshPathStatus.PathInvalid)
-            return false;
-        return true;
-    }
+    
     
 }
 

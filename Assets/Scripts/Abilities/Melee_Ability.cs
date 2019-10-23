@@ -65,7 +65,7 @@ public class Melee_Ability : EnemyAbility
     {
         RaycastHit rayInfo;
 
-        if (Physics.Raycast(enemy.transform.position + Vector3.forward * range.x, Vector3.forward, out rayInfo, range.y - range.x, hittableLayer))
+        if (Physics.Raycast(enemy.transform.position, enemy.transform.forward, out rayInfo, range.y, hittableLayer))
         {
             IHittable hit = rayInfo.collider.GetComponent<IHittable>();
             hit.HitByProjectile(damage);
