@@ -35,7 +35,7 @@ public class BomberMovement : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDir);
        if(transform.position == target.position)
         {
-            target.transform.position = new Vector3(Random.Range(-195, 195), Random.Range(60,200), Random.Range(-106,230));
+            target.transform.position = new Vector3(Random.Range(-500, 600), Random.Range(100,200), Random.Range(-800,1000));
         }
     }
 }
