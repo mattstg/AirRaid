@@ -25,10 +25,12 @@ public class ItemDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     }
 
     public void OnDrag(PointerEventData eventData) {
-        if (!StoreManager.Instance.storeActive) {
-            transform.position = eventData.position;
-            if (spriteChange)
-                transform.position = initialPos;
+        if (!transform.GetComponent<Image>().sprite.name.Equals("Crystal_Icon")) {
+            if (!StoreManager.Instance.storeActive) {
+                transform.position = eventData.position;
+                if (spriteChange)
+                    transform.position = initialPos;
+            }
         }
     }
 
