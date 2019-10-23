@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (fileName ="EAb_AbilityName" , menuName = "EnemyAbility/Area/General")]
-public class AOE_Ability : EnemyAbility
+[CreateAssetMenu (fileName ="EAb_AbilityName" , menuName = "EnemyAbility/Melee/General")]
+public class Melee_Ability : EnemyAbility
 {
-    public enum AbilityShape { Box, Sphere }
+    public enum AbilityShape { Ray, Box }
     //All of them are hidden because they are dynamic in the inspector / Set by AOE_Editor
-    [HideInInspector] public float radius;
-    [HideInInspector] public Vector2 angle; 
     [HideInInspector] public Vector2 boxSize; 
     [HideInInspector] public AbilityShape shape;
 
     public override void Initialize(AnimatedEnemy _enemy)
     {
-        Debug.Log("init called " + _enemy.Id);
         enemy = _enemy;
     }
     public override void UseAbility()
@@ -43,30 +40,37 @@ public class AOE_Ability : EnemyAbility
             case AbilityShape.Box:
                 BoxRay();
                 break;
-            case AbilityShape.Sphere:
-                SphereRay();
+            case AbilityShape.Ray:
+                Ray();
                 break;
             default:
                 Debug.Log("Unhandled shape: AOE Ability");
                 break;
         }
     }
+
+    
     void BoxRay()
     {
         Collider[] colliders = Physics.OverlapBox(enemy.lastTargetPosition, new Vector3(boxSize.x / 2, 3, boxSize.y / 2), Quaternion.identity, hittableLayer);
         if (colliders.Length != 0)
         {
-            foreach (Collider collider in colliders)
-            {
-                IHittable hit = collider.GetComponent<IHittable>();
-                hit.HitByProjectile(damage);
-                enemy.ModEnergy(damage); // Gain as much energy as it inflict damage - Should be balanced
-            }
+            
+            IHittable hit = colliders[0].GetComponent<IHittable>();
+            hit.HitByProjectile(damage);
+            enemy.ModEnergy(damage); // Gain as much energy as it inflict damage - Should be balanced
         }
     }
-    void SphereRay()
+    void Ray()
     {
+        RaycastHit rayInfo;
 
+        if (Physics.Raycast(enemy.transform.position + Vector3.forward * range.x, Vector3.forward, out rayInfo, range.y - range.x, hittableLayer))
+        {
+            IHittable hit = rayInfo.collider.GetComponent<IHittable>();
+            hit.HitByProjectile(damage);
+            enemy.ModEnergy(damage);
+        }
     }
     public override bool WillHitTarget()
     {
@@ -94,10 +98,20 @@ public class AOE_Ability : EnemyAbility
                 enemy.lastTargetPosition = enemy.target.transform.position;
             return true;
         }
-        else if (shape == AbilityShape.Sphere)
+        else if (shape == AbilityShape.Ray)
         {
+            Vector3 dir = (enemy.target.transform.position - enemy.transform.position).normalized;
 
+            RaycastHit rayInfo;
+
+            if (!Physics.Raycast(enemy.transform.position, dir, out rayInfo, range.y, hittableLayer))
+                return false;
+            if (rayInfo.distance < range.x)
+                return false;
+            enemy.lastTargetPosition = enemy.target.transform.position;
+            return true;
         }
+        Debug.Log("Unhandled Shape : MeleeAbility in WillHitTarget()", this);
         return false;
     }
 
