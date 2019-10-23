@@ -18,13 +18,12 @@ public class ChaseBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (ae.CheckTargetDestroy())
+        if (ae.CheckTargetDestroy() || !ae.CheckIfPathPossible())
         {
             animator.SetBool("isTarget", false);
             return;
         }
         ae.lastTargetPosition = ae.target.transform.position;
-        Debug.Log(ae.navmeshAgent.remainingDistance);
         Physics.OverlapSphere(ae.transform.position, 1);
         if (CheckIfInRange()) // May create bugs
         {
@@ -33,7 +32,6 @@ public class ChaseBehavior : StateMachineBehaviour
             {
                 ae.navmeshAgent.isStopped = true;
                 ae.timeSinceLastDecision = Time.time;
-                //ae.transform.LookAt(ae.lastTargetPosition);
                 animator.SetTrigger("attack");
             }
         
@@ -59,7 +57,7 @@ public class ChaseBehavior : StateMachineBehaviour
     //}
     public bool CheckIfInRange()
     {
-        Collider[] collider = Physics.OverlapSphere(ae.transform.position, 2);
+        Collider[] collider = Physics.OverlapSphere(ae.transform.position, (ae.transform.localScale.z / 2) + 2);
         foreach(Collider colid in collider)
         {
             if(colid.gameObject == ae.target)

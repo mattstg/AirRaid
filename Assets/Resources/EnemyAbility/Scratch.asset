@@ -17,7 +17,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 17152
   range: {x: 0, y: 5}
-  damage: 5
+  damage: 4
   cooldown: 0
   timeLastUsed: 0
   timeBeforeHit: 0.5
