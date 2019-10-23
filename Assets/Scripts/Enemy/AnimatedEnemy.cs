@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AnimatedEnemy : MobileEnemy
 {
 
-    [HideInInspector] public GameObject target;
+    public GameObject target;
     public Vector3 lastTargetPosition;
     public AnimationClip walk;
     public AnimationClip idle;
@@ -16,7 +16,7 @@ public class AnimatedEnemy : MobileEnemy
     protected Animator anim;
     protected float globalCoolDown; 
     protected float decisionTime = 2; //Time it takes for the enemy to change decision CONSTANT - Makes the AI less reactive
-    public float timeSinceLastDecision;
+    [HideInInspector] public float timeSinceLastDecision;
     public bool CanMakeDecision { get { return decisionTime + timeSinceLastDecision <= Time.time  ; } }
     protected float detectionRadius;
     protected Vector2 attackRadius; // Could be set in Initialize, by cycling through the abilities to get the min and max range overall
@@ -67,10 +67,9 @@ public class AnimatedEnemy : MobileEnemy
         anim.SetFloat("Velocity",velocity);
     }
 
-    public void SetAgent(Vector3 pos, Bounds enemyBounds)
+    public void SetAgent(Vector3 pos)
     {
-        Vector3 randomPos = new Vector3(Random.Range(-(enemyBounds.size.x) / 2, (enemyBounds.size.x) / 2), 0, Random.Range(-(enemyBounds.size.z) / 2, (enemyBounds.size.z) / 2)) + pos;
-        navmeshAgent.SetDestination(randomPos);
+        navmeshAgent.SetDestination(pos);
     }
 
     public void ClearAgentDestination()

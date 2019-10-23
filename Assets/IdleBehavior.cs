@@ -32,7 +32,8 @@ public class IdleBehavior : StateMachineBehaviour
                 {
                     targetColider = collid[Random.Range(0, collid.Length)];
                     ae.target = targetColider.gameObject;
-                    ae.SetAgent(ae.target.transform.position, targetColider.bounds);
+                    ;
+                    ae.SetAgent(targetColider.ClosestPoint(ae.transform.position));
                         
                     animator.SetBool("isTarget", true);
                 }
