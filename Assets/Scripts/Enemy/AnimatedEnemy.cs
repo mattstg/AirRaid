@@ -5,9 +5,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class AnimatedEnemy : MobileEnemy
 {
-    public static int id;
-    public int Id;
-    public GameObject target;
+
+    [HideInInspector] public GameObject target;
     public Vector3 lastTargetPosition;
     public AnimationClip walk;
     public AnimationClip idle;
@@ -25,8 +24,6 @@ public class AnimatedEnemy : MobileEnemy
     [HideInInspector] public AnimatorOverrideController animatorOverrideController;
     public override void Initialize(float startingEnergy)
     {
-        Id = id;
-        id++;
         base.Initialize(startingEnergy);
         
 

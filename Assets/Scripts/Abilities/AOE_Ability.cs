@@ -14,7 +14,6 @@ public class AOE_Ability : EnemyAbility
 
     public override void Initialize(AnimatedEnemy _enemy)
     {
-        Debug.Log("init called " + _enemy.Id);
         enemy = _enemy;
     }
     public override void UseAbility()
@@ -66,7 +65,7 @@ public class AOE_Ability : EnemyAbility
     }
     void SphereRay()
     {
-
+        Debug.Log("SphereRay is not yet implemented");
     }
     public override bool WillHitTarget()
     {
@@ -96,7 +95,7 @@ public class AOE_Ability : EnemyAbility
         }
         else if (shape == AbilityShape.Sphere)
         {
-
+            Debug.Log("SphereRay is not yet implemented");
         }
         return false;
     }
