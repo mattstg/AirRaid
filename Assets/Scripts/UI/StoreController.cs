@@ -48,7 +48,6 @@ public class StoreController : MonoBehaviour {
     }
 
     public void RemoveAbilityFromBodyPart() {
-        if (!transform.GetComponent<Image>().sprite.name.Equals("Crystal_Icon")) {
             Sprite sprite = Resources.Load<Sprite>("External/Sprites/PNG/Icons/Crystal_Icon");
 
             BodyPart part = (BodyPart)Enum.Parse(typeof(BodyPart), EventSystem.current.currentSelectedGameObject.name);
@@ -58,7 +57,6 @@ public class StoreController : MonoBehaviour {
             //temporary fix, figure out a way to fix this another way.... makes the inventory slots reset because without you need to click go to store and back hm weird
             StoreManager.Instance.SetupItemInStoreBoard();
             SetupItemInInventoryBoard();
-        }
     }
 
     public void SellItemsInSellGrid() {

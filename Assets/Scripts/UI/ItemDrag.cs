@@ -43,6 +43,12 @@ public class ItemDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
                 transform.GetChild(0).GetComponent<Text>().text = item.Part.ToString().Replace("BodyPart_", "");
                 transform.GetChild(0).gameObject.SetActive(true);
                 InventoryManager.Instance.AddItemToBodyPart(item.Part, item);
+                switch (item.Part) {
+                    case BodyPart.BodyPart_Turret: UILinks.instance.abilityOne.GetComponent<Image>().sprite = item.imgSprite; break;
+                    case BodyPart.BodyPart_FrontCannon: UILinks.instance.abilityTwo.GetComponent<Image>().sprite = item.imgSprite; break;
+                    case BodyPart.BodyPart_BombBay: UILinks.instance.abilityThree.GetComponent<Image>().sprite = item.imgSprite; break;
+                    case BodyPart.BodyPart_WingSlots: UILinks.instance.abilityFour.GetComponent<Image>().sprite = item.imgSprite; break;
+                }
             } else if (InventoryManager.Instance.inventoryType == InventoryType.SELLGRID) {
                 if (InventoryManager.Instance.itemList.ContainsKey(transform.parent.name)) {
                     Item item = InventoryManager.Instance.itemList[transform.parent.name];

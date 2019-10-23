@@ -30,10 +30,11 @@ public class Ab_Rewind : Ability
         teleportFade = Resources.Load<Material>("Material/teleportFade");
     }
 
-    public override void AbilityPressed()
-    {
-        UseAbility();
-        base.AbilityPressed();
+    public override void AbilityPressed() {
+        if (abilityTimer < 0 && !pc.stats.engineStalled) {
+            UseAbility();
+            base.AbilityPressed();
+        }
     }
 
     public override void AbilityHeld()
