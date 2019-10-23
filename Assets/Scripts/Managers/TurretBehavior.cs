@@ -37,35 +37,32 @@ public class TurretBehavior : MonoBehaviour
 
 
         //Behavior
+        //If i have a target, make sure its still in range before i shoot
         if (target != null)
         {
-            if (Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out RaycastHit hit, TURRET_RANGE))
-            {
-                if (hit.collider.gameObject == target)
-                {
-                    checkTargetDistance();
-                }
-                else
-                {
-                    DetectEnnemy();
-                }
-            }
-
+            checkTargetDistance();
         }
+        //If im on the ground without a target, find one
         if (transform.position.y < 3)
         {
             DetectEnnemy();
         }
+        //If i have a target AND my shot cooldown is done i can shoot
         if (targetFound && shotTimer < 0)
         {
             Shoot(target);
             shotTimer = 0.8f;
         }
+        /*if (turretTimer < 0)
+        {
+            Destroy(gameObject);
+        }*/
     }
 
 
     public void DetectEnnemy()
     {
+        //Use this to find a target if i have none
         Collider[] colliderTab = Physics.OverlapSphere(gameObject.transform.position, TURRET_RANGE, ennemyLayer);
 
         foreach (Collider enemy in colliderTab)
@@ -75,13 +72,7 @@ public class TurretBehavior : MonoBehaviour
             {
                 if (hit.collider.gameObject == enemy.gameObject)
                 {
-                    if (target == null)
-                    {
-                        target = enemy.gameObject;
-                        targetDistance = distance;
-                        targetFound = true;
-                    }
-                    else if (distance < targetDistance)
+                    if (target == null || distance < targetDistance)
                     {
                         target = enemy.gameObject;
                         targetDistance = distance;
@@ -94,6 +85,7 @@ public class TurretBehavior : MonoBehaviour
 
     public void checkTargetDistance()
     {
+        //Function to keep checking if target is in range
         targetDistance = Vector3.Distance(transform.position, target.transform.position);
         if (targetDistance > TURRET_RANGE)
         {
@@ -101,18 +93,22 @@ public class TurretBehavior : MonoBehaviour
         }
     }
 
-    public void Shoot(GameObject target)
+    public void Shoot(GameObject target)    
     {
+        //this check confirms that i am done shooting OR that my target went out of range before my shot
         if (target == null)
         {
             targetFound = false;
         }
         else
         {
+            //Here we check if the enemy is still in sight of the Turret before we shoot. Pesky crawlers going around corners -_- 
+
             if (Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out RaycastHit hit, TURRET_RANGE))
             {
                 if (hit.collider.gameObject == target)
                 {
+
                     Vector3 aimingVector = target.transform.position - transform.position;
                     //The above gives us a perfect aiming vector, but I want some inaccuracy! 
 

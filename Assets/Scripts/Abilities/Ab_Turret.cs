@@ -12,7 +12,7 @@ public class Ab_Turret : Ability
 
     public Ab_Turret(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.TurretDrop, UpdateType.FixedUpdate, 5f, 10f);
+        stats = new AbilityStats(this, Abilities.TurretDrop, UpdateType.FixedUpdate, 15f, 20f);
 
         turretPrefab = Resources.Load<GameObject>("Prefabs/Turret");
         turretParent = (new GameObject("TurretParent")).transform;

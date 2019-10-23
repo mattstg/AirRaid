@@ -20,7 +20,7 @@ public class Ab_Rewind : Ability
 
     public Ab_Rewind(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.Rewind, UpdateType.FixedUpdate, 10f, 5f);
+        stats = new AbilityStats(this, Abilities.Rewind, UpdateType.FixedUpdate, 7f, 35f);
 
         rewindQueue = new LinkedList<RewindPositions>();
         rewindHappening = false;
@@ -47,7 +47,7 @@ public class Ab_Rewind : Ability
         
         if (base.UseAbility())
         {
-            if (abilityTimer < 0)
+            if (abilityTimer < 0 && !pc.stats.engineStalled)
             {
                 //Rewind Switch bool
                 rewindHappening = true;
@@ -72,19 +72,18 @@ public class Ab_Rewind : Ability
 
         refreshCounter -= Time.deltaTime;
         abilityTimer -= Time.deltaTime;
-        //turretTimer -= Time.deltaTime;
-        //Debug.Log("Rewind Cooldown : " + stats.cooldown);
-        //Add data to Queue /OR/ Remove old Data then Add new
         if (abilityTimer < 0 && !rewindHappening)
         {
             Debug.Log("Rewind READY!");
         }
+
+
+        //Add data to Queue /OR/ Remove old Data then Add new
         if (!rewindHappening)
         {
 
             if (refreshCounter < 0)
-            {
-                //Check if list is empty ***** 
+            { 
 
                 rewindQueue.RemoveFirst();
 
