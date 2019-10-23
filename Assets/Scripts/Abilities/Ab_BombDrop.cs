@@ -10,7 +10,6 @@ public class Ab_BombDrop : Ability
     public Ab_BombDrop(PlayerController _pc) : base(_pc)
     {
         stats = new AbilityStats(this, Abilities.Bomb, UpdateType.Update, .2f, 30f);
-
     }
     public override void AbilityPressed()
     {
@@ -27,8 +26,9 @@ public class Ab_BombDrop : Ability
     {
         if (base.UseAbility())  
         {
-            foreach (Vector3 gunTurretLocation in pc.bodyParts[BodyPart.BodyPart_BombBay])
-                BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, gunTurretLocation + pc.transform.position, -pc.transform.up, pc.rb.velocity, BOMB_LIFESPAN, 0);
+            Projectile p = BulletManager.Instance.CreateProjectile(ProjectileType.Bomb, pc.bodyParts[BodyPart.BodyPart_BombBay][0] + pc.transform.position, -pc.transform.up, pc.rb.velocity, BOMB_LIFESPAN, 0);
+            Collider c = p.gameObject.GetComponentInChildren<Collider>();
+            Physics.IgnoreCollision(c, pc.GetComponent<Collider>());  //make bomb not collide with player
             return true;
         }
         return false;
