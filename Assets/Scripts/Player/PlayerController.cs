@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour, IHittable
         public float energyRegenPerSec = 10;
         public float energyPerThrustSecond = 15;
         [Header("Player Movement")]
-        public float maxSpeed = 40;
+        public float maxSpeed = 120;
         public float minSpeed = 9;
         public float acceleration = 30;
         public float pitchSpeed = .6f;

@@ -5,7 +5,7 @@ public class TurretBehavior : MonoBehaviour
     //Turret Variables
     private float turretTimer = 0f;
     private float shotTimer;
-    readonly float TURRET_RANGE = 60;
+    readonly float TURRET_RANGE = 80;
     readonly float TURRET_PROJECTILE_SPEED = 35;
 
     private GameObject turretPrefab;
