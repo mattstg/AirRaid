@@ -47,6 +47,7 @@ public class Ab_Turret : Ability
         {
             Debug.Log("spawning turret");
             Vector3 bombBay = pc.bodyParts[BodyPart.BodyPart_BombBay][0];
+            pc.stats.currentEnegy -= stats.energyCost;
             GameObject.Instantiate(turretPrefab, (bombBay + pc.transform.position), Quaternion.identity, turretParent.transform);
             turretAbTimer = 5f;
             return true;

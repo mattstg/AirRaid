@@ -7,7 +7,7 @@ public class BasicBullet : Projectile
     static GameObject explosionPrefab;
 
     readonly float explosionRadius;
-    float bulletDmg = 2;
+    float bulletDmg = 12;
 
     public override void Initialize(Vector3 _firingDir, Vector3 _playerVelocity, float _lifespan, float _speed)
     {
