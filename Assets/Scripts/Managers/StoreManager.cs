@@ -19,7 +19,7 @@ public class StoreManager : IManagable {
     }
 
     public void PostInitialize() {
-        Item[] sObject = Resources.LoadAll<Item>("ScirptableObject/");
+        Item[] sObject = Resources.LoadAll<Item>("ScriptableObject/");
         for (int i = 0; i < 9; i++) {
             itemList.Add("Slot_" + (i + 1), sObject[i]);
             GameObject.Find("Slot_" + (i + 1) + "_Image").GetComponentInChildren<Image>().sprite = sObject[i].imgSprite;
@@ -33,7 +33,7 @@ public class StoreManager : IManagable {
     }
 
     public void SetupItemInStoreBoard() {
-        Item[] sObject = Resources.LoadAll<Item>("ScirptableObject/");
+        Item[] sObject = Resources.LoadAll<Item>("ScriptableObject/");
         for (int i = 0; i < 9; i++) {
             GameObject slot = GameObject.Find("Slot_" + (i + 1) + "_Image");
             slot.GetComponentInChildren<Image>().sprite = sObject[i].imgSprite;

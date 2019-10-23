@@ -13,6 +13,7 @@ public class UILinks : MonoBehaviour
     public Transform abilityGridParent;
     public Text speedText;
     public Slider speedEnergyCostThreshold;
+    public GameObject bottomHud;
 
     //store links
     public GameObject storePanel;

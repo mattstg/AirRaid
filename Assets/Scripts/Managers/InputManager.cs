@@ -45,8 +45,10 @@ public class InputManager : IManagable
             StoreManager.Instance.openStore = !StoreManager.Instance.openStore;
             if (StoreManager.Instance.openStore) {
                 StoreManager.Instance.storeActive = true;
+                UILinks.instance.bottomHud.SetActive(false);
             } else {
                 StoreManager.Instance.storeActive = false;
+                UILinks.instance.bottomHud.SetActive(true);
             }
         }
     }

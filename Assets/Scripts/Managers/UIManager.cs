@@ -49,14 +49,14 @@ public class UIManager
             ui.healthText.text = $"{statsToUse.hp.ToString("00.0")}/{statsToUse.maxHp.ToString("00.0")}";
             //ui.abilityGridParent;
             ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
-            ui.speedEnergyCostThreshold.value = statsToUse.speedPerctangeThresholdToCostEnergy;
+            ui.speedEnergyCostThreshold.value = statsToUse.energyPerThrustSecond;
             if (StoreManager.Instance.openStore)
             {
                 ui.storePanel.SetActive(true);
                 Time.timeScale = 0;
             }
             else 
-            {
+            {   
                 ui.storePanel.SetActive(false);
                 Time.timeScale = 1;
             }

@@ -6,7 +6,7 @@ public class Ab_NitroBoost : Ability {
     readonly float NITRO_BOOST = 5;
 
     public Ab_NitroBoost(PlayerController _pc) : base(_pc) {
-        stats = new AbilityStats(this, Abilities.NitroBoost, UpdateType.FixedUpdate, 10f, 5f);
+        stats = new AbilityStats(this, Abilities.NitroBoost, UpdateType.FixedUpdate, 1f, 5f);
 
     }
     public override void AbilityPressed() {
@@ -20,7 +20,7 @@ public class Ab_NitroBoost : Ability {
 
     public override bool UseAbility() {
         if (base.UseAbility()) {
-            Debug.Log("Nitro Boost: " + NITRO_BOOST);
+            Debug.Log("NITROBOOST: " + NITRO_BOOST);
             return true;
         }
         return false;
