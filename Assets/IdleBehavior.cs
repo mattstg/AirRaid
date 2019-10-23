@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class IdleBehavior : StateMachineBehaviour
 {
     AnimatedEnemy ae;
@@ -22,10 +23,6 @@ public class IdleBehavior : StateMachineBehaviour
     {
         Collider targetColider = null;
         int compteur = 1; // Use the detectionRadius variable instead
-        if (ae.CheckTargetDestroy())
-        {
-            animator.SetBool("isTarget", false);
-        }
         if (!animator.GetBool("isTarget"))
         {
             do
@@ -36,11 +33,11 @@ public class IdleBehavior : StateMachineBehaviour
                     targetColider = collid[Random.Range(0, collid.Length)];
                     ae.target = targetColider.gameObject;
                     ae.SetAgent(ae.target.transform.position, targetColider.bounds);
+                        
                     animator.SetBool("isTarget", true);
                 }
-                else
-                    compteur++;
-            } while (targetColider == null);
+                compteur++;
+            } while (targetColider == null && compteur < 85);
         }
     }
 

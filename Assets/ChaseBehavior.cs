@@ -24,7 +24,8 @@ public class ChaseBehavior : StateMachineBehaviour
             return;
         }
         ae.lastTargetPosition = ae.target.transform.position;
-        if (ae.navmeshAgent.remainingDistance <= 1) // May create bugs
+        Debug.Log(ae.navmeshAgent.remainingDistance);
+        if (ae.navmeshAgent.remainingDistance == 0) // May create bugs
         {
 
             if (ae.CanMakeDecision)
