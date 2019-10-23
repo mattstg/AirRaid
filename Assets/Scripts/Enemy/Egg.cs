@@ -68,12 +68,14 @@ public class Egg : RootedEnemy
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Fighter, transform.position /*new Vector3(transform.position.x, 100f, transform.position.z)*/, energy); //Spawn an egg spitter on this egg's location
                     //((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
                 }
-                else if (eggHatchChoice >= .7 && eggHatchChoice <= .8f) // 30% chance
+                else if (eggHatchChoice >= .7 && eggHatchChoice <= .8f) // 10% chance
                 {
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position + new Vector3(transform.position.x, 100f, transform.position.z), energy); //Spawn an egg spitter on this egg's location
-                                                                                                                                                                                // SpawnTarget();
-                                                                                                                                                                                //((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
                     SpawnTarget();
+                }
+                else //Remaining probabilities
+                {
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Ghoul, transform.position + new Vector3(transform.position.x, 100f, transform.position.z), energy); //Spawn an egg spitter on this egg's location
 
                 }
             }
