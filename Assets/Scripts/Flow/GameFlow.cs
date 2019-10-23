@@ -36,6 +36,8 @@ public class GameFlow : IManagable
         BulletManager.Instance.Initialize();
         BuildingManager.Instance.Initialize();
         DefenderManager.Instance.Initialize();
+        StoreManager.Instance.Initialize();
+        InventoryManager.Instance.Initialize();
     }
 
     public void PostInitialize()
@@ -45,6 +47,8 @@ public class GameFlow : IManagable
         EnemyManager.Instance.PostInitialize();
         BulletManager.Instance.PostInitialize();
         BuildingManager.Instance.PostInitialize();
+        StoreManager.Instance.PostInitialize();
+        InventoryManager.Instance.PostInitialize();
     }
 
     public void PhysicsRefresh()

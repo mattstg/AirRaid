@@ -16,8 +16,6 @@ public class InputManager : IManagable
     public InputPkg refreshInputPkg = new InputPkg();
     public InputPkg physicsRefreshInputPkg = new InputPkg();
 
-
-
     public void Initialize()
     {
         refreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];
@@ -43,6 +41,16 @@ public class InputManager : IManagable
     public void Refresh()
     {
         SetInputPkg(refreshInputPkg);
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            StoreManager.Instance.openStore = !StoreManager.Instance.openStore;
+            if (StoreManager.Instance.openStore) {
+                StoreManager.Instance.storeActive = true;
+                UILinks.instance.bottomHud.SetActive(false);
+            } else {
+                StoreManager.Instance.storeActive = false;
+                UILinks.instance.bottomHud.SetActive(true);
+            }
+        }
     }
 
     public void PostInitialize()
