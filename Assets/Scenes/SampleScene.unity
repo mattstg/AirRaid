@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
-  speed: 40
+  speed: 20
   rb: {fileID: 1132632813}
 --- !u!54 &1132632813
 Rigidbody:
