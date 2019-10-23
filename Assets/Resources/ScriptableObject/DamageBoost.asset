@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: DamageBoost
   Description: This ability will give you a damage boost!
-  Cost: 25
+  Cost: 10
   Level: 1
   imgSprite: {fileID: -7783644825176019556, guid: 485f470bcd8efd5439bd4662d43b5d5b,
     type: 3}

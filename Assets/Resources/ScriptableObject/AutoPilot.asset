@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AutoPilot
   Description: This ability will allow you to activate autopilot!
-  Cost: 25
+  Cost: 20
   Level: 1
   imgSprite: {fileID: -7160336653051837518, guid: 485f470bcd8efd5439bd4662d43b5d5b,
     type: 3}

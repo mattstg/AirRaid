@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager 
 {
@@ -36,6 +37,9 @@ public class UIManager
 
     public void PhysicsRefresh() {}
 
+    private float abilityCooldown = 0;
+    private bool abilityClicked = false;
+
     public void Refresh(PlayerController.PlayerStats statsToUse)
     {
         //PlayerController.PlayerStats statsToUse = player.stats; //Get stats from player to use in UI
@@ -50,6 +54,17 @@ public class UIManager
             //ui.abilityGridParent;
             ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
             ui.speedEnergyCostThreshold.value = statsToUse.energyPerThrustSecond;
+            if (Input.GetKeyDown(KeyCode.R)) {
+                abilityClicked = true;
+            }
+            if (abilityClicked) {
+                abilityCooldown += Time.deltaTime;
+                UILinks.instance.abilityTwo.GetComponent<Image>().fillAmount = Mathf.Clamp01(abilityCooldown / 7); 
+                if (abilityCooldown >= 7) {
+                    abilityClicked = false;
+                    abilityCooldown = 0;
+                }
+            }
             if (StoreManager.Instance.openStore)
             {
                 ui.storePanel.SetActive(true);
