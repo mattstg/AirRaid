@@ -13,7 +13,6 @@ public class EnemyFlak : Projectile
     public override void Initialize(Vector3 _firingDir, Vector3 _playerVelocityOnLaunch, float _lifespan, float _speed)
     {
         base.Initialize(_firingDir, _playerVelocityOnLaunch, _lifespan, _speed);
-
     }
 
     //Called specially by the enemy flak shooter
@@ -34,7 +33,7 @@ public class EnemyFlak : Projectile
         base.LifespanExpired(); //kills projectile
     }
 
-    protected override void HitTarget(IHittable targetHit, string layerMask)
+    protected override void HitTarget(IHittable targetHit)
     {
         targetHit.HitByProjectile(energy);
     }

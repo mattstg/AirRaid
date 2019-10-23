@@ -43,7 +43,7 @@ public class UIManager
             ui.healthText.text = $"{statsToUse.hp.ToString("00.0")}/{statsToUse.maxHp.ToString("00.0")}";
             //ui.abilityGridParent;
             ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
-
+            ui.speedEnergyCostThreshold.value = statsToUse.speedPerctangeThresholdToCostEnergy;
         }
         else
         {

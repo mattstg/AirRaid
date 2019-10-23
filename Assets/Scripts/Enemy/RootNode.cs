@@ -6,15 +6,13 @@ public class RootNode  : MonoBehaviour
 {
     public static readonly Vector2 timeToMakeNewNode = new Vector2(15f,35f);    
     public static readonly float rootDistance = 6.5f;
-    public static readonly float timePerNodeInSystem = 2.5f;          //Time to spawn new root increases by total nodes in system
-
 
     RootSystem rootSystemParent;
     float timeIncreaseForNextNode;
     float timeOfNextNode;
     RootNode[] neighborNodes;
     int numOfNodes = 1; 
-    
+
     public void Initialize(RootNode spawningRootNode, RootSystem _rootSystemParent)
     {
         neighborNodes = new RootNode[4] { spawningRootNode, null, null, null };
@@ -23,21 +21,13 @@ public class RootNode  : MonoBehaviour
         rootSystemParent.numberOfRoots++;
     }
 
-    public void DestroyRootSystem()
-    {
-        for (int i = 1; i < 4; i++) //skip first one, since that is the parent
-            if (neighborNodes[i])
-                neighborNodes[i].DestroyRootSystem();
-        GameObject.Destroy(gameObject);
-    }
-
     public void RefreshRootNode()
     {
         if (numOfNodes < 4 && Time.time >= timeOfNextNode)
         {
             neighborNodes[numOfNodes] = SpawnNewRootNode(this);
             numOfNodes++;
-            timeOfNextNode = Time.time + Random.Range(timeToMakeNewNode.x, timeToMakeNewNode.y) * numOfNodes + rootSystemParent.numberOfRoots * timePerNodeInSystem;
+            timeOfNextNode = Time.time + Random.Range(timeToMakeNewNode.x, timeToMakeNewNode.y) * numOfNodes;
         }
 
         for (int i = 1; i < 4; i++) //skip first one, since that is the parent
