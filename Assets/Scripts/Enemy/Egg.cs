@@ -40,7 +40,7 @@ public class Egg : RootedEnemy
             else
             {
                 float eggHatchChoice = Random.value;
-                if (eggHatchChoice >= .6f && eggHatchChoice <= 1f)  //50% chance
+                if (eggHatchChoice >= .75f && eggHatchChoice <= 1f)  //35% chance
                 {
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Crawler, transform.position, energy); //Spawn an egg spitter on this egg's location
                     //Hatch a crawler
@@ -51,11 +51,21 @@ public class Egg : RootedEnemy
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.AATurret, transform.position, energy); //Spawn an egg spitter on this egg's location
                     ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
                 }
-                else  //20% chance
+                else if (eggHatchChoice >= .3 && eggHatchChoice <= .5f)  //20% chance
                 {
                     //Hatch an egg spitter
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
                     ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
+                }
+                else if(eggHatchChoice >= .4 && eggHatchChoice <= .5f) // 10% chance
+                {
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Fighter, transform.position + new Vector3(0f, 100f, 0f), energy); //Spawn an egg spitter on this egg's location
+                    ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
+                }
+                else if (eggHatchChoice >= .45 && eggHatchChoice <= .5f) // 5% chance
+                {
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position + new Vector3(0f, 100f, 0f), energy); //Spawn an egg spitter on this egg's location
+                    ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
                 }
             }
             Die();   //Destroy this egg since it hatched, cannot just gameObject destroy since manager has the link, so killed it properly
