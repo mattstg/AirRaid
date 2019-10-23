@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 1912715898114974613}
   m_Layer: 13
   m_Name: Egg
-  m_TagString: Untagged
+  m_TagString: Enemy_Egg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
-  hp: 5
   hatchTimeAnimCurve:
     serializedVersion: 2
     m_Curve:

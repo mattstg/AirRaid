@@ -59,9 +59,14 @@ public class EnemyManager
 
         while (toRemove.Count > 0) //remove all dead ones
         {
-            Enemy e = toRemove.Pop();
-            enemies.Remove(e);
-            GameObject.Destroy(e.gameObject);
+            try {
+                Enemy e = toRemove.Pop();
+                enemies.Remove(e);
+                GameObject.Destroy(e.gameObject);
+            }
+            catch {
+                Debug.Log("hey this happened");
+            }
         }
 
         while (toAdd.Count > 0) //Add new ones
