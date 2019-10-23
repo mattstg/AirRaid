@@ -1182,6 +1182,7 @@ GameObject:
   - component: {fileID: -2829511717238760803}
   - component: {fileID: -619350218393753076}
   - component: {fileID: -1998719548131532284}
+  - component: {fileID: 8707184853955287904}
   m_Layer: 13
   m_Name: Ghoul
   m_TagString: Untagged
@@ -1239,8 +1240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
+  hp: 0
   navmeshAgent: {fileID: 0}
-  Id: 0
   target: {fileID: 0}
   lastTargetPosition: {x: 0, y: 0, z: 0}
   walk: {fileID: 7400000, guid: c9b4d175e82478443966b1e0e0a37ebe, type: 3}
@@ -1252,7 +1253,7 @@ MonoBehaviour:
   timeSinceLastDecision: 0
   enemyAbilityManager:
     abilities:
-    - {fileID: 11400000, guid: 1835b0126b3864843975386ce632776c, type: 2}
+    - {fileID: 0}
   animatorOverrideController: {fileID: 0}
   die: 0
 --- !u!195 &-619350218393753076
@@ -1293,6 +1294,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8707184853955287904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000170320436026457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9279808, y: 2.1545246, z: 0.9587111}
+  m_Center: {x: -0.036009546, y: 1.1600314, z: 0.020644454}
 --- !u!1 &1000170320436026875
 GameObject:
   m_ObjectHideFlags: 0

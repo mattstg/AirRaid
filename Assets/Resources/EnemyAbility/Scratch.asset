@@ -15,7 +15,7 @@ MonoBehaviour:
   animation: {fileID: 7400000, guid: af84d9698cdb86449a1d16ea9e082ddf, type: 3}
   hittableLayer:
     serializedVersion: 2
-    m_Bits: 17152
+    m_Bits: 49920
   range: {x: 0, y: 5}
   damage: 4
   cooldown: 0

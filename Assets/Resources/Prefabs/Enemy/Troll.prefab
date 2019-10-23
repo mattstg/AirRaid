@@ -1186,6 +1186,7 @@ GameObject:
   - component: {fileID: 5162620840286976327}
   - component: {fileID: 5165582874065912198}
   - component: {fileID: 522509512081120588}
+  - component: {fileID: 3287602170030488264}
   m_Layer: 0
   m_Name: Troll
   m_TagString: Untagged
@@ -1263,8 +1264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
+  hp: 0
   navmeshAgent: {fileID: 0}
-  Id: 0
   target: {fileID: 0}
   lastTargetPosition: {x: 0, y: 0, z: 0}
   walk: {fileID: 7400000, guid: 762dc6b4a5477604a9cbc7bf4c0ea4a1, type: 3}
@@ -1296,6 +1297,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3287602170030488264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574050183934520022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.525926, z: 1}
+  m_Center: {x: -0, y: 2.5238335, z: 0}
 --- !u!1 &6574050183934521846
 GameObject:
   m_ObjectHideFlags: 0

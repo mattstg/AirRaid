@@ -15,13 +15,12 @@ MonoBehaviour:
   animation: {fileID: 7400000, guid: 43b9fea932ce7e9409b39b9af96e34df, type: 3}
   hittableLayer:
     serializedVersion: 2
-    m_Bits: 17152
+    m_Bits: 49920
   range: {x: 0, y: 0}
   damage: 5
   cooldown: 2
   timeLastUsed: 0
   timeBeforeHit: 2
-  triggerParam: 
   radius: 0
   angle: {x: 0, y: 0}
   boxSize: {x: 2, y: 3}
