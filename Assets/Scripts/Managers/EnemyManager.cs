@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType { Egg, EggSpitter, AATurret, Crawler, Fighter, Bomber}
+public enum EnemyType { Egg, EggSpitter, AATurret, Crawler, Fighter, Bomber, Troll, Ghoul}
 public class EnemyManager
 {
     #region Singleton
@@ -12,7 +12,7 @@ public class EnemyManager
     #endregion
 
     Transform enemyParent;
-    public Transform rootNodeParent;    
+    public Transform rootNodeParent; 
     public HashSet<Enemy> enemies;
     public Stack<Enemy> toRemove;
     public Stack<Enemy> toAdd;
