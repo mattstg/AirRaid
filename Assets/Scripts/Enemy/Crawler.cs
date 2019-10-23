@@ -17,6 +17,7 @@ public class Crawler : MobileEnemy
         base.Initialize(startingEnergy);
         targetBuilding = BuildingManager.Instance.GetRandomBuilding();
         navmeshAgent.SetDestination(targetBuilding.transform.position);
+        hp = 25;
         countdown = 3;
     }
 

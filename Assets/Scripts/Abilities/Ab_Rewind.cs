@@ -9,6 +9,7 @@ public class Ab_Rewind : Ability
     //Rewind Variables
 
     private float abilityTimer = 7f;
+    float savedEnergy;
     private LinkedList<RewindPositions> rewindQueue;
     private float refreshCounter = 3f;
     private bool rewindHappening;
@@ -50,6 +51,7 @@ public class Ab_Rewind : Ability
             {
                 //Rewind Switch bool
                 rewindHappening = true;
+                savedEnergy = rewindQueue.Last.Value.savedEnergy;
                 rb.velocity = new Vector3(0, 0, 0);
                 rd.material = teleportFade;
                 pc.GetComponent<AudioSource>().Play();
@@ -96,7 +98,7 @@ public class Ab_Rewind : Ability
 
         if (rewindHappening)
         {
-
+            
 
             Debug.Log("Size of queue in routine = " + rewindQueue.Count);
             if (rewindQueue.Count >= 2)
@@ -105,10 +107,11 @@ public class Ab_Rewind : Ability
                 pc.transform.position = rewindQueue.Last.Value.savedPos;
                 rb.velocity = rewindQueue.Last.Value.savedVelo;
                 rb.rotation = rewindQueue.Last.Value.savedRot;
-                pc.stats.currentEnegy = rewindQueue.Last.Value.savedEnergy;
+               
             }
             else
             {
+                pc.stats.currentEnegy = savedEnergy;
                 rewindQueue.Clear();
                 rewindHappening = false;
                 rd.material = basicSkin;

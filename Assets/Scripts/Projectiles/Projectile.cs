@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
             LifespanExpired(); //will contiously trigger if we dont kill projectile
 
         RaycastHit rayHit;
-        if (Physics.Raycast(transform.position, currentMovementVector, out rayHit, projectileSpeed * Time.fixedDeltaTime, LayerMask.GetMask("Enemy", "Building", "Floor", "Wall")))
+        if (Physics.Raycast(transform.position, currentMovementVector, out rayHit, projectileSpeed * Time.fixedDeltaTime, LayerMask.GetMask("Enemy", "Building", "Floor", "Wall","Map")))
         {
             IHittable ihittable = rayHit.transform.GetComponent<IHittable>();  //If the thing we hit has implemented "IHittable"
             if (ihittable != null)
@@ -56,6 +56,11 @@ public class Projectile : MonoBehaviour
     protected virtual void HitNonTarget(Vector3 pos, string layerName)
     {
         //implement in child
+
+        if(layerName == "Map")
+        {
+            DestroyProjectile();
+        }
     }
 
     public virtual void DestroyProjectile()
