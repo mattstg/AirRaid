@@ -2,4 +2,4 @@ Bomber: follow a target every time, drops bomb, when it touches the target, the 
 
 fighter: follows the player around the map and shoots him when the player goes in a 60 degrees area in front of the fighter
 
-folder: flying Enemy
+files: BomberMovement, BombFlow, fighter
