@@ -11,17 +11,21 @@ public class TurretBehavior : MonoBehaviour
     private GameObject turretPrefab;
     private Transform turretParent;
     private Transform bulletSpawn;
+    private AudioSource turretGunSound;
 
     LayerMask ennemyLayer;
     private bool targetFound;
     private GameObject target;
     private float targetDistance;
+    [SerializeField] AudioSource turretSpawn;
+    [SerializeField] AudioSource turretShoot;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<AudioSource>().Play();
+        turretSpawn.Play();
         targetFound = false;
         ennemyLayer = 1 << 13;
         turretTimer = 240f;
@@ -119,6 +123,7 @@ public class TurretBehavior : MonoBehaviour
                     //distance divided by speed would give us time to explode  (draw the math with the correct units on paper if unsure, you will see)
                     float lifespan = Vector3.Distance(PlayerManager.Instance.player.transform.position, transform.position) / TURRET_PROJECTILE_SPEED;
                     transform.LookAt(target.transform);
+                    turretShoot.Play();
                     BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, transform.Find("TurretHead").Find("BulletSpawn").position, aimingVector, Vector3.zero, lifespan, TURRET_PROJECTILE_SPEED);
 
                 }

@@ -15,6 +15,7 @@ public class Bomb : Projectile
     }
     protected override void LifespanExpired()
     {
+        GetComponent<AudioSource>().Stop();
         MakeExplosion(transform.position);
         base.LifespanExpired(); //Destroys projectile
     }
