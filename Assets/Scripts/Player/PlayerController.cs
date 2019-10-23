@@ -6,7 +6,7 @@ public enum Abilities { Turrets, Rocket,Rewind,TurretDrop,Bomb, EnergyBoost, Nit
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
-    public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
+    public static readonly int ABILITY_COUNT_MAX = 7; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
 
     [HideInInspector] public bool isAlive;
     //public bool stalled = false;
@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour, IHittable
         abilityManager.AddAbilities(new Ab_BombDrop(this), 3);
         //but it's important that I test now that my ability system is all in place.
 
-        abilityManager.AddAbilities(new Ab_EnergyRegen(this), 2);
-        abilityManager.AddAbilities(new Ab_NitroBoost(this), 3);
-        abilityManager.AddAbilities(new Ab_Rocket(this), 1);
+        abilityManager.AddAbilities(new Ab_EnergyRegen(this), 4);
+        abilityManager.AddAbilities(new Ab_NitroBoost(this), 5);
+        abilityManager.AddAbilities(new Ab_Rocket(this), 6);
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);

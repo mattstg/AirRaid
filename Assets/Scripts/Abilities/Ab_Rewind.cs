@@ -47,6 +47,7 @@ public class Ab_Rewind : Ability
         
         if (base.UseAbility())
         {
+            Debug.Log("in Ablilty");
             if (abilityTimer < 0 && !pc.stats.engineStalled)
             {
                 //Rewind Switch bool
