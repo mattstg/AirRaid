@@ -30,6 +30,10 @@ public class UILinks : MonoBehaviour
     public Image energyBarStore;
     public Text energyTextStore;
     public Text errorMessage;
+    public GameObject abilityOne;
+    public GameObject abilityTwo;
+    public GameObject abilityThree;
+    public GameObject abilityFour;
 
     public static UILinks Instance; //The first instance to be created will set this static variable to point at it, so we can access it from everywhere
     public static UILinks instance  //Pseudo singleton for mono behaviour
