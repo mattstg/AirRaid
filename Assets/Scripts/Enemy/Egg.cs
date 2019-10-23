@@ -6,7 +6,7 @@ public class Egg : RootedEnemy
 {
     static readonly float EGGHATCH_ENERGY_MIN = 10; //Energy per egg spawn
     static readonly float EGGSPAWN_SPAWN_TIME_MAX = 90f;
-    
+
 
     public AnimationCurve hatchTimeAnimCurve; //balanced in inspector
     float timeOfHatch;
@@ -21,7 +21,7 @@ public class Egg : RootedEnemy
     public override void Refresh()
     {
         base.Refresh();
-       
+
         if(isRooted && Time.time >= timeOfHatch)
             HatchEgg();
     }
@@ -68,9 +68,10 @@ public class Egg : RootedEnemy
             timeOfHatch = Time.time + EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value);
     }
 
-    public override void Die()
-    {
+    public override void Die() {
         EnemyManager.Instance.EnemyDied(this);
         isAlive = false;
     }
+
+
 }

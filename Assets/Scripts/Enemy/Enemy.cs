@@ -7,13 +7,14 @@ public class Enemy : MonoBehaviour, IHittable
 {
     readonly float ENEMY_SIZE_MULT = .75f;
     [HideInInspector] public bool isAlive;
-    protected float hp;
+    public float hp;
     protected float energy;
     float updateSizeTimeCountdown;
 
     public virtual void Initialize(float startingEnergy)
     {
         isAlive = true;
+        startingEnergy = Mathf.Clamp(startingEnergy, 1, float.MaxValue);
         ModEnergy(startingEnergy);
         Resize();
     }
@@ -63,5 +64,5 @@ public class Enemy : MonoBehaviour, IHittable
         EnemyManager.Instance.EnemyDied(this);
         isAlive = false;
     }
-   
+
 }
