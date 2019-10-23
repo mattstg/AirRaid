@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Nitro Boost
   Description: This is the nitro boost ability !
   Cost: 25
-  Level: 10
+  Level: 1
   imgSprite: {fileID: -5227090704854799860, guid: 485f470bcd8efd5439bd4662d43b5d5b,
     type: 3}
   Part: 1

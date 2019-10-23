@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rocket
   Description: This is the rocket ability!
-  Cost: 20
+  Cost: 10
   Level: 1
   imgSprite: {fileID: -8849690797698376616, guid: 485f470bcd8efd5439bd4662d43b5d5b,
     type: 3}

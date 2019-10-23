@@ -48,15 +48,21 @@ public class StoreController : MonoBehaviour {
     }
 
     public void RemoveAbilityFromBodyPart() {
-            Sprite sprite = Resources.Load<Sprite>("External/Sprites/PNG/Icons/Crystal_Icon");
+        Sprite sprite = Resources.Load<Sprite>("External/Sprites/PNG/Icons/Crystal_Icon");
 
-            BodyPart part = (BodyPart)Enum.Parse(typeof(BodyPart), EventSystem.current.currentSelectedGameObject.name);
-            InventoryManager.Instance.bodyPartList.Remove(part);
-            EventSystem.current.currentSelectedGameObject.transform.GetChild(1).GetComponent<Image>().sprite = sprite;
+        BodyPart part = (BodyPart)Enum.Parse(typeof(BodyPart), EventSystem.current.currentSelectedGameObject.name);
+        InventoryManager.Instance.bodyPartList.Remove(part);
+        EventSystem.current.currentSelectedGameObject.transform.GetChild(1).GetComponent<Image>().sprite = sprite;
 
-            //temporary fix, figure out a way to fix this another way.... makes the inventory slots reset because without you need to click go to store and back hm weird
-            StoreManager.Instance.SetupItemInStoreBoard();
-            SetupItemInInventoryBoard();
+        switch (part) {
+            case BodyPart.BodyPart_Turret: UILinks.instance.abilityOne.GetComponent<Image>().sprite = sprite; break;
+            case BodyPart.BodyPart_FrontCannon: UILinks.instance.abilityFour.GetComponent<Image>().sprite = sprite; break;
+            case BodyPart.BodyPart_BombBay: UILinks.instance.abilityThree.GetComponent<Image>().sprite = sprite; break;
+            case BodyPart.BodyPart_WingSlots: UILinks.instance.abilityTwo.GetComponent<Image>().sprite = sprite; break;
+        }
+        //temporary fix, figure out a way to fix this another way.... makes the inventory slots reset because without you need to click go to store and back hm weird
+        StoreManager.Instance.SetupItemInStoreBoard();
+        SetupItemInInventoryBoard();
     }
 
     public void SellItemsInSellGrid() {
