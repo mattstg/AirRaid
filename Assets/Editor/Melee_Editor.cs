@@ -1,26 +1,23 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(AOE_Ability))]
-public class AOE_Editor : Editor
+[CustomEditor(typeof(Melee_Ability))]
+public class Melee_Editor : Editor
 {
-    AOE_Ability script;
+    Melee_Ability script;
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        script = target as AOE_Ability;
+        script = target as Melee_Ability;
         //((AOE_Ability)target).shape
-        script.shape = (AOE_Ability.AbilityShape)EditorGUILayout.EnumPopup("Shape", script.shape);
+        script.shape = (Melee_Ability.AbilityShape)EditorGUILayout.EnumPopup("Shape", script.shape);
         switch (script.shape)
         {
-            case AOE_Ability.AbilityShape.Box:
+            case Melee_Ability.AbilityShape.Box:
                 script.boxSize = EditorGUILayout.Vector2Field("Box Size", script.boxSize);
-
                 break;
-            case AOE_Ability.AbilityShape.Sphere:
-                script.angle = EditorGUILayout.Vector2Field("Angle", script.angle);
-                script.radius = EditorGUILayout.FloatField("Radius", script.radius);
+            case Melee_Ability.AbilityShape.Ray:
                 break;
             default:
                 Debug.LogError("Shape unhandled in AOE_Editor");

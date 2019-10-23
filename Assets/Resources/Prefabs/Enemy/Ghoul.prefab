@@ -1242,12 +1242,13 @@ MonoBehaviour:
   navmeshAgent: {fileID: 0}
   Id: 0
   target: {fileID: 0}
+  lastTargetPosition: {x: 0, y: 0, z: 0}
   walk: {fileID: 7400000, guid: c9b4d175e82478443966b1e0e0a37ebe, type: 3}
   idle: {fileID: 7400000, guid: d370a8b163bf70246a304719e9c0b81d, type: 3}
   run: {fileID: 7400000, guid: 35973fb0bd581dc4a8e11b9221966924, type: 3}
   death: {fileID: 7400000, guid: 697b469632c14b644b03a8f1453169cc, type: 3}
   prefab_abilities:
-  - {fileID: 11400000, guid: 52ddc542c6892e140884e76d6793e329, type: 2}
+  - {fileID: 11400000, guid: d6de6d4591330404f81f758c6df1a333, type: 2}
   timeSinceLastDecision: 0
   enemyAbilityManager:
     abilities:
