@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BomberMovement : MonoBehaviour
+public class BomberMovement : Enemy
 {
     public Transform target;
     [SerializeField] Rigidbody rg;
@@ -15,14 +15,14 @@ public class BomberMovement : MonoBehaviour
     Vector3 dir;
     Vector3 newDir;
     Vector3 targetDir;
-    void Start()
+    public override void Initialize(float startingEnergy)
     {
         rg.GetComponent<Rigidbody>();
         // SetDir();
+        base.Initialize(startingEnergy);
     }
 
-
-    void FixedUpdate()
+    public override void PhysicRefresh()
     {
         targetDir = target.position - transform.position;
 
@@ -33,9 +33,9 @@ public class BomberMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target.position, stepMove);
         newDir = Vector3.RotateTowards(transform.forward, targetDir, stepRotation, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDir);
-       if(transform.position == target.position)
+        if (transform.position == target.position)
         {
-            target.transform.position = new Vector3(Random.Range(-500, 600), Random.Range(100,200), Random.Range(-800,1000));
+            target.transform.position = new Vector3(Random.Range(-500, 600), Random.Range(100, 200), Random.Range(-800, 1000));
         }
     }
 }
