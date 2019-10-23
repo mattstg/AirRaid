@@ -56,6 +56,8 @@ public class Enemy : MonoBehaviour, IHittable
 
     }
 
+    //Warning, Egg does not call parent die, it has custom logic, changes here that you want
+    //for all enemy must also be added to egg.cs
     public virtual void Die()
     {
         EnemyManager.Instance.EnemyDied(this);
