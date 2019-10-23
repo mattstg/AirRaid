@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
-  hp: 5
   hatchTimeAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -235,6 +234,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  targetPrefab: {fileID: 5067872996975600718, guid: d1a82a53d085a2345b7b7ccebc0541ab,
+    type: 3}
 --- !u!23 &8700698396121944931
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -15,18 +15,15 @@ public class BomberMovement : Enemy
     Vector3 dir;
     Vector3 newDir;
     Vector3 targetDir;
-    public void Initialize()
+    public override void Initialize(float startingEnergy)
     {
         rg.GetComponent<Rigidbody>();
         // SetDir();
-       
+        base.Initialize(startingEnergy);
     }
 
-
-    public void PhysicRefresh()
+    public override void PhysicRefresh()
     {
-
-        transform.LookAt(target.transform);
         targetDir = target.position - transform.position;
 
         // The step size is equal to speed times frame time.

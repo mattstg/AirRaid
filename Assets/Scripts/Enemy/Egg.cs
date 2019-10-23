@@ -70,9 +70,10 @@ public class Egg : RootedEnemy
                 }
                 else if (eggHatchChoice >= .7 && eggHatchChoice <= .8f) // 30% chance
                 {
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position /*new Vector3(transform.position.x, 100f, transform.position.z)*/, energy); //Spawn an egg spitter on this egg's location
-                   // SpawnTarget();
-                    //((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position + new Vector3(transform.position.x, 100f, transform.position.z), energy); //Spawn an egg spitter on this egg's location
+                                                                                                                                                                                // SpawnTarget();
+                                                                                                                                                                                //((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
+                    SpawnTarget();
 
                 }
             }
@@ -87,7 +88,7 @@ public class Egg : RootedEnemy
         EnemyManager.Instance.EnemyDied(this);
         isAlive = false;
     }
-    void SpawnTarget()
+   public void SpawnTarget()
     {
         GameObject newTarget = GameObject.Instantiate(targetPrefab, targetParent);
         newTarget.transform.position = new Vector3(Random.Range(-500, 600), Random.Range(100, 200), Random.Range(-800, 1000));
