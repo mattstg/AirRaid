@@ -25,6 +25,7 @@ public class BulletManager
         prefabDict.Add(ProjectileType.Rocket, Resources.Load<GameObject>("Prefabs/Rocket"));
         prefabDict.Add(ProjectileType.EnemyFlak, Resources.Load<GameObject>("Prefabs/EnemyFlak"));
         prefabDict.Add(ProjectileType.EnemySpit, Resources.Load<GameObject>("Prefabs/EnemySpit"));
+        prefabDict.Add(ProjectileType.Bomb, Resources.Load<GameObject>("Prefabs/Bomb"));
         //See, wouldnt this be better with an auto filling dictionary?
     }
 
