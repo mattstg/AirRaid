@@ -15,7 +15,7 @@ public class BombFlow : MonoBehaviour
     private void Awake()
     {
         bombParent = new GameObject().transform;
-        bombPrefab = Resources.Load<GameObject>("Prefabs/Bomb");
+        bombPrefab = Resources.Load<GameObject>("Prefabs/BomberBomb");
         boxCollider.GetComponent<BoxCollider>();
         
     }
