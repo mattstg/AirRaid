@@ -756,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5942118282114777909}
   - component: {fileID: 5942118282114778058}
-  - component: {fileID: 5942118282114778059}
+  - component: {fileID: 1665225273958554082}
   - component: {fileID: 5942118282114777908}
   - component: {fileID: 53232755116398843}
   m_Layer: 0
@@ -818,7 +818,7 @@ MonoBehaviour:
   abilityTwo: {fileID: 1812124605397583586}
   abilityThree: {fileID: 472275037244722072}
   abilityFour: {fileID: 8627722914785473838}
---- !u!114 &5942118282114778059
+--- !u!114 &1665225273958554082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -831,9 +831,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldFloor: {fileID: 0}
-  spawnLocationParent: {fileID: 2138788792}
-  playerSpawn: {fileID: 5942118281605566559}
-  postDeathCam: {fileID: 5942118282410289190}
+  spawnLocationParent: {fileID: 0}
+  playerSpawn: {fileID: 0}
+  postDeathCam: {fileID: 0}
   tentParent: {fileID: 0}
   buildingParent: {fileID: 0}
   wallParent: {fileID: 0}
