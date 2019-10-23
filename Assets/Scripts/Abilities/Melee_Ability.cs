@@ -63,22 +63,14 @@ public class Melee_Ability : EnemyAbility
     }
     void Ray()
     {
-        RaycastHit[] raysInfo = Physics.RaycastAll(enemy.transform.position + Vector3.forward * enemy.transform.localScale.z, Vector3.forward, enemy.transform.localScale.z + range.y - range.x , hittableLayer);
+        RaycastHit rayInfo;
 
 
-        if (raysInfo.Length > 0)
+        if (Physics.Raycast(enemy.transform.position, enemy.transform.forward, out rayInfo, range.y, hittableLayer))
         {
-            foreach (RaycastHit rayInfo in raysInfo) // this wont care if its the closest
-            {
-                Debug.Log(rayInfo.collider.gameObject != enemy);
-                if (rayInfo.collider.gameObject != enemy)
-                {
-                    IHittable hit = rayInfo.collider.GetComponent<IHittable>();
-                    hit.HitByProjectile(damage);
-                    enemy.ModEnergy(damage);
-                    return;
-                }
-            }
+            IHittable hit = rayInfo.collider.GetComponent<IHittable>();
+            hit.HitByProjectile(damage);
+            enemy.ModEnergy(damage);
         }
         
     }
@@ -111,19 +103,16 @@ public class Melee_Ability : EnemyAbility
         else if (shape == AbilityShape.Ray)
         {
             Vector3 dir = (enemy.target.transform.position - enemy.transform.position).normalized;
+            RaycastHit rayInfo;
 
-            
-            
-            /*if (rayInfo.distance < range.x)
+            if (!Physics.Raycast(enemy.transform.position, dir, out rayInfo, range.y, hittableLayer))
                 return false;
-                */
+            if (rayInfo.distance < range.x)
+                return false;
             enemy.lastTargetPosition = enemy.target.transform.position;
             return true;
+            
         }
-        Debug.Log("Unhandled Shape : MeleeAbility in WillHitTarget()", this);
         return false;
     }
-
-
-
 }

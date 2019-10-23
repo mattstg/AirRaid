@@ -12,7 +12,7 @@ public abstract class EnemyAbility : ScriptableObject
     public float damage;
     public float cooldown;
     [HideInInspector] public float timeLastUsed;
-    [HideInInspector] public float timeBeforeHit;
+    public float timeBeforeHit;
 
     public bool canUseAbility { get { return Time.time - timeLastUsed >= cooldown; } }
 

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AnimatedEnemy : MobileEnemy
 {
 
-    [HideInInspector] public GameObject target;
+    public GameObject target;
     public Vector3 lastTargetPosition;
     public AnimationClip walk;
     public AnimationClip idle;
