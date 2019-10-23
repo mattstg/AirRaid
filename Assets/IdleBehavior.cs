@@ -27,12 +27,11 @@ public class IdleBehavior : StateMachineBehaviour
         {
             do
             {
-                Collider[] collid = Physics.OverlapSphere(ae.transform.position, 10 * compteur, LayerMask.GetMask("Wall", "Building", "Defender"));
+                Collider[] collid = Physics.OverlapSphere(ae.transform.position, 20 * compteur, LayerMask.GetMask("Wall", "Building", "Defender"));
                 if (collid.Length != 0)
                 {
                     targetColider = collid[Random.Range(0, collid.Length)];
                     ae.target = targetColider.gameObject;
-                    ;
                     ae.SetAgent(targetColider.ClosestPoint(ae.transform.position));
                         
                     animator.SetBool("isTarget", true);

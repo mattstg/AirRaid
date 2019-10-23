@@ -17,11 +17,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 17152
   range: {x: 0, y: 0}
-  damage: 7
+  damage: 8
   cooldown: 5
   timeLastUsed: 0
   timeBeforeHit: 5
-  triggerParam: 
   radius: 0
   angle: {x: 0, y: 0}
   boxSize: {x: 7, y: 7}

@@ -21,7 +21,6 @@ MonoBehaviour:
   cooldown: 2
   timeLastUsed: 0
   timeBeforeHit: 2
-  triggerParam: Attack
   radius: 0
   angle: {x: 0, y: 0}
   boxSize: {x: 2, y: 2}

@@ -57,33 +57,26 @@ public class AnimatedEnemy : MobileEnemy
     {
         energy += energyMod;
     }
-    public void SetTriggerAttack()
-    {
-        anim.SetTrigger("Attack");
-    }
-
-    public void SetAnimeVelocity(float velocity)
-    {
-        anim.SetFloat("Velocity",velocity);
-    }
 
     public void SetAgent(Vector3 pos)
     {
         navmeshAgent.SetDestination(pos);
     }
-
-    public void ClearAgentDestination()
-    {
-        navmeshAgent.ResetPath();
-    }
-
     public bool CheckTargetDestroy()
     {
+        
         if (!target)
             return true;
         return false;
     }
-    
+    public bool CheckIfPathPossible()
+    {
+        if(navmeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
+        {
+            return false;
+        }
+        return true;
+    }
     
 }
 
