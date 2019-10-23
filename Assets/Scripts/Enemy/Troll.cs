@@ -5,7 +5,7 @@ using UnityEngine;
 public class Troll : AnimatedEnemy
 {
     public bool die;
-    readonly float MAX_HP = 100f;
+    readonly float MAX_HP = 150f;
 
     public override void Initialize(float startingEnergy)
     {

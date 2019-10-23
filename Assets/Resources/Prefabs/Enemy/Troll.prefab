@@ -1273,6 +1273,7 @@ MonoBehaviour:
   death: {fileID: 7400000, guid: aa6bb6dae756c034f8701999f532a813, type: 3}
   prefab_abilities:
   - {fileID: 11400000, guid: d94362d478d7a3a47937ae11fe79b601, type: 2}
+  - {fileID: 11400000, guid: 97fc34c55324fe4478c4cd818d2794f8, type: 2}
   timeSinceLastDecision: 0
   enemyAbilityManager:
     abilities:

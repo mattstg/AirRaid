@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class AnimatedEnemy : MobileEnemy
 {
@@ -87,7 +87,12 @@ public class AnimatedEnemy : MobileEnemy
             return true;
         return false;
     }
-
+    public bool CheckIfPathValid()
+    {
+        if (navmeshAgent.pathStatus == NavMeshPathStatus.PathInvalid)
+            return false;
+        return true;
+    }
     
 }
 
