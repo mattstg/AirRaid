@@ -24,8 +24,6 @@ public class Fighter : Enemy
         angleToPlayer = (Vector3.Angle(targetDir, transform.forward));
         if (angleToPlayer >= -60 && angleToPlayer <= 60 && Physics.Raycast(transform.position, transform.TransformDirection(targetDir), out hit, Mathf.Infinity) && hit.transform.CompareTag("Player"))
         {
-            rb.AddForce(targetDir * Time.fixedDeltaTime);
-            rb.velocity = targetDir;
             Debug.DrawRay(transform.position, transform.TransformDirection(targetDir) * hit.distance, Color.yellow);
             
         }
