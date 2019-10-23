@@ -14,6 +14,7 @@ public class EggSpitter : RootedEnemy
     public override void Initialize(float startingEnergy)
     {
         base.Initialize(startingEnergy);
+        hp = 30;
         timeToNextEggSpit = Time.time + Mathf.Lerp(EGGSPAWN_COOLDOWN.x, EGGSPAWN_COOLDOWN.y, Random.value); //Another way of producing a random value between two values, just like Random.range
 
     }

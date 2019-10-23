@@ -15,6 +15,7 @@ public class AATurret : RootedEnemy
     public override void Initialize(float startingEnergy)
     {
         base.Initialize(startingEnergy);
+        hp = 20;
         timeNextShotReady = Time.time + Random.Range(AATURRET_FIRE_RATE.x, AATURRET_FIRE_RATE.y);
     }
 

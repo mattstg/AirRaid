@@ -56,6 +56,11 @@ public class Projectile : MonoBehaviour
     protected virtual void HitNonTarget(Vector3 pos, string layerName)
     {
         //implement in child
+
+        if(layerName == "Map")
+        {
+            DestroyProjectile();
+        }
     }
 
     public virtual void DestroyProjectile()
