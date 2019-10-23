@@ -11,11 +11,17 @@ public class Egg : RootedEnemy
     public AnimationCurve hatchTimeAnimCurve; //balanced in inspector
     float timeOfHatch;
 
+    [SerializeField] GameObject targetPrefab;
+    Transform targetParent;
 
     public override void Initialize(float startingEnergy)
     {
         base.Initialize(startingEnergy);
         timeOfHatch = Time.time +  EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value); //another way of using anim curve
+      /*
+        targetParent = new GameObject().transform;
+        targetPrefab = Resources.Load<GameObject>("Prefabs/TargetPoint");
+        */
     }
 
     public override void Refresh()
@@ -40,12 +46,12 @@ public class Egg : RootedEnemy
             else
             {
                 float eggHatchChoice = Random.value;
-                if (eggHatchChoice >= .75f && eggHatchChoice <= 1f)  //35% chance
+                if (eggHatchChoice >= 0f && eggHatchChoice <= .1f)  //10% chance
                 {
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Crawler, transform.position, energy); //Spawn an egg spitter on this egg's location
                     //Hatch a crawler
                 }
-                else if (eggHatchChoice >= .2 && eggHatchChoice <= .5f) //30% chance
+                else if (eggHatchChoice >= .1 && eggHatchChoice <= .3f) //20% chance
                 {
                     //Hatch a AA Turret
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.AATurret, transform.position, energy); //Spawn an egg spitter on this egg's location
@@ -57,15 +63,17 @@ public class Egg : RootedEnemy
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
                     ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
                 }
-                else if(eggHatchChoice >= .4 && eggHatchChoice <= .5f) // 10% chance
+                else if(eggHatchChoice >= .5 && eggHatchChoice <= .7f) // 10% chance
                 {
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Fighter, transform.position + new Vector3(0f, 100f, 0f), energy); //Spawn an egg spitter on this egg's location
-                    ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Fighter, transform.position /*new Vector3(transform.position.x, 100f, transform.position.z)*/, energy); //Spawn an egg spitter on this egg's location
+                    //((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
                 }
-                else if (eggHatchChoice >= .45 && eggHatchChoice <= .5f) // 5% chance
+                else if (eggHatchChoice >= .7 && eggHatchChoice <= .8f) // 30% chance
                 {
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position + new Vector3(0f, 100f, 0f), energy); //Spawn an egg spitter on this egg's location
-                    ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position /*new Vector3(transform.position.x, 100f, transform.position.z)*/, energy); //Spawn an egg spitter on this egg's location
+                   // SpawnTarget();
+                    //((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);
+
                 }
             }
             Die();   //Destroy this egg since it hatched, cannot just gameObject destroy since manager has the link, so killed it properly
@@ -78,5 +86,10 @@ public class Egg : RootedEnemy
     {
         EnemyManager.Instance.EnemyDied(this);
         isAlive = false;
+    }
+    void SpawnTarget()
+    {
+        GameObject newTarget = GameObject.Instantiate(targetPrefab, targetParent);
+        newTarget.transform.position = new Vector3(Random.Range(-500, 600), Random.Range(100, 200), Random.Range(-800, 1000));
     }
 }
