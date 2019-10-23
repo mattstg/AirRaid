@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIManager 
 {
-    #region Singleton
     private static UIManager instance;
+     #region Singleton
     private UIManager() { }
     public static UIManager Instance { get { return instance ?? (instance = new UIManager()); } }
     #endregion
@@ -13,6 +13,9 @@ public class UIManager
     PlayerController player;
     UILinks ui;  //still the same ui links. just a shortcut for less typing
 
+    [HideInInspector] public bool isErrorMessageActive; //so it doesnt have to check everytime the gameobject
+    private float cooldownTime = 5f;
+    private float timeLeft;
 
     public void Initialize(PlayerController _player)
     {
@@ -28,9 +31,10 @@ public class UIManager
 
     public void PostInitialize()
     {
+        timeLeft = cooldownTime;
     }
 
-    public void PhysicsRefresh(){}
+    public void PhysicsRefresh() {}
 
     public void Refresh(PlayerController.PlayerStats statsToUse)
     {
@@ -38,12 +42,35 @@ public class UIManager
         if (statsToUse.player.isAlive)
         {
             ui.energyBar.fillAmount = Mathf.Clamp01(statsToUse.currentEnegy / statsToUse.maxEnergy);
+            ui.energyBarStore.fillAmount = Mathf.Clamp01(statsToUse.currentEnegy / statsToUse.maxEnergy);
+            ui.energyTextStore.text = $"{statsToUse.currentEnegy.ToString("00.0")} Energy";
             ui.energyText.text = $"{statsToUse.currentEnegy.ToString("00.0")}/{statsToUse.maxEnergy.ToString("00.0")}";
             ui.healthBar.fillAmount = Mathf.Clamp01(statsToUse.hp / statsToUse.maxEnergy);
             ui.healthText.text = $"{statsToUse.hp.ToString("00.0")}/{statsToUse.maxHp.ToString("00.0")}";
             //ui.abilityGridParent;
             ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
-
+            ui.speedEnergyCostThreshold.value = statsToUse.energyPerThrustSecond;
+            if (StoreManager.Instance.openStore)
+            {
+                ui.storePanel.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else 
+            {   
+                ui.storePanel.SetActive(false);
+                Time.timeScale = 1;
+            }
+            //doesnt work because of time scale is set to 0, rather than setting time scale to 0 stop everything else from working in gameflow
+            if (isErrorMessageActive) {
+                if (timeLeft <= 0) {
+                    timeLeft -= Time.deltaTime;
+                } else {
+                    UILinks.instance.errorMessage.text = "Error Message";
+                    UILinks.instance.errorMessage.gameObject.SetActive(false);
+                    isErrorMessageActive = false;
+                    timeLeft = cooldownTime;
+                }
+            }
         }
         else
         {

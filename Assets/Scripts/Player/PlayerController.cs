@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Abilities { Turrets, Rocket,Rewind,TurretDrop,Bomb}
+public enum Abilities { Turrets, Rocket,Rewind,TurretDrop,Bomb, EnergyBoost, NitroBoost}
 public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
@@ -31,9 +31,14 @@ public class PlayerController : MonoBehaviour, IHittable
         abilityManager.AddAbilities(new Ab_BombDrop(this), 3);
         //but it's important that I test now that my ability system is all in place.
 
+        abilityManager.AddAbilities(new Ab_EnergyRegen(this), 2);
+        abilityManager.AddAbilities(new Ab_NitroBoost(this), 3);
+        abilityManager.AddAbilities(new Ab_Rocket(this), 1);
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);
+        stats.abilities.Add(Abilities.EnergyBoost);
+        stats.abilities.Add(Abilities.NitroBoost);
 
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; //using custom gravity

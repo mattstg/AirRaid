@@ -51,6 +51,9 @@ public class Crawler : MobileEnemy
         }
     }
 
+    public override void HitByProjectile(float damage) {
+        base.HitByProjectile(damage);
+    }
     private void CheckBuildingStillExists()
     {
         if (!targetBuilding) //building was destroyed, find new building

@@ -5,22 +5,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHittable
 {
-    readonly float ENEMY_SIZE_MULT = .75f;
+    readonly float ENEMY_SIZE_MULT = 2;
 
     [HideInInspector] public bool isAlive;
-    protected float hp;
+    public float hp;
     protected float energy;
     float updateSizeTimeCountdown;
 
     public virtual void Initialize(float startingEnergy)
     {
         isAlive = true;
+        startingEnergy = Mathf.Clamp(startingEnergy, 1, float.MaxValue);
         ModEnergy(startingEnergy);
         Resize();
     }
 
     public virtual void HitByProjectile(float damage)
     {
+        if (!isAlive)
+            return;
+
         hp -= damage;
         if (hp <= 0)
             Die();

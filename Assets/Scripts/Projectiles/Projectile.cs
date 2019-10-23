@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
             LifespanExpired(); //will contiously trigger if we dont kill projectile
 
         RaycastHit rayHit;
-        if (Physics.Raycast(transform.position, currentMovementVector, out rayHit, projectileSpeed * Time.fixedDeltaTime, LayerMask.GetMask("Enemy", "Building", "Floor", "Wall","Map")))
+        if (Physics.Raycast(transform.position, currentMovementVector, out rayHit, projectileSpeed * Time.fixedDeltaTime, LayerMask.GetMask("Enemy", "Building", "Floor", "Wall", "Defender")))
         {
             IHittable ihittable = rayHit.transform.GetComponent<IHittable>();  //If the thing we hit has implemented "IHittable"
             if (ihittable != null)

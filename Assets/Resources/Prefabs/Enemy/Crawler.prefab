@@ -243,8 +243,7 @@ GameObject:
   - component: {fileID: 727311169897345002}
   - component: {fileID: 5454782080889645376}
   - component: {fileID: 6293879850703730590}
-  - component: {fileID: 7635536005079430685}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,20 +309,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &7635536005079430685
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3420140250857138922}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4500482732141526776
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +553,8 @@ GameObject:
   - component: {fileID: 4716586237473840}
   - component: {fileID: 1201732153479264392}
   - component: {fileID: 1687586061342996723}
-  m_Layer: 13
+  - component: {fileID: 784236732024769170}
+  m_Layer: 0
   m_Name: Crawler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,6 +615,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
+  hp: 0
+--- !u!136 &784236732024769170
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870613551304300875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7728870423770298834
 GameObject:
   m_ObjectHideFlags: 0
