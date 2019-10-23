@@ -14,6 +14,10 @@ TagManager:
   - BodyPart_WingSlots
   - BodyPart_BombBay
   - BodyPart_FrontCannon
+  - Defender_Spawner
+  - Enemy_Egg
+  - Leader
+  - DebugDefender
   layers:
   - Default
   - TransparentFX
@@ -29,6 +33,8 @@ TagManager:
   - Player
   - Rocket
   - Enemy
+  - Leader
+  - Defender
   - Bombs
   - 
   - 

@@ -64,9 +64,10 @@ public class Egg : RootedEnemy
             timeOfHatch = Time.time + EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value);
     }
 
-    public override void Die()
-    {
+    public override void Die() {
         EnemyManager.Instance.EnemyDied(this);
         isAlive = false;
     }
+
+
 }
