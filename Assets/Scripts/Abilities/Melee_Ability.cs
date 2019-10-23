@@ -63,14 +63,23 @@ public class Melee_Ability : EnemyAbility
     }
     void Ray()
     {
-        RaycastHit rayInfo;
+        RaycastHit[] raysInfo = Physics.RaycastAll(enemy.transform.position + Vector3.forward * enemy.transform.localScale.z, Vector3.forward, enemy.transform.localScale.z + range.y - range.x , hittableLayer);
 
-        if (Physics.Raycast(enemy.transform.position + Vector3.forward * range.x, Vector3.forward, out rayInfo, range.y - range.x, hittableLayer))
+        if (raysInfo.Length > 0)
         {
-            IHittable hit = rayInfo.collider.GetComponent<IHittable>();
-            hit.HitByProjectile(damage);
-            enemy.ModEnergy(damage);
+            foreach (RaycastHit rayInfo in raysInfo) // this wont care if its the closest
+            {
+                Debug.Log(rayInfo.collider.gameObject != enemy);
+                if (rayInfo.collider.gameObject != enemy)
+                {
+                    IHittable hit = rayInfo.collider.GetComponent<IHittable>();
+                    hit.HitByProjectile(damage);
+                    enemy.ModEnergy(damage);
+                    return;
+                }
+            }
         }
+        
     }
     public override bool WillHitTarget()
     {
@@ -102,12 +111,11 @@ public class Melee_Ability : EnemyAbility
         {
             Vector3 dir = (enemy.target.transform.position - enemy.transform.position).normalized;
 
-            RaycastHit rayInfo;
-
-            if (!Physics.Raycast(enemy.transform.position, dir, out rayInfo, range.y, hittableLayer))
+            
+            
+            /*if (rayInfo.distance < range.x)
                 return false;
-            if (rayInfo.distance < range.x)
-                return false;
+                */
             enemy.lastTargetPosition = enemy.target.transform.position;
             return true;
         }
