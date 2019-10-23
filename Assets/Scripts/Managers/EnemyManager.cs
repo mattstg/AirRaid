@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public enum EnemyType { Egg, EggSpitter, AATurret, Crawler, Fighter, Bomber, Troll, Ghoul}
 public class EnemyManager
 {
@@ -12,7 +11,7 @@ public class EnemyManager
     #endregion
 
     Transform enemyParent;
-    public Transform rootNodeParent; 
+    public Transform rootNodeParent;
     public HashSet<Enemy> enemies;
     public Stack<Enemy> toRemove;
     public Stack<Enemy> toAdd;
@@ -20,7 +19,7 @@ public class EnemyManager
     public static GameObject rootPrefab;
 
     Dictionary<EnemyType, GameObject> enemyPrefabDict = new Dictionary<EnemyType, GameObject>(); //all enemy prefabs
-    
+
 
     public void Initialize()
     {
@@ -73,7 +72,7 @@ public class EnemyManager
             enemies.Add(toAdd.Pop());
     }
 
-   
+
 
     public void EnemyDied(Enemy enemyDied)
     {
@@ -81,7 +80,7 @@ public class EnemyManager
 
     }
 
-    
+
 
     public Enemy SpawnEnemy(EnemyType eType, Vector3 spawnLoc, float startingEnergy)
     {
