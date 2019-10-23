@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ab_Turret : Ability
 {
-    protected PlayerController pc;
+
 
     private GameObject turretPrefab;
     private Transform turretParent;
@@ -12,8 +12,8 @@ public class Ab_Turret : Ability
 
     public Ab_Turret(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.TurretDrop, UpdateType.FixedUpdate, 5f, 5f);
-        pc = _pc;
+        stats = new AbilityStats(this, Abilities.TurretDrop, UpdateType.FixedUpdate, 5f, 10f);
+
         turretPrefab = Resources.Load<GameObject>("Prefabs/Turret");
         turretParent = (new GameObject("TurretParent")).transform;
         turretAbTimer = 5f;

@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour, IHittable
         if (!stats.engineStalled)
         {
             abilityManager.PhysicsRefresh(inputPkg);
-            Throttle(inputPkg.throttleAmount);                                                  //increase or decrease speed based on holding down the throttle amount (-1 to 1)
+            Throttle(inputPkg.throttleAmount);//increase or decrease speed based on holding down the throttle amount (-1 to 1)
 
             rb.angularVelocity = transform.TransformDirection(new Vector3(stats.pitchSpeed * inputPkg.dirPressed.y, stats.yawSpeed * inputPkg.yawPressed, stats.rollSpeed * inputPkg.dirPressed.x));
 

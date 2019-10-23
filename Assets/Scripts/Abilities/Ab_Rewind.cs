@@ -43,13 +43,18 @@ public class Ab_Rewind : Ability
 
     public override bool UseAbility()
     {
+        
         if (base.UseAbility())
         {
-            //Rewind Switch bool
-            rewindHappening = true;
-            rb.velocity = new Vector3(0, 0, 0);
-            rd.material = teleportFade;
-            return true;
+            if (abilityTimer < 0)
+            {
+                //Rewind Switch bool
+                rewindHappening = true;
+                rb.velocity = new Vector3(0, 0, 0);
+                rd.material = teleportFade;
+                pc.GetComponent<AudioSource>().Play();
+                return true;
+            }
         }
         return false;
     }
@@ -62,11 +67,16 @@ public class Ab_Rewind : Ability
     public override void AbilityUpdate()
     {
         //Ability Timers
-        
+
         refreshCounter -= Time.deltaTime;
+        abilityTimer -= Time.deltaTime;
         //turretTimer -= Time.deltaTime;
         //Debug.Log("Rewind Cooldown : " + stats.cooldown);
         //Add data to Queue /OR/ Remove old Data then Add new
+        if (abilityTimer < 0 && !rewindHappening)
+        {
+            Debug.Log("Rewind READY!");
+        }
         if (!rewindHappening)
         {
 
@@ -101,12 +111,12 @@ public class Ab_Rewind : Ability
             {
                 rewindQueue.Clear();
                 rewindHappening = false;
-
                 rd.material = basicSkin;
                 refreshCounter = 3f;
+                abilityTimer = 7f;
+                Debug.Log("Rewind DONE!");
             }
 
-            Debug.Log("Rewind DONE");
         }
         base.AbilityUpdate();
     }

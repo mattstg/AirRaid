@@ -2,21 +2,10 @@
 
 public class TurretBehavior : MonoBehaviour
 {
-
-
-    /*CHECK IF A NEW ENNEMY IS CLOSER THAN CURRENT TARGET     NOT WORKING
-     * LIMIT AMMOUNT OF TURRETS ALLOWED AT ONCE
-     * SPAWN AND LAND               WORKING             COLLIDERS ON BUILDING? MESH COLLIDERS? 
-     * MAKE SURE SHOOTING WORKS
-     * MAKE SURE NOT TARGETTING THRU WALLS
-     * MAKE SURE TIMER WORKS
-     * 
-    */
-
-
     //Turret Variables
     private float turretTimer = 0f;
-    readonly float TURRET_RANGE = 45;
+    private float shotTimer;
+    readonly float TURRET_RANGE = 50;
     readonly float TURRET_PROJECTILE_SPEED = 35;
 
     private GameObject turretPrefab;
@@ -35,28 +24,30 @@ public class TurretBehavior : MonoBehaviour
         ennemyLayer = 1 << 13;
         turretTimer = 240f;
         target = null;
-
+        shotTimer = 0f;
     }
     private void Update()
     {
         //Timer
         turretTimer -= Time.deltaTime;
-
+        shotTimer -= Time.deltaTime;
 
 
 
         //Behavior
+        if (target != null)
+        {
+            checkTargetDistance();
+        }
         if(transform.position.y < 3)
         {
             DetectEnnemy();
         }
-        if (targetFound)
+        if (targetFound && shotTimer < 0)
         {
             Shoot(target);
+            shotTimer = 0.8f;
         }
-
-
-
     }
 
 
@@ -88,6 +79,15 @@ public class TurretBehavior : MonoBehaviour
         }
     }
 
+    public void checkTargetDistance()
+    {
+        targetDistance = Vector3.Distance(transform.position, target.transform.position);
+        if (targetDistance > TURRET_RANGE)
+        {
+            targetFound = false;
+        }
+    }
+
     public void Shoot(GameObject target)
     {
        if(target == null)
@@ -106,7 +106,7 @@ public class TurretBehavior : MonoBehaviour
             //distance divided by speed would give us time to explode  (draw the math with the correct units on paper if unsure, you will see)
             float lifespan = Vector3.Distance(PlayerManager.Instance.player.transform.position, transform.position) / TURRET_PROJECTILE_SPEED;
 
-            Projectile p = BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, transform.position, aimingVector, Vector3.zero, lifespan, TURRET_PROJECTILE_SPEED);
+            BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, transform.position, aimingVector, Vector3.zero, lifespan, TURRET_PROJECTILE_SPEED);
         }
     }
 
