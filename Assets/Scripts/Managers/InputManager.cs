@@ -32,6 +32,7 @@ public class InputManager : IManagable
     private void SetInputPkg(InputPkg ip)
     {
         ip.throttleAmount = Input.GetAxis("Throttle");
+        ip.yawPressed = Input.GetAxis("Yaw");
         ip.dirPressed = new Vector2(Input.GetAxis("Horizontal") * (invertedYAxis ? -1 : 1), Input.GetAxis("Vertical"));
         for (int i = 0; i < PlayerController.ABILITY_COUNT_MAX; i++)
         {
@@ -68,11 +69,12 @@ public class InputManager : IManagable
     {
         public Vector2 dirPressed;
         public float throttleAmount;
+        public float yawPressed;
         public InputPressType[] abilityKeyPress;
 
         public override string ToString()
         {
-            return $"DirPressed: {dirPressed}, throttleAmount: {throttleAmount}, dirPressed {dirPressed}, " + abilityKeyPress.CollectionToStringArray();
+            return $"DirPressed: {dirPressed}, throttleAmount: {throttleAmount}, dirPressed {dirPressed}, Yaw {yawPressed}" + abilityKeyPress.CollectionToStringArray();
         }
     }
 
