@@ -58,6 +58,10 @@ public class Ab_Turret : Ability
     public override void AbilityUpdate()
     {
         turretAbTimer -= Time.deltaTime;
+        if (turretAbTimer < 0)
+        {
+            Debug.Log("Turret ready to spawn");
+        }
         base.AbilityUpdate();
     }
 
