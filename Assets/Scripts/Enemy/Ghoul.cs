@@ -14,7 +14,7 @@ public class Ghoul : AnimatedEnemy
 
     public override void Initialize(float startingEnergy)
     {
-        base.Initialize(startingEnergy);
+        base.Initialize(1);
         hp = MAX_HP;
         rb = GetComponent<Rigidbody>();
         ghouleEvolution = Resources.Load<GameObject>("Prefabs/Enemy/Troll");
@@ -29,8 +29,8 @@ public class Ghoul : AnimatedEnemy
             //navmeshAgent.enabled = false;
             Destroy(rb);
         }
-        
-        
+
+
     }
     public void FixedRefresh()
     {
@@ -48,11 +48,8 @@ public class Ghoul : AnimatedEnemy
     public virtual IEnumerator SpawnEvolution(EnemyType type, float time)
     {
         yield return new WaitForSeconds(time);
-        //GameObject troll = GameObject.Instantiate<GameObject>(ghouleEvolution, transform.parent);
         if(energy > MIN_ENERGY_EVOLVE)
-        {
             EnemyManager.Instance.SpawnEnemy(type, transform.position, 100);
-        }
         base.Die();
 
         //troll.transform.position = transform.position;
