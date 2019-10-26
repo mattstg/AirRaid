@@ -29,7 +29,7 @@ public class Ab_MachineGun : Ability
         if (base.UseAbility())  
         {
             foreach (Vector3 gunTurretLocation in pc.bodyParts[BodyPart.BodyPart_Turret])
-                BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, gunTurretLocation + pc.transform.position, pc.transform.forward, pc.rb.velocity, BULLET_LIFESPAN, BULLET_SPEED);
+                BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, gunTurretLocation + pc.transform.position, -pc.transform.up, pc.rb.velocity, BULLET_LIFESPAN, BULLET_SPEED);
             return true;
         }
         return false;
