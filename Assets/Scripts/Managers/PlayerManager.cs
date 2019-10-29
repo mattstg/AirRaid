@@ -10,6 +10,7 @@ public class PlayerManager : IManagable
     public static PlayerManager Instance { get { return instance ?? (instance = new PlayerManager()); } }
     #endregion
     public PlayerController player;
+    public Vector3 pos;
 
     public void Initialize()
     {
@@ -28,8 +29,11 @@ public class PlayerManager : IManagable
 
     public void PhysicsRefresh()
     {
-        if(player.isAlive)
+        if (player.isAlive)
+        {
             player.PhysicsRefresh(InputManager.Instance.physicsRefreshInputPkg);
+        }
+           
     }
 
     public void Refresh()
@@ -37,7 +41,6 @@ public class PlayerManager : IManagable
         if (player.isAlive)
             player.Refresh(InputManager.Instance.refreshInputPkg);
     }
-    
 
     public void PlayerDied()
     {

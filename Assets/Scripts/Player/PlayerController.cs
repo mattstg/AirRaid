@@ -4,12 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum Abilities { Turrets, Rocket, Bomb }
-public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
+public enum Abilities { Turrets, Rocket, Bomb, Rewind }
+public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon, BodyPart_DownTurret }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
 
+    //public Stack<PlayerRecording> playerRewindQueue = new Stack<PlayerRecording>();
+    public ArrayList recordingArray;
+    public ArrayList recPos;
+
+    public float counter = 2f;
     [HideInInspector] public bool isAlive;
     //public bool stalled = false;
 
@@ -18,20 +23,26 @@ public class PlayerController : MonoBehaviour, IHittable
     [HideInInspector] public Camera playerCam;
     [HideInInspector]
     public AbilityManager abilityManager;
+    public bool isRecording = true;
 
     public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
 
     public void Initialize()
     {
+
+        recPos = new ArrayList();
+        recordingArray = new ArrayList();
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
         abilityManager.AddAbilities(new Ab_BombDrop(this), 1);
+        abilityManager.AddAbilities(new Ab_Rewind(this), 2);
         //but it's important that I test now that my ability system is all in place.
 
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);
+        stats.abilities.Add(Abilities.Rewind);
 
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; //using custom gravity
@@ -59,6 +70,7 @@ public class PlayerController : MonoBehaviour, IHittable
             }
         }
         isAlive = true;
+       
     }
 
     public void PostInitialize()
@@ -68,6 +80,14 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
+        /////////////////////////////////////////
+        if (isRecording)
+        {
+            recPos.Add(transform.position);
+            PlayerRecording pr = new PlayerRecording(transform.position, rb.velocity, transform.rotation);
+            recordingArray.Add(pr);
+        }
+        /////////////////////////////////////////
         if (!stats.engineStalled)
         {
             abilityManager.Refresh(inputPkg);
@@ -81,6 +101,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
+       
         if (!stats.engineStalled)
         {
             abilityManager.PhysicsRefresh(inputPkg);
@@ -100,6 +121,7 @@ public class PlayerController : MonoBehaviour, IHittable
             rb.velocity = Vector3.RotateTowards(rb.velocity, transform.forward, 5, 0);
         }
     }
+   
 
     private void Throttle(float deltaThrottle)  //-1 to 1
     {
@@ -152,6 +174,20 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         stats.hp -= damage;
         Debug.Log("took dmg: " + damage);
+    }
+
+    public class PlayerRecording
+    {
+        public Vector3 pos;
+        public Vector3 velo;
+        public Quaternion rot;
+
+        public PlayerRecording(Vector3  _pos, Vector3 _velo, Quaternion  _rot)
+        {
+            pos = _pos;
+            velo = _velo;
+            rot = _rot;
+        }
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game
