@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     public virtual void Initialize(Vector3 _firingDir, Vector3 _playerVelocityOnLaunch, float _lifespan, float _speed)
     {
-        firingDir = _firingDir.normalized;  //just in case the caller didnt give us a normalized one, but they should
+        firingDir = _firingDir.normalized  ;  //just in case the caller didnt give us a normalized one, but they should
         playerVelocityOnLaunch = _playerVelocityOnLaunch;
         timeOfExpire = _lifespan + Time.time;
         projectileSpeed = _speed;
