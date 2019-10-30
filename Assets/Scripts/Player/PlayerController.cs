@@ -16,10 +16,13 @@ public class PlayerController : MonoBehaviour, IHittable
     [HideInInspector] public PlayerStats stats;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public Camera playerCam;
+    [HideInInspector] public GameObject Smoke;
     [HideInInspector]
     public AbilityManager abilityManager;
 
     public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
+
+    bool activateSmoke = true;
 
     public void Initialize()
     {
@@ -59,6 +62,8 @@ public class PlayerController : MonoBehaviour, IHittable
             }
         }
         isAlive = true;
+
+        Smoke = Resources.Load<GameObject>("Prefabs/Smoke/WhiteSmoke");
     }
 
     public void PostInitialize()
@@ -77,6 +82,13 @@ public class PlayerController : MonoBehaviour, IHittable
         if (stats.hp <= 0)
             ShipDestroyed();
         //Debug.Log("Energy: " + stats.currentEnegy);
+
+        if(stats.hp < 50 && activateSmoke)
+        {
+            activateSmoke = false;
+            GameObject smokeGO = Instantiate(Smoke, transform.position, Quaternion.identity);
+            smokeGO.transform.SetParent(this.transform);
+        }
     }
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
