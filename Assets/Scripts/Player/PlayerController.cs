@@ -148,20 +148,22 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         if (isRecording)
         {
-            recPos.Add(transform.position);
+           // recPos.Add(transform.position);
             PlayerRecording pr = new PlayerRecording(transform.position, rb.velocity, transform.rotation);
             recordingArray.Add(pr);
         }
 
-        Debug.Log(recPos.Count);
+        Debug.Log(recordingArray.Count);
 
         if (counter <= timeToTrack)
         {
-            numofelements = recPos.Count;
+            numofelements = recordingArray.Count;
+            //numofelements = recPos.Count;
         }
-        if (recPos.Count > numofelements)
+        if (recordingArray.Count > numofelements)
         {
-            recPos.RemoveRange(0, recPos.Count - numofelements);
+            //recPos.RemoveRange(0, recPos.Count - numofelements);
+            recordingArray.RemoveRange(0, recordingArray.Count - numofelements);
         }
     }
 
