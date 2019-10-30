@@ -11,7 +11,7 @@ public class AbilityManager
     public AbilityManager(PlayerController _pc)
     {
         pc = _pc;
-        abilities = new Ability[3];  //atm two hardcoded abilities, will refactor to make it scalable  (do as i say, not as i do)
+        abilities = new Ability[2];  //atm two hardcoded abilities, will refactor to make it scalable  (do as i say, not as i do)
     }
 
     //Update each ability whose ability type happens during an update phase
