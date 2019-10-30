@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour, IHittable
     //public Stack<PlayerRecording> playerRewindQueue = new Stack<PlayerRecording>();
     public ArrayList recordingArray;
     public ArrayList recPos;
+    public float counter = 0f;
+    int numofelements;
 
-    public float counter = 2f;
     [HideInInspector] public bool isAlive;
     //public bool stalled = false;
 
@@ -29,7 +30,6 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Initialize()
     {
-
         recPos = new ArrayList();
         recordingArray = new ArrayList();
         //Create stats, add two starter abilities
@@ -80,13 +80,11 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
+        
+        //Player Rewinder
         /////////////////////////////////////////
-        if (isRecording)
-        {
-            recPos.Add(transform.position);
-            PlayerRecording pr = new PlayerRecording(transform.position, rb.velocity, transform.rotation);
-            recordingArray.Add(pr);
-        }
+        counter += Time.deltaTime;
+        PlayerRecorder(3);
         /////////////////////////////////////////
         if (!stats.engineStalled)
         {
@@ -144,6 +142,27 @@ public class PlayerController : MonoBehaviour, IHittable
        // Debug.Log("RelativeLocalVeloZ: " + relativeLocalVelocity.z + ", stats.MaxSpeed: " + stats.maxSpeed + " stats.energySpeedCostThreshold: " + stats.energySpeedCostThreshold);
 
         
+    }
+
+    private void PlayerRecorder(int timeToTrack)
+    {
+        if (isRecording)
+        {
+            recPos.Add(transform.position);
+            PlayerRecording pr = new PlayerRecording(transform.position, rb.velocity, transform.rotation);
+            recordingArray.Add(pr);
+        }
+
+        Debug.Log(recPos.Count);
+
+        if (counter <= timeToTrack)
+        {
+            numofelements = recPos.Count;
+        }
+        if (recPos.Count > numofelements)
+        {
+            recPos.RemoveRange(0, recPos.Count - numofelements);
+        }
     }
 
     public void ModEnergy(float modBy)

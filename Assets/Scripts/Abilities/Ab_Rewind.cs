@@ -7,7 +7,7 @@ public class Ab_Rewind : Ability
     readonly float BULLET_SPEED = 200;
     readonly float BULLET_LIFESPAN = 5;
     readonly float ABILITY_COUNTER = 2f;
-    
+    float timer = 3f;
 
     public Ab_Rewind(PlayerController _pc) : base(_pc)
     {
@@ -38,6 +38,9 @@ public class Ab_Rewind : Ability
     public override void AbilityRelease()
     {
         base.AbilityRelease();
+        pc.recPos.Clear();
+        pc.isRecording = true;
+        timer = 3f;
     }
 
     public override void AbilityUpdate()
@@ -47,15 +50,19 @@ public class Ab_Rewind : Ability
 
     public void Rewind()
     {
-        pc.isRecording = false;
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            timer = 3f;
+            AbilityRelease();
+        }
         if (pc.recPos.Count > 0)
         {
-            Debug.Log("aa");
+            pc.isRecording = false;
             pc.transform.position = (Vector3)pc.recPos[pc.recPos.Count - 1];
             pc.recPos.RemoveAt(pc.recPos.Count - 1);
         }
-        else
-            pc.isRecording = true;
+        
     }
 
 }
