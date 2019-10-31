@@ -6,7 +6,7 @@ public class AbilityManager
 {
     //Not a singleton manager, because there could be one ability manager per player
     PlayerController pc; //link to player
-    Ability[] abilities; //pair player ability key at index to abilities
+    public Ability[] abilities; //pair player ability key at index to abilities
 
 
     public AbilityManager(PlayerController _pc)

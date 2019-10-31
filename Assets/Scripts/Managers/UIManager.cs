@@ -24,6 +24,7 @@ public class UIManager
     public void Initialize(PlayerController _player)
     {
         ui = UILinks.instance;
+        //_ability = Ability
         player = _player;
         for(int i = 0; i < player.stats.abilities.Count; i++)
         {
@@ -54,7 +55,9 @@ public class UIManager
             ui.healthText.text = $"{statsToUse.hp.ToString("00.0")}/{statsToUse.maxHp.ToString("00.0")}";
             //ui.abilityGridParent;
             ui.speedText.text = statsToUse.relativeLocalVelo.z.ToString();
-
+            ui.TurretImage.fillAmount = player.abilityManager.abilities[0].stats.chargePercentage;
+            ui.BombImage.fillAmount = player.abilityManager.abilities[1].stats.chargePercentage;
+            ui.Speedometer.fillAmount = float.Parse(statsToUse.relativeLocalVelo.z.ToString())/player.stats.maxSpeed; //Sets Raange of speedometer depending on maxSPeed vs currentSpeed
         }
         else
         {
@@ -63,11 +66,6 @@ public class UIManager
             //ui.abilityGridParent;
             ui.speedText.text = "0";
             ui.speedEnergyCostThreshold.value = 0;
-        }
-        
-        foreach(Image i in ui.AbilityImages)
-        {
-            //i.fillAmount = player.abilityManager
         }
 }
 
