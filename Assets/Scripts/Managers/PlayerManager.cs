@@ -44,8 +44,22 @@ public class PlayerManager : IManagable
         Debug.Log("Player has lost the game");
         player.stats.hp = 0; //in case player died from crashing
         player.playerCam.gameObject.SetActive(false);
-        GameLinks.gl.postDeathCam.gameObject.SetActive(true);
+        
         player.gameObject.SetActive(false);
         player.isAlive = false;
+        UIManager.Instance.lm.DecreaseLivesCount();
+        if(UIManager.Instance.lm.LivesCount > 0)
+        {
+            SpawnNewPlayer();
+        }
+        else
+        {
+            GameLinks.gl.postDeathCam.gameObject.SetActive(true);
+        }
+    }
+
+    public void SpawnNewPlayer()
+    {
+        Initialize();
     }
 }

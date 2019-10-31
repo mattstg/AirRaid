@@ -12,6 +12,8 @@ public class UIManager
 
     PlayerController player;
     UILinks ui;  //still the same ui links. just a shortcut for less typing
+    [HideInInspector]
+    public LivesManager lm;
 
 
     public void Initialize(PlayerController _player)
@@ -22,6 +24,7 @@ public class UIManager
         {
             //UIAbility.CreateAbilityUI(null,)
         }
+        lm = GameObject.FindGameObjectWithTag("LivesManager").GetComponent<LivesManager>();
     }
 
    
