@@ -12,15 +12,12 @@ public class PlayerController : MonoBehaviour, IHittable
 
     // Rewind Ability Stuff
     public ArrayList recordingArray;
-    float counter = 0f;
     [HideInInspector] public AudioSource audioSrc;
     [HideInInspector] public AudioClip rewindSFX;
-
-    [HideInInspector] public int numofelements;
+    
     [HideInInspector] public MeshRenderer mesh;
     [HideInInspector] public Material original;
     [HideInInspector] public Material blue;
-    [HideInInspector] public float rewindCooldown = 4f;
     ////////////////////////////////////////////////////////////
     [HideInInspector] public bool isAlive;
     //public bool stalled = false;
@@ -96,8 +93,8 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         //Player Rewinder
         /////////////////////////////////////////
-        counter += Time.deltaTime;
-        PlayerRecorder(3);
+        
+        //PlayerRecorder(3);
         /////////////////////////////////////////
         if (!stats.engineStalled)
         {
@@ -157,24 +154,13 @@ public class PlayerController : MonoBehaviour, IHittable
         
     }
 
-    private void PlayerRecorder(int timeToTrack)
+    public void ChangeMaterial(Material material)
     {
-        if (isRecording)
-        {
-            rewindCooldown -= Time.deltaTime;
-            mesh.material = original;
-            PlayerRecording pr = new PlayerRecording(transform.position, rb.velocity, transform.rotation);
-            recordingArray.Add(pr);
-        }
-
-        if (counter <= timeToTrack)
-        {
-            numofelements = recordingArray.Count;
-        }
-        if (recordingArray.Count > numofelements)
-        {
-            recordingArray.RemoveRange(0, recordingArray.Count - numofelements);
-        }
+        mesh.material = material;
+    }
+    public void DefaultMaterial()
+    {
+        mesh.material = original;
     }
 
     public void ModEnergy(float modBy)

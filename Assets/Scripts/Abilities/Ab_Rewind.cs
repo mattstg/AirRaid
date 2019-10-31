@@ -7,6 +7,10 @@ public class Ab_Rewind : Ability
     readonly float ENERGY_COST = 0.5f;
     readonly float COOLDOWN = 0.01f;
     readonly float MAXIMUM_COOLDOWN_DURATION = 3f;
+    float counter = 0;
+    bool isRecording = true;
+    float rewindCooldown = 4f;
+    int numofelements;
 
     public Ab_Rewind(PlayerController _pc) : base(_pc)
     {
@@ -25,7 +29,7 @@ public class Ab_Rewind : Ability
 
     public override bool UseAbility()
     {
-        if (pc.rewindCooldown <= 0)
+        if (rewindCooldown <= 0)
         {
             if (base.UseAbility())
             {
@@ -39,23 +43,25 @@ public class Ab_Rewind : Ability
     public override void AbilityRelease()
     {
         base.AbilityRelease();
-        pc.isRecording = true;
-        if(pc.recordingArray.Count < pc.numofelements)
-            pc.rewindCooldown = MAXIMUM_COOLDOWN_DURATION;
+        isRecording = true;
+        pc.DefaultMaterial();
+        if (pc.recordingArray.Count < numofelements)
+            rewindCooldown = MAXIMUM_COOLDOWN_DURATION;
     }
 
     public override void AbilityUpdate()
     {
         base.AbilityUpdate();
+        if(isRecording)
+            PlayerRecorder(MAXIMUM_COOLDOWN_DURATION);
     }
 
-    public void Rewind()
+    private void Rewind()
     {
-
         if (pc.recordingArray.Count > 0 && pc.stats.currentEnegy > 0)
         {
-            pc.isRecording = false;
-            pc.mesh.material = pc.blue;
+            isRecording = false;
+            pc.ChangeMaterial(pc.blue);
             pc.audioSrc.PlayOneShot(pc.rewindSFX);
             PlayerController.PlayerRecording pr2 = (PlayerController.PlayerRecording)pc.recordingArray[pc.recordingArray.Count - 1];
             pc.transform.position = pr2.pos;
@@ -69,6 +75,25 @@ public class Ab_Rewind : Ability
         }
 
 
+    }
+    private void PlayerRecorder(float timeToTrack)
+    {
+        counter += Time.deltaTime;
+        if (isRecording)
+        {
+            rewindCooldown -= Time.deltaTime;
+            PlayerController.PlayerRecording pr = new PlayerController.PlayerRecording(pc.transform.position, pc.rb.velocity, pc.transform.rotation);
+            pc.recordingArray.Add(pr);
+        }
+
+        if (counter <= timeToTrack)
+        {
+            numofelements = pc.recordingArray.Count;
+        }
+        if (pc.recordingArray.Count > numofelements)
+        {
+            pc.recordingArray.RemoveRange(0, pc.recordingArray.Count - numofelements);
+        }
     }
 
 }
