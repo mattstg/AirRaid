@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour, IHittable
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
 
     // Rewind Ability Stuff
-    public ArrayList recordingArray;
     [HideInInspector] public AudioSource audioSrc;
     [HideInInspector] public AudioClip rewindSFX;
     
@@ -33,8 +32,6 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Initialize()
     {
-        // Rewind Ability Stuff
-        recordingArray = new ArrayList();
         mesh = GetComponent<MeshRenderer>();
         original = mesh.material;
         blue = Resources.Load<Material>("Material/TransparentBlue");

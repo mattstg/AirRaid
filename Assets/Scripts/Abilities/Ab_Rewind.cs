@@ -11,6 +11,7 @@ public class Ab_Rewind : Ability
     bool isRecording = true;
     float rewindCooldown = 4f;
     int numofelements;
+    ArrayList recordingArray = new ArrayList();
 
     public Ab_Rewind(PlayerController _pc) : base(_pc)
     {
@@ -45,7 +46,7 @@ public class Ab_Rewind : Ability
         base.AbilityRelease();
         isRecording = true;
         pc.DefaultMaterial();
-        if (pc.recordingArray.Count < numofelements)
+        if (recordingArray.Count < numofelements)
             rewindCooldown = MAXIMUM_COOLDOWN_DURATION;
     }
 
@@ -58,16 +59,16 @@ public class Ab_Rewind : Ability
 
     private void Rewind()
     {
-        if (pc.recordingArray.Count > 0 && pc.stats.currentEnegy > 0)
+        if (recordingArray.Count > 0 && pc.stats.currentEnegy > 0)
         {
             isRecording = false;
             pc.ChangeMaterial(pc.blue);
             pc.audioSrc.PlayOneShot(pc.rewindSFX);
-            PlayerController.PlayerRecording pr2 = (PlayerController.PlayerRecording)pc.recordingArray[pc.recordingArray.Count - 1];
+            PlayerController.PlayerRecording pr2 = (PlayerController.PlayerRecording)recordingArray[recordingArray.Count - 1];
             pc.transform.position = pr2.pos;
             pc.transform.rotation = pr2.rot;
             pc.rb.velocity = pr2.velo;
-            pc.recordingArray.RemoveAt(pc.recordingArray.Count - 1);
+            recordingArray.RemoveAt(recordingArray.Count - 1);
         }
         else
         {
@@ -83,16 +84,16 @@ public class Ab_Rewind : Ability
         {
             rewindCooldown -= Time.deltaTime;
             PlayerController.PlayerRecording pr = new PlayerController.PlayerRecording(pc.transform.position, pc.rb.velocity, pc.transform.rotation);
-            pc.recordingArray.Add(pr);
+            recordingArray.Add(pr);
         }
 
         if (counter <= timeToTrack)
         {
-            numofelements = pc.recordingArray.Count;
+            numofelements = recordingArray.Count;
         }
-        if (pc.recordingArray.Count > numofelements)
+        if (recordingArray.Count > numofelements)
         {
-            pc.recordingArray.RemoveRange(0, pc.recordingArray.Count - numofelements);
+            recordingArray.RemoveRange(0, recordingArray.Count - numofelements);
         }
     }
 
