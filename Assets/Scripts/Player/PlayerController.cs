@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour, IHittable
         }
         isAlive = true;
 
-        Smoke = Resources.Load<GameObject>("Prefabs/Smoke/WhiteSmoke");
+        Smoke = Resources.Load<GameObject>("Prefabs/Smoke/WhiteSmoke"); // Load Smoke particle
     }
 
     public void PostInitialize()
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour, IHittable
         if(stats.hp < 50 && activateSmoke)
         {
             activateSmoke = false;
-            GameObject smokeGO = Instantiate(Smoke, transform.position, Quaternion.identity);
+            GameObject smokeGO = Instantiate(Smoke, transform.position, Quaternion.identity); // Player starts smoke when HP below 50
             smokeGO.transform.SetParent(this.transform);
         }
     }
