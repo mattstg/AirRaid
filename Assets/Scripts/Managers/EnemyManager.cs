@@ -14,6 +14,7 @@ public class EnemyManager
     Transform enemyParent;
     public Transform rootNodeParent;    
     public HashSet<Enemy> enemies;
+    public HashSet<Enemy> CrawlerEnemies;
     public Stack<Enemy> toRemove;
     public Stack<Enemy> toAdd;
     readonly float initialEggSpawnHeight = 50;
@@ -27,17 +28,17 @@ public class EnemyManager
         toRemove = new Stack<Enemy>();
         toAdd = new Stack<Enemy>();
         enemies = new HashSet<Enemy>();
+        CrawlerEnemies = new HashSet<Enemy>();
         rootPrefab = Resources.Load<GameObject>("Prefabs/RootNode");
         enemyParent = new GameObject("EnemyParent").transform;
         rootNodeParent = new GameObject("RootNodeParent").transform;
-        foreach(EnemyType etype in System.Enum.GetValues(typeof(EnemyType))) //fill the resource dictionary with all the prefabs
+        foreach (EnemyType etype in System.Enum.GetValues(typeof(EnemyType))) //fill the resource dictionary with all the prefabs
         {
             enemyPrefabDict.Add(etype, Resources.Load<GameObject>("Prefabs/Enemy/" + etype.ToString())); //Each enum matches the name of the enemy perfectly
         }
 
         SpawnInitialSkyEggs();
     }
-
     public void PostInitialize()
     {
 
@@ -73,10 +74,12 @@ public class EnemyManager
     public void EnemyDied(Enemy enemyDied)
     {
         toRemove.Push(enemyDied);
+        Debug.Log(enemyDied.name);
+
 
     }
 
-    
+
 
     public Enemy SpawnEnemy(EnemyType eType, Vector3 spawnLoc, float startingEnergy)
     {
@@ -90,6 +93,10 @@ public class EnemyManager
         newEnemy.transform.position = spawnLoc;     //set the position
         Enemy e = newEnemy.GetComponent<Enemy>();   //get the enemy component on the newly created obj
         e.Initialize(startingEnergy);               //initialize the enemy
+        if (eType.Equals(EnemyType.Crawler))
+        {
+            CrawlerEnemies.Add(e);
+        }
         toAdd.Push(e);                              //add to update list
         return e;
     }
@@ -110,12 +117,14 @@ public class EnemyManager
     public Enemy CreateEnemyEgg(Vector3 spawnPos, Vector3 spawnDir, float speed, float startEnergy)
     {
         GameObject newEgg = GameObject.Instantiate(enemyPrefabDict[EnemyType.Egg]);
+
         newEgg.transform.position = spawnPos;
         newEgg.transform.SetParent(enemyParent);
         newEgg.GetComponent<Rigidbody>().velocity = spawnDir.normalized * speed;
         Enemy e = newEgg.GetComponent<Enemy>();
         e.Initialize(startEnergy);
         toAdd.Push(e);
+
         return e;
     }
 }
