@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ab_Rewind : Ability
 {
-    readonly float ENERGY_COST = 0.01f;
+    readonly float ENERGY_COST = 0.5f;
     readonly float COOLDOWN = 0.01f;
     readonly float MAXIMUM_COOLDOWN_DURATION = 3f;
 
