@@ -41,7 +41,6 @@ public class PlayerManager : IManagable
 
     public void PlayerDied()
     {
-        Debug.Log("Player has lost the game");
         player.stats.hp = 0; //in case player died from crashing
         player.playerCam.gameObject.SetActive(false);
         
@@ -54,6 +53,7 @@ public class PlayerManager : IManagable
         }
         else
         {
+            Debug.Log("Player has lost the game");
             GameLinks.gl.postDeathCam.gameObject.SetActive(true);
         }
     }
