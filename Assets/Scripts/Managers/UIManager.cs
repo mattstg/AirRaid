@@ -46,8 +46,10 @@ public class UIManager
         //PlayerController.PlayerStats statsToUse = player.stats; //Get stats from player to use in UI
         if (statsToUse.player.isAlive)
         {
+            //Changes fill amount of EnergyBar Slider
             ui.energyBar.value = Mathf.Clamp01(statsToUse.currentEnegy / statsToUse.maxEnergy);
             ui.energyText.text = $"{statsToUse.currentEnegy.ToString("00.0")}/{statsToUse.maxEnergy.ToString("00.0")}";
+            //Changes fill amount of HealthBar Slider
             ui.healthBar.value = Mathf.Clamp01(statsToUse.hp / statsToUse.maxEnergy);
             ui.healthText.text = $"{statsToUse.hp.ToString("00.0")}/{statsToUse.maxHp.ToString("00.0")}";
             //ui.abilityGridParent;
@@ -61,6 +63,11 @@ public class UIManager
             //ui.abilityGridParent;
             ui.speedText.text = "0";
             ui.speedEnergyCostThreshold.value = 0;
+        }
+        
+        foreach(Image i in ui.AbilityImages)
+        {
+            //i.fillAmount = player.abilityManager
         }
 }
 

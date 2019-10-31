@@ -14,6 +14,7 @@ public class UILinks : MonoBehaviour
     public Text speedText;
     public Slider speedEnergyCostThreshold;
     public Slider TurretSlider;
+    public Image[] AbilityImages;
 
     public static UILinks Instance; //The first instance to be created will set this static variable to point at it, so we can access it from everywhere
     public static UILinks instance  //Pseudo singleton for mono behaviour
