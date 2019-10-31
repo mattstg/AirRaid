@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class UIManager 
@@ -12,8 +13,12 @@ public class UIManager
 
     PlayerController player;
     UILinks ui;  //still the same ui links. just a shortcut for less typing
+    Ability _ability;
     [HideInInspector]
     public LivesManager lm;
+    [HideInInspector]
+    public GameObject[] AbilityIMG;
+
 
 
     public void Initialize(PlayerController _player)
@@ -25,6 +30,7 @@ public class UIManager
             //UIAbility.CreateAbilityUI(null,)
         }
         lm = GameObject.FindGameObjectWithTag("LivesManager").GetComponent<LivesManager>();
+        AbilityIMG  = GameObject.FindGameObjectsWithTag("AbilityIcon");
     }
 
    

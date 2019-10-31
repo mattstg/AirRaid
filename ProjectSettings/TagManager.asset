@@ -16,6 +16,8 @@ TagManager:
   - BodyPart_FrontCannon
   - LivesManager
   - StatScreen
+  - FxTemporaire
+  - AbilityIcon
   layers:
   - Default
   - TransparentFX

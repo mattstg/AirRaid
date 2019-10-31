@@ -14,6 +14,7 @@ public class SimpleRotator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0,0,1*speed),Space.World);
+        transform.localEulerAngles = transform.localEulerAngles + new Vector3(0, 0, 1) * speed*Time.deltaTime;
+        //transform.Rotate(new Vector3(0,0,1*speed),Space.Self);
     }
 }

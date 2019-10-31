@@ -59,11 +59,11 @@ public abstract class Ability
         public UpdateType updateType = UpdateType.Update;       //AbilityManager will decide which frametype to call the methods based on this enum
 
         public float cooldown = 1;
-        public float gunCooldown = 1.5f;//amount of time between uses, should be "constant"
+        //public float gunCooldown = 1.5f;//amount of time between uses, should be "constant"
         public float timeAbilityLastUsed;
         public float energyCost = 1;
         public bool canUseAbility { get{ return Time.time - timeAbilityLastUsed >= cooldown; } }
-        public bool canFireGun { get { return Time.time <= timeAbilityLastUsed + gunCooldown; } }
+        public float chargePercentage { get { return (Time.time - timeAbilityLastUsed) / cooldown; } }
 
         //Autogenerate constructors by highlighting the variables you want, right click, quick action and refactor, generate constructor
         public AbilityStats(Ability abilityParent, Abilities abilityType, UpdateType updateType, float cooldown, float energyCost)
