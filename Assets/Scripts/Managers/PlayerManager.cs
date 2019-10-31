@@ -55,6 +55,7 @@ public class PlayerManager : IManagable
         UIManager.Instance.lm.DecreaseLivesCount();
         if(UIManager.Instance.lm.LivesCount > 0)
         {
+            StatsScreen.SetActive(true);
             SpawnNewPlayer();
         }
         else
@@ -63,6 +64,7 @@ public class PlayerManager : IManagable
             Time.timeScale = 10f;
             GameLinks.gl.postDeathCam.gameObject.SetActive(true);
             StatsScreen.SetActive(true);
+            StatsScreen.GetComponent<StatsScreen>().DisplayFinalStats(player.stats.maxEnergy, player.stats.currentEnegy, player.stats.energyRegenPerSec, player.stats.energyPerThrustSecond, player.stats.maxSpeed, player.stats.minSpeed, player.stats.acceleration, player.stats.hp);
         }
     }
 

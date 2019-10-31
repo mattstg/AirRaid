@@ -18,6 +18,7 @@ TagManager:
   - StatScreen
   - FxTemporaire
   - AbilityIcon
+  - MainMenuController
   layers:
   - Default
   - TransparentFX

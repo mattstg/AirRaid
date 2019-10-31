@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StatsScreen : MonoBehaviour
 {
+    PlayerManager pm;
 
     [Header("Energy")]
     public Text maxEnergy;
@@ -26,5 +27,19 @@ public class StatsScreen : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void DisplayFinalStats(float _maxenergy,float _currentenergy,float _energyregenpersec,float _energyperthrustsec,float _maxspeed,float _minspeed,float _acceleration,float _hp)
+    {
+        maxEnergy.text = "" + _maxenergy;
+        currentEnegy.text = ""  + _currentenergy;
+        energyRegenPerSec.text = "" + _energyregenpersec;
+        energyPerThrustSecond.text = "" + _energyperthrustsec;
+        maxSpeed.text = "" + _maxspeed;
+        minSpeed.text = "" + _minspeed;
+        acceleration.text = "" + _acceleration;
+        maxEnergy.text = "" + _maxenergy;
+        hp.text = "" + _hp;
+
     }
 }

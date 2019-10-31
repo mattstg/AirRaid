@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MyMenuController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool disableAudio = false;
+    public void LoadGame()
     {
-        
+        SceneManager.LoadScene(1);
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisableAudio(bool isDisableAudio)
     {
-        
+        disableAudio = isDisableAudio;
     }
 }
