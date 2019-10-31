@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Ab_Rewind : Ability
 {
-    readonly float ENERGY_COST = 0.5f;
+    readonly float ENERGY_COST = 0.01f;
     readonly float COOLDOWN = 0.01f;
-    readonly float MAXIMUM_DURATION = 3f;
-    float timer = 3f;
+    readonly float MAXIMUM_COOLDOWN_DURATION = 3f;
 
     public Ab_Rewind(PlayerController _pc) : base(_pc)
     {
         stats = new AbilityStats(this, Abilities.Rewind, UpdateType.FixedUpdate, COOLDOWN, ENERGY_COST);
-
     }
     public override void AbilityPressed()
     {
@@ -27,10 +25,13 @@ public class Ab_Rewind : Ability
 
     public override bool UseAbility()
     {
-        if (base.UseAbility())
+        if (pc.rewindCooldown <= 0)
         {
-            Rewind();     
-            return true;
+            if (base.UseAbility())
+            {
+                Rewind();
+                return true;
+            }
         }
         return false;
     }
@@ -38,10 +39,9 @@ public class Ab_Rewind : Ability
     public override void AbilityRelease()
     {
         base.AbilityRelease();
-        pc.recordingArray.Clear();
-        //pc.recPos.Clear();
         pc.isRecording = true;
-        timer = MAXIMUM_DURATION;
+        if(pc.recordingArray.Count < pc.numofelements)
+            pc.rewindCooldown = MAXIMUM_COOLDOWN_DURATION;
     }
 
     public override void AbilityUpdate()
@@ -51,24 +51,24 @@ public class Ab_Rewind : Ability
 
     public void Rewind()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0)
-        {
-            timer = MAXIMUM_DURATION;
-            AbilityRelease();
-        }
-        if (pc.recordingArray.Count > 0)
+
+        if (pc.recordingArray.Count > 0 && pc.stats.currentEnegy > 0)
         {
             pc.isRecording = false;
-            PlayerController.PlayerRecording pr2 = (PlayerController.PlayerRecording) pc.recordingArray[pc.recordingArray.Count - 1];
+            pc.mesh.material = pc.blue;
+            pc.audioSrc.PlayOneShot(pc.rewindSFX);
+            PlayerController.PlayerRecording pr2 = (PlayerController.PlayerRecording)pc.recordingArray[pc.recordingArray.Count - 1];
             pc.transform.position = pr2.pos;
             pc.transform.rotation = pr2.rot;
             pc.rb.velocity = pr2.velo;
             pc.recordingArray.RemoveAt(pc.recordingArray.Count - 1);
-            //pc.transform.position = (Vector3)pc.recordingArray[pc.recPos.Count - 1];
-            //pc.recPos.RemoveAt(pc.recPos.Count - 1);
         }
-        
+        else
+        {
+            AbilityRelease();
+        }
+
+
     }
 
 }

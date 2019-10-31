@@ -10,12 +10,18 @@ public class PlayerController : MonoBehaviour, IHittable
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
 
-    //public Stack<PlayerRecording> playerRewindQueue = new Stack<PlayerRecording>();
+    // Rewind Ability Stuff
     public ArrayList recordingArray;
-    public ArrayList recPos;
-    public float counter = 0f;
-    int numofelements;
+    float counter = 0f;
+    [HideInInspector] public AudioSource audioSrc;
+    [HideInInspector] public AudioClip rewindSFX;
 
+    [HideInInspector] public int numofelements;
+    [HideInInspector] public MeshRenderer mesh;
+    [HideInInspector] public Material original;
+    [HideInInspector] public Material blue;
+    [HideInInspector] public float rewindCooldown = 4f;
+    ////////////////////////////////////////////////////////////
     [HideInInspector] public bool isAlive;
     //public bool stalled = false;
 
@@ -30,13 +36,21 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Initialize()
     {
-        recPos = new ArrayList();
+        // Rewind Ability Stuff
         recordingArray = new ArrayList();
+        mesh = GetComponent<MeshRenderer>();
+        original = mesh.material;
+        blue = Resources.Load<Material>("Material/TransparentBlue");
+        audioSrc = GetComponent<AudioSource>();
+        rewindSFX = Resources.Load<AudioClip>("SFX/WHOOSH2");
+        //////////////////////////////////////////////////////////////////////////////
+
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
         abilityManager.AddAbilities(new Ab_BombDrop(this), 1);
-        abilityManager.AddAbilities(new Ab_Rewind(this), 2);
+        //Karan's Turret Ability
+        abilityManager.AddAbilities(new Ab_Rewind(this), 3);
         //but it's important that I test now that my ability system is all in place.
 
         stats = new PlayerStats(this);
@@ -80,7 +94,6 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
-        
         //Player Rewinder
         /////////////////////////////////////////
         counter += Time.deltaTime;
@@ -148,21 +161,18 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         if (isRecording)
         {
-           // recPos.Add(transform.position);
+            rewindCooldown -= Time.deltaTime;
+            mesh.material = original;
             PlayerRecording pr = new PlayerRecording(transform.position, rb.velocity, transform.rotation);
             recordingArray.Add(pr);
         }
 
-        Debug.Log(recordingArray.Count);
-
         if (counter <= timeToTrack)
         {
             numofelements = recordingArray.Count;
-            //numofelements = recPos.Count;
         }
         if (recordingArray.Count > numofelements)
         {
-            //recPos.RemoveRange(0, recPos.Count - numofelements);
             recordingArray.RemoveRange(0, recordingArray.Count - numofelements);
         }
     }
