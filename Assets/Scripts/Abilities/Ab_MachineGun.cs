@@ -5,9 +5,9 @@ using UnityEngine;
 //Machine gun ability, rapidly shoot from players turrets
 public class Ab_MachineGun : Ability
 {
+
     readonly float BULLET_SPEED = 200;
     readonly float BULLET_LIFESPAN = 5;
-
     public Ab_MachineGun(PlayerController _pc) : base(_pc)
     {
         stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .2f, 5f);
@@ -20,7 +20,11 @@ public class Ab_MachineGun : Ability
 
     public override void AbilityHeld()
     {
-        UseAbility();
+        if(stats.canFireGun)
+        {
+            UseAbility();
+        }
+            
         base.AbilityHeld();
     }
 

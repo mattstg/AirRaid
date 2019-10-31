@@ -11,14 +11,20 @@ public class PlayerManager : IManagable
     #endregion
     public PlayerController player;
 
+    [HideInInspector]
+    public GameObject StatsScreen;
+
     public void Initialize()
     {
+        StatsScreen = GameObject.FindGameObjectWithTag("StatScreen");
         GameObject newPlayer = GameObject.Instantiate(Resources.Load<GameObject>(PrefabFileDir.PLAYER_RESOURCE_PATH));
         player = newPlayer.GetComponent<PlayerController>();
         player.transform.position = GameLinks.gl.playerSpawn.position;
         player.transform.localEulerAngles = GameLinks.gl.playerSpawn.localEulerAngles;
         //player.transform.localEulerAngles = 
         player.Initialize();  //isAlive = true
+
+        StatsScreen.SetActive(false);
     }
 
     public void PostInitialize()
@@ -54,7 +60,9 @@ public class PlayerManager : IManagable
         else
         {
             Debug.Log("Player has lost the game");
+            Time.timeScale = 10f;
             GameLinks.gl.postDeathCam.gameObject.SetActive(true);
+            StatsScreen.SetActive(true);
         }
     }
 

@@ -8,6 +8,7 @@ public class AbilityManager
     PlayerController pc; //link to player
     Ability[] abilities; //pair player ability key at index to abilities
 
+
     public AbilityManager(PlayerController _pc)
     {
         pc = _pc;

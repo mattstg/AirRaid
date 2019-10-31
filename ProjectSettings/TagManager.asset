@@ -15,6 +15,7 @@ TagManager:
   - BodyPart_BombBay
   - BodyPart_FrontCannon
   - LivesManager
+  - StatScreen
   layers:
   - Default
   - TransparentFX
