@@ -47,10 +47,10 @@ public class FighterEnemy : Ship
 
     void FollowPlayer()
     {
-        Vector3 targetPos = (PlayerManager.Instance.player.isAlive ? player.position : new Vector3(300, 20, 20)); //random location in space
+        Vector3 targetPos = (PlayerManager.Instance.player.isAlive ? player.position : new Vector3(400, 20, 20)); //random location in space
         transform.forward = Vector3.RotateTowards(transform.forward, (targetPos - transform.position).normalized, 2 * Mathf.PI / TURNING_RATE * Time.fixedDeltaTime, 0);
         rb.velocity = transform.forward * speedOfFighter * Time.deltaTime;
-        if((transform.position - targetPos).sqrMagnitude <= 20 && !PlayerManager.Instance.player.isAlive)
+        if((transform.position - targetPos).sqrMagnitude <= 80 && PlayerManager.Instance.player.isAlive == false)
         {
             DestroyPlane();
         }
