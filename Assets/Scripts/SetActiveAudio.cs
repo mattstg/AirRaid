@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SetActiveAudio : MonoBehaviour
 {
+    bool temp = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,9 +13,7 @@ public class SetActiveAudio : MonoBehaviour
         {
             if (GameObject.FindGameObjectWithTag("MainMenuController").GetComponent<MyMenuController>().disableAudio)
             {
-                Debug.Log("Here");
-                foreach(AudioListener l in listner)
-                l.enabled = false;
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = false;
             }
         }
     }
@@ -22,6 +21,6 @@ public class SetActiveAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
