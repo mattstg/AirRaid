@@ -27,6 +27,8 @@ public class Ranged : Npc
 
     public override void Refresh()
     {
+        targetEnemy = getTargetEnemy();
+
         if (!attackMode)
             UpdateWanderMode();
         else

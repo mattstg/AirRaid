@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BomberEnemy : Ship
 {
@@ -48,8 +49,8 @@ public class BomberEnemy : Ship
         }
         else
         {
-            Transform closestBuilding = ClosestBuilding();
-            Vector3 dirVector = (closestBuilding.position - transform.position);
+            Transform closestTarget = ClosestTarget();
+            Vector3 dirVector = (closestTarget.position - transform.position);
             dirVector.y = 0;
 
             //target buildings to be implemented
@@ -87,7 +88,7 @@ public class BomberEnemy : Ship
             countdown = BOMBER_ATTACK_SPEED;
         }
     }
-
+    
     Transform ClosestBuilding()
     {
         Transform closestBuilding = null;
@@ -106,5 +107,28 @@ public class BomberEnemy : Ship
             }
         }
         return closestBuilding;
+    }
+
+    Transform ClosestTarget()
+    {
+        Transform closestTarget = null;
+
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        List<MonoBehaviour> hittables=new List<MonoBehaviour>(BuildingManager.Instance.allBuildings);
+        hittables.Concat<MonoBehaviour>(NPCManager.Instance.npcs.ToList());
+
+        foreach (MonoBehaviour target in hittables)
+        {
+            Vector3 directionToTarget = target.gameObject.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                closestTarget = target.gameObject.transform;
+            }
+        }
+        return closestTarget;
     }
 }

@@ -32,7 +32,7 @@ public class NPCManager
         npcs= new HashSet<Npc>();       
 
         npcParent = new GameObject("NPCParent").transform;
-        npcParent.position = new Vector3(-2,3,85);//GameObject.FindGameObjectWithTag("npcspawnlocation").transform.position;
+        npcParent.position = new Vector3(-2,4,85);//GameObject.FindGameObjectWithTag("npcspawnlocation").transform.position;
         foreach (NPCType npctype in System.Enum.GetValues(typeof(NPCType))) //fill the resource dictionary with all the prefabs
         {
             Debug.Log("Prefabs loaded"+npctype);
@@ -50,6 +50,10 @@ public class NPCManager
     public void PhysicsRefresh()
     {
 
+    }
+    public Npc GetRandomNPC()
+    {
+        return npcs.GetRandomElement<Npc>();
     }
     public void Refresh()
     {

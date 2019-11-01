@@ -34,6 +34,7 @@ public class Npc : MonoBehaviour, IHittable
     {
         return hp;
     }
+    
     public Enemy getTargetEnemy()
     {
         HashSet<Enemy> enemiesTarget = EnemyManager.Instance.enemies;

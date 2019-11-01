@@ -9,6 +9,9 @@ public class Crawler : MobileEnemy
     readonly float CRAWLER_SPIT_VELO = 6f;
 
     Building targetBuilding;
+    Npc targetNpc;
+    Transform targetTransform;
+
     float countdown;
     bool attackMode;
 
@@ -16,7 +19,13 @@ public class Crawler : MobileEnemy
     {
         base.Initialize(startingEnergy);
         targetBuilding = BuildingManager.Instance.GetRandomBuilding();
-        navmeshAgent.SetDestination(targetBuilding.transform.position);
+        targetNpc = NPCManager.Instance.GetRandomNPC();
+        if (Random.value > 0.5f)
+            targetTransform = targetBuilding.transform;
+        else
+            targetTransform = targetNpc.transform;
+
+        navmeshAgent.SetDestination(targetTransform.position);
         countdown = 3;
     }
 
@@ -25,7 +34,7 @@ public class Crawler : MobileEnemy
         base.Refresh();
 
         //Dont need to check every frame, so just check every 3 seconds
-        
+
 
         if (!attackMode)
             UpdateWanderMode();
@@ -39,23 +48,31 @@ public class Crawler : MobileEnemy
         if (countdown < 0)
         {
             countdown = 3;
-            CheckBuildingStillExists();
+            CheckTargetStillExists();
+
 
             //In range to attack bulding
-            if (Vector2.Distance(transform.position,targetBuilding.transform.position) < CRAWLER_RANGE_PER_ENERGY * energy)
+            if (Vector2.Distance(transform.position, targetTransform.position) < CRAWLER_RANGE_PER_ENERGY * energy)
             {
                 attackMode = true;
                 countdown = CRAWLER_ATTACK_SPEED;
             }
+
         }
     }
 
-    private void CheckBuildingStillExists()
+    private void CheckTargetStillExists()
     {
-        if (!targetBuilding) //building was destroyed, find new building
+        if (!targetTransform) //building was destroyed, find new building
         {
-            targetBuilding = BuildingManager.Instance.GetRandomBuilding();
-            navmeshAgent.SetDestination(targetBuilding.transform.position);
+
+            if (Random.value > 0.5f)
+                targetTransform = BuildingManager.Instance.GetRandomBuilding().transform;
+            else
+                targetTransform = NPCManager.Instance.GetRandomNPC().transform;
+
+            navmeshAgent.SetDestination(targetTransform.position);
+
             attackMode = false;
         }
     }
@@ -63,14 +80,16 @@ public class Crawler : MobileEnemy
     private void UpdateAttackMode()
     {
         countdown -= Time.deltaTime;
-        if(countdown <= 0)
+        if (countdown <= 0)
         {
-            CheckBuildingStillExists();
+            CheckTargetStillExists();
             if (!attackMode)
                 return; //Lost track of the building
 
-            BulletManager.Instance.CreateProjectile(ProjectileType.EnemySpit, transform.position + new Vector3(0,transform.localScale.y/2,0), (targetBuilding.transform.position - transform.position).normalized, Vector3.zero, 60, CRAWLER_SPIT_VELO);
+            BulletManager.Instance.CreateProjectile(ProjectileType.EnemySpit, transform.position + new Vector3(0, transform.localScale.y / 2, 0), (targetTransform.position - transform.position).normalized, Vector3.zero, 60, CRAWLER_SPIT_VELO);
+
             countdown = CRAWLER_ATTACK_SPEED;
+
         }
     }
 }

@@ -27,7 +27,8 @@ public override void Initialize(float startingEnergy)
 
 public override void Refresh()
 {
-        Debug.Log("Melee rEfresh");       
+            targetEnemy = getTargetEnemy();
+           
     if (!attackMode)
         UpdateWanderMode();
     else
@@ -62,7 +63,7 @@ private void CheckEnemyStillExists()
 {
     if (!targetEnemy) //enemy was destroyed, find new one
     {
-        targetEnemy = getTargetEnemy();
+        targetEnemy = getTargetEnemy(); 
         navmeshAgent.SetDestination(targetEnemy.transform.position);
         attackMode = false;
     }

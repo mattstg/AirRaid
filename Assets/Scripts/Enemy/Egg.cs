@@ -6,6 +6,8 @@ public class Egg : RootedEnemy
 {
     static readonly float EGGHATCH_ENERGY_MIN = 10; //Energy per egg spawn
     static readonly float EGGSPAWN_SPAWN_TIME_MAX = 90f;
+    static readonly float BOMBER_HEALTH = 20f;
+    static readonly float FIGHTER_HEALTH = 25f;
     
 
     public AnimationCurve hatchTimeAnimCurve; //balanced in inspector
@@ -54,12 +56,14 @@ public class Egg : RootedEnemy
                 else if (eggHatchChoice >= .25 && eggHatchChoice <= .4f) //15% chance
                 {
                     //Hatch a Fighter
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Fighter, transform.position + new Vector3(0, 40, 0), energy); //Spawn an egg spitter on this egg's location
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Fighter, transform.position + new Vector3(0, 40, 0), FIGHTER_HEALTH);
+                    //Debug.Log(energy);
+                        //Spawn an egg spitter on this egg's location
                 }
                 else if (eggHatchChoice >= .1 && eggHatchChoice <= .25f) //15% chance
                 {
                     //Hatch a Bomber
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position + new Vector3(0, 40, 0), energy); //Spawn an egg spitter on this egg's location
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position + new Vector3(0, 40, 0), BOMBER_HEALTH); //Spawn an egg spitter on this egg's location
                 }
                 else  //10% chance
                 {
