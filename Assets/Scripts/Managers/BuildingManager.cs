@@ -11,7 +11,7 @@ public class BuildingManager
     public static BuildingManager Instance { get { return instance ?? (instance = new BuildingManager()); } }
     #endregion
 
-    protected List<Building> allBuildings;
+    [HideInInspector]public List<Building> allBuildings;
     //This class may be mostly useless, there is at the moment no reason to track buildings, we are not updating them or anything
     //So the framework for now is nice, but if we do not need to track buildings, it would be best to delete them after
     public void Initialize()

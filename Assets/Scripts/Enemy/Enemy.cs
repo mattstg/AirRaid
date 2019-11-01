@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour, IHittable
         }
     }
 
-    protected void Resize()
+    protected virtual void Resize()
     {
         float size = Mathf.Pow(energy, 1 / 3f);
         transform.localScale = Vector3.one * ENEMY_SIZE_MULT * size;
