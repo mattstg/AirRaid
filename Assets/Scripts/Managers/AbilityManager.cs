@@ -15,6 +15,7 @@ public class AbilityManager
         pc = _pc;
         playerSounds = pc.gameObject.GetComponent<PlayerSounds>();
         playerSounds.Initialize();
+        abilities = new Ability[4];
     }
 
     //Update each ability whose ability type happens during an update phase

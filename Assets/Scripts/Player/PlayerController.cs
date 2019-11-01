@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour, IHittable
     [HideInInspector] public bool isAlive;
     //public bool stalled = false;
     public int hit  = 0;
-    public bool isAlive;
 
     [HideInInspector] public PlayerStats stats;
     [HideInInspector] public Rigidbody rb;
@@ -39,7 +38,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Initialize()
     {
-        mesh = GetComponent<MeshRenderer>();
+        mesh = GameObject.FindGameObjectWithTag("PlayerMesh").GetComponent<MeshRenderer>();
         original = mesh.material;
         blue = Resources.Load<Material>("Material/TransparentBlue");
         audioSrc = GetComponent<AudioSource>();

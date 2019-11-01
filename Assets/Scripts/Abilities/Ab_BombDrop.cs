@@ -13,7 +13,6 @@ public class Ab_BombDrop : Ability
     }
     public override void AbilityPressed()
     {
-
         UseAbility();
         base.AbilityPressed();
     }

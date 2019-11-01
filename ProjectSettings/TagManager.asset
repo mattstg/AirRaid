@@ -20,6 +20,7 @@ TagManager:
   - AbilityIcon
   - MainMenuController
   - BodyPart_DownTurret
+  - PlayerMesh
   layers:
   - Default
   - TransparentFX
