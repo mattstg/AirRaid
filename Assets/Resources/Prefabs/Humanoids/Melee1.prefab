@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 1576288713942829650}
   - component: {fileID: 8892948977676298024}
   m_Layer: 0
-  m_Name: erika_archer_bow_arrow
+  m_Name: Melee1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

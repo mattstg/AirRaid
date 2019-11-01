@@ -4,81 +4,54 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Melee :MonoBehaviour, IHittable
+public class Melee :Npc
 {
-    protected NavMeshAgent navmeshAgent;
-
-[HideInInspector] public bool isAlive;
-protected float hp;
-protected float energy;
-
-readonly float MELEE_RANGE_PER_ENERGY = .25f;
+readonly float MELEE_RANGE_PER_ENERGY = .5f;
 readonly float MELEE_ATTACK_SPEED = 8f;
 readonly float MELEE_DAMAGE = 4f;
 Enemy targetEnemy;
 float countdown;
-bool attackMode;
-public virtual void Initialize(float startingEnergy)
+bool attackMode=false;
+    Animator anim;
+public override void Initialize(float startingEnergy)
 {
-    Debug.Log("NPCManager Spawn");
 
-    isAlive = true;
-    ModEnergy(startingEnergy);
-    navmeshAgent = GetComponent<NavMeshAgent>();
-
-    if (EnemyManager.Instance.enemies.Count > 0)
-    {
-        if (EnemyManager.Instance.CrawlerEnemies.Count > 0)
-        {
-            targetEnemy = EnemyManager.Instance.CrawlerEnemies.GetRandomElement<Enemy>();
-        }
-        else
-        {
-            targetEnemy = EnemyManager.Instance.enemies.GetRandomElement<Enemy>();
-        }
-        if(targetEnemy)
-            navmeshAgent.SetDestination(targetEnemy.transform.position);
-    }
-    //   ToArray()[Random.Range(0, EnemyManager.Instance.toAdd.Count)];
-    //
+    base.Initialize(startingEnergy);
+    anim = GetComponent<Animator>();
+    targetEnemy = getTargetEnemy();
+    navmeshAgent.SetDestination(targetEnemy.transform.position);
     countdown = 3;
-}
-public void HitByProjectile(float damage)
-{
-    hp -= damage;
-    if (hp <= 0)
-        Die();
-}
-public virtual void ModEnergy(float energyMod)
-{
-    hp += energyMod;
-    energy += energyMod;
+
 }
 
-public virtual void Refresh()
+
+public override void Refresh()
 {
-
-
-
+        Debug.Log("Melee rEfresh");       
     if (!attackMode)
         UpdateWanderMode();
     else
         UpdateAttackMode();
 }
-public virtual void PhysicRefresh()
+public override void PhysicRefresh()
 {
 
 }
 private void UpdateWanderMode()
 {
-    countdown -= Time.deltaTime;
+        anim.SetBool("isMeleeRunning", true);
+        anim.SetBool("isMeleeAttacking", false);
+
+        Debug.Log("Melee wander");
+
+        countdown -= Time.deltaTime;
     if (countdown < 0)
     {
         countdown = 3;
         CheckEnemyStillExists();
 
-        //In range to attack bulding
-        if (Vector2.Distance(transform.position, targetEnemy.transform.position) < MELEE_RANGE_PER_ENERGY * energy)
+        //In range to attack enemy
+        if (Vector2.SqrMagnitude(transform.position- targetEnemy.transform.position) < MELEE_RANGE_PER_ENERGY * energy)
         {
             attackMode = true;
             countdown = MELEE_ATTACK_SPEED;
@@ -89,45 +62,27 @@ private void CheckEnemyStillExists()
 {
     if (!targetEnemy) //enemy was destroyed, find new one
     {
-        bool enemyAssigned = false;
-        foreach (Enemy item in EnemyManager.Instance.enemies)
-        {
-            if ((transform.position - item.transform.position).sqrMagnitude <= 16)
-            {
-                targetEnemy = item;
-                enemyAssigned = true;
-                break;
-            }
-        }
-        if (!targetEnemy)
-        {
-            targetEnemy = EnemyManager.Instance.enemies.GetRandomElement<Enemy>();
-
-        }
-
+        targetEnemy = getTargetEnemy();
         navmeshAgent.SetDestination(targetEnemy.transform.position);
         attackMode = false;
-
     }
 }
 private void UpdateAttackMode()
 {
-    countdown -= Time.deltaTime;
+        anim.SetBool("isMeleeRunning", false);
+        anim.SetBool("isMeleeAttacking", true);
+
+        Debug.Log("Melee attack");
+
+        countdown -= Time.deltaTime;
     if (countdown <= 0)
     {
         CheckEnemyStillExists();
         if (!attackMode)
             return; //Lost track of the building
-
         //BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, transform.position + new Vector3(0, transform.localScale.y / 2, 0), (targetEnemy.transform.position - transform.position).normalized, Vector3.zero, 60, MELEE_SPIT_VELO);
         targetEnemy.HitByProjectile(MELEE_DAMAGE);
         countdown = MELEE_ATTACK_SPEED;
     }
-}
-
-public virtual void Die()
-{
-    NPCManager.Instance.NpcDiedMelee(this);
-    isAlive = false;
 }
 }

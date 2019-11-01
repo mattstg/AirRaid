@@ -690,8 +690,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1500039782998280009}
   - component: {fileID: 8816700058407119411}
+  - component: {fileID: -3974940377711776225}
   m_Layer: 0
-  m_Name: peasant_girl
+  m_Name: Healer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,6 +733,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3974940377711776225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2488924772357371226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d9d9a6f0c3177488be5efd02663897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 0
 --- !u!1 &2842772727516025572
 GameObject:
   m_ObjectHideFlags: 0

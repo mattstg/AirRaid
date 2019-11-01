@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9950c865737374a48bdcba9ee98e8ef9
+guid: d6a4df7fb7a535c47b6a4f90a1d181c5
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable:
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Zombie Attack
+      name: Idle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 98
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
-      cycleOffset: 3
+      cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

@@ -36,7 +36,7 @@ public class NPCManager
         foreach (NPCType npctype in System.Enum.GetValues(typeof(NPCType))) //fill the resource dictionary with all the prefabs
         {
             Debug.Log("Prefabs loaded"+npctype);
-            npcPrefabDict.Add(npctype, Resources.Load<GameObject>("Prefabs/Humanoids/" + npctype.ToString())); //Each enum matches the name of the NPC perfectly
+            npcPrefabDict.Add(npctype, Resources.Load<GameObject>("Prefabs/npc/" + npctype.ToString())); //Each enum matches the name of the NPC perfectly
         }
         Debug.Log("Initialize done");
        

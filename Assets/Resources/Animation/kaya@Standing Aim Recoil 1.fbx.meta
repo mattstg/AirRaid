@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9950c865737374a48bdcba9ee98e8ef9
+guid: 217d1377983e07f44ac3f384f3f236f8
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable:
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Zombie Attack
+      name: Standing Aim Recoil 1
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
