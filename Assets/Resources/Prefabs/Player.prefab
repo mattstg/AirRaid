@@ -1511,8 +1511,8 @@ GameObject:
   - component: {fileID: 2842602156880904143}
   - component: {fileID: 7491736919444004548}
   - component: {fileID: 2037034781}
-  - component: {fileID: 2037034782}
   - component: {fileID: 6191261592043792834}
+  - component: {fileID: 2037034782}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1684,27 +1684,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2037034782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6027762479472046977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b51b13393e01b46b0a666dfcd4fad4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 0}
-  audio: {fileID: 0}
-  throttle: {fileID: 0}
-  abilitySounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  shootSounds: {fileID: 0}
-  playerNoise: {fileID: 0}
-  player: {fileID: 0}
 --- !u!82 &6191261592043792834
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1801,6 +1780,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2037034782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027762479472046977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b51b13393e01b46b0a666dfcd4fad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 0}
+  audio: {fileID: 0}
+  throttle: {fileID: 0}
+  abilitySounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  shootSounds: {fileID: 0}
+  playerNoise: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &6080213180138674041
 GameObject:
   m_ObjectHideFlags: 0

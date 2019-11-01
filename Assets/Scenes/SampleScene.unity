@@ -562,7 +562,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150300876}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &150300878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -645,7 +645,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -810,6 +810,12 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &296366106 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2037034781, guid: 2af45e00dcb58534a98206b047f1fea9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3930730300877355539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &305057954
 GameObject:
   m_ObjectHideFlags: 0
@@ -5394,6 +5400,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2037034781, guid: 2af45e00dcb58534a98206b047f1fea9, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037034782, guid: 2af45e00dcb58534a98206b047f1fea9, type: 3}
+      propertyPath: shootSounds
+      value: 
+      objectReference: {fileID: 296366106}
+    - target: {fileID: 2037034782, guid: 2af45e00dcb58534a98206b047f1fea9, type: 3}
+      propertyPath: playerNoise
+      value: 
+      objectReference: {fileID: 296366106}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af45e00dcb58534a98206b047f1fea9, type: 3}
 --- !u!1001 &5348328674721029715

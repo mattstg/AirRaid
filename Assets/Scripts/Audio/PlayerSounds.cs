@@ -10,8 +10,8 @@ public class PlayerSounds : MonoBehaviour
     public PlayerController player;
     public void Initialize()
     {
-        audio = Resources.Load<AudioClip>("Music/Bomb");
-        throttle = audio;
+        audio = Resources.Load<AudioClip>("Music/Bomb"); //Resources.Load<AudioClip>("Music/Damage");  
+        throttle = audio;//Resources.Load<AudioClip>("Music/Throttle");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         var aSources = player.gameObject.GetComponents<AudioSource>();
@@ -22,8 +22,8 @@ public class PlayerSounds : MonoBehaviour
         playerNoise.loop = true;
         //playerNoise.Play();
 
-        abilitySounds[0] = throttle;
-        abilitySounds[1] = audio;
+        abilitySounds[0] = throttle; //Resources.Load<AudioClip>("Music/Gun");
+        abilitySounds[1] = Resources.Load<AudioClip>("Music/Bomb"); 
     }
 
     public void PhysicsRefresh()
@@ -51,7 +51,7 @@ public class PlayerSounds : MonoBehaviour
 
     public void PlayShots(int ability)
     {
-        shootSounds.PlayOneShot(audio);
+        shootSounds.PlayOneShot(abilitySounds[ability]);
     }
 
     

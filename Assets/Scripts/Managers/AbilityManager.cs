@@ -14,6 +14,7 @@ public class AbilityManager
     {
         pc = _pc;
         playerSounds = pc.gameObject.GetComponent<PlayerSounds>();
+        playerSounds.Initialize();
         abilities = new Ability[2];  //atm two hardcoded abilities, will refactor to make it scalable  (do as i say, not as i do)
     }
 
