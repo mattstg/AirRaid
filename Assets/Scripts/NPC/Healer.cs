@@ -66,6 +66,7 @@ public class Healer : Npc
 
         foreach (Npc item in NPCManager.Instance.npcs)
         {
+            if ((item.GetType() != typeof(Healer))) 
             item.ModEnergy(3f);
         }        
     }
