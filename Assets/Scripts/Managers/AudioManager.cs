@@ -32,8 +32,8 @@ public class AudioManager : IManagable
     public void Initialize()
     {
 
-        
 
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSounds>();
         player.Initialize();
     }
 

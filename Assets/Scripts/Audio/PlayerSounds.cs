@@ -10,6 +10,7 @@ public class PlayerSounds : MonoBehaviour
     public void Initialize()
     {
         audio = Resources.Load<AudioClip>("Music/Bomb");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         shootSounds = player.gameObject.GetComponent<AudioSource>();
         shootSounds.PlayOneShot(audio);
     }
