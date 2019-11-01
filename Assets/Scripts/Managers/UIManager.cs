@@ -69,7 +69,7 @@ public class UIManager
             //ui.abilityGridParent;
             ui.speedText.text = "0";
             ui.speedEnergyCostThreshold.value = 0;
-            Initialize(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>());
+            //Initialize(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>());
         }
 
         player = GameObject.FindObjectOfType<PlayerController>();

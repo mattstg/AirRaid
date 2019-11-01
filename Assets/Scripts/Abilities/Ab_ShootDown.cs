@@ -9,7 +9,7 @@ public class Ab_ShootDown : Ability
 
     public Ab_ShootDown(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .2f, 5f);
+        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .2f, 5f,0f);
 
     }
     public override void AbilityPressed()
