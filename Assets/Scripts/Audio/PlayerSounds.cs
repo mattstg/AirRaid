@@ -20,7 +20,7 @@ public class PlayerSounds : MonoBehaviour
         
         playerNoise.clip = throttle;
         playerNoise.loop = true;
-        //playerNoise.Play();
+        playerNoise.Play();
 
         abilitySounds[0] = Resources.Load<AudioClip>("Music/Gunshot");
         abilitySounds[1] = Resources.Load<AudioClip>("Music/Bomb"); 
@@ -37,6 +37,7 @@ public class PlayerSounds : MonoBehaviour
     public void Refresh()
     {
         DoThrottleSounds();
+
     }
 
     public void PlayDamage()
@@ -46,7 +47,7 @@ public class PlayerSounds : MonoBehaviour
 
     public void DoThrottleSounds()
     {
-        playerNoise.pitch = InputManager.Instance.refreshInputPkg.throttleAmount+1f;
+        playerNoise.pitch = InputManager.Instance.refreshInputPkg.throttleAmount + 0.1f;
     }
 
     public void PlayShots(int ability)
