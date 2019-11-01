@@ -4,13 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum Abilities { Turrets, Rocket, Bomb }
-public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon }  //These enums tags must EXCATLY match the tag names
+public enum Abilities { Turrets, Rocket, Bomb, Rewind }
+public enum BodyPart { BodyPart_Turret, BodyPart_WingSlots, BodyPart_BombBay, BodyPart_FrontCannon, BodyPart_DownTurret }  //These enums tags must EXCATLY match the tag names
 public class PlayerController : MonoBehaviour, IHittable
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
 
     //[HideInInspector] 
+    // Rewind Ability Stuff
+    [HideInInspector] public AudioSource audioSrc;
+    [HideInInspector] public AudioClip rewindSFX;
+    
+    [HideInInspector] public MeshRenderer mesh;
+    [HideInInspector] public Material original;
+    [HideInInspector] public Material blue;
+    ////////////////////////////////////////////////////////////
+    [HideInInspector] public bool isAlive;
     //public bool stalled = false;
     public int hit  = 0;
     public bool isAlive;
@@ -22,6 +31,7 @@ public class PlayerController : MonoBehaviour, IHittable
     [HideInInspector]
     public AbilityManager abilityManager;
     public PlayerSounds playerSounds;
+    public bool isRecording = true;
 
     public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
 
@@ -29,15 +39,25 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Initialize()
     {
+        mesh = GetComponent<MeshRenderer>();
+        original = mesh.material;
+        blue = Resources.Load<Material>("Material/TransparentBlue");
+        audioSrc = GetComponent<AudioSource>();
+        rewindSFX = Resources.Load<AudioClip>("SFX/WHOOSH2");
+        //////////////////////////////////////////////////////////////////////////////
+
         //Create stats, add two starter abilities
         abilityManager = new AbilityManager(this);
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
         abilityManager.AddAbilities(new Ab_BombDrop(this), 1);
+        abilityManager.AddAbilities(new Ab_SpawnTurret(this), 2);
+        abilityManager.AddAbilities(new Ab_Rewind(this), 3);
         //but it's important that I test now that my ability system is all in place.
 
         stats = new PlayerStats(this);
         stats.abilities.Add(Abilities.Turrets);
         stats.abilities.Add(Abilities.Rocket);
+        stats.abilities.Add(Abilities.Rewind);
 
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; //using custom gravity
@@ -69,6 +89,7 @@ public class PlayerController : MonoBehaviour, IHittable
         isAlive = true;
 
         Smoke = Resources.Load<GameObject>("Prefabs/Smoke/WhiteSmoke");
+       
     }
 
     public void PostInitialize()
@@ -78,6 +99,11 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void Refresh(InputManager.InputPkg inputPkg)
     {
+        //Player Rewinder
+        /////////////////////////////////////////
+        
+        //PlayerRecorder(3);
+        /////////////////////////////////////////
         if (!stats.engineStalled)
         {
             abilityManager.Refresh(inputPkg);
@@ -99,6 +125,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
     {
+       
         if (!stats.engineStalled)
         {
             abilityManager.PhysicsRefresh(inputPkg);
@@ -118,6 +145,7 @@ public class PlayerController : MonoBehaviour, IHittable
             rb.velocity = Vector3.RotateTowards(rb.velocity, transform.forward, 5, 0);
         }
     }
+   
 
     private void Throttle(float deltaThrottle)  //-1 to 1
     {
@@ -140,6 +168,15 @@ public class PlayerController : MonoBehaviour, IHittable
        // Debug.Log("RelativeLocalVeloZ: " + relativeLocalVelocity.z + ", stats.MaxSpeed: " + stats.maxSpeed + " stats.energySpeedCostThreshold: " + stats.energySpeedCostThreshold);
 
         
+    }
+
+    public void ChangeMaterial(Material material)
+    {
+        mesh.material = material;
+    }
+    public void DefaultMaterial()
+    {
+        mesh.material = original;
     }
 
     public void ModEnergy(float modBy)
@@ -178,6 +215,20 @@ public class PlayerController : MonoBehaviour, IHittable
     public int ReturnHit()
     {
         return hit;
+    }
+
+    public class PlayerRecording
+    {
+        public Vector3 pos;
+        public Vector3 velo;
+        public Quaternion rot;
+
+        public PlayerRecording(Vector3  _pos, Vector3 _velo, Quaternion  _rot)
+        {
+            pos = _pos;
+            velo = _velo;
+            rot = _rot;
+        }
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game

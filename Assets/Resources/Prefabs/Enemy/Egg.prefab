@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
-  hp: 5
   hatchTimeAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -284,8 +283,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.5812988
+  m_Center: {x: 0, y: 0.08129883, z: 0}
 --- !u!54 &1912715898114974613
 Rigidbody:
   m_ObjectHideFlags: 0

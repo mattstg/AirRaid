@@ -19,6 +19,7 @@ TagManager:
   - FxTemporaire
   - AbilityIcon
   - MainMenuController
+  - BodyPart_DownTurret
   layers:
   - Default
   - TransparentFX
