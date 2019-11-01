@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSounds : MonoBehaviour
 {
     public AudioClip sound,audio,throttle;
+    public AudioClip[] abilitySounds;
     public AudioSource shootSounds,playerNoise;
     public PlayerController player;
     public void Initialize()
@@ -19,7 +20,10 @@ public class PlayerSounds : MonoBehaviour
         
         playerNoise.clip = throttle;
         playerNoise.loop = true;
-        playerNoise.Play();
+        //playerNoise.Play();
+
+        abilitySounds[0] = throttle;
+        abilitySounds[1] = audio;
     }
 
     public void PhysicsRefresh()
@@ -43,6 +47,11 @@ public class PlayerSounds : MonoBehaviour
     public void DoThrottleSounds()
     {
         playerNoise.pitch = InputManager.Instance.refreshInputPkg.throttleAmount+1f;
+    }
+
+    public void PlayShots(int ability)
+    {
+        shootSounds.PlayOneShot(audio);
     }
 
     

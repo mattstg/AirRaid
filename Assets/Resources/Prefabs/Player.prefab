@@ -1599,7 +1599,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1699,6 +1699,9 @@ MonoBehaviour:
   sound: {fileID: 0}
   audio: {fileID: 0}
   throttle: {fileID: 0}
+  abilitySounds:
+  - {fileID: 0}
+  - {fileID: 0}
   shootSounds: {fileID: 0}
   playerNoise: {fileID: 0}
   player: {fileID: 0}
@@ -1713,7 +1716,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
