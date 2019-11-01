@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : Projectile
+public class Turret :MonoBehaviour, IHittable
 {
     PlayerController pc;
     public float range = 15f;
@@ -16,17 +16,20 @@ public class Turret : Projectile
     Vector3 outDirection;
     GameObject closestEnemy = null;
     float cooldown = 0.5f;
+    float hp = 20;
+    public  float timeOfExpire;
 
-    public void Start()
+    public void Initialize()
     {
-        //allEnemies = GameObject.FindObjectsOfType<Enemy>();
-
-        head = this.gameObject.transform.GetChild(0);
-        tBase = this.gameObject.transform.GetChild(1);
+            head = this.gameObject.transform.GetChild(0);
+ 
+    }
+    public void PostInitialize()
+    {
 
     }
 
-    public void Update()
+    public void Refresh()
     {
         cooldown -= Time.deltaTime;
         if (closestEnemy)
@@ -34,28 +37,30 @@ public class Turret : Projectile
         else
             head.transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
 
-
-
         FindTarget();
-
+        LifespanExpired();
+        
     }
-
-    public override void UpdateProjectile()
+    public void PhysicsRefresh()
     {
-        //base.UpdateProjectile(); special projectile, we want it to use physics instead, it has a rb
-        if (Time.time >= timeOfExpire)
-            LifespanExpired(); //will contiously trigger if we dont kill projectile
+       
     }
-    protected override void LifespanExpired()
+
+
+    protected virtual void LifespanExpired()
     {
 
-        // base.LifespanExpired(); //Destroys projectile
+        if ((timeOfExpire -= Time.deltaTime) <=  0)
+        {
+            TurretManager.Instance.turrets.Remove(this);
+            GameObject.Destroy(gameObject);
+        }
+        
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-
         isGrounded = true;
-
     }
 
     private void FindTarget()
@@ -97,52 +102,13 @@ public class Turret : Projectile
 
     }
 
+    public void HitByProjectile(float damage)
+    {
+        hp -= damage;
+        if(damage <= 0)
+        {
+            Destroy(gameObject);
+            TurretManager.Instance.turrets.Remove(this);
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//if (Physics.Raycast(outRay, direction, out rchInfo, maxDistance))
-//{
-
-
-//   Debug.DrawRay(outRay, direction,color);
-//    try
-//    {
-//       if (rchInfo.collider.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-//        {
-//         isEnemyFound = true;
-//          Debug.Log(rchInfo.collider.transform.name);
-//           float nearestEnemy = rchInfo.distance;
-//         Vector3 otherDirection = rchInfo.transform.position;
-//            foreach (Enemy currentEnemy in allEnemies)
-//           {
-//                float distance = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
-//              if (distance < nearestEnemy)
-//               {
-//                   distance = nearestEnemy;
-//                    Debug.Log(distance);
-//                  otherDirection = currentEnemy.transform.position;
-//                  Debug.Log(otherDirection);
-//                  BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, outRay, otherDirection, otherDirection * 80f, 1, 10);
-
-//                }
-//            }
-
-//        }
-//    }
-//    catch(System.Exception e)
-//    {
-//        Debug.Log(e.ToString());
-//    }
-
-//}
