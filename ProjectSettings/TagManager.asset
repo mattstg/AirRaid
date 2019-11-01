@@ -17,6 +17,13 @@ TagManager:
   - npcspawnlocation
   - EnemyFighter
   - EnemyBomber
+  - LivesManager
+  - StatScreen
+  - FxTemporaire
+  - AbilityIcon
+  - MainMenuController
+  - BodyPart_DownTurret
+  - PlayerMesh
   layers:
   - Default
   - TransparentFX

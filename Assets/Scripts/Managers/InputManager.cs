@@ -15,6 +15,7 @@ public class InputManager : IManagable
     public static bool invertedYAxis = true;
     public InputPkg refreshInputPkg = new InputPkg();
     public InputPkg physicsRefreshInputPkg = new InputPkg();
+    
 
 
 
@@ -22,6 +23,7 @@ public class InputManager : IManagable
     {
         refreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];
         physicsRefreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];
+        
     }
 
     public void PhysicsRefresh()

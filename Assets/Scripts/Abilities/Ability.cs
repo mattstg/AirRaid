@@ -42,6 +42,7 @@ public abstract class Ability
         return false;
     }
 
+
     
     
     //Update every frame, regardless of pressed or not
@@ -57,19 +58,24 @@ public abstract class Ability
         public Abilities abilityType;                           //
         public UpdateType updateType = UpdateType.Update;       //AbilityManager will decide which frametype to call the methods based on this enum
 
-        public float cooldown = 1;                                     //amount of time between uses, should be "constant"
+        public float cooldown = 1;
+        //public float gunCooldown = 1.5f;//amount of time between uses, should be "constant"
         public float timeAbilityLastUsed;
         public float energyCost = 1;
+        public float rewindCooldown;
         public bool canUseAbility { get{ return Time.time - timeAbilityLastUsed >= cooldown; } }
-        
+        public float chargePercentage { get { return (Time.time - timeAbilityLastUsed) / cooldown; } }
+        public float chargePercentageRewind { get { return (Time.time - timeAbilityLastUsed) / rewindCooldown; } }
+
         //Autogenerate constructors by highlighting the variables you want, right click, quick action and refactor, generate constructor
-        public AbilityStats(Ability abilityParent, Abilities abilityType, UpdateType updateType, float cooldown, float energyCost)
+        public AbilityStats(Ability abilityParent, Abilities abilityType, UpdateType updateType, float cooldown, float energyCost,float rewindCooldown)
         {
             this.abilityParent = abilityParent;
             this.abilityType = abilityType;
             this.updateType = updateType;
             this.cooldown = cooldown;
             this.energyCost = energyCost;
+            this.rewindCooldown = rewindCooldown;
         }
     }
 }

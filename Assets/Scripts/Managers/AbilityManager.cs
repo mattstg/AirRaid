@@ -6,12 +6,16 @@ public class AbilityManager
 {
     //Not a singleton manager, because there could be one ability manager per player
     PlayerController pc; //link to player
-    Ability[] abilities; //pair player ability key at index to abilities
+    public Ability[] abilities; //pair player ability key at index to abilities
+    public PlayerSounds playerSounds;
+
 
     public AbilityManager(PlayerController _pc)
     {
         pc = _pc;
-        abilities = new Ability[3];  //atm two hardcoded abilities, will refactor to make it scalable  (do as i say, not as i do)
+        playerSounds = pc.gameObject.GetComponent<PlayerSounds>();
+        playerSounds.Initialize();
+        abilities = new Ability[4];
     }
 
     //Update each ability whose ability type happens during an update phase
@@ -20,7 +24,12 @@ public class AbilityManager
         for (int i = 0; i < abilities.Length; i++)
             if (abilities[i] != null && abilities[i].stats.updateType == UpdateType.Update)
             {
-                UpdateAbility(abilities[i], playerInputPkg.abilityKeyPress[i]);               
+                UpdateAbility(abilities[i], playerInputPkg.abilityKeyPress[i]);
+            }
+        for (int i = 0; i < abilities.Length; i++)
+            if (abilities[i] != null && !abilities[i].stats.canUseAbility)//Time.time -  abilities[i].stats.timeAbilityLastUsed <= abilities[i].stats.cooldown)
+            {
+                playerSounds.PlayShots(i);
             }
     }
 

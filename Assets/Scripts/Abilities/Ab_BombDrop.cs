@@ -9,7 +9,7 @@ public class Ab_BombDrop : Ability
 
     public Ab_BombDrop(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.Bomb, UpdateType.Update, .2f, 30f);
+        stats = new AbilityStats(this, Abilities.Bomb, UpdateType.Update, 2f, 30f,0);
     }
     public override void AbilityPressed()
     {

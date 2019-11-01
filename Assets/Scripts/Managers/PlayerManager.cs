@@ -10,15 +10,22 @@ public class PlayerManager : IManagable
     public static PlayerManager Instance { get { return instance ?? (instance = new PlayerManager()); } }
     #endregion
     public PlayerController player;
+    public Vector3 pos;
+
+    [HideInInspector]
+    public GameObject StatsScreen;
 
     public void Initialize()
     {
+        StatsScreen = GameObject.FindGameObjectWithTag("StatScreen");
         GameObject newPlayer = GameObject.Instantiate(Resources.Load<GameObject>(PrefabFileDir.PLAYER_RESOURCE_PATH));
         player = newPlayer.GetComponent<PlayerController>();
         player.transform.position = GameLinks.gl.playerSpawn.position;
         player.transform.localEulerAngles = GameLinks.gl.playerSpawn.localEulerAngles;
         //player.transform.localEulerAngles = 
         player.Initialize();  //isAlive = true
+
+        StatsScreen.SetActive(false);
     }
 
     public void PostInitialize()
@@ -28,8 +35,11 @@ public class PlayerManager : IManagable
 
     public void PhysicsRefresh()
     {
-        if(player.isAlive)
+        if (player.isAlive)
+        {
             player.PhysicsRefresh(InputManager.Instance.physicsRefreshInputPkg);
+        }
+           
     }
 
     public void Refresh()
@@ -37,15 +47,32 @@ public class PlayerManager : IManagable
         if (player.isAlive)
             player.Refresh(InputManager.Instance.refreshInputPkg);
     }
-    
 
     public void PlayerDied()
     {
-        Debug.Log("Player has lost the game");
         player.stats.hp = 0; //in case player died from crashing
         player.playerCam.gameObject.SetActive(false);
-        GameLinks.gl.postDeathCam.gameObject.SetActive(true);
+        
         player.gameObject.SetActive(false);
         player.isAlive = false;
+        UIManager.Instance.lm.DecreaseLivesCount();
+        if(UIManager.Instance.lm.LivesCount > 0)
+        {
+            StatsScreen.SetActive(true);
+            SpawnNewPlayer();
+        }
+        else
+        {
+            Debug.Log("Player has lost the game");
+            Time.timeScale = 10f;
+            GameLinks.gl.postDeathCam.gameObject.SetActive(true);
+            StatsScreen.SetActive(true);
+            StatsScreen.GetComponent<StatsScreen>().DisplayFinalStats(player.stats.maxEnergy, player.stats.currentEnegy, player.stats.energyRegenPerSec, player.stats.energyPerThrustSecond, player.stats.maxSpeed, player.stats.minSpeed, player.stats.acceleration, player.stats.hp);
+        }
+    }
+
+    public void SpawnNewPlayer()
+    {
+        Initialize();
     }
 }

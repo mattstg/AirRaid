@@ -56,8 +56,8 @@ public class BuildingManager
     public void Refresh()
     {
         //Buildings have no need to update
-        //for (int i = allBuildings.Count; i >= 0; i--)
-        //    allBuildings[i].Refresh();
+        for (int i = allBuildings.Count-1; i >= 0; i--)
+            allBuildings[i].Refresh();
     }
 
     public void BuildingDied(Building b)
