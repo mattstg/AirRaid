@@ -38,6 +38,7 @@ public class UIManager
 
     public void PostInitialize()
     {
+
     }
 
     public void PhysicsRefresh(){}
@@ -68,7 +69,10 @@ public class UIManager
             //ui.abilityGridParent;
             ui.speedText.text = "0";
             ui.speedEnergyCostThreshold.value = 0;
+            Initialize(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>());
         }
+
+        player = GameObject.FindObjectOfType<PlayerController>();
 }
 
     
