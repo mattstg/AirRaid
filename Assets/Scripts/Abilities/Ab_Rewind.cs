@@ -9,13 +9,13 @@ public class Ab_Rewind : Ability
     readonly float MAXIMUM_COOLDOWN_DURATION = 3f;
     float counter = 0;
     bool isRecording = true;
-    float rewindCooldown = 4f;
+    public float rewindCooldown = 4f;
     int numofelements;
     ArrayList recordingArray = new ArrayList();
 
     public Ab_Rewind(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.Rewind, UpdateType.FixedUpdate, COOLDOWN, ENERGY_COST);
+        stats = new AbilityStats(this, Abilities.Rewind, UpdateType.FixedUpdate, COOLDOWN, ENERGY_COST,rewindCooldown);
     }
     public override void AbilityPressed()
     {

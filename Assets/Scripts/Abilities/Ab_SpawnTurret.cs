@@ -8,7 +8,7 @@ public class Ab_SpawnTurret : Ability
     const float TURRET_LIFESPAN = 60;
     public Ab_SpawnTurret(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.Update, .2f, 30f);
+        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.Update, .2f, 30f,0);
     }
     // Start is called before the first frame update
     public override void AbilityPressed()

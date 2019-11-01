@@ -58,6 +58,8 @@ public class UIManager
             ui.TurretImage.fillAmount = player.abilityManager.abilities[0].stats.chargePercentage;
             ui.BombImage.fillAmount = player.abilityManager.abilities[1].stats.chargePercentage;
             ui.Speedometer.fillAmount = float.Parse(statsToUse.relativeLocalVelo.z.ToString())/player.stats.maxSpeed; //Sets Raange of speedometer depending on maxSPeed vs currentSpeed
+            ui.DropTurretImage.fillAmount = player.abilityManager.abilities[2].stats.chargePercentage;
+            ui.RewindImage.fillAmount = player.abilityManager.abilities[3].stats.chargePercentageRewind;
         }
         else
         {

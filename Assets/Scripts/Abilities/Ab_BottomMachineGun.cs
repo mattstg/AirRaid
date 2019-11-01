@@ -9,7 +9,7 @@ public class Ab_BottomMachineGun : Ability
 
     public Ab_BottomMachineGun(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .1f, 5f);
+        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .1f, 5f,0);
 
     }
     public override void AbilityPressed()

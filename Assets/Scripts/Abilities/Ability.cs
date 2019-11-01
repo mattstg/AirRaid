@@ -62,17 +62,20 @@ public abstract class Ability
         //public float gunCooldown = 1.5f;//amount of time between uses, should be "constant"
         public float timeAbilityLastUsed;
         public float energyCost = 1;
+        public float rewindCooldown;
         public bool canUseAbility { get{ return Time.time - timeAbilityLastUsed >= cooldown; } }
         public float chargePercentage { get { return (Time.time - timeAbilityLastUsed) / cooldown; } }
+        public float chargePercentageRewind { get { return (Time.time - timeAbilityLastUsed) / rewindCooldown; } }
 
         //Autogenerate constructors by highlighting the variables you want, right click, quick action and refactor, generate constructor
-        public AbilityStats(Ability abilityParent, Abilities abilityType, UpdateType updateType, float cooldown, float energyCost)
+        public AbilityStats(Ability abilityParent, Abilities abilityType, UpdateType updateType, float cooldown, float energyCost,float rewindCooldown)
         {
             this.abilityParent = abilityParent;
             this.abilityType = abilityType;
             this.updateType = updateType;
             this.cooldown = cooldown;
             this.energyCost = energyCost;
+            this.rewindCooldown = rewindCooldown;
         }
     }
 }

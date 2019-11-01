@@ -16,6 +16,8 @@ public class UILinks : MonoBehaviour
     public Image Speedometer;
     public Image TurretImage;
     public Image BombImage;
+    public Image DropTurretImage;
+    public Image RewindImage;
 
     public static UILinks Instance; //The first instance to be created will set this static variable to point at it, so we can access it from everywhere
     public static UILinks instance  //Pseudo singleton for mono behaviour

@@ -13,7 +13,7 @@ public class Ab_MachineGun : Ability
     GameObject MuzzleFlash;
     public Ab_MachineGun(PlayerController _pc) : base(_pc)
     {
-        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .2f, 5f);
+        stats = new AbilityStats(this, Abilities.Turrets, UpdateType.FixedUpdate, .2f, 5f,0);
 
     }
     public override void AbilityPressed()
