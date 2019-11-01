@@ -28,7 +28,10 @@ public class Ab_SpawnTurret : Ability
         {
             Projectile p = BulletManager.Instance.CreateProjectile(ProjectileType.Turret,pc.bodyParts[BodyPart.BodyPart_Turret][0] + pc.transform.position, -pc.transform.up, pc.rb.velocity, TURRET_LIFESPAN, 0);
             Collider c = p.gameObject.GetComponentInChildren<Collider>();
-            Physics.IgnoreCollision(c, pc.GetComponent<Collider>()); 
+            Physics.IgnoreCollision(c, pc.GetComponent<Collider>());
+            TurretManager.turretList.Add(p);
+            Debug.Log(TurretManager.turretList.Count);
+
             return true;
         }
         return false;

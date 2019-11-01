@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : Projectile
+public class Turret : Projectile, IHittable
 {
     PlayerController pc;
     public float range = 15f;
@@ -16,7 +16,8 @@ public class Turret : Projectile
     Vector3 outDirection;
     GameObject closestEnemy = null;
     float cooldown = 0.5f;
-
+    float health = 20;
+   
     public void Start()
     {
         //allEnemies = GameObject.FindObjectsOfType<Enemy>();
@@ -49,7 +50,9 @@ public class Turret : Projectile
     protected override void LifespanExpired()
     {
 
-        // base.LifespanExpired(); //Destroys projectile
+         base.LifespanExpired(); //Destroys projectile
+        TurretManager.turretList.Remove(this);
+        Debug.Log(TurretManager.turretList.Count);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -97,6 +100,14 @@ public class Turret : Projectile
 
     }
 
+    public void HitByProjectile(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            TurretManager.turretList.Remove(this);
+        }
+    }
 }
 
 
