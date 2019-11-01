@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, IHittable
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
 
-    [HideInInspector] public bool isAlive;
+    [HideInInspector] public bool isAlive, isHit;
     //public bool stalled = false;
 
     [HideInInspector] public PlayerStats stats;
@@ -89,6 +89,8 @@ public class PlayerController : MonoBehaviour, IHittable
             GameObject smokeGO = Instantiate(Smoke, transform.position, Quaternion.identity);
             smokeGO.transform.SetParent(this.transform);
         }
+
+        isHit = false;
     }
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
@@ -164,6 +166,7 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         stats.hp -= damage;
         Debug.Log("took dmg: " + damage);
+        isHit = true;
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game

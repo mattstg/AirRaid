@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class SetActiveAudio : MonoBehaviour
 {
-    AudioListener listner;
     // Start is called before the first frame update
     void Start()
     {
-        listner = GetComponent<AudioListener>();
+        AudioListener[] listner = GetComponents<AudioListener>();
         if (GameObject.FindGameObjectWithTag("MainMenuController"))
         {
             if (GameObject.FindGameObjectWithTag("MainMenuController").GetComponent<MyMenuController>().disableAudio)
             {
-                listner.enabled = false;
+                Debug.Log("Here");
+                foreach(AudioListener l in listner)
+                l.enabled = false;
             }
         }
     }
