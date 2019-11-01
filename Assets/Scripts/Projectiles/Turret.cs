@@ -17,6 +17,8 @@ public class Turret : Projectile, IHittable
     GameObject closestEnemy = null;
     float cooldown = 0.5f;
     float health = 20;
+
+    public AudioSource turretSound;
    
     public void Start()
     {
@@ -24,6 +26,7 @@ public class Turret : Projectile, IHittable
 
         head = this.gameObject.transform.GetChild(0);
         tBase = this.gameObject.transform.GetChild(1);
+        turretSound = GameObject.Find("AudioObject3").GetComponent<AudioSource>();
 
     }
 
@@ -90,6 +93,8 @@ public class Turret : Projectile, IHittable
 
             if (isEnemyFound && cooldown <= 0)
             {
+                turretSound.transform.position = outDirection;
+                turretSound.PlayOneShot(Resources.Load<AudioClip>("Music/Gunshot"));
                 BulletManager.Instance.CreateProjectile(ProjectileType.BasicBullet, outDirection, (closestEnemy.transform.position - transform.position).normalized, (closestEnemy.transform.position - transform.position)* 5f, 1, 10);
                 cooldown = 0.5f;
             }
