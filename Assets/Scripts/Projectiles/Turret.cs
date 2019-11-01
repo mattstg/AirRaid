@@ -18,11 +18,12 @@ public class Turret :MonoBehaviour, IHittable
     float cooldown = 0.5f;
     float hp = 20;
     public  float timeOfExpire;
+    AudioSource turretSound;
 
     public void Initialize()
     {
             head = this.gameObject.transform.GetChild(0);
- 
+        turretSound = GameObject.Find("AudioObject3").GetComponent<AudioSource>();
     }
     public void PostInitialize()
     {

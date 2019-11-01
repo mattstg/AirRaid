@@ -10,6 +10,7 @@ public class Crawler : MobileEnemy
 
     Building targetBuilding;
     Npc targetNpc;
+    Turret targetTurret;
     Transform targetTransform;
 
     float countdown;
@@ -20,10 +21,15 @@ public class Crawler : MobileEnemy
         base.Initialize(startingEnergy);
         targetBuilding = BuildingManager.Instance.GetRandomBuilding();
         targetNpc = NPCManager.Instance.GetRandomNPC();
-        if (Random.value > 0.5f)
+        targetTurret = TurretManager.Instance.GetRandomTurret();
+        float randVal = Random.value;
+        if (randVal > 0f && randVal < 0.3f)
             targetTransform = targetBuilding.transform;
-        else
+        else if(randVal > 0.3f && randVal < 0.6f)
             targetTransform = targetNpc.transform;
+        else
+            targetTransform = targetTurret.transform;
+
 
         navmeshAgent.SetDestination(targetTransform.position);
         countdown = 3;
@@ -65,10 +71,13 @@ public class Crawler : MobileEnemy
         if (!targetTransform) //building was destroyed, find new building
         {
 
-            if (Random.value > 0.5f)
+            float randVal = Random.value;
+            if (randVal > 0f && randVal < 0.3f)
                 targetTransform = BuildingManager.Instance.GetRandomBuilding().transform;
-            else
+            else if (randVal > 0.3f && randVal < 0.6f)
                 targetTransform = NPCManager.Instance.GetRandomNPC().transform;
+            else
+                targetTransform = TurretManager.Instance.GetRandomTurret().transform;
 
             navmeshAgent.SetDestination(targetTransform.position);
 

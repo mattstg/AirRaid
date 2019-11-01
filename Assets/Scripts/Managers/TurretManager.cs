@@ -38,7 +38,10 @@ public class TurretManager
         for (int i = turrets.Count - 1; i >= 0; i--)
             turrets[i]?.Refresh();
     }
-
+    public Turret GetRandomTurret()
+    {
+        return turrets.GetRandomElement<Turret>();
+    }
     public Turret SpawnTurret(Vector3 spawnLoc, float lifeSpan)
     {
 

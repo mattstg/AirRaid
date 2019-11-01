@@ -15,7 +15,7 @@ public class BomberEnemy : Ship
     readonly float TURNING_RATE = 5;  //time to preform a full 360
     [HideInInspector]public float distanceFromPlayer = 30;
     [HideInInspector]public float distanceFromBuilding = 40;
-
+    float countdown1= 0f;
     public override void Initialize(float startingEnergy)
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -37,8 +37,9 @@ public class BomberEnemy : Ship
 
     void EvadePlayerAndTargetBuildings()
     {
+        countdown1 -= Time.fixedDeltaTime;
         //evade player
-        if (PlayerManager.Instance.player.isAlive && (transform.position - player.position).sqrMagnitude <= distanceFromPlayer* distanceFromBuilding)
+        if (PlayerManager.Instance.player.isAlive && (transform.position - player.position).sqrMagnitude <= distanceFromPlayer * distanceFromBuilding)
         {
             attackMode = false;
             Vector3 dir = (transform.position - player.position).normalized;
@@ -49,6 +50,9 @@ public class BomberEnemy : Ship
         }
         else
         {
+            
+            if(countdown1<=0)
+            { 
             Transform closestTarget = ClosestTarget();
             Vector3 dirVector = (closestTarget.position - transform.position);
             dirVector.y = 0;
@@ -59,12 +63,14 @@ public class BomberEnemy : Ship
                 transform.forward = Vector3.RotateTowards(transform.forward, dirVector.normalized, 2 * Mathf.PI / TURNING_RATE * Time.fixedDeltaTime, 0);
                 rb.velocity = transform.forward * speedOfBomber * Time.deltaTime;
             }
-                
+
             else
             {
                 attackMode = true;
                 UpdateAttackMode();
             }
+                countdown1 = 3f;
+        }
         }
     }
 
@@ -118,6 +124,7 @@ public class BomberEnemy : Ship
 
         List<MonoBehaviour> hittables=new List<MonoBehaviour>(BuildingManager.Instance.allBuildings);
         hittables.Concat<MonoBehaviour>(NPCManager.Instance.npcs.ToList());
+        hittables.Concat<MonoBehaviour>(TurretManager.Instance.turrets);
 
         foreach (MonoBehaviour target in hittables)
         {

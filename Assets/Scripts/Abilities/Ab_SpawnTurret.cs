@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ab_SpawnTurret : Ability
 {
 
-    const float TURRET_LIFESPAN = 20;
+    const float TURRET_LIFESPAN = 60f;
     public Ab_SpawnTurret(PlayerController _pc) : base(_pc)
     {
         stats = new AbilityStats(this, Abilities.Turrets, UpdateType.Update, .2f, 30f,0);
