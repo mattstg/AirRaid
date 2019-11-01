@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PlayerSounds : MonoBehaviour
 {
-    public AudioClip sound,audio;
+    public AudioClip sound,audio,throttle;
     public AudioSource shootSounds,playerNoise;
     public PlayerController player;
     public void Initialize()
     {
         audio = Resources.Load<AudioClip>("Music/Bomb");
+        throttle = audio;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        shootSounds = player.gameObject.GetComponent<AudioSource>();
-        //shootSounds.PlayOneShot(audio);
+
+        var aSources = player.gameObject.GetComponents<AudioSource>();
+        shootSounds = aSources[0];
+        playerNoise = aSources[1];
+        
+        playerNoise.clip = throttle;
+        playerNoise.loop = true;
+        playerNoise.Play();
     }
 
     public void PhysicsRefresh()
@@ -35,7 +42,7 @@ public class PlayerSounds : MonoBehaviour
 
     public void DoThrottleSounds()
     {
-        shootSounds.pitch = InputManager.Instance.refreshInputPkg.throttleAmount+1f;
+        playerNoise.pitch = InputManager.Instance.refreshInputPkg.throttleAmount+1f;
     }
 
     
