@@ -57,7 +57,6 @@ public class Crawler : MobileEnemy
                 attackMode = true;
                 countdown = CRAWLER_ATTACK_SPEED;
             }
-
         }
     }
 
