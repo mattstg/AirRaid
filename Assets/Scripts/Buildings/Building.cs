@@ -39,6 +39,6 @@ public class Building : MonoBehaviour, IHittable
         Renderer r = this.GetComponent<Renderer>();
         r.material.SetFloat("GlowEmissionMultiplier", (maxHP - hp) / maxHP * 30);
         r.material.SetFloat("GlowColorIntensity", (maxHP - hp) / maxHP * 10);
-        r.material.SetFloat("GlowBaseFrequency", (maxHP -  hp) / maxHP * 5);
+        r.material.SetFloat("GlowBaseFrequency", (maxHP -  hp) / maxHP * 3.5f);
     }
 }
