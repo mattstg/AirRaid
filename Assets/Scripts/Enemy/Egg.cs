@@ -40,18 +40,28 @@ public class Egg : RootedEnemy
             else
             {
                 float eggHatchChoice = Random.value;
-                if (eggHatchChoice >= .5f && eggHatchChoice <= 1f)  //50% chance
+                if (eggHatchChoice >= .6 && eggHatchChoice <= 1f)  //40% chance
                 {
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Crawler, transform.position, energy); //Spawn an egg spitter on this egg's location
                     //Hatch a crawler
                 }
-                else if (eggHatchChoice >= .2 && eggHatchChoice <= .5f) //30% chance
+                else if (eggHatchChoice >= .4 && eggHatchChoice <= .6f) //20% chance
                 {
                     //Hatch a AA Turret
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.AATurret, transform.position, energy); //Spawn an egg spitter on this egg's location
                     ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
                 }
-                else  //20% chance
+                else if (eggHatchChoice >= .25 && eggHatchChoice <= .4f) //15% chance
+                {
+                    //Hatch a Fighter
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Fighter, transform.position + new Vector3(0, 40, 0), energy); //Spawn an egg spitter on this egg's location
+                }
+                else if (eggHatchChoice >= .1 && eggHatchChoice <= .25f) //15% chance
+                {
+                    //Hatch a Bomber
+                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Bomber, transform.position + new Vector3(0, 40, 0), energy); //Spawn an egg spitter on this egg's location
+                }
+                else  //10% chance
                 {
                     //Hatch an egg spitter
                     Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
