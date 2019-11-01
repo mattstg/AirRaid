@@ -51,6 +51,10 @@ public class NPCManager
     {
 
     }
+    public Npc GetRandomNpc()
+    {
+        return npcs.GetRandomElement<Npc>();
+    }
     public void Refresh()
     {
         foreach (Npc e in npcs)
