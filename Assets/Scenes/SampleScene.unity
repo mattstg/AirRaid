@@ -3018,6 +3018,20 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1212620885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8571367800061680121, guid: 2af45e00dcb58534a98206b047f1fea9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3930730300877355539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &1212620886
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212620885}
+  m_Enabled: 1
 --- !u!1 &1231919570
 GameObject:
   m_ObjectHideFlags: 0
