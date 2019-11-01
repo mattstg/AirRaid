@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour, IHittable
         abilityManager = new AbilityManager(this);
         abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
         abilityManager.AddAbilities(new Ab_BombDrop(this), 1);
-        //Karan's Turret Ability
+        abilityManager.AddAbilities(new Ab_SpawnTurret(this), 2);
         abilityManager.AddAbilities(new Ab_Rewind(this), 3);
         //but it's important that I test now that my ability system is all in place.
 
