@@ -41,7 +41,9 @@ public class EnemyFlak : Projectile
 
     private void ExplodeIntoFlak()
     {
-        this.gameObject.GetComponent<AudioSource>().Play();
+        AudioSource audioObject = GameObject.Find("AudioObject2").GetComponent<AudioSource>();
+        audioObject.transform.position = this.transform.position;
+        audioObject.Play();
         int numberOfFlak = (int)(energy / ENERGY_PER_FLAK);
         for(int i = 0; i < numberOfFlak; i++)
         {
