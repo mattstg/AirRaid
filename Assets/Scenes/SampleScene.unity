@@ -3024,7 +3024,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3930730300877355539}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &1212620886
+--- !u!81 &1212620888
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5619,6 +5619,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.34
       objectReference: {fileID: 0}
+    - target: {fileID: 5407642137228627458, guid: 8d218a94a1037144a96174ab3e9cd0aa,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc89ee0d072a2e94aa92211756e8627f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d218a94a1037144a96174ab3e9cd0aa, type: 3}
 --- !u!4 &5407642137104413561 stripped
