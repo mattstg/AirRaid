@@ -10,8 +10,6 @@ public class Projectile : MonoBehaviour
     protected Vector3 playerVelocityOnLaunch;  //to be added to the speed
     protected float timeOfExpire;
 
-    GameObject BloodSplatter;
-
     public virtual void Initialize(Vector3 _firingDir, Vector3 _playerVelocityOnLaunch, float _lifespan, float _speed)
     {
         firingDir = _firingDir.normalized;  //just in case the caller didnt give us a normalized one, but they should
@@ -20,7 +18,6 @@ public class Projectile : MonoBehaviour
         projectileSpeed = _speed;
         currentMovementVector = (firingDir * projectileSpeed + playerVelocityOnLaunch).normalized; //Its own speed, but also the speed the shooters shot it at
         projectileSpeed = (firingDir * projectileSpeed + playerVelocityOnLaunch).magnitude;                 //the shooters initial speed needs to be taken into account
-        BloodSplatter = Resources.Load<GameObject>("Prefabs/blood1");
     }
 
     public virtual void UpdateProjectile()
@@ -33,10 +30,7 @@ public class Projectile : MonoBehaviour
         {
             IHittable ihittable = rayHit.transform.GetComponent<IHittable>();  //If the thing we hit has implemented "IHittable"
             if (ihittable != null)
-            {
                 HitTarget(ihittable, LayerMask.LayerToName(rayHit.transform.gameObject.layer));
-                EmitBloodDecals(rayHit.transform.position);//Blood Effect on Target location
-            }
             else
                 HitNonTarget(rayHit.point, LayerMask.LayerToName(rayHit.transform.gameObject.layer));
             DestroyProjectile();
@@ -68,13 +62,6 @@ public class Projectile : MonoBehaviour
     {
         BulletManager.Instance.ProjectileDied(this);
         GameObject.Destroy(gameObject);
-    }
-
-
-    //Blood Decals are emited through here
-    public virtual void EmitBloodDecals(Vector3 pos)
-    {
-        Instantiate(BloodSplatter, pos, Quaternion.identity);
     }
 
 }
