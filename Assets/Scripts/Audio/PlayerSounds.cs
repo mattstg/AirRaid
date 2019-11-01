@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerSounds : MonoBehaviour
 {
-    public AudioClip sound,audio,throttle;
+    public AudioClip sound,playerDamage,throttle;
     public AudioClip[] abilitySounds;
     public AudioSource shootSounds,playerNoise;
     public PlayerController player;
     public void Initialize()
     {
-        audio = Resources.Load<AudioClip>("Music/Bomb"); //Resources.Load<AudioClip>("Music/Damage");  
-        throttle = audio;//Resources.Load<AudioClip>("Music/Throttle");
+        playerDamage = Resources.Load<AudioClip>("Music/PlayerDamage");  
+        throttle = Resources.Load<AudioClip>("Music/Throttle");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         var aSources = player.gameObject.GetComponents<AudioSource>();
@@ -22,7 +22,7 @@ public class PlayerSounds : MonoBehaviour
         playerNoise.loop = true;
         //playerNoise.Play();
 
-        abilitySounds[0] = throttle; //Resources.Load<AudioClip>("Music/Gun");
+        abilitySounds[0] = Resources.Load<AudioClip>("Music/Gunshot");
         abilitySounds[1] = Resources.Load<AudioClip>("Music/Bomb"); 
     }
 
@@ -41,7 +41,7 @@ public class PlayerSounds : MonoBehaviour
 
     public void PlayDamage()
     {
-        shootSounds.PlayOneShot(audio);
+        shootSounds.PlayOneShot(playerDamage);
     }
 
     public void DoThrottleSounds()
