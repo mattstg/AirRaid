@@ -37,6 +37,7 @@ public class GameFlow : IManagable
         BulletManager.Instance.Initialize();
         BuildingManager.Instance.Initialize();
         AudioManager.Instance.Initialize();
+        TurretManager.Instance.Initialize();
     }
 
     public void PostInitialize()
@@ -48,6 +49,7 @@ public class GameFlow : IManagable
         BulletManager.Instance.PostInitialize();
         BuildingManager.Instance.PostInitialize();
         AudioManager.Instance.PostInitialize();
+        TurretManager.Instance.PostInitialize();
     }
 
     public void PhysicsRefresh()
@@ -59,6 +61,7 @@ public class GameFlow : IManagable
         BulletManager.Instance.PhysicsRefresh();
         BuildingManager.Instance.PhysicsRefresh();
         AudioManager.Instance.PhysicsRefresh();
+        TurretManager.Instance.PhysicsRefresh();
     }
 
     public void Refresh()
@@ -71,6 +74,7 @@ public class GameFlow : IManagable
         BulletManager.Instance.Refresh();
         BuildingManager.Instance.Refresh();
         AudioManager.Instance.Refresh();
+        TurretManager.Instance.Refresh();
     }
 
     
