@@ -1,0 +1,7 @@
+Folders to consider
+
+1.Assets/Scripts/NPC
+2.Assets/Scripts/Managers/NPCManager.cs
+3.Resources/Prefabs/Humanoids
+4.Resources/Animation
+5.Resources/AnimController

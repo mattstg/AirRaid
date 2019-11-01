@@ -51,7 +51,7 @@ private void UpdateWanderMode()
         CheckEnemyStillExists();
 
         //In range to attack enemy
-        if (Vector2.SqrMagnitude(transform.position- targetEnemy.transform.position) < MELEE_RANGE_PER_ENERGY * energy)
+        if (Vector2.SqrMagnitude(transform.position- targetEnemy.transform.position )< MELEE_RANGE_PER_ENERGY * energy)
         {
             attackMode = true;
             countdown = MELEE_ATTACK_SPEED;
@@ -69,7 +69,7 @@ private void CheckEnemyStillExists()
 }
 private void UpdateAttackMode()
 {
-        anim.SetBool("isMeleeRunning", false);
+        anim.SetBool("isMeleeRunning", true);
         anim.SetBool("isMeleeAttacking", true);
 
         Debug.Log("Melee attack");

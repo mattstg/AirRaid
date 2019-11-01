@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-    public enum NPCType { Melee,Ranged,Healer}//, Ranged, Helper }
+    public enum NPCType { Melee,Ranged,Healer}
 public class NPCManager 
 {
 
@@ -104,7 +104,7 @@ public class NPCManager
         GameObject newNpc;        
         newNpc = GameObject.Instantiate(npcPrefabDict[npcType], npcParent);       //create from prefab
         newNpc.transform.position = spawnLoc;     //set the position
-        Npc e= newNpc.GetComponent<Npc>();   //get the ranged component on the newly created obj        
+        Npc e= newNpc.GetComponent<Npc>();          
         e.Initialize(startingEnergy);               //initialize the Npc
         toAdd.Push(e);                              //add to update list
         return e;
