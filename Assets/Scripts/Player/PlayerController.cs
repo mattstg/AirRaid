@@ -10,8 +10,10 @@ public class PlayerController : MonoBehaviour, IHittable
 {
     public static readonly int ABILITY_COUNT_MAX = 6; //max number of abilites, to change this number, you would have to add more Axis in Editor->InputManager and UI ability parent grid column count
 
-    [HideInInspector] public bool isAlive, isHit;
+    //[HideInInspector] 
     //public bool stalled = false;
+    public int hit  = 0;
+    public bool isAlive;
 
     [HideInInspector] public PlayerStats stats;
     [HideInInspector] public Rigidbody rb;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour, IHittable
     [HideInInspector] public GameObject Smoke;
     [HideInInspector]
     public AbilityManager abilityManager;
+    public PlayerSounds playerSounds;
 
     public Dictionary<BodyPart, List<Vector3>> bodyParts; //This uses transforms on the player that uses the correct BodyPart_ tag, those parts are deleted after consumed, and thier localPosition is saved
 
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour, IHittable
         rb.velocity = transform.forward * stats.maxSpeed * .7f;
 
         playerCam = GetComponentInChildren<Camera>();
+        playerSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSounds>();
+        
 
         //Link all body parts
         bodyParts = new Dictionary<BodyPart, List<Vector3>>();
@@ -90,7 +95,6 @@ public class PlayerController : MonoBehaviour, IHittable
             smokeGO.transform.SetParent(this.transform);
         }
 
-        isHit = false;
     }
 
     public void PhysicsRefresh(InputManager.InputPkg inputPkg)
@@ -152,6 +156,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     private void OnCollisionEnter(Collision collision)
     {
+        playerSounds.PlayDamage();
         //At this moment, any physical collision should destroy the ship
         ShipDestroyed();
     }
@@ -166,7 +171,13 @@ public class PlayerController : MonoBehaviour, IHittable
     {
         stats.hp -= damage;
         Debug.Log("took dmg: " + damage);
-        isHit = true;
+        playerSounds.PlayDamage();
+
+    }
+
+    public int ReturnHit()
+    {
+        return hit;
     }
 
     //I put the players data in a seperate data class so it's easy to pass to the UI, and for being able to save the game

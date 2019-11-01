@@ -12,7 +12,7 @@ public class PlayerSounds : MonoBehaviour
         audio = Resources.Load<AudioClip>("Music/Bomb");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         shootSounds = player.gameObject.GetComponent<AudioSource>();
-        shootSounds.PlayOneShot(audio);
+        //shootSounds.PlayOneShot(audio);
     }
 
     public void PhysicsRefresh()
@@ -25,6 +25,17 @@ public class PlayerSounds : MonoBehaviour
 
     public void Refresh()
     {
+        DoThrottleSounds();
+    }
+
+    public void PlayDamage()
+    {
+        shootSounds.PlayOneShot(audio);
+    }
+
+    public void DoThrottleSounds()
+    {
+        shootSounds.pitch = InputManager.Instance.refreshInputPkg.throttleAmount+1f;
     }
 
     
