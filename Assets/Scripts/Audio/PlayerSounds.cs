@@ -27,7 +27,7 @@ public class PlayerSounds : MonoBehaviour
         abilitySounds[1] = Resources.Load<AudioClip>("Music/Bomb");
 
         abilitySounds[2] = Resources.Load<AudioClip>("Music/FlakSound");
-        abilitySounds[3] = Resources.Load<AudioClip>("Music/Gunshot");
+        abilitySounds[3] = Resources.Load<AudioClip>("Music/WHOOSH");
     }
 
     public void PhysicsRefresh()
