@@ -6,6 +6,7 @@ public class Castle : Building
 {
     public override void BuildingDied()
     {
+        base.BuildingDied();
         BuildingManager.Instance.CastleDied();
     }
 }
