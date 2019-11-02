@@ -75,8 +75,6 @@ public class EnemyManager
     {
         toRemove.Push(enemyDied);
         Debug.Log(enemyDied.name);
-
-
     }
 
 
