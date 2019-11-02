@@ -21,17 +21,23 @@ public class Crawler : MobileEnemy
         base.Initialize(startingEnergy);
         targetBuilding = BuildingManager.Instance.GetRandomBuilding();
         targetNpc = NPCManager.Instance.GetRandomNPC();
-        targetTurret = TurretManager.Instance.GetRandomTurret();
+       // if (TurretManager.Instance.turrets.Count > 0)
+            targetTurret = TurretManager.Instance.GetRandomTurret();
+        
         float randVal = Random.value;
         if (randVal > 0f && randVal < 0.3f)
             targetTransform = targetBuilding.transform;
         else if(randVal > 0.3f && randVal < 0.6f)
             targetTransform = targetNpc.transform;
         else
-            targetTransform = targetTurret.transform;
+            targetTransform = targetTurret?.transform;
 
+        if(targetTurret)
+        {
 
         navmeshAgent.SetDestination(targetTransform.position);
+        }
+        
         countdown = 3;
     }
 
@@ -77,8 +83,12 @@ public class Crawler : MobileEnemy
             else if (randVal > 0.3f && randVal < 0.6f)
                 targetTransform = NPCManager.Instance.GetRandomNPC().transform;
             else
-                targetTransform = TurretManager.Instance.GetRandomTurret().transform;
-
+            {
+                //if(TurretManager.Instance.turrets.Count>0)
+                    targetTransform = TurretManager.Instance.GetRandomTurret()?.transform;
+            }
+            if(!targetTransform)
+                targetTransform = BuildingManager.Instance.GetRandomBuilding().transform;
             navmeshAgent.SetDestination(targetTransform.position);
 
             attackMode = false;
