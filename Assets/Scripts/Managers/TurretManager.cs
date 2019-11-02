@@ -40,7 +40,8 @@ public class TurretManager
     }
     public Turret GetRandomTurret()
     {
-        return turrets.GetRandomElement<Turret>();
+       // return turrets.GetRandomElement<Turret>(); 
+        return turrets[UnityEngine.Random.Range(0, turrets.Count)];
     }
     public Turret SpawnTurret(Vector3 spawnLoc, float lifeSpan)
     {
