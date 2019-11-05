@@ -42,8 +42,8 @@ public class GlobalDefendersVariables {
     public readonly float SP_HP = 9f;
     public readonly float SP_MAX_HP = 9f;
     public readonly float SP_DAMAGE = -50f;
-    public readonly float SP_ENERGY_START = 100f;
-    public readonly float SP_ENERGY_MAX = 100f;
+    public readonly float SP_ENERGY_START = 0f;
+    public readonly float SP_ENERGY_MAX = 0f;
     public readonly float SP_ENERGY_REGEN = 0.2f;
     public readonly float SP_ATTACK_RANGE = 10f;
     public readonly float SP_VISION_RANGE = 20f;
