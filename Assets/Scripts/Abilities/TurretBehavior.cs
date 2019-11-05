@@ -5,7 +5,7 @@ public class TurretBehavior : MonoBehaviour
     //Turret Variables
     private float turretTimer = 0f;
     private float shotTimer;
-    readonly float TURRET_RANGE = 120;
+    readonly float TURRET_RANGE = 80;
     readonly float TURRET_PROJECTILE_SPEED = 35;
 
     private GameObject turretPrefab;
@@ -97,7 +97,7 @@ public class TurretBehavior : MonoBehaviour
         }
     }
 
-    public void Shoot(GameObject target)    
+    public void Shoot(GameObject target)
     {
         //this check confirms that i am done shooting OR that my target went out of range before my shot
         if (target == null)
@@ -106,7 +106,7 @@ public class TurretBehavior : MonoBehaviour
         }
         else
         {
-            //Here we check if the enemy is still in sight of the Turret before we shoot. Pesky crawlers going around corners -_- 
+            //Here we check if the enemy is still in sight of the Turret before we shoot. Pesky crawlers going around corners -_-
 
             if (Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out RaycastHit hit, TURRET_RANGE))
             {
