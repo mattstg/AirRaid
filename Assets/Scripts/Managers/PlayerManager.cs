@@ -50,5 +50,6 @@ public class PlayerManager : IManagable
         GameLinks.gl.postDeathCam.gameObject.SetActive(true);
         player.gameObject.SetActive(false);
         player.isAlive = false;
+        Time.timeScale = 3.5f; //Make time go faster as we watch the world after player death
     }
 }
