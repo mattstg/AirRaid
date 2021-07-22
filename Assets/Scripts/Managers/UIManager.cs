@@ -18,10 +18,10 @@ public class UIManager
     {
         ui = UILinks.instance;
         player = _player;
-        for(int i = 0; i < player.stats.abilities.Count; i++)
-        {
-            //UIAbility.CreateAbilityUI(null,)
-        }
+        //for(int i = 0; i < player.stats.abilities.Count; i++)
+        //{
+        //    //UIAbility.CreateAbilityUI(null,)
+        //}
     }
 
    

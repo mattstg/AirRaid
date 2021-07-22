@@ -12,9 +12,10 @@ public class Test
      WASD to move
      Left Shift to increase speed
 
-    HJKL-YUI are the different ability keys
+    HJK are the different ability keys
     H - Shoot
     J - Drop Bomb
+    K - Unassigned
 
     You have an energy meter, boost and abilities cost energy
     When you run out of energy, you will tailspin until energy replensihes

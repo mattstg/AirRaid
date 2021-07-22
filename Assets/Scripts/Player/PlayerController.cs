@@ -39,15 +39,9 @@ public class PlayerController : MonoBehaviour, IHittable
         rewindSFX = Resources.Load<AudioClip>("SFX/WHOOSH2");
         //////////////////////////////////////////////////////////////////////////////
 
-        //Create stats, add two starter abilities
+        
         abilityManager = new AbilityManager(this);
-        abilityManager.AddAbilities(new Ab_MachineGun(this), 0); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
-        abilityManager.AddAbilities(new Ab_BombDrop(this), 1);
-        //but it's important that I test now that my ability system is all in place.
-
         stats = new PlayerStats(this);
-        stats.abilities.Add(Abilities.Turrets);
-        stats.abilities.Add(Abilities.Bomb);
 
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; //using custom gravity
@@ -224,7 +218,7 @@ public class PlayerController : MonoBehaviour, IHittable
         public bool engineStalled { get { return currentEnegy <= 0; } }
 
         public Vector3 relativeLocalVelo { get { return player.transform.InverseTransformDirection(player.rb.velocity); ; } }  //returns velo in local co-rd, since rb.velo is world
-        public List<Abilities> abilities = new List<Abilities>();
+        //public List<Abilities> abilities = new List<Abilities>();
 
         public PlayerStats(PlayerController pc) { player = pc; currentEnegy = maxEnergy; hp = maxHp; }
     }

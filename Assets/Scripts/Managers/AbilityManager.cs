@@ -6,32 +6,36 @@ public class AbilityManager
 {
     //Not a singleton manager, because there could be one ability manager per player
     PlayerController pc; //link to player
-    Ability[] abilities; //pair player ability key at index to abilities
+    Dictionary<KeyCode, Ability> abilityMap = new Dictionary<KeyCode, Ability>(); //Maps keys to specific abilities
+    
 
     public AbilityManager(PlayerController _pc)
     {
         pc = _pc;
-        abilities = new Ability[2];  //atm two hardcoded abilities, will refactor to make it scalable  (do as i say, not as i do)
+
+        abilityMap.Add(KeyCode.H, new Ab_MachineGun(_pc)); //Not the best way of adding an ability, it's a little unstable since it's not coupled with the inputSystem (for key pressing purposes)
+        abilityMap.Add(KeyCode.J, new Ab_BombDrop(_pc));   //There is now two hardcoded places with Input, better systems exist, but require something better like Rewired, Unity's new input system, or more complicated generics/axis commands  
     }
 
     //Update each ability whose ability type happens during an update phase
     public void Refresh(InputManager.InputPkg playerInputPkg)
     {
-        for (int i = 0; i < abilities.Length; i++)
-            if (abilities[i] != null && abilities[i].stats.updateType == UpdateType.Update)
-            {
-                UpdateAbility(abilities[i], playerInputPkg.abilityKeyPress[i]);               
-            }
+        foreach(KeyValuePair<KeyCode,Ability> kv in abilityMap)
+        {
+            if(kv.Value.stats.updateType == UpdateType.Update)
+                UpdateAbility(kv.Value, playerInputPkg.GetInputPressTypeOfSpecificKey(kv.Key));
+        }
+
     }
 
     //Update each ability whose ability type happens during an Fixed-update phase
     public void PhysicsRefresh(InputManager.InputPkg playerInputPkg)
     {
-        for (int i = 0; i < abilities.Length; i++)
-            if (abilities[i] != null && abilities[i].stats.updateType == UpdateType.FixedUpdate)
-            {
-                UpdateAbility(abilities[i], playerInputPkg.abilityKeyPress[i]);
-            }
+        foreach (KeyValuePair<KeyCode, Ability> kv in abilityMap)
+        {
+            if (kv.Value.stats.updateType == UpdateType.FixedUpdate)
+                UpdateAbility(kv.Value, playerInputPkg.GetInputPressTypeOfSpecificKey(kv.Key));
+        }
     }
 
     private void UpdateAbility(Ability ability, InputManager.InputPressType pressType)
@@ -56,11 +60,4 @@ public class AbilityManager
         ability.AbilityUpdate();
     }
 
-
-    //This is not a great way of doing this for now, but I need to test my ability framework (it is functional, just not scalable like we'll see later)
-    public void AddAbilities(Ability abilityToAdd, int index)
-    {
-        abilities[index] = abilityToAdd;
-        //If i were to make this permanent, I would have to have some try catches and safety nets around here.
-    }
 }

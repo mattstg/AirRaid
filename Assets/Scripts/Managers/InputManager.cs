@@ -10,6 +10,7 @@ public class InputManager : IManagable
     private InputManager() { }
     public static InputManager Instance { get { return instance ?? (instance = new InputManager()); } }
     #endregion
+    
     public enum InputPressType { None, FirstPress, Held, Release }
 
     public static bool invertedYAxis = true;
@@ -20,9 +21,14 @@ public class InputManager : IManagable
 
     public void Initialize()
     {
-        refreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];
-        physicsRefreshInputPkg.abilityKeyPress = new InputPressType[PlayerController.ABILITY_COUNT_MAX];
+        
     }
+
+    public void PostInitialize()
+    {
+
+    }
+
 
     public void PhysicsRefresh()
     {
@@ -34,10 +40,9 @@ public class InputManager : IManagable
         ip.throttleAmount = Input.GetAxis("Throttle");
         ip.yawPressed = Input.GetAxis("Yaw");
         ip.dirPressed = new Vector2(Input.GetAxis("Horizontal") * (invertedYAxis ? -1 : 1), Input.GetAxis("Vertical"));
-        for (int i = 0; i < PlayerController.ABILITY_COUNT_MAX; i++)
-        {
-            ip.abilityKeyPress[i] = GetInputPressType("Ability" + i);
-        }
+        ip.H_Key = GetInputPressType(KeyCode.H);
+        ip.J_Key = GetInputPressType(KeyCode.J);
+        ip.K_Key = GetInputPressType(KeyCode.K);
     }
 
     public void Refresh()
@@ -45,19 +50,16 @@ public class InputManager : IManagable
         SetInputPkg(refreshInputPkg);
     }
 
-    public void PostInitialize()
-    {
-
-    }
+    
 
     //Get the current state of a requested key
-    public InputPressType GetInputPressType(string axisName)
+    public InputPressType GetInputPressType(KeyCode keyToCheck)
     {
-        if (Input.GetButtonDown(axisName))
+        if (Input.GetKeyDown(keyToCheck))
             return InputPressType.FirstPress;
-        if (Input.GetButton(axisName))
+        if (Input.GetKey(keyToCheck))
             return InputPressType.Held;
-        if (Input.GetButtonUp(axisName))
+        if (Input.GetKeyUp(keyToCheck))
             return InputPressType.Release;
 
         return InputPressType.None;
@@ -70,14 +72,32 @@ public class InputManager : IManagable
         public Vector2 dirPressed;
         public float throttleAmount;
         public float yawPressed;
-        public InputPressType[] abilityKeyPress;
+        public InputPressType H_Key;
+        public InputPressType J_Key;
+        public InputPressType K_Key;
 
-        public override string ToString()
+        public InputPressType GetInputPressTypeOfSpecificKey(KeyCode keyToCheck)
         {
-            return $"DirPressed: {dirPressed}, throttleAmount: {throttleAmount}, dirPressed {dirPressed}, Yaw {yawPressed}" + abilityKeyPress.CollectionToStringArray();
+            switch(keyToCheck)
+            {
+                case KeyCode.H:
+                    return H_Key;
+                case KeyCode.J:
+                    return J_Key;
+                case KeyCode.K:
+                    return K_Key;
+                default:
+                    Debug.LogError("Unhandled switch for key " + keyToCheck);
+                    return InputPressType.None;
+            }
         }
+
+        //public override string ToString()
+        //{
+        //    return $"DirPressed: {dirPressed}, throttleAmount: {throttleAmount}, dirPressed {dirPressed}, Yaw {yawPressed}";
+        //}
     }
 
-    
+
 }
  
