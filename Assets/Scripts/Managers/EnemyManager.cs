@@ -87,9 +87,8 @@ public class EnemyManager
         }
 
         GameObject newEnemy = GameObject.Instantiate(enemyPrefabDict[eType],enemyParent);       //create from prefab
-        newEnemy.transform.position = spawnLoc;     //set the position
         Enemy e = newEnemy.GetComponent<Enemy>();   //get the enemy component on the newly created obj
-        e.Initialize(startingEnergy);               //initialize the enemy
+        e.Initialize(startingEnergy, spawnLoc);               //initialize the enemy
         toAdd.Push(e);                              //add to update list
         return e;
     }
@@ -102,7 +101,8 @@ public class EnemyManager
         {
             //spawn an egg and launch it towards the random spot
             Vector3 spawnLocation = new Vector3(Random.Range(-spawnPlane.localScale.x*10 / 2, spawnPlane.localScale.x*10 / 2), initialEggSpawnHeight, Random.Range(-spawnPlane.localScale.z*10 / 2, spawnPlane.localScale.z*10 / 2));
-            CreateEnemyEgg(spawnLocation + new Vector3(spawnPlane.transform.position.x, 0, spawnPlane.transform.position.z), -Vector3.up, 1, 5); //gravity will drop them anyways
+            Enemy newSkyEgg = CreateEnemyEgg(spawnLocation + new Vector3(spawnPlane.transform.position.x, 0, spawnPlane.transform.position.z), -Vector3.up, 1, 5); //gravity will drop them anyways
+            ((Egg)newSkyEgg).specialEggSpitterOnlyEgg = true; //Sky eggs are special, so we force set it here
         }
         GameObject.Destroy(GameLinks.gl.spawnLocationParent.gameObject);
     }
@@ -110,11 +110,10 @@ public class EnemyManager
     public Enemy CreateEnemyEgg(Vector3 spawnPos, Vector3 spawnDir, float speed, float startEnergy)
     {
         GameObject newEgg = GameObject.Instantiate(enemyPrefabDict[EnemyType.Egg]);
-        newEgg.transform.position = spawnPos;
         newEgg.transform.SetParent(enemyParent);
         newEgg.GetComponent<Rigidbody>().velocity = spawnDir.normalized * speed;
         Enemy e = newEgg.GetComponent<Enemy>();
-        e.Initialize(startEnergy);
+        e.Initialize(startEnergy, spawnPos);
         toAdd.Push(e);
         return e;
     }

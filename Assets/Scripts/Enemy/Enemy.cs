@@ -12,11 +12,17 @@ public class Enemy : MonoBehaviour, IHittable
     protected float energy;
     float updateSizeTimeCountdown;
 
-    public virtual void Initialize(float startingEnergy)
+    public virtual void Initialize(float startingEnergy, Vector3 pos)
     {
         isAlive = true;
+        SetPosition(pos);
         ModEnergy(startingEnergy);
         Resize();
+    }
+
+    public virtual void SetPosition(Vector3 newPos)
+    {
+        transform.position = newPos;
     }
 
     public virtual void HitByProjectile(float damage)

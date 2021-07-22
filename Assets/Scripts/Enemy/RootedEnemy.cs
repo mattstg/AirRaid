@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RootedEnemy : Enemy
 {
-    static readonly float ENERGY_GAIN_PER_ROOT = .15f;
+    static readonly float ENERGY_GAIN_PER_ROOT = .5f;
 
 
     //Rooted enemy stats

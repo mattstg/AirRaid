@@ -38,7 +38,8 @@ public class Test
     The Final examination is the extension, research and fixes of the game Air Raid included
 
     For the research questions, imagine being asked an interview question, or leaving documentation behind for the next developer to inherit this code. Write enough details to satisfy someone's
-    belief that you understand the code.
+    belief that you understand the code. Assume the reader understands programmer very well, but doesn't know the project,
+    so explain to them so they could easily continue from where you left off, or find the answers they are looking for
 
     This exam will be impossible without using breakpoints, Ctrl+F, and Find All references. To see everywhere in the code where a variable or class is used, you can use "Find All References"
 
@@ -47,26 +48,20 @@ public class Test
     1) Describe how the buildings are all added to the building manager
     2) Is the input for the player calculated in PlayerController? If yes, where, if not, where and how does player recieve it?
     3) Where are the places that the player's death are called? How can a player die?
-    4) What are the two ways (not including the error way) of spawning an enemy egg? (where in code are they called)
-    5) When an enemy dies, are they destroyed right away, or put on a stack to be removed later?
-    6) Where is the players max energy, max speed, max hp, and all the player variables stored and set?
-    7) Draw out the enemy heirarchy, Which enemies inherit from which?
-    8) Taking a look at the projectile class, I dont see any logic for "if enemy, Enemy.HitByBullet, if building, Building.HitByBullet..." so how are bullets damaging everything?
-    9) The enemy creature known as "AATurret" shoots a projectile at players. What is the name of that projectile (That class name that does the projectile logic)
+    4) The code can spawn an Egg or a Sky Egg, What is a "sky" egg, how does it differ from a normal egg?    
+    5) Where is the players max energy, max speed, max hp, and all the player variables stored and set?
+    6) Draw out the enemy heirarchy, Which enemies inherit from which?
+    7) Taking a look at the projectile class, I dont see any logic for "if enemy, Enemy.HitByBullet, if building, Building.HitByBullet..." so how are bullets damaging everything?
+    8) The enemy creature known as "AATurret" shoots a projectile at players. What is the name of that projectile (That class name that does the projectile logic)
 
     Bug Fix
-    0)
-    There is a system of roots that grows out from certain types of enemies, such as the spitter or egg. These roots branch and spread across the land, the larger the root system, the more
-    powerful the creatures become, This is all controled in the RootSystem class. Although it is a neat feature, unfortunatly at this moment it is very unperformant and lacks some features we want.
-    	
-    You have permission from the developer who created it to temporarily disable the system. Find a safe way using a static bool in an intelligent place to disable the system. Have it that when
-    the bool is set to True, the system is disabled and no roots are created for any enemy. Try to be as least intrusive to the code as possible.
-    
-	1)
-	The energy bar is graphically glitched, it is always a full orange bar, it should be filled based on the amount of energy stored. Similar to a health bar in a 2D fighting game.
+       
+	0)
+	The energy bar for the player is graphically glitched, it is always a full orange bar, it should be filled based on the amount of energy stored. Similar to a health bar in a 2D fighting game.
+    Fix it.
    
     Balances
-    0) An enemy's energy has an affect on the size. Increase the ratio of size to energy by 33%    (for example if value was 1, set to 1.33)
+    0) Make question about enemy spawn %
     1) Change the rate of fire of the basic machine gun ability to .1f   (so it shoots 10x a second)
     2) Change the energy cost of the bomb drop ability to 35
 

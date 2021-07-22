@@ -6,15 +6,15 @@ public class Egg : RootedEnemy
 {
     static readonly float EGGHATCH_ENERGY_MIN = 10; //Energy per egg spawn
     static readonly float EGGSPAWN_SPAWN_TIME_MAX = 90f;
-    
 
+    public bool specialEggSpitterOnlyEgg = false; //The first ever eggs are only egg spitters, sky eggs force this true
     public AnimationCurve hatchTimeAnimCurve; //balanced in inspector
     float timeOfHatch;
 
 
-    public override void Initialize(float startingEnergy)
+    public override void Initialize(float startingEnergy, Vector3 pos)
     {
-        base.Initialize(startingEnergy);
+        base.Initialize(startingEnergy, pos);
         timeOfHatch = Time.time +  EGGSPAWN_SPAWN_TIME_MAX * hatchTimeAnimCurve.Evaluate(Random.value); //another way of using anim curve
     }
 
@@ -30,31 +30,33 @@ public class Egg : RootedEnemy
     {
         if (energy > EGGHATCH_ENERGY_MIN)
         {
+            Enemy e; //New enemy created from egg, is null at this moment, create using EnemyManager below
+
             //Special rule, in first minute of the game, they all become egg spitters
-            if (Time.time < 60)
+            if (specialEggSpitterOnlyEgg)
             {
                 //Hatch an egg spitter
-                Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
+                e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
                 ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
             }
             else
             {
                 float eggHatchChoice = Random.value;
-                if (eggHatchChoice >= .5f && eggHatchChoice <= 1f)  //50% chance
+                if (eggHatchChoice >= .5f && eggHatchChoice <= 1f)  //50% chance, magic values are terrible, was it harder to find than if it was a constant at the top?
                 {
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.Crawler, transform.position, energy); //Spawn an egg spitter on this egg's location
+                    e = EnemyManager.Instance.SpawnEnemy(EnemyType.Crawler, transform.position, energy); //Spawn an egg spitter on this egg's location
                     //Hatch a crawler
                 }
                 else if (eggHatchChoice >= .2 && eggHatchChoice <= .5f) //30% chance
                 {
                     //Hatch a AA Turret
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.AATurret, transform.position, energy); //Spawn an egg spitter on this egg's location
+                    e = EnemyManager.Instance.SpawnEnemy(EnemyType.AATurret, transform.position, energy); //Spawn an egg spitter on this egg's location
                     ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
                 }
                 else  //20% chance
                 {
                     //Hatch an egg spitter
-                    Enemy e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
+                    e = EnemyManager.Instance.SpawnEnemy(EnemyType.EggSpitter, transform.position, energy); //Spawn an egg spitter on this egg's location
                     ((RootedEnemy)e).LinkToRootSystem(rootNodeSystem);  //The egg spitter will inherit the egg's root system
                 }
             }

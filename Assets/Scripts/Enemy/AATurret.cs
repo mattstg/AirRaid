@@ -12,9 +12,9 @@ public class AATurret : RootedEnemy
     float timeNextShotReady;
     bool canFire { get { return Time.time >= timeNextShotReady; } }
 
-    public override void Initialize(float startingEnergy)
+    public override void Initialize(float startingEnergy, Vector3 pos)
     {
-        base.Initialize(startingEnergy);
+        base.Initialize(startingEnergy, pos);
         timeNextShotReady = Time.time + Random.Range(AATURRET_FIRE_RATE.x, AATURRET_FIRE_RATE.y);
     }
 

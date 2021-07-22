@@ -12,13 +12,16 @@ public class Crawler : MobileEnemy
     float countdown;
     bool attackMode;
 
-    public override void Initialize(float startingEnergy)
+    public override void Initialize(float startingEnergy, Vector3 pos)
     {
-        base.Initialize(startingEnergy);
+        base.Initialize(startingEnergy, pos);
         targetBuilding = BuildingManager.Instance.GetRandomBuilding();
-        navmeshAgent.SetDestination(targetBuilding.transform.position);
+        if(hp > 0)  //annoying bug where agent isnt on navmesh, so we killed it before hand
+            navmeshAgent.SetDestination(targetBuilding.transform.position);
         countdown = 3;
     }
+
+    
 
     public override void Refresh()
     {
