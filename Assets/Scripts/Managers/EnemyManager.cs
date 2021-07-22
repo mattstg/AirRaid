@@ -102,7 +102,7 @@ public class EnemyManager
             //spawn an egg and launch it towards the random spot
             Vector3 spawnLocation = new Vector3(Random.Range(-spawnPlane.localScale.x*10 / 2, spawnPlane.localScale.x*10 / 2), initialEggSpawnHeight, Random.Range(-spawnPlane.localScale.z*10 / 2, spawnPlane.localScale.z*10 / 2));
             Enemy newSkyEgg = CreateEnemyEgg(spawnLocation + new Vector3(spawnPlane.transform.position.x, 0, spawnPlane.transform.position.z), -Vector3.up, 1, 5); //gravity will drop them anyways
-            ((Egg)newSkyEgg).specialEggSpitterOnlyEgg = true; //Sky eggs are special, so we force set it here
+            ((Egg)newSkyEgg).specialSkyEgg = true; //Sky eggs are special, so we force set it here
         }
         GameObject.Destroy(GameLinks.gl.spawnLocationParent.gameObject);
     }

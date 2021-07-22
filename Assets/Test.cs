@@ -62,10 +62,10 @@ public class Test
     Fix it.
    
     Balances
-    0) Make question about enemy spawn %
+    0) There is a 50% chance an egg hatches into a "Crawler" type enemy. Make it 60%.
     1) Change the rate of fire of the basic machine gun ability to .1f   (so it shoots 10x a second)
     2) Change the energy cost of the bomb drop ability to 35
-
+    3) At the start of the round, 5 sky eggs are created in 5 different locations. Make a 6th location for the sky eggs to spawn
 
     Features
     Add only ONE of the following features of your choice
@@ -79,7 +79,7 @@ public class Test
 
     Enemy Feature
     Add a new type of enemy, a circle blimp that floats into the sky until it reaches a specific height, and then wanders randomly. 
-    After a long random peroid of time (30~45 seconds) it will split, creating another one of itself.
+    It should stay within the world bounds (not leave the edges)
     If it crashes into the player or a building, it should kill them
 
 
