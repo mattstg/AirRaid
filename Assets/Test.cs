@@ -76,6 +76,13 @@ public class Test
     =====Feature, 30%, 1.5 hours===
     Ability Feature
     Add a new Ability, Fire a rocket that travels foward slowly and then explodes with a large AOE
+    The ability has a 5 second cooldown. 
+    It cost 50 energy to shoot
+    It has forward velocity, and ignores gravity
+    It moves as fast as the speed the player launched it, plus 3 m/s.  (if player is travelling 10 m/s, and fires it, then it travels 13m/s)
+    It explodes with a diameter of 8
+    It does twice the amount of damage a bomb does.
+    The bomb can just be a simple capsule that flies forward.
 
 
 
