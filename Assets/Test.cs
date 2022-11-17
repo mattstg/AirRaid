@@ -44,49 +44,52 @@ public class Test
 
     For the research questions, imagine being asked an interview question, or leaving documentation behind for the next developer to inherit this code. Write enough details to satisfy someone's
     belief that you understand the code. Assume the reader understands programing very well, but doesn't know the project,
-    so explain to them so they could easily continue from where you left off, or find the answers they are looking for. 
+    so explain to them so they could easily continue from where you left off, or find the answers they are looking for. (Include class names & functions)
     
 
     This exam will be impossible without using breakpoints, Debug->Window->Call stack, Ctrl+F, Ctrl+; and Find All references. To see everywhere in the code where a variable or class is used, you can use "Find All References"
 
-    =====Research Questions, 30%, 40 minutes =====
+    =====Research Questions, 40%, 1.5 hours =====
     0) This code uses Top Down Architecture, and therefore has a class which initializes and updates all the Managers, which class is that?
-    1) Describe how the buildings are all added to the building manager
-    2) Is the polling of the input from the hardware (Ex: Input.Get or equivalant call) for the player calculated in PlayerController? If yes, where, if not, where and how does player recieve it?
-    3) Where are the places that the player's death are called? How can a player die?  
-    4) Where is the players max energy, max speed, max hp, and all the player variables stored and set?
-    6) Taking a look at the projectile class, I dont see any logic for "if enemy, Enemy.HitByBullet, if building, Building.HitByBullet..." so how are bullets damaging everything?
-    
+    1) Describe how the buildings are all added to the building manager. How could we add more buildings to the game?
+    2) Explain the process of how the input is read, and ultimatly used by the player
+    3) Where are the places that the player's death are called? What actions can cause a player to die?  
+    4) Taking a look at the projectile class, I dont see any logic for "if enemy, Enemy.HitByBullet, if building, Building.HitByBullet..." so how are bullets damaging everything?
+    5) Where is the code for the eggs hatching and how does it decide which type of enemy to spawn?
+    6) What determines the number of eggs, the egg-spitting alien produces?
+    7) What are "body parts" in the player and how are they set
+    8) Which enemies are considered RootedEnemy types, How does the root system affect the enemy? (Don't need super specific detail about the root system, just the result of how the root system affects the enemy)
 
-    ======Bug Fix, 10%, 20 minutes=====
+    ======Bug Fix, 10%, 30 minutes=====
        
-	0)
-	The energy bar for the player is graphically glitched, it is always a full orange bar, it should be filled based on the amount of energy stored. Similar to a health bar in a 2D fighting game.
+	0) The energy bar for the player is graphically glitched, it is always a full orange bar, it should be filled based on the amount of energy stored. Similar to a health bar in a 2D fighting game.
     Fix it.
    
 
-
-    =====Balances, 30%, 1.5 hours =====   
-    1) Change the rate of fire of the basic machine gun ability to .1f   (so it shoots 10x a second)
-    2) Change the energy cost of the bomb drop ability to 35
-    3) At the start of the round, 5 sky eggs are created in 5 different locations. Make a 6th location for the sky eggs to spawn
+    =====Balances, 25%, 1.5 hours =====   
+    1) Change the rate of fire of the basic machine gun ability so it shoots 10x a second
+    2) Change the energy cost of the bomb drop ability to cost 35 energy
+    3) At the start of the round, 5 sky-eggs are created in 5 different locations. Make a 6th location for the sky eggs to spawn
 
    
 
-    =====Feature, 30%, 1.5 hours===
+    =====Feature, 25%, 1.5 hours===
     Ability Feature
     Add a new Ability, Fire a rocket that travels foward slowly and then explodes with a large AOE
+    K key to fire
     The ability has a 5 second cooldown. 
     It cost 50 energy to shoot
     It has forward velocity, and ignores gravity
-    It moves as fast as the speed the player launched it, plus 3 m/s.  (if player is travelling 10 m/s, and fires it, then it travels 13m/s)
+    It moves at 3 m/s + the players speed at launch.  (if player is travelling 10 m/s, and fires it, then it travels 13m/s)
     It explodes with a diameter of 8
-    It does twice the amount of damage a bomb does.
-    The bomb can just be a simple capsule that flies forward.
+    It does 500 dmg.
+    For the graphics, the missle can just be a simple capsule with a box tip
+    The forward allignment of the missle is in the direction it was shot
 
 
 
-
+    Good luck everyone. Time management is essential. Keep in mind how much points each section is worth. If you are taking longer than the recommended time, do other questions.
+    It is not expected you will have the time to get everything done, so be strategic with your time. 
 
 
 
